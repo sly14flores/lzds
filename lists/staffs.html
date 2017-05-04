@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">ID </th>
+		<th class="column-title">Fullname </th>
+		<th class="column-title">Division </th>
+		<th class="column-title">Position </th>
+		<th class="column-title">Address </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span>
+		</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer" ng-repeat="staff in staffs">
+		<td class="">{{staff.school_id}}</td>
+		<td class="">{{staff.fullname}}</td>
+		<td class=""></td>
+		<td class=""></td>
+		<td class=""></td>
+		<td class="last list-action">
+			<a href="javascript:;"><i class="fa fa-pencil"></i></a>
+			<a href="javascript:;"><i class="fa fa-close"></i></a>
+		</td>
+	  </tr>
+	</tbody>
+  </table>
+</div>

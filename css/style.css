@@ -1,3 +1,7 @@
 .brand-logo {
 	width: 40px;
 }
+
+.list-action a:first-child {
+	margin-right: 5px;
+}
