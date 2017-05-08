@@ -1,4 +1,4 @@
-angular.module('staffs-module', []).factory('form', function($http,$timeout,$compile) {
+angular.module('staffs-module', ['ui.bootstrap']).factory('form', function($http,$timeout,$compile) {
 	
 	function form() {
 		
@@ -22,14 +22,20 @@ angular.module('staffs-module', []).factory('form', function($http,$timeout,$com
 			
 		};
 		
-		self.list = function(scope) {				
+		self.list = function(scope) {							
+			
+			scope.list = {
+				pageNum: 15,
+				currentPage: 1,
+				maxSize: 5
+			};				
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/staffs-list.php',
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.staffs);
+				angular.copy(response.data, scope.staffs);			
 				
 			}, function myError(response) {
 				 
@@ -40,7 +46,7 @@ angular.module('staffs-module', []).factory('form', function($http,$timeout,$com
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/staffs.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});			
+			});	
 
 		};		
 		
