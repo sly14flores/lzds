@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap']).factory('form', function($http,$timeout,$compile) {
+angular.module('staffs-module', ['angularUtils.directives.dirPagination']).factory('form', function($http,$timeout,$compile) {
 	
 	function form() {
 		
@@ -22,20 +22,17 @@ angular.module('staffs-module', ['ui.bootstrap']).factory('form', function($http
 			
 		};
 		
-		self.list = function(scope) {							
-			
-			scope.list = {
-				pageNum: 15,
-				currentPage: 1,
-				maxSize: 5
-			};				
-			
+		self.list = function(scope) {			
+
+			scope.currentPage = 1;
+			scope.pageSize = 15;		
+		
 			$http({
 			  method: 'POST',
 			  url: 'handlers/staffs-list.php',
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.staffs);			
+				angular.copy(response.data, scope.staffs);
 				
 			}, function myError(response) {
 				 

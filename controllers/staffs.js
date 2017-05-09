@@ -4,7 +4,7 @@ app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	
 	form.data($scope); // initialize data
 	
-	$scope.views = {};
+	$scope.views = {};	
 	
 	$scope.views.title = 'Staffs';
 	$scope.views.panel_title = 'Manage Staffs';
@@ -13,6 +13,6 @@ app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	
 	form.list($scope);
 
-	$scope.form = form;
+	$scope.form = form;	
 
 });

@@ -12,7 +12,7 @@
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr class="even pointer" ng-repeat="staff in staffs | limitTo: list.pageNum: (list.currentPage>1)?((list.currentPage-1)*list.pageNum):(list.currentPage-1)">
+	  <tr class="even pointer"  dir-paginate="staff in staffs | itemsPerPage: pageSize" current-page="currentPage">
 		<td class="">{{staff.school_id}}</td>
 		<td class="">{{staff.fullname}}</td>
 		<td class=""></td>
@@ -25,5 +25,5 @@
 	  </tr>
 	</tbody>
   </table>
-  <ul class="pull-right" uib-pagination total-items="staffs.length" ng-model="list.currentPage" max-size="list.maxSize" class="pagination-sm" boundary-link-numbers="true"></ul>  
+  <dir-pagination-controls template-url="modules/pagination/dirPagination.tpl.html" boundary-links="true"></dir-pagination-controls>
 </div>
