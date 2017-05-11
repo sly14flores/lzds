@@ -1,4 +1,4 @@
-var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-module']);
+var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-module','ui.bootstrap']);
 
 app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	
@@ -7,7 +7,7 @@ app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	$scope.views = {};	
 	
 	$scope.views.title = 'Staffs';
-	$scope.views.panel_title = 'Manage Staffs';
+	$scope.views.panel_title = 'Staffs List';
 	
 	$scope.fullscreen = fullscreen;
 	
