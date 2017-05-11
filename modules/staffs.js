@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['angularUtils.directives.dirPagination']).factory('form', function($http,$timeout,$compile) {
+angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootstrap-modal']).factory('form', function($http,$timeout,$compile) {
 	
 	function form() {
 		
@@ -6,14 +6,28 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination']).facto
 		
 		self.data = function(scope) { // initialize data
 			
+			scope.formHolder = {};
+			
 			scope.staff = {};
 			scope.staffs = [];
 			
 		};
 		
-		self.required = [];
+		function validate(scope) {
+			
+			var controls = scope.formHolder.staff.$$controls;
+			
+			angular.forEach(controls,function(elem,i) {
+				
+				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
+									
+			});
+
+			return scope.formHolder.staff.$invalid;
+			
+		};
 		
-		self.staff = function(scope,opt) { // form
+		self.staff = function(scope,row) { // form
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/staff.html',function() {
@@ -22,7 +36,7 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination']).facto
 			
 		};
 		
-		self.list = function(scope) {			
+		self.list = function(scope) {		
 
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
@@ -45,7 +59,15 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination']).facto
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
 			});	
 
-		};		
+		};
+
+		self.save = function(scope) {
+			
+		};
+		
+		self.delete = function(scope) {			
+			
+		};
 		
 	};
 	
