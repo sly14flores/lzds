@@ -1,0 +1,23 @@
+<form name="formHolder.fee" id="formHolder.fee" novalidate>
+<h4><strong>Fee Info</strong></h4>
+<div class="ln_solid"></div>
+<div class="row">
+  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.category.$touched && formHolder.fee.category.$invalid}">
+	<label>Category</label>
+	<input type="text" placeholder="" class="form-control" name="category" ng-model="fee.category" required>
+	<span class="help-block" ng-show="formHolder.fee.category.$touched && formHolder.fee.category.$invalid">Category is required</span>		
+  </div>
+  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.description.$touched && formHolder.fee.description.$invalid}">
+	<label>Description</label>
+	<input type="text" placeholder="" class="form-control" name="description" ng-model="fee.description" required>
+	<span class="help-block" ng-show="formHolder.fee.description.$touched && formHolder.fee.description.$invalid">Description is required</span>
+  </div>   
+</div>
+<div class="ln_solid"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">{{btns.cancel.label}}</button>
+	  <button type="button" class="btn btn-success" ng-click="form.save(this)">{{btns.ok.label}}</button>
+	</div>
+</div>
+</form>
