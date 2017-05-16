@@ -10,7 +10,9 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 			scope.fee = {};
 			scope.fee.id = 0;
-
+			
+			scope.fee_items = [];
+			
 			scope.fees = [];
 			scope.suggest_fees = [];
 			
@@ -61,14 +63,28 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
 					
-					angular.copy(response.data, scope.fee);
+					angular.copy(response.data['fee'], scope.fee);
+					angular.copy(response.data['fee_items'], scope.fee_items);
 					
 				}, function myError(response) {
 					 
 				  // error
 					
 				});					
-			};			
+			};
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/grade-levels.php'
+			}).then(function mySucces(response) {
+				
+				scope.levels = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
 			
 		};
 		
@@ -76,6 +92,9 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 
 			scope.fee = {};
 			scope.fee.id = 0;		
+		
+			scope.fee_items = [];		
+			scope.fee_items_del = [];	
 		
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
@@ -123,10 +142,11 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			$http({
 			  method: 'POST',
 			  url: 'handlers/fee-save.php',
-			  data: scope.fee
+			  data: {fee: scope.fee, fee_items: scope.fee_items, fee_items_del: scope.fee_items_del}
 			}).then(function mySucces(response) {
 				
 				self.list(scope);
+				scope.fee_items_del = [];
 				
 			}, function myError(response) {
 				 
@@ -160,7 +180,28 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
 
+		};
+		
+		self.fee_item = function(scope,row) {
+			
+			if (row != null) {
+				row.disabled = !row.disabled;
+			} else {				
+				scope.fee_items.push({disabled: false, id: 0, fee_id: 0, school_year: '', level: '', amount: ''});
+			}
+			
 		};		
+		
+		self.delete_fee_item = function(scope,row) {
+			
+			if (row.id > 0) {
+				scope.fee_items_del.push(row.id);
+			}			
+			
+			var index = scope.fee_items.indexOf(row);
+			scope.fee_items.splice(index, 1);
+			
+		};	
 		
 	};
 	

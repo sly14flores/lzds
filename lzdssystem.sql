@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 14, 2017 at 08:56 PM
+-- Generation Time: May 16, 2017 at 08:21 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -44,11 +44,44 @@ CREATE TABLE `fee_items` (
   `id` int(11) NOT NULL,
   `fee_id` int(11) DEFAULT NULL,
   `school_year` varchar(7) DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `level` int(10) DEFAULT NULL,
   `amount` float(10,2) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grade_levels`
+--
+
+CREATE TABLE `grade_levels` (
+  `id` int(10) NOT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `grade_levels`
+--
+
+INSERT INTO `grade_levels` (`id`, `description`, `system_log`, `update_log`) VALUES
+(1, 'Nursery', '2017-05-15 22:09:52', NULL),
+(2, 'Kindergarten', '2017-05-15 22:09:52', NULL),
+(3, 'Grade 1', '2017-05-15 22:10:11', NULL),
+(4, 'Grade 2', '2017-05-15 22:10:11', NULL),
+(5, 'Grade 3', '2017-05-15 22:10:22', NULL),
+(6, 'Grade 4', '2017-05-15 22:10:22', NULL),
+(7, 'Grade 5', '2017-05-15 22:10:33', NULL),
+(8, 'Grade 6', '2017-05-15 22:10:33', NULL),
+(9, 'Grade 7', '2017-05-15 22:10:47', NULL),
+(10, 'Grade 8', '2017-05-15 22:10:47', NULL),
+(11, 'Grade 9', '2017-05-15 22:11:01', NULL),
+(12, 'Grade 10', '2017-05-15 22:11:01', NULL),
+(13, 'Grade 11', '2017-05-15 22:11:11', NULL),
+(14, 'Grade 12', '2017-05-15 22:11:11', NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +185,14 @@ ALTER TABLE `fees`
 --
 ALTER TABLE `fee_items`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fee_id` (`fee_id`);
+  ADD KEY `fee_id` (`fee_id`),
+  ADD KEY `level` (`level`);
+
+--
+-- Indexes for table `grade_levels`
+--
+ALTER TABLE `grade_levels`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `staffs`
@@ -173,7 +213,12 @@ ALTER TABLE `fees`
 -- AUTO_INCREMENT for table `fee_items`
 --
 ALTER TABLE `fee_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `grade_levels`
+--
+ALTER TABLE `grade_levels`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `staffs`
 --
@@ -187,7 +232,8 @@ ALTER TABLE `staffs`
 -- Constraints for table `fee_items`
 --
 ALTER TABLE `fee_items`
-  ADD CONSTRAINT `fee_items_ibfk_1` FOREIGN KEY (`fee_id`) REFERENCES `fees` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fee_items_ibfk_1` FOREIGN KEY (`fee_id`) REFERENCES `fees` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fee_items_ibfk_2` FOREIGN KEY (`level`) REFERENCES `grade_levels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

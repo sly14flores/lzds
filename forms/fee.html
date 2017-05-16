@@ -14,6 +14,31 @@
   </div>   
 </div>
 <div class="ln_solid"></div>
+<h4><strong>Fee Items</strong></h4>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<button type="button" class="btn btn-info pull-right" type="button" ng-click="form.fee_item(this,null)">Add</button>
+		<table class="table">
+			<thead>
+				<tr><th>School Year</th><th>Level</th><th>Amount</th><th>Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="fee_item in fee_items">
+					<td><input type="text" placeholder="" class="form-control" name="school_year" ng-model="fee_item.school_year" ng-disabled="fee_item.disabled"></td>				
+					<td>
+						<select class="form-control" name="level" ng-model="fee_item.level" ng-options="level as level.description for level in levels track by level.id" ng-disabled="fee_item.disabled"></select>
+					</td>
+					<td><input type="text" placeholder="" class="form-control" name="amount" ng-model="fee_item.amount" ng-disabled="fee_item.disabled"></td>
+					<td class="last list-action">
+						<a href="javascript:;" ng-click="form.fee_item(this,fee_item)"><i class="fa" ng-class="{'fa-pencil': fee_item.disabled, 'fa-check': !fee_item.disabled}"></i></a>
+						<a href="javascript:;" ng-click="form.delete_fee_item(this,fee_item)"><i class="fa fa-close"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="ln_solid"></div>
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
 	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">{{btns.cancel.label}}</button>
