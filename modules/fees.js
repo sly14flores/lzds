@@ -1,4 +1,4 @@
-angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','ui.bootstrap']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
 	
 	function form() {
 		
@@ -189,7 +189,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			if (row != null) {
 				row.disabled = !row.disabled;
 			} else {				
-				scope.fee_items.push({disabled: false, id: 0, fee_id: 0, school_year: '', level: '', amount: ''});
+				scope.fee_items.push({disabled: false, id: 0, fee_id: 0, level: '', amount: ''});
 			}
 			
 		};		

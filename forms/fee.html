@@ -2,12 +2,17 @@
 <h4><strong>Fee Info</strong></h4>
 <div class="ln_solid"></div>
 <div class="row">
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.category.$touched && formHolder.fee.category.$invalid}">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.school_year.$touched && formHolder.fee.school_year.$invalid}">
+	<label>School Year</label>
+	<select class="form-control" name="school_year" ng-model="fee.school_year" ng-options="sy as sy.school_year for sy in school_years track by sy.id" required></select>
+	<span class="help-block" ng-show="formHolder.fee.school_year.$touched && formHolder.fee.school_year.$invalid">School year is required</span>			
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.category.$touched && formHolder.fee.category.$invalid}">
 	<label>Category</label>
-	<input type="text" placeholder="" class="form-control" name="category" ng-model="fee.category" required>
+	<input type="text" placeholder="" class="form-control" name="category" ng-model="fee.category" uib-typeahead="category as category.category for category in categories | filter:{category:$viewValue}" required>
 	<span class="help-block" ng-show="formHolder.fee.category.$touched && formHolder.fee.category.$invalid">Category is required</span>		
   </div>
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.description.$touched && formHolder.fee.description.$invalid}">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.description.$touched && formHolder.fee.description.$invalid}">
 	<label>Description</label>
 	<input type="text" placeholder="" class="form-control" name="description" ng-model="fee.description" required>
 	<span class="help-block" ng-show="formHolder.fee.description.$touched && formHolder.fee.description.$invalid">Description is required</span>
@@ -20,13 +25,10 @@
 		<button type="button" class="btn btn-info pull-right" type="button" ng-click="form.fee_item(this,null)">Add</button>
 		<table class="table">
 			<thead>
-				<tr><th>School Year</th><th>Level</th><th>Amount</th><th>Action</th></tr>
+				<tr><th>Level</th><th>Amount</th><th>Action</th></tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="fee_item in fee_items">
-					<td>
-						<select class="form-control" name="school_year" ng-model="fee_item.school_year" ng-disabled="fee_item.disabled" ng-options="sy as sy.school_year for sy in school_years track by sy.id"></select>
-					</td>
 					<td>
 						<select class="form-control" name="level" ng-model="fee_item.level" ng-options="level as level.description for level in levels track by level.id" ng-disabled="fee_item.disabled"></select>
 					</td>

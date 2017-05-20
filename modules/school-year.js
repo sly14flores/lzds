@@ -11,7 +11,8 @@ angular.module('school-year',[]).factory('schoolYear',function($http) {
 			  url: 'handlers/school-years.php'
 			}).then(function mySucces(response) {
 
-				scope.school_years = response.data;
+				scope.school_years = response.data['school_years'];
+				scope.categories = response.data['categories'];
 
 			}, function myError(response) {
 

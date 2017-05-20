@@ -3,6 +3,7 @@
 	<thead>
 	  <tr class="headings">
 		<th class="column-title">ID </th>
+		<th class="column-title">School Year </th>
 		<th class="column-title">Category </th>
 		<th class="column-title">Description </th>
 		<th class="column-title no-link last"><span class="nobr">Action</span>
@@ -12,6 +13,7 @@
 	<tbody>
 	  <tr class="even pointer"  dir-paginate="row in fees | itemsPerPage: pageSize" current-page="currentPage">
 		<td class="">{{row.id}}</td>
+		<td class="">{{row.school_year.school_year}}</td>
 		<td class="">{{row.category}}</td>
 		<td class="">{{row.description}}</td>
 		<td class="last list-action">
