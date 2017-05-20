@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 16, 2017 at 08:21 PM
+-- Generation Time: May 20, 2017 at 12:58 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -82,6 +82,25 @@ INSERT INTO `grade_levels` (`id`, `description`, `system_log`, `update_log`) VAL
 (12, 'Grade 10', '2017-05-15 22:11:01', NULL),
 (13, 'Grade 11', '2017-05-15 22:11:11', NULL),
 (14, 'Grade 12', '2017-05-15 22:11:11', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_years`
+--
+
+CREATE TABLE `school_years` (
+  `id` int(10) NOT NULL,
+  `school_year` varchar(7) DEFAULT NULL,
+  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school_years`
+--
+
+INSERT INTO `school_years` (`id`, `school_year`, `system_log`) VALUES
+(1, '2017-18', '2017-05-20 12:51:00');
 
 -- --------------------------------------------------------
 
@@ -195,6 +214,12 @@ ALTER TABLE `grade_levels`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `school_years`
+--
+ALTER TABLE `school_years`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `staffs`
 --
 ALTER TABLE `staffs`
@@ -208,17 +233,22 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `fee_items`
 --
 ALTER TABLE `fee_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `grade_levels`
 --
 ALTER TABLE `grade_levels`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `school_years`
+--
+ALTER TABLE `school_years`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `staffs`
 --
@@ -234,6 +264,14 @@ ALTER TABLE `staffs`
 ALTER TABLE `fee_items`
   ADD CONSTRAINT `fee_items_ibfk_1` FOREIGN KEY (`fee_id`) REFERENCES `fees` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fee_items_ibfk_2` FOREIGN KEY (`level`) REFERENCES `grade_levels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `shool_year` ON SCHEDULE EVERY 1 YEAR STARTS '2018-05-20 00:00:00' ENDS '2028-05-20 00:00:00' ON COMPLETION NOT PRESERVE ENABLE DO INSERT INTO school_years (school_year) VALUES (CONCAT(DATE_FORMAT(now(),"%Y-"),DATE_FORMAT((now()+INTERVAL 1 YEAR),"%y")))$$
+
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

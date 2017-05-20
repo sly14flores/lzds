@@ -26,6 +26,7 @@ if (count($_POST['fee_items'])) {
 		
 		unset($_POST['fee_items'][$key]['disabled']);
 		$_POST['fee_items'][$key]['level'] = $_POST['fee_items'][$key]['level']['id'];
+		$_POST['fee_items'][$key]['school_year'] = $_POST['fee_items'][$key]['school_year']['id'];
 		
 		if ($item['id'] > 0) {
 			$fee_item = $con->updateData($_POST['fee_items'][$key],'id');

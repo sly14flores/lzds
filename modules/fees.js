@@ -1,4 +1,4 @@
-angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
 	
 	function form() {
 		
@@ -84,7 +84,9 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 				 
 			  // error
 				
-			});			
+			});
+			
+			schoolYear.get(scope);
 			
 		};
 		

@@ -24,7 +24,9 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="fee_item in fee_items">
-					<td><input type="text" placeholder="" class="form-control" name="school_year" ng-model="fee_item.school_year" ng-disabled="fee_item.disabled"></td>				
+					<td>
+						<select class="form-control" name="school_year" ng-model="fee_item.school_year" ng-disabled="fee_item.disabled" ng-options="sy as sy.school_year for sy in school_years track by sy.id"></select>
+					</td>
 					<td>
 						<select class="form-control" name="level" ng-model="fee_item.level" ng-options="level as level.description for level in levels track by level.id" ng-disabled="fee_item.disabled"></select>
 					</td>
