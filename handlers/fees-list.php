@@ -9,7 +9,7 @@ session_start();
 $con = new pdo_db();
 
 $sql = "SELECT id, school_year, category, description FROM fees";
-if ( (isset($_POST['q'])) && ($_POST['q'] != "") ) $sql .= " AND id = ".$_POST['q']['id'];
+if ( (isset($_POST['q'])) && ($_POST['q'] != "") ) $sql .= " WHERE id = ".$_POST['q']['id'];
 
 $fees = $con->getData($sql);
 foreach ($fees as $key => $fee) {
