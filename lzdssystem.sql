@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2017 at 11:38 PM
+-- Generation Time: May 23, 2017 at 06:32 AM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -456,6 +456,36 @@ INSERT INTO `staffs` (`id`, `school_id`, `firstname`, `middlename`, `lastname`, 
 (39, '10125', 'Gracelyn', 'Macinas', 'Logenio', NULL, NULL, '0000-00-00', NULL, 'Cabaroan, Bacnotan, La Union', '09099281651', 'gracelyn_logenio@yahoo.com', 7000.00, 0.00, 7000.00, '0125669931', '121167335507', '050502850927', '453-343-171', '', 254.30, 100.00, 100.00, 0.00, 'Teacher', 'Contractual', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
 (40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, 0.00, 0.00, 0.00, 0.00, NULL, NULL, NULL, NULL, NULL, 0, '2017-05-14 20:51:08', '2017-05-14 20:51:08');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(10) NOT NULL,
+  `lrn` varchar(50) DEFAULT NULL,
+  `school_id` varchar(50) DEFAULT NULL,
+  `lastname` varchar(100) DEFAULT NULL,
+  `firstname` varchar(100) DEFAULT NULL,
+  `middlename` varchar(100) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `place_of_birth` varchar(100) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL,
+  `home_address` varchar(1000) DEFAULT NULL,
+  `contact_no` varchar(50) DEFAULT NULL,
+  `email_address` varchar(100) DEFAULT NULL,
+  `student_status` varchar(100) DEFAULT NULL,
+  `mother_tongue` varchar(100) DEFAULT NULL,
+  `religion` varchar(500) DEFAULT NULL,
+  `ethnicity` varchar(100) DEFAULT NULL,
+  `dialect` varchar(500) DEFAULT NULL,
+  `govt_program` varchar(50) DEFAULT NULL COMMENT '4Ps/IPs/ECD/PWD',
+  `if_pwd` varchar(500) DEFAULT NULL,
+  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -493,6 +523,12 @@ ALTER TABLE `staffs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -521,6 +557,11 @@ ALTER TABLE `school_years`
 --
 ALTER TABLE `staffs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
