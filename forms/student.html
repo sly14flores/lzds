@@ -134,36 +134,40 @@
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Relationship</label>
-	<select class="form-control">
+	<select class="form-control" name="relationship" ng-model="parents_guardians.relationship" required>
 		<option value="">-</option>
 		<option value="Father">Father</option>
 		<option value="Mother">Mother</option>
 		<option value="Guardian">Guardian</option>
 	</select>
   </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+	<label>Guardian Relationship</label>
+	<input type="text" placeholder="" class="form-control" name="guardian_relationship" ng-model="parents_guardians.guardian_relationship">
+  </div>  
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Last Name</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="pg_last_name" ng-model="parents_guardians.last_name" required>
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>First Name</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="pg_first_name" ng-model="parents_guardians.first_name" required>
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Middle Name</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="pg_middle_name" ng-model="parents_guardians.middle_name" required>
   </div>  
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Occupation</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="occupation" ng-model="parents_guardians.occupation">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Contact No</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="pg_contact_no" ng-model="parents_guardians.contact_no">
   </div> 
 </div>
 <div class="ln_solid"></div>

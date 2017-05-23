@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2017 at 06:32 AM
+-- Generation Time: May 23, 2017 at 10:42 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -353,6 +353,26 @@ INSERT INTO `grade_levels` (`id`, `description`, `system_log`, `update_log`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `parents_guardians`
+--
+
+CREATE TABLE `parents_guardians` (
+  `id` int(10) NOT NULL,
+  `student_id` int(10) DEFAULT NULL,
+  `relationship` varchar(50) DEFAULT NULL,
+  `guardian_relationship` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `middle_name` varchar(100) DEFAULT NULL,
+  `occupation` varchar(100) DEFAULT NULL,
+  `contact_no` varchar(20) NOT NULL,
+  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `school_years`
 --
 
@@ -511,6 +531,12 @@ ALTER TABLE `grade_levels`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `parents_guardians`
+--
+ALTER TABLE `parents_guardians`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `school_years`
 --
 ALTER TABLE `school_years`
@@ -547,6 +573,11 @@ ALTER TABLE `fee_items`
 --
 ALTER TABLE `grade_levels`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `parents_guardians`
+--
+ALTER TABLE `parents_guardians`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `school_years`
 --

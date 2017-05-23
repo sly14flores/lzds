@@ -14,6 +14,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.students = [];
 			scope.suggest_students = [];
 			
+			scope.parents_guardians = [];
+			
 			scope.btns = {
 				ok: {
 					label: 'Save'
