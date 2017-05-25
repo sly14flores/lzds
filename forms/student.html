@@ -111,27 +111,33 @@
   <div class="col-md-6 col-sm-12 col-xs-12 form-group">
 	<label>Government Program:&nbsp;</label>
 	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.govt_program" value="4Ps"> 4Ps
+	  <input type="checkbox" name="govt_program" ng-model="student.gp4ps" value="4Ps"> 4Ps
 	</label>
 	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.govt_program" value="IPs"> IPs
+	  <input type="checkbox" name="govt_program" ng-model="student.gpips" value="IPs"> IPs
 	</label>
 	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.govt_program" value="ECD"> ECD
+	  <input type="checkbox" name="govt_program" ng-model="student.ecd" value="ECD"> ECD
 	</label>
 	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.govt_program" value="PWD"> PWD
+	  <input type="checkbox" name="govt_program" ng-model="student.pwd" value="PWD"> PWD
 	</label>	
   </div>
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-show="student.pwd">
 	<label>PWD State below</label>
-	<input type="text" placeholder="" class="form-control" name="if_pwd" ng-model="student.if_pwd">
+	<input type="text" placeholder="" class="form-control" name="pwd_detail" ng-model="student.pwd_detail">
   </div>   
 </div>
 <div class="ln_solid"></div>
 <h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent(this)">Add</button></h4>
 <div class="ln_solid"></div>
 <div ng-repeat="pg in parents_guardians">
+<div class="ln_solid" ng-show="$index > 0"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<a href="javascript:;" class="pull-right" ng-click="form.delParent(this,pg)"><i class="fa fa-close"></i></a>	
+	</div>
+</div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']}">
 	<label>Relationship</label>

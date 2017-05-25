@@ -15,6 +15,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.suggest_students = [];
 			
 			scope.parents_guardians = [];
+			scope.parents_guardians_dels = [];
 			
 			scope.btns = {
 				ok: {
@@ -36,8 +37,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
 									
 			});
-			
-			return scope.formHolder.student.$invalid;
+
+			return scope.formHolder.student.$invalid;			
 			
 		};
 		
@@ -46,7 +47,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.student = {};
 			scope.student.id = 0;
 			
-			scope.parents_guardians = [];					
+			scope.parents_guardians = [];
+			scope.parents_guardians_dels = [];			
 			
 			scope.views.panel_title = 'Add Student';			
 			scope.btns.ok.label = 'Save';
@@ -131,7 +133,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			$http({
 			  method: 'POST',
 			  url: 'handlers/student-save.php',
-			  data: {student: scope.student, parents_guardians: scope.parents_guardians}
+			  data: {student: scope.student, parents_guardians: scope.parents_guardians, parents_guardians_dels: scope.parents_guardians_dels}
 			}).then(function mySucces(response) {
 				
 				// self.list(scope);
@@ -183,7 +185,32 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				occupation: '',
 				contact_no: ''
 			});					
+
+		};
+		
+		self.delParent = function(scope,row) {
+
+			if (scope.$id > 2) scope = scope.$parent;			
 			
+			if (row.id > 0) {
+				scope.parents_guardians_dels.push(item.child_id);
+			}			
+
+			var parents_guardians = scope.parents_guardians;
+			var index = scope.parents_guardians.indexOf(row);
+			scope.parents_guardians = [];				
+			
+			angular.forEach(parents_guardians, function(d,i) {
+				
+				if (index != i) {
+					
+					delete d['$$hashKey'];
+					scope.parents_guardians.push(d);
+					
+				};
+				
+			});					
+					
 		};
 		
 	};
