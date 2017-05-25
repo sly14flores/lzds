@@ -129,46 +129,52 @@
   </div>   
 </div>
 <div class="ln_solid"></div>
-<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info">Add</button></h4>
+<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent(this)">Add</button></h4>
 <div class="ln_solid"></div>
+<div ng-repeat="pg in parents_guardians">
 <div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']}">
 	<label>Relationship</label>
-	<select class="form-control" name="relationship" ng-model="parents_guardians.relationship" required>
+	<select class="form-control" name="relationship{{$index}}" ng-model="pg.relationship" required>
 		<option value="">-</option>
 		<option value="Father">Father</option>
 		<option value="Mother">Mother</option>
 		<option value="Guardian">Guardian</option>
 	</select>
+	<span class="help-block" ng-show="formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']">Please select Relationship</span>		
   </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-show="pg.relationship == 'Guardian'">
 	<label>Guardian Relationship</label>
-	<input type="text" placeholder="" class="form-control" name="guardian_relationship" ng-model="parents_guardians.guardian_relationship">
+	<input type="text" placeholder="" class="form-control" ng-model="pg.guardian_relationship">
   </div>  
 </div>
 <div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']}">
 	<label>Last Name</label>
-	<input type="text" placeholder="" class="form-control" name="pg_last_name" ng-model="parents_guardians.last_name" required>
+	<input type="text" placeholder="" class="form-control" name="last_name{{$index}}" ng-model="pg.last_name" required>
+	<span class="help-block" ng-show="formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']">Last Name is required</span>			
   </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']}">
 	<label>First Name</label>
-	<input type="text" placeholder="" class="form-control" name="pg_first_name" ng-model="parents_guardians.first_name" required>
+	<input type="text" placeholder="" class="form-control" name="first_name{{$index}}" ng-model="pg.first_name" required>
+	<span class="help-block" ng-show="formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']">First Name is required</span>
   </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']}">
 	<label>Middle Name</label>
-	<input type="text" placeholder="" class="form-control" name="pg_middle_name" ng-model="parents_guardians.middle_name" required>
+	<input type="text" placeholder="" class="form-control" name="middle_name{{$index}}" ng-model="pg.middle_name" required>
+	<span class="help-block" ng-show="formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']">Middle Name is required</span>	
   </div>  
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Occupation</label>
-	<input type="text" placeholder="" class="form-control" name="occupation" ng-model="parents_guardians.occupation">
+	<input type="text" placeholder="" class="form-control" ng-model="pg.occupation">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Contact No</label>
-	<input type="text" placeholder="" class="form-control" name="pg_contact_no" ng-model="parents_guardians.contact_no">
+	<input type="text" placeholder="" class="form-control" ng-model="pg.contact_no">
   </div> 
+</div>
 </div>
 <div class="ln_solid"></div>
 <div class="row">

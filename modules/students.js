@@ -28,7 +28,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 		};
 		
 		function validate(scope) {
-			
+
 			var controls = scope.formHolder.student.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
@@ -36,12 +36,17 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
 									
 			});
-
+			
 			return scope.formHolder.student.$invalid;
 			
 		};
 		
 		self.student = function(scope,row) { // form
+			
+			scope.student = {};
+			scope.student.id = 0;
+			
+			scope.parents_guardians = [];					
 			
 			scope.views.panel_title = 'Add Student';			
 			scope.btns.ok.label = 'Save';
@@ -49,7 +54,10 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/student.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+				$timeout(function() {
+					$compile($('#x_content')[0])(scope);
+					scope.rows_validation = [];	
+				},100);
 			});
 						
 			if (row != null) {
@@ -71,14 +79,11 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				  // error
 					
 				});					
-			};			
+			};					
 			
 		};
 		
 		self.list = function(scope) {		
-
-			scope.student = {};
-			scope.student.id = 0;		
 		
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
@@ -125,11 +130,11 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staff-save.php',
-			  data: scope.staff
+			  url: 'handlers/student-save.php',
+			  data: {student: scope.student, parents_guardians: scope.parents_guardians}
 			}).then(function mySucces(response) {
 				
-				self.list(scope);
+				// self.list(scope);
 				
 			}, function myError(response) {
 				 
@@ -163,7 +168,23 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
 
-		};		
+		};
+
+		self.addParent = function(scope) {
+			
+			scope.parents_guardians.push({
+				id: 0,
+				student_id: 0,
+				relationship: '',
+				guardian_relationship: '',
+				last_name: '',
+				first_name: '',
+				middle_name: '',
+				occupation: '',
+				contact_no: ''
+			});					
+			
+		};
 		
 	};
 	
