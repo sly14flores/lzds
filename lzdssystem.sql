@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2017 at 10:42 PM
+-- Generation Time: May 28, 2017 at 11:28 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -461,7 +461,7 @@ INSERT INTO `staffs` (`id`, `school_id`, `firstname`, `middlename`, `lastname`, 
 (24, '10111', 'Jenny Lyn', 'Gaudia', 'Gaudia', NULL, NULL, '0000-00-00', NULL, '85 Tamocalao, Bacnotan, La Union', '09773480879', '', 0.00, 0.00, 0.00, '0124654769', '121142920054', '', '', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
 (25, '10116', 'Xyryl ', 'Camero', 'Dacanay', NULL, NULL, '0000-00-00', NULL, 'Umingan, Pangasinan', '09105572742', '', 0.00, 0.00, 0.00, '0124475809', '121143860142', '', '468-875-830', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
 (26, '10122', 'Eleanor', 'Rivera', 'Cardinez', NULL, NULL, '0000-00-00', NULL, '593 Sitio Paratong, Poblacion, Bacnotan, La Union', '09198535901', '', 0.00, 0.00, 0.00, '01-1021517-0', '', '19-090241228-3', '184-546-476', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
-(27, '10106', 'Clar Reneith', 'Militar', 'Balimbin', NULL, NULL, '0000-00-00', NULL, 'Sitio Paratong, Poblacion, Bacnotan, La Union', '09109099925', 'clar1231231@gmail.com', 7000.00, 1000.00, 8000.00, '0726861879', '121011212365', '110505240189', '414-528-437', '', 254.30, 100.00, 100.00, 0.00, 'Registrar', 'Contractual', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
+(27, '10106', 'Clar Reneith', 'Militar', 'Balimbin', 'Clar', 'Male', NULL, NULL, 'Sitio Paratong, Poblacion, Bacnotan, La Union', '09109099925', 'clar1231231@gmail.com', 7000.00, 1000.00, 8000.00, '0726861879', '121011212365', '110505240189', '414-528-437', '', 254.30, 100.00, 100.00, 0.00, 'Registrar', 'Contractual', 'clar', 'clar', NULL, 0, '2017-05-08 22:08:02', '2017-05-28 23:27:12'),
 (28, '10121', 'Wilbert', 'Rapin', 'Fabros', NULL, NULL, '0000-00-00', NULL, 'Paratong, Bacnotan, La Union', '09074358094', '', 0.00, 0.00, 0.00, '0112175292', '010102015801', '190902417013', '930-903-722', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
 (29, '10101', 'Normita', 'Quimpo', 'Tria', NULL, NULL, '0000-00-00', NULL, 'Conleaf Compound, Bacnotan, La Union', '6074007', 'normita.tria@yahoo.com', 0.00, 0.00, 0.00, '', '', '', '', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
 (30, '10102', 'Jonabel', 'Aguilar', 'Tria', NULL, NULL, '0000-00-00', NULL, 'Sitio Paratong, Poblacion, Bacnotan, La Union', '09088650702', 'jonabel.tria@yahoo.com', 0.00, 0.00, 0.00, '', '', '', '', '', 0.00, 0.00, 0.00, 0.00, '', '', NULL, NULL, NULL, 0, '2017-05-08 22:08:02', NULL),
@@ -500,8 +500,11 @@ CREATE TABLE `students` (
   `religion` varchar(500) DEFAULT NULL,
   `ethnicity` varchar(100) DEFAULT NULL,
   `dialect` varchar(500) DEFAULT NULL,
-  `govt_program` varchar(50) DEFAULT NULL COMMENT '4Ps/IPs/ECD/PWD',
-  `if_pwd` varchar(500) DEFAULT NULL,
+  `gp4ps` tinyint(4) NOT NULL DEFAULT '0',
+  `gpips` tinyint(4) NOT NULL DEFAULT '0',
+  `ecd` tinyint(4) NOT NULL DEFAULT '0',
+  `pwd` tinyint(4) NOT NULL DEFAULT '0',
+  `pwd_detail` varchar(500) DEFAULT NULL,
   `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -534,7 +537,8 @@ ALTER TABLE `grade_levels`
 -- Indexes for table `parents_guardians`
 --
 ALTER TABLE `parents_guardians`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
 
 --
 -- Indexes for table `school_years`
@@ -577,7 +581,7 @@ ALTER TABLE `grade_levels`
 -- AUTO_INCREMENT for table `parents_guardians`
 --
 ALTER TABLE `parents_guardians`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `school_years`
 --
@@ -592,7 +596,7 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
@@ -603,6 +607,12 @@ ALTER TABLE `students`
 ALTER TABLE `fee_items`
   ADD CONSTRAINT `fee_items_ibfk_1` FOREIGN KEY (`fee_id`) REFERENCES `fees` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fee_items_ibfk_2` FOREIGN KEY (`level`) REFERENCES `grade_levels` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `parents_guardians`
+--
+ALTER TABLE `parents_guardians`
+  ADD CONSTRAINT `parents_guardians_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 DELIMITER $$
 --

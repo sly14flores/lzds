@@ -73,7 +73,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
 					
-					angular.copy(response.data, scope.student);
+					angular.copy(response.data['student'], scope.student);
+					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
 					
 				}, function myError(response) {
@@ -154,7 +155,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/staff-delete.php',
+				  url: 'handlers/student-delete.php',
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
@@ -193,7 +194,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			if (scope.$id > 2) scope = scope.$parent;			
 			
 			if (row.id > 0) {
-				scope.parents_guardians_dels.push(item.child_id);
+				scope.parents_guardians_dels.push(row.id);
 			}			
 
 			var parents_guardians = scope.parents_guardians;

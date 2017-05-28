@@ -42,4 +42,9 @@ if (count($_POST['parents_guardians'])) {
 	}
 }
 
+if (count($_POST['parents_guardians_dels'])) {
+	$con->table = "parents_guardians";	
+	$delete = $con->deleteData(array("id"=>implode(",",$_POST['parents_guardians_dels'])));
+}
+
 ?>
