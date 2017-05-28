@@ -136,7 +136,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			  data: {student: scope.student, parents_guardians: scope.parents_guardians, parents_guardians_dels: scope.parents_guardians_dels}
 			}).then(function mySucces(response) {
 				
-				// self.list(scope);
+				self.list(scope);
 				
 			}, function myError(response) {
 				 

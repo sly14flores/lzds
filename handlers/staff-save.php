@@ -19,10 +19,10 @@ if (isset($_POST['birthday'])) $_POST['birthday'] = date("Y-m-d",strtotime($_POS
 */
 
 if ($_POST['id']) { // > 0 - update
+	$_POST['update_log'] = "CURRENT_TIMESTAMP";
 	$staff = $con->updateData($_POST,'id');
 } else { // 0 - insert
 	unset($_POST['id']);
-	$_POST['update_log'] = "CURRENT_TIMESTAMP";
 	$staff = $con->insertData($_POST);
 }
 
