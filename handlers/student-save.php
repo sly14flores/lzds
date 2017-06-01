@@ -24,6 +24,7 @@ if ($_POST['student']['id']) { // > 0 - update
 	$student_id = $_POST['student']['id'];
 } else { // 0 - insert
 	unset($_POST['id']);
+	$_POST['system_log'] = "CURRENT_TIMESTAMP";	
 	$student = $con->insertData($_POST['student']);
 	$student_id = $con->insertId;	
 }
@@ -32,10 +33,11 @@ if (count($_POST['parents_guardians'])) {
 	$con->table = "parents_guardians";
 	foreach ($_POST['parents_guardians'] as $key => $pg) {
 		if ($pg['id']) {
-			$_POST['parents_guardians'][$key]['update_log'] = "CURRENT_TIMESTAMP";			
+			$_POST['parents_guardians'][$key]['update_log'] = "CURRENT_TIMESTAMP";
 			$student_pg = $con->updateData($_POST['parents_guardians'][$key],'id');
-		} else { echo "Lorem";
-			unset($_POST['parents_guardians'][$key]['id']);			
+		} else {
+			unset($_POST['parents_guardians'][$key]['id']);	
+			$_POST['parents_guardians'][$key]['system_log'] = "CURRENT_TIMESTAMP";			
 			$_POST['parents_guardians'][$key]['student_id'] = $student_id;
 			$student_pg = $con->insertData($_POST['parents_guardians'][$key]);
 		}

@@ -23,6 +23,7 @@ if ($_POST['id']) { // > 0 - update
 	$staff = $con->updateData($_POST,'id');
 } else { // 0 - insert
 	unset($_POST['id']);
+	$_POST['system_log'] = "CURRENT_TIMESTAMP";	
 	$staff = $con->insertData($_POST);
 }
 
