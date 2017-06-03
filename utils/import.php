@@ -22,63 +22,130 @@ $fees_indexes = array(
 	"enrollee_collection_fee"=>16,
 	"enrollee_handouts_fee"=>17
 );
-enrollee_fid
-enrollee_old_school_type
-enrollee_old_school_name
-enrollee_fname
-enrollee_lname
-enrollee_mname
-enrollee_sex
-enrollee_sy
-enrollee_stat
-enrollee_grade
-enrollee_section
-enrollee_contact
-enrollee_date
-enrollee_address
-enrollee_dob
-enrollee_pob
-enrollee_religion
 
-enrollee_father
-enrollee_father_lastname
-enrollee_father_firstname
-enrollee_father_middlename
-enrollee_father_extname
-enrollee_father_job
-enrollee_father_income
-enrollee_mother
-enrollee_mother_lastname
-enrollee_mother_firstname
-enrollee_mother_middlename
-enrollee_mother_extname
-enrollee_mother_maiden
-enrollee_mother_job
-enrollee_mother_income
-enrollee_guardian
-enrollee_guardian_firstname
-enrollee_guardian_lastname
-enrollee_guardian_middlename
-enrollee_guardian_extname
-enrollee_guardian_job
-enrollee_guardian_income
+$enrollee_stat = array("Regular","Regular","Transferee");
 
-enrollee_no_siblings
-enrollee_email
+$relationships = array(
+	"Father"=>array(
+		"student_id"=>0,
+		"relationship"=>"Father",
+		"full_name"=>"enrollee_father",
+		"last_name"=>"enrollee_father_lastname",
+		"first_name"=>"enrollee_father_firstname",
+		"middle_name"=>"enrollee_father_middlename",
+		"ext_name"=>"enrollee_father_extname",
+		"occupation"=>"enrollee_father_job",
+		"monthly_income"=>"enrollee_father_income",
+		"old_table_pk"=>"enrollee_id"
+	),
+	"Mother"=>array(
+		"student_id"=>0,	
+		"relationship"=>"Mother",	
+		"full_name"=>"enrollee_mother",
+		"last_name"=>"enrollee_mother_lastname",
+		"first_name"=>"enrollee_mother_firstname",
+		"middle_name"=>"enrollee_mother_middlename",
+		"ext_name"=>"enrollee_mother_extname",
+		"maiden_name"=>"enrollee_mother_maiden",
+		"occupation"=>"enrollee_mother_job",
+		"monthly_income"=>"enrollee_mother_income",
+		"old_table_pk"=>"enrollee_id"		
+	),
+	"Guardian"=>array(
+		"student_id"=>0,	
+		"relationship"=>"Guardian",	
+		"full_name"=>"enrollee_guardian",
+		"last_name"=>"enrollee_guardian_firstname",
+		"first_name"=>"enrollee_guardian_lastname",
+		"middle_name"=>"enrollee_guardian_middlename",
+		"ext_name"=>"enrollee_guardian_extname",
+		"occupation"=>"enrollee_guardian_job",
+		"monthly_income"=>"enrollee_guardian_income",
+		"old_table_pk"=>"enrollee_id"
+	)
+);
 
-enrollee_discount
-enrollee_down_payment
-down_payment_or
-down_payment_date
+$results = [];
 
-enrollee_email_note
-enrollee_indigenous
-enrollee_ethnicity
-enrollee_tongue
-enrollee_languages
-registered_online
-update_once_online
-enrollee_lrn
-enrollee_rn
+$student = [];
+$student = array(
+	"school_id"=>$results[0]["enrollee_fid"],
+	"old_school_type"=>$results[0]["enrollee_old_school_type"],
+	"old_school_name"=>$results[0]["enrollee_old_school_name"],
+	"firstname"=>$results[0]["enrollee_fname"],
+	"lastname"=>$results[0]["enrollee_lname"],
+	"middlename"=>$results[0]["enrollee_mname"],
+	"gender"=>$results[0]["enrollee_sex"],
+	"student_status"=>$enrollee_stat[$results[0]["enrollee_stat"]],
+	"contact_no"=>$results[0]["enrollee_contact"],
+	"home_address"=>$results[0]["enrollee_address"],
+	"date_of_birth"=>$results[0]["enrollee_dob"],
+	"place_of_birth"=>$results[0]["enrollee_pob"],
+	"religion"=>$results[0]["enrollee_religion"],
+	"indigenous"=>$results[0]["enrollee_indigenous"],
+	"ethnicity"=>$results[0]["enrollee_ethnicity"],
+	"mother_tongue"=>$results[0]["enrollee_tongue"],
+	"dialect"=>$results[0]["enrollee_languages"],
+	"lrn"=>$results[0]["enrollee_lrn"],
+	"siblings_no"=>$results[0]["enrollee_no_siblings"],
+	"email_address"=>$results[0]["enrollee_email"],
+	"old_table_pk"=>$results[0]["enrollee_id"]
+);
+
+/*
+** parents/guardians
+*/
+
+$parents_guardians = [];
+foreach ($relationships as $i => $d) {
+	
+	foreach	($d as $ii => $dd) {
+		
+		$parents_guardians[][$ii] = $results[0][$dd];
+		
+	}	
+	
+}
+
+/*
+** enrollments
+*/
+
+$enrollments = [];
+$enrollments[] = (
+	"student_id"=>0,
+	"grade"=>$result["enrollee_grade"],
+	"section"=>$result["enrollee_section"],
+	"enrollment_school_year"=>$result["enrollee_sy"],
+	"enrollment_date"=>$result["enrollee_date"],	
+	"registered_online"=>$result["registered_online"],
+	"enrollee_rn"=>$result["enrollee_rn"],
+	"old_table_pk"=>$result["enrollee_id"]
+);
+
+/*
+** down payment
+*/
+
+$down_payment = [];
+$down_payment = array(
+	"enrollment_id"=>0,
+	"description"=>"Down Payment",
+	"amount"=>$results[0]["enrollee_down_payment"],
+	"official_receipt"=>$results[0]["down_payment_or"],
+	"payment_date"=>$results[0]["down_payment_date"],
+	"old_table_pk"=>$results[0]["enrollee_id"]
+);
+
+/*
+** discount
+*/
+
+$student_discount = [];
+$student_discount = array(
+	"enrollment_id"=>0,
+	"amount"=>$results[0]["enrollee_discount"],
+	"old_table_pk"=>$results[0]["enrollee_id"]
+);	
 
 ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2017 at 11:28 PM
+-- Generation Time: Jun 04, 2017 at 12:26 AM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -23,6 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `enrollments`
+--
+
+CREATE TABLE `enrollments` (
+  `id` int(10) NOT NULL,
+  `student_id` int(10) DEFAULT NULL,
+  `grade` varchar(20) DEFAULT NULL,
+  `section` varchar(50) DEFAULT NULL,
+  `enrollment_school_year` varchar(7) DEFAULT NULL,
+  `enrollment_date` date DEFAULT NULL,
+  `registered_online` tinyint(4) DEFAULT NULL,
+  `enrollee_rn` varchar(50) DEFAULT NULL,
+  `old_table_pk` int(10) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fees`
 --
 
@@ -31,7 +51,7 @@ CREATE TABLE `fees` (
   `school_year` int(10) DEFAULT NULL,
   `category` varchar(100) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -56,7 +76,8 @@ INSERT INTO `fees` (`id`, `school_year`, `category`, `description`, `system_log`
 (14, 1, 'Others', 'LUPRISA', '2017-05-20 23:31:46', '2017-05-20 23:31:46'),
 (15, 1, 'Others', 'Energy Fee', '2017-05-20 23:33:57', '2017-05-20 23:33:57'),
 (16, 1, 'Others', 'Collection / Processing Charges', '2017-05-20 23:35:51', '2017-05-20 23:35:51'),
-(17, 1, 'Others', 'Hand-Outs/SBO', '2017-05-20 23:37:13', '2017-05-20 23:37:13');
+(17, 1, 'Others', 'Hand-Outs/SBO', '2017-05-20 23:37:13', '2017-05-20 23:37:13'),
+(18, 1, 'Others', 'Aircon Fee', NULL, '2017-06-01 23:31:33');
 
 -- --------------------------------------------------------
 
@@ -69,7 +90,7 @@ CREATE TABLE `fee_items` (
   `fee_id` int(11) DEFAULT NULL,
   `level` int(10) DEFAULT NULL,
   `amount` float(10,2) DEFAULT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -315,7 +336,21 @@ INSERT INTO `fee_items` (`id`, `fee_id`, `level`, `amount`, `system_log`, `updat
 (235, 17, 11, 151.00, '2017-05-20 23:37:13', '2017-05-20 23:37:13'),
 (236, 17, 12, 151.00, '2017-05-20 23:37:13', '2017-05-20 23:37:13'),
 (237, 17, 13, 250.00, '2017-05-20 23:37:13', '2017-05-20 23:37:13'),
-(238, 17, 14, 250.00, '2017-05-20 23:37:13', '2017-05-20 23:37:13');
+(238, 17, 14, 250.00, '2017-05-20 23:37:13', '2017-05-20 23:37:13'),
+(239, 18, 1, 0.00, '2017-06-01 23:31:33', NULL),
+(240, 18, 2, 0.00, '2017-06-01 23:31:33', NULL),
+(241, 18, 3, 0.00, '2017-06-01 23:31:33', NULL),
+(242, 18, 4, 0.00, '2017-06-01 23:31:33', NULL),
+(243, 18, 5, 0.00, '2017-06-01 23:31:33', NULL),
+(244, 18, 6, 0.00, '2017-06-01 23:31:33', NULL),
+(245, 18, 7, 0.00, '2017-06-01 23:31:34', NULL),
+(246, 18, 8, 0.00, '2017-06-01 23:31:34', NULL),
+(247, 18, 9, 0.00, '2017-06-01 23:31:34', NULL),
+(248, 18, 10, 0.00, '2017-06-01 23:31:34', NULL),
+(249, 18, 11, 0.00, '2017-06-01 23:31:34', NULL),
+(250, 18, 12, 0.00, '2017-06-01 23:31:34', NULL),
+(251, 18, 13, 0.00, '2017-06-01 23:31:34', NULL),
+(252, 18, 14, 0.00, '2017-06-01 23:31:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -326,7 +361,7 @@ INSERT INTO `fee_items` (`id`, `fee_id`, `level`, `amount`, `system_log`, `updat
 CREATE TABLE `grade_levels` (
   `id` int(10) NOT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -360,13 +395,37 @@ CREATE TABLE `parents_guardians` (
   `id` int(10) NOT NULL,
   `student_id` int(10) DEFAULT NULL,
   `relationship` varchar(50) DEFAULT NULL,
+  `full_name` varchar(500) DEFAULT NULL,
   `guardian_relationship` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `middle_name` varchar(100) DEFAULT NULL,
+  `ext_name` varchar(50) DEFAULT NULL,
+  `maiden_name` varchar(100) DEFAULT NULL,
   `occupation` varchar(100) DEFAULT NULL,
+  `monthly_income` float(10,2) DEFAULT NULL,
   `contact_no` varchar(20) NOT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `old_table_pk` int(10) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(10) NOT NULL,
+  `enrollment_id` int(10) DEFAULT NULL,
+  `description` varchar(50) NOT NULL DEFAULT 'Monthly',
+  `payment_month` varchar(20) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `official_receipt` varchar(50) DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
+  `old_table_pk` int(10) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -379,7 +438,7 @@ CREATE TABLE `parents_guardians` (
 CREATE TABLE `school_years` (
   `id` int(10) NOT NULL,
   `school_year` varchar(7) DEFAULT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `system_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -426,7 +485,7 @@ CREATE TABLE `staffs` (
   `password` varchar(100) DEFAULT NULL,
   `staff_account_group` int(10) DEFAULT NULL,
   `is_built_in` tinyint(4) DEFAULT '0',
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -496,22 +555,64 @@ CREATE TABLE `students` (
   `contact_no` varchar(50) DEFAULT NULL,
   `email_address` varchar(100) DEFAULT NULL,
   `student_status` varchar(100) DEFAULT NULL,
+  `old_school_type` varchar(50) DEFAULT NULL,
+  `old_school_name` varchar(500) DEFAULT NULL,
+  `indigenous` varchar(10) DEFAULT NULL,
   `mother_tongue` varchar(100) DEFAULT NULL,
   `religion` varchar(500) DEFAULT NULL,
   `ethnicity` varchar(100) DEFAULT NULL,
   `dialect` varchar(500) DEFAULT NULL,
+  `siblings_no` int(10) DEFAULT NULL,
   `gp4ps` tinyint(4) NOT NULL DEFAULT '0',
   `gpips` tinyint(4) NOT NULL DEFAULT '0',
   `ecd` tinyint(4) NOT NULL DEFAULT '0',
   `pwd` tinyint(4) NOT NULL DEFAULT '0',
   `pwd_detail` varchar(500) DEFAULT NULL,
-  `system_log` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `old_table_pk` int(10) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students_discounts`
+--
+
+CREATE TABLE `students_discounts` (
+  `id` int(10) NOT NULL,
+  `enrollment_id` int(10) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `old_table_pk` int(10) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students_fees`
+--
+
+CREATE TABLE `students_fees` (
+  `id` int(11) NOT NULL,
+  `enrollment_id` int(10) DEFAULT NULL,
+  `fee_item_id` int(10) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `enrollments`
+--
+ALTER TABLE `enrollments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
 
 --
 -- Indexes for table `fees`
@@ -541,6 +642,13 @@ ALTER TABLE `parents_guardians`
   ADD KEY `student_id` (`student_id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enrollment_id` (`enrollment_id`);
+
+--
 -- Indexes for table `school_years`
 --
 ALTER TABLE `school_years`
@@ -559,19 +667,39 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students_discounts`
+--
+ALTER TABLE `students_discounts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enrollment_id` (`enrollment_id`);
+
+--
+-- Indexes for table `students_fees`
+--
+ALTER TABLE `students_fees`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fee_item_id` (`fee_item_id`),
+  ADD KEY `enrollment_id` (`enrollment_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `enrollments`
+--
+ALTER TABLE `enrollments`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `fee_items`
 --
 ALTER TABLE `fee_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 --
 -- AUTO_INCREMENT for table `grade_levels`
 --
@@ -581,7 +709,12 @@ ALTER TABLE `grade_levels`
 -- AUTO_INCREMENT for table `parents_guardians`
 --
 ALTER TABLE `parents_guardians`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `school_years`
 --
@@ -596,7 +729,17 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `students_discounts`
+--
+ALTER TABLE `students_discounts`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `students_fees`
+--
+ALTER TABLE `students_fees`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
