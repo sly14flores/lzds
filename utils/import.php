@@ -1,6 +1,9 @@
 <?php
 
-require_once '../db.php';
+require_once '../db2.php';
+
+$source = new pdo_db("lzds");
+$destination = new pdo_db("lzdssystem","students");
 
 $fees_indexes = array(
 	"enrollee_tuition_fee"=>1,
@@ -25,8 +28,41 @@ $fees_indexes = array(
 
 $enrollee_stat = array("Regular","Regular","Transferee");
 
+$enrollee_section = array(
+	2=>"Omega",
+	3=>"Faith",
+	4=>"Love",
+	5=>"Peace",
+	6=>"Hope",
+	7=>"Joy",
+	8=>"Charity",
+	10=>"St. Matthew",
+	11=>"St. Mark",
+	12=>"St. Luke",
+	13=>"St. John",
+	14=>"Alpha",
+	15=>"St. Peter"
+);
+
+$grade = array(
+	101=>"Nursery",
+	102=>"Kindergarten",
+	1=>"Grade One",
+	2=>"Grade Two",
+	3=>"Grade Three",
+	4=>"Grade Four",
+	5=>"Grade Five",
+	6=>"Grade Six",
+	7=>"Grade Seven",
+	8=>"Grade Eight",
+	9=>"Grade Nine",
+	10=>"Grade Ten",
+	11=>"Grade Eleven",
+	12=>"Grade Twelve"
+);
+
 $relationships = array(
-	"Father"=>array(
+	array(
 		"student_id"=>0,
 		"relationship"=>"Father",
 		"full_name"=>"enrollee_father",
@@ -38,7 +74,7 @@ $relationships = array(
 		"monthly_income"=>"enrollee_father_income",
 		"old_table_pk"=>"enrollee_id"
 	),
-	"Mother"=>array(
+	array(
 		"student_id"=>0,	
 		"relationship"=>"Mother",	
 		"full_name"=>"enrollee_mother",
@@ -51,7 +87,7 @@ $relationships = array(
 		"monthly_income"=>"enrollee_mother_income",
 		"old_table_pk"=>"enrollee_id"		
 	),
-	"Guardian"=>array(
+	array(
 		"student_id"=>0,	
 		"relationship"=>"Guardian",	
 		"full_name"=>"enrollee_guardian",
@@ -65,7 +101,8 @@ $relationships = array(
 	)
 );
 
-$results = [];
+// $results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (306,633,1234,1590) ORDER BY enrollee_lname, enrollee_fname, enrollee_mname, enrollee_sy");
+$results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (306,633,1234,1590) ORDER BY enrollee_sy");
 
 $student = [];
 $student = array(
@@ -92,6 +129,11 @@ $student = array(
 	"old_table_pk"=>$results[0]["enrollee_id"]
 );
 
+var_dump($student);
+
+$import_student = $destination->insertData($student);
+$student_id = $destination->insertId;
+var_dump($student_id);
 /*
 ** parents/guardians
 */
@@ -100,52 +142,73 @@ $parents_guardians = [];
 foreach ($relationships as $i => $d) {
 	
 	foreach	($d as $ii => $dd) {
-		
-		$parents_guardians[][$ii] = $results[0][$dd];
+
+		if ($ii == "relationship") {
+			$parents_guardians[$i][$ii] = $dd;
+		} else {
+			if ($ii == "student_id") $parents_guardians[$i][$ii] = $student_id;
+			else $parents_guardians[$i][$ii] = $results[0][$dd];
+		}
 		
 	}	
 	
 }
+
+var_dump($parents_guardians);
 
 /*
 ** enrollments
 */
 
 $enrollments = [];
-$enrollments[] = (
-	"student_id"=>0,
-	"grade"=>$result["enrollee_grade"],
-	"section"=>$result["enrollee_section"],
-	"enrollment_school_year"=>$result["enrollee_sy"],
-	"enrollment_date"=>$result["enrollee_date"],	
-	"registered_online"=>$result["registered_online"],
-	"enrollee_rn"=>$result["enrollee_rn"],
-	"old_table_pk"=>$result["enrollee_id"]
-);
+
+foreach ($results as $key => $result) {
+	$enrollments[] = array(
+		"student_id"=>$student_id,
+		"grade"=>$grade[$result["enrollee_grade"]],
+		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$enrollee_section[$result["enrollee_section"]]:0),
+		"enrollment_school_year"=>$result["enrollee_sy"],
+		"enrollment_date"=>$result["enrollee_date"],	
+		"registered_online"=>$result["registered_online"],
+		"enrollee_rn"=>$result["enrollee_rn"],
+		"old_table_pk"=>$result["enrollee_id"]
+	);
+}
+
+var_dump($enrollments);
 
 /*
 ** down payment
 */
 
-$down_payment = [];
-$down_payment = array(
-	"enrollment_id"=>0,
-	"description"=>"Down Payment",
-	"amount"=>$results[0]["enrollee_down_payment"],
-	"official_receipt"=>$results[0]["down_payment_or"],
-	"payment_date"=>$results[0]["down_payment_date"],
-	"old_table_pk"=>$results[0]["enrollee_id"]
-);
+$down_payments = [];
+
+foreach ($results as $key => $result) {
+	$down_payments[] = array(
+		"enrollment_id"=>0,
+		"description"=>"Down Payment",
+		"amount"=>$result["enrollee_down_payment"],
+		"official_receipt"=>$result["down_payment_or"],
+		"payment_date"=>$result["down_payment_date"],
+		"old_table_pk"=>$result["enrollee_id"]
+	);
+}
+
+var_dump($down_payments);
 
 /*
 ** discount
 */
 
-$student_discount = [];
-$student_discount = array(
-	"enrollment_id"=>0,
-	"amount"=>$results[0]["enrollee_discount"],
-	"old_table_pk"=>$results[0]["enrollee_id"]
-);	
+$student_discounts = [];
+foreach ($results as $key => $result) {
+	$student_discounts[] = array(
+		"enrollment_id"=>0,
+		"amount"=>$result["enrollee_discount"],
+		"old_table_pk"=>$result["enrollee_id"]
+	);
+}
+
+var_dump($student_discounts);
 
 ?>
