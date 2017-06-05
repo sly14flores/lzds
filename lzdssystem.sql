@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 04, 2017 at 12:26 AM
+-- Generation Time: Jun 05, 2017 at 10:05 PM
 -- Server version: 5.7.11
 -- PHP Version: 7.0.3
 
@@ -404,7 +404,7 @@ CREATE TABLE `parents_guardians` (
   `maiden_name` varchar(100) DEFAULT NULL,
   `occupation` varchar(100) DEFAULT NULL,
   `monthly_income` float(10,2) DEFAULT NULL,
-  `contact_no` varchar(20) NOT NULL,
+  `contact_no` varchar(20) DEFAULT NULL,
   `old_table_pk` int(10) DEFAULT NULL,
   `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
@@ -599,6 +599,7 @@ CREATE TABLE `students_fees` (
   `enrollment_id` int(10) DEFAULT NULL,
   `fee_item_id` int(10) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
+  `old_table_pk` int(10) DEFAULT NULL,
   `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -689,7 +690,7 @@ ALTER TABLE `students_fees`
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `fees`
 --
@@ -709,7 +710,7 @@ ALTER TABLE `grade_levels`
 -- AUTO_INCREMENT for table `parents_guardians`
 --
 ALTER TABLE `parents_guardians`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `payments`
 --
@@ -729,20 +730,26 @@ ALTER TABLE `staffs`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `students_discounts`
 --
 ALTER TABLE `students_discounts`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `students_fees`
 --
 ALTER TABLE `students_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `enrollments`
+--
+ALTER TABLE `enrollments`
+  ADD CONSTRAINT `enrollments_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `fee_items`
@@ -756,6 +763,18 @@ ALTER TABLE `fee_items`
 --
 ALTER TABLE `parents_guardians`
   ADD CONSTRAINT `parents_guardians_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `students_discounts`
+--
+ALTER TABLE `students_discounts`
+  ADD CONSTRAINT `students_discounts_ibfk_1` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollments` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `students_fees`
+--
+ALTER TABLE `students_fees`
+  ADD CONSTRAINT `students_fees_ibfk_1` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollments` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 DELIMITER $$
 --

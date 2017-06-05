@@ -9,21 +9,21 @@ $fees_indexes = array(
 	"enrollee_tuition_fee"=>1,
 	"enrollee_books"=>2,
 	"enrollee_pc"=>3,
-	"enrollee_science_lab"=>6,
-	"enrollee_athletic_fee"=>11,
-	"enrollee_forms_fee"=>12,
-	"enrollee_handbook_fee"=>13,
-	"enrollee_aircon_fee"=>18,
 	"enrollee_reg"=>4,
 	"enrollee_med"=>5,
+	"enrollee_science_lab"=>6,
 	"enrollee_lib"=>7,
 	"enrollee_id_fee"=>8,
 	"enrollee_insurance"=>9,
-	"enrollee_papers"=>10,
+	"enrollee_papers"=>10,	
+	"enrollee_athletic_fee"=>11,
+	"enrollee_forms_fee"=>12,
+	"enrollee_handbook_fee"=>13,
 	"enrollee_luprisa"=>14,
 	"enrollee_energy_fee"=>15,
-	"enrollee_collection_fee"=>16,
-	"enrollee_handouts_fee"=>17
+	"enrollee_collection_fee"=>16,	
+	"enrollee_handouts_fee"=>17,	
+	"enrollee_aircon_fee"=>18
 );
 
 $enrollee_stat = array("Regular","Regular","Transferee");
@@ -133,11 +133,12 @@ var_dump($student);
 
 $import_student = $destination->insertData($student);
 $student_id = $destination->insertId;
-var_dump($student_id);
+
 /*
 ** parents/guardians
 */
 
+$destination->table = "parents_guardians";
 $parents_guardians = [];
 foreach ($relationships as $i => $d) {
 	
@@ -156,6 +157,12 @@ foreach ($relationships as $i => $d) {
 
 var_dump($parents_guardians);
 
+foreach ($parents_guardians as $pg) {
+	
+	$import_parent_guardian = $destination->insertData($pg);
+
+}
+
 /*
 ** enrollments
 */
@@ -166,16 +173,37 @@ foreach ($results as $key => $result) {
 	$enrollments[] = array(
 		"student_id"=>$student_id,
 		"grade"=>$grade[$result["enrollee_grade"]],
-		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$enrollee_section[$result["enrollee_section"]]:0),
-		"enrollment_school_year"=>$result["enrollee_sy"],
+		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$enrollee_section[$result["enrollee_section"]]:''),
+		"enrollment_school_year"=>$result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01"))),
 		"enrollment_date"=>$result["enrollee_date"],	
-		"registered_online"=>$result["registered_online"],
+		"registered_online"=>($result["registered_online"]=='yes')?1:0,
 		"enrollee_rn"=>$result["enrollee_rn"],
 		"old_table_pk"=>$result["enrollee_id"]
 	);
 }
 
 var_dump($enrollments);
+
+/*
+** student fees
+*/
+
+$students_fees = [];
+
+foreach ($results as $key => $result) {
+	
+foreach ($fees_indexes as $i => $fi) {
+	$students_fees[] = array(
+		"enrollment_id"=>0,
+		"fee_item_id"=>$fi,
+		"amount"=>$result[$i],
+		"old_table_pk"=>$result["enrollee_id"]
+	);	
+}
+
+}
+
+var_dump($students_fees);
 
 /*
 ** down payment
@@ -196,6 +224,7 @@ foreach ($results as $key => $result) {
 
 var_dump($down_payments);
 
+
 /*
 ** discount
 */
@@ -210,5 +239,42 @@ foreach ($results as $key => $result) {
 }
 
 var_dump($student_discounts);
+
+foreach ($enrollments as $enrollment) {
+	
+	// enrollment
+	$destination->table = "enrollments";
+	$import_enrollments = $destination->insertData($enrollment);
+	$enrollment_id = $destination->insertId;
+	
+	// downpayment
+	$destination->table = "students_fees";
+	foreach ($students_fees as $k => $sf) {
+		
+		if ($sf['old_table_pk'] == $enrollment['old_table_pk']) {
+
+			$students_fees[$k]['enrollment_id'] = $enrollment_id;
+			$import_student_fee = $destination->insertData($students_fees[$k]);
+		
+		}
+		
+	}
+	
+	// monthly payment	
+	
+	// discount
+	$destination->table = "students_discounts";
+	foreach ($student_discounts as $k => $sd) {
+		
+		if ($sd['old_table_pk'] == $enrollment['old_table_pk']) {
+
+			$student_discounts[$k]['enrollment_id'] = $enrollment_id;
+			$import_student_discount = $destination->insertData($student_discounts[$k]);
+		
+		}
+		
+	}	
+
+}
 
 ?>
