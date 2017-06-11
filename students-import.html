@@ -20,13 +20,17 @@ require_once 'authentication.php';
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-
+    <!-- PNotify -->
+    <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+	
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="dashboard" ng-controller="dashboardCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="studentsImport" ng-controller="studentsImportCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -62,11 +66,11 @@ require_once 'authentication.php';
                       <li><a href="staffs.html">Staffs</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li class="active"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="school-fees.html">School Fees</a></li>
                       <li><a href="groups.html">Groups</a></li>
-                      <li><a href="students-import.html">Import Students</a></li>
+                      <li class="active"><a href="students-import.html">Import Students</a></li>					  
                     </ul>
                   </li>
                 </ul>
@@ -195,9 +199,9 @@ require_once 'authentication.php';
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control"  ng-model="views.search" uib-typeahead="s as s.fullname for s in suggest_students | filter:{fullname:$viewValue}" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button" ng-click="form.list(this)">Go!</button>
                     </span>
                   </div>
                 </div>
@@ -208,28 +212,34 @@ require_once 'authentication.php';
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
+				  <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="tile-stats">
+					  <div class="icon"><i class="fa fa-upload"></i></div>
+					  <div class="count">{{views.import_size}}</div>
+					  <h3>Import Records</h3>
+					  <p>{{views.import_enrollees}}</p>
+					</div>
+				  </div>				  
+			  </div>
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>{{views.panel_title}}</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
-                      <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
+                          <li><a href="javascript:;" ng-click="form.import(this)">Import Records</a></li>
+                          <li><a href="javascript:;" ng-click="form.clear(this)">Clear List</a></li>
                         </ul>
-                      </li>-->
-                      <!--<li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>-->
+                      </li>
+                      <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div id="x_content" class="x_content">
-				  </div>
+                  <div id="x_content" class="x_content"></div>
                 </div>
               </div>
             </div>
@@ -256,20 +266,29 @@ require_once 'authentication.php';
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- PNotify -->
+    <script src="vendors/pnotify/dist/pnotify.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
     
     <!-- Custom Theme Scripts -->
-    <script src="build/js/custom.min.js"></script>
+    <script src="build/js/custom.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>
 	
-	<script src="angular/angular.min.js"></script>
-	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<script src="angular/angular.min.js"></script>	
+	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 	
+	<script src="modules/pagination/dirPagination.js"></script>
 	<script src="modules/bootstrap-modal.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
+	<script src="modules/blockui.js"></script>
+	<script src="modules/pnotify.js"></script>
+	<script src="modules/students-import.js"></script>
 	
-	<script src="controllers/dashboard.js"></script>
+	<script src="controllers/students-import.js"></script>
 
   </body>
 </html>

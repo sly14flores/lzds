@@ -1,0 +1,32 @@
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">ID </th>
+		<th class="column-title">School ID </th>
+		<th class="column-title">Last Name </th>
+		<th class="column-title">First Name </th>
+		<th class="column-title">Middle Name </th>		
+		<th class="column-title">School Year </th>
+		<th class="column-title">Imported </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span>
+		</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer"  dir-paginate="row in enrollees | itemsPerPage: pageSize" current-page="currentPage">
+		<td class="">{{row.enrollee_id}}</td>
+		<td class="">{{row.enrollee_fid}}</td>
+		<td class="">{{row.enrollee_lname}}</td>
+		<td class="">{{row.enrollee_fname}}</td>
+		<td class="">{{row.enrollee_mname}}</td>
+		<td class="">{{row.enrollee_sy}}</td>
+		<td class="">{{row.enrollee_imported}}</td>
+ 		<td class="last list-action">
+			<a href="javascript:;" ng-click="form.addId(this,row)"><i class="fa fa-arrow-right"></i></a>
+		</td>
+	  </tr>
+	</tbody>
+  </table>
+  <dir-pagination-controls template-url="modules/pagination/dirPagination.tpl.html" boundary-links="true"></dir-pagination-controls>
+</div>

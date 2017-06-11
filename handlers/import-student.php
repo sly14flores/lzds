@@ -1,5 +1,7 @@
 <?php
 
+$_POST = json_decode(file_get_contents('php://input'), true);
+
 require_once '../db2.php';
 
 $source = new pdo_db("lzds");
@@ -102,7 +104,7 @@ $relationships = array(
 );
 
 // $results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (306,633,1234,1590) ORDER BY enrollee_lname, enrollee_fname, enrollee_mname, enrollee_sy");
-$results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (306,633,1234,1590) ORDER BY enrollee_sy");
+$results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (".implode(",",$_POST['enrollees']).") ORDER BY enrollee_sy");
 
 $student = [];
 $student = array(
@@ -129,7 +131,7 @@ $student = array(
 	"old_table_pk"=>$results[0]["enrollee_id"]
 );
 
-var_dump($student);
+// var_dump($student);
 
 $import_student = $destination->insertData($student);
 $student_id = $destination->insertId;
@@ -155,7 +157,7 @@ foreach ($relationships as $i => $d) {
 	
 }
 
-var_dump($parents_guardians);
+// var_dump($parents_guardians);
 
 foreach ($parents_guardians as $pg) {
 	
@@ -182,7 +184,7 @@ foreach ($results as $key => $result) {
 	);
 }
 
-var_dump($enrollments);
+// var_dump($enrollments);
 
 /*
 ** student fees
@@ -203,7 +205,7 @@ foreach ($fees_indexes as $i => $fi) {
 
 }
 
-var_dump($students_fees);
+// var_dump($students_fees);
 
 /*
 ** down payment
@@ -222,7 +224,7 @@ foreach ($results as $key => $result) {
 	);
 }
 
-var_dump($down_payments);
+// var_dump($down_payments);
 
 
 /*
@@ -238,7 +240,7 @@ foreach ($results as $key => $result) {
 	);
 }
 
-var_dump($student_discounts);
+// var_dump($student_discounts);
 
 foreach ($enrollments as $enrollment) {
 	

@@ -1849,17 +1849,7 @@ if (typeof NProgress != 'undefined') {
 			  },
 			  addclass: 'dark',
 			  styling: 'bootstrap3',
-			  hide: false,
-			  before_close: function(PNotify) {
-				PNotify.update({
-				  title: PNotify.options.title + " - Enjoy your Stay",
-				  before_close: null
-				});
-
-				PNotify.queueRemove();
-
-				return false;
-			  }
+			  hide: true
 			});
 
 		}; 
@@ -5054,7 +5044,7 @@ if (typeof NProgress != 'undefined') {
 		init_DataTables();
 		init_chart_doughnut();
 		init_gauge();
-		init_PNotify();
+		// init_PNotify();
 		init_starrr();
 		init_calendar();
 		init_compose();
