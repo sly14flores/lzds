@@ -11,7 +11,7 @@ $con = new pdo_db();
 $student = $con->getData("SELECT * FROM students WHERE id = $_POST[id]");
 
 if ($student[0]['date_of_birth'] == "0000-00-00") $staff[0]['date_of_birth'] = null;
-if ($student[0]['date_of_birth'] != null) $staff[0]['date_of_birth'] = date("m/d/Y",strtotime($staff[0]['date_of_birth']));
+if ($student[0]['date_of_birth'] != null) $staff[0]['date_of_birth'] = date("m/d/Y",strtotime($student[0]['date_of_birth']));
 unset($student[0]['system_log']);
 unset($student[0]['update_log']);
 

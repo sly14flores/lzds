@@ -3,10 +3,10 @@
 	<thead>
 	  <tr class="headings">
 		<th class="column-title">LRN </th>
-		<th class="column-title">School ID </th>
 		<th class="column-title">Fullname </th>
 		<th class="column-title">Contact </th>
-		<th class="column-title">Level </th>
+		<th class="column-title">Recent Level </th>
+		<th class="column-title">Recent SY </th>
 		<th class="column-title no-link last"><span class="nobr">Action</span>
 		</th>
 	  </tr>
@@ -14,10 +14,10 @@
 	<tbody>
 	  <tr class="even pointer"  dir-paginate="row in students | itemsPerPage: pageSize" current-page="currentPage">
 		<td class="">{{row.lrn}}</td>
-		<td class="">{{row.school_id}}</td>
 		<td class="">{{row.fullname}}</td>
 		<td class="">{{row.contact_no}}</td>
-		<td class="">{{row.level}}</td>
+		<td class="">{{row.current_level}}</td>
+		<td class="">{{row.current_sy}}</td>
 		<td class="last list-action">
 			<a href="javascript:;" ng-click="form.student(this,row)"><i class="fa fa-pencil"></i></a>
 			<a href="javascript:;" ng-click="form.delete(this,row)"><i class="fa fa-close"></i></a>

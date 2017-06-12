@@ -4,6 +4,8 @@ app.controller('studentsImportCtrl',function($scope,fullscreen,form) {
 	
 	$scope.views = {};	
 	
+	$scope.views.currentPage = 1;
+	
 	form.data($scope); // initialize data	
 	
 	$scope.views.title = 'Students';

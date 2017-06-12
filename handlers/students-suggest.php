@@ -8,7 +8,7 @@ session_start();
 
 $con = new pdo_db();
 
-$sql = "SELECT id, CONCAT(firstname, ' ', middlename, ' ', lastname) fullname FROM students";
+$sql = "SELECT id, CONCAT(lastname, ', ', firstname, ' ', middlename) fullname FROM students";
 
 $students = $con->getData($sql);
 

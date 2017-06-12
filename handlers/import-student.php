@@ -108,7 +108,6 @@ $results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN (".imp
 
 $student = [];
 $student = array(
-	"school_id"=>$results[0]["enrollee_fid"],
 	"old_school_type"=>$results[0]["enrollee_old_school_type"],
 	"old_school_name"=>$results[0]["enrollee_old_school_name"],
 	"firstname"=>$results[0]["enrollee_fname"],
@@ -174,6 +173,7 @@ $enrollments = [];
 foreach ($results as $key => $result) {
 	$enrollments[] = array(
 		"student_id"=>$student_id,
+		"school_id"=>$result["enrollee_fid"],		
 		"grade"=>$grade[$result["enrollee_grade"]],
 		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$enrollee_section[$result["enrollee_section"]]:''),
 		"enrollment_school_year"=>$result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01"))),

@@ -29,7 +29,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 			scope.suggest_students = [];
 		
 			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			scope.pageSize = 30;		
 		
 			scope.views.panel_title = 'Students List';		
 
@@ -40,6 +40,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.enrollees);
+				scope.currentPage = scope.views.currentPage;	
 				blockUI.hide();
 				
 			}, function myError(response) {
@@ -84,8 +85,11 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 				
 		self.addId = function(scope,row) {
 
+			if (scope.$id > 2) scope = scope.$parent;
 			if ((!idIsAdded(scope,row.enrollee_id)) && (row.enrollee_imported == 'No')) scope.views.import_enrollees.push(row.enrollee_id);
-			scope.views.import_size = Object.size(scope.views.import_enrollees);
+			pnotify.show('info','Import Records',scope.views.import_enrollees);			
+			scope.views.import_size = Object.size(scope.views.import_enrollees);			
+			scope.views.currentPage = scope.currentPage;
 			
 		};
 		
@@ -93,7 +97,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 			
 			if (Object.size(scope.views.import_enrollees) == 0) {
 				
-				pnotify.show('info','Notification','No added records to import. Please add at least one record.');
+				pnotify.show('danger','Notification','No added records to import. Please add at least one record.');
 				return;
 				
 			};

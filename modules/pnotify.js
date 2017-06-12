@@ -4,8 +4,8 @@ angular.module('pnotify-module',[]).factory('pnotify',function() {
 		
 		var self = this;
 		
-		self.show = function(type,title,text) {
-		
+		self.show = function(type,title,text) {			
+			
 			new PNotify({
 			  title: title,
 			  type: type,
