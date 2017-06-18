@@ -14,7 +14,7 @@
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr class="even pointer"  dir-paginate="row in enrollees | itemsPerPage: pageSize" current-page="currentPage">
+	  <tr class="even pointer" ng-class="{'added-to-list':row.added}" dir-paginate="row in enrollees | itemsPerPage: pageSize" current-page="currentPage">
 		<td class="">{{row.enrollee_id}}</td>
 		<td class="">{{row.enrollee_fid}}</td>
 		<td class="">{{row.enrollee_lname}}</td>

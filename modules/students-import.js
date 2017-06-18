@@ -87,7 +87,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 
 			if (scope.$id > 2) scope = scope.$parent;
 			if ((!idIsAdded(scope,row.enrollee_id)) && (row.enrollee_imported == 'No')) scope.views.import_enrollees.push(row.enrollee_id);
-			pnotify.show('info','Import Records',scope.views.import_enrollees);			
+			row.added = true;
 			scope.views.import_size = Object.size(scope.views.import_enrollees);			
 			scope.views.currentPage = scope.currentPage;
 			
@@ -133,7 +133,10 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 		self.clear = function(scope) {
 			
 			scope.views.import_enrollees = [];
-			scope.views.import_size = Object.size(scope.views.import_enrollees);			
+			scope.views.import_size = Object.size(scope.views.import_enrollees);
+			angular.forEach(scope.enrollees,function(item,i) {
+				item.added = false;
+			});
 			
 		};
 		

@@ -17,6 +17,7 @@ $students = $lzds->getData($sql);
 
 foreach ($students as $key => $student) {
 	
+	$students[$key]["added"] = false;
 	$students[$key]["enrollee_imported"] = "No";
 	$imported = $lzdssystem->getData("SELECT * FROM enrollments WHERE old_table_pk = ".$student['enrollee_id']);
 	if (count($imported)) $students[$key]["enrollee_imported"] = "Yes";
