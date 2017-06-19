@@ -2,9 +2,9 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 	
 	function form() {
 		
-		var self = this;
+		var self = this;			
 		
-		self.data = function(scope) { // initialize data
+		self.data = function(scope) { // initialize data			
 			
 			scope.formHolder = {};
 			
@@ -15,13 +15,16 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.suggest_students = [];
 			
 			scope.parents_guardians = [];
+			scope.enrollments = [];
 			scope.parents_guardians_dels = [];
 			
 			scope.btns = {
 				ok: {
+					disabled: false,
 					label: 'Save'
 				},
 				cancel: {
+					disabled: false,					
 					label: 'Cancel'
 				}
 			};
@@ -48,6 +51,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.student.id = 0;
 			
 			scope.parents_guardians = [];
+			scope.enrollments = [];
 			scope.parents_guardians_dels = [];			
 			
 			scope.views.panel_title = 'Add Student';			
@@ -75,6 +79,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 					
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
+					angular.copy(response.data['enrollments'], scope.enrollments);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
 					
 				}, function myError(response) {
@@ -83,6 +88,12 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 					
 				});					
 			};					
+			
+		};
+		
+		self.edit = function(scope) {
+			
+			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
 		};
 		

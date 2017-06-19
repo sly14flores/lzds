@@ -1,189 +1,225 @@
-<form name="formHolder.student" id="formHolder.student" novalidate>
-
-<div class="row">
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.student_status.$touched && formHolder.student.student_status.$invalid}">
-	<label>Status:&nbsp;</label>
-	<label class="radio-inline">
-	  <input type="radio" name="student_status" ng-model="student.student_status" value="Regular"> Regular
-	</label>
-	<label class="radio-inline">
-	  <input type="radio" name="student_status" ng-model="student.student_status" value="Transferee"> Transferee
-	</label>
-	<label class="radio-inline">
-	  <input type="radio" name="student_status" ng-model="student.student_status" value="Balik - Aral"> Balik - Aral
-	</label>
-	<label class="radio-inline">
-	  <input type="radio" name="student_status" ng-model="student.student_status" value="Repeater"> Repeater
-	</label>
-	<span class="help-block" ng-show="formHolder.student.student_status.$touched && formHolder.student.student_status.$invalid">Please select status</span>	
-  </div>
-</div>
-<div class="ln_solid"></div>
-<h4><strong>Basic Profile</strong></h4>
-<div class="ln_solid"></div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>LRN</label>
-	<input type="text" placeholder="" class="form-control" name="lrn" ng-model="student.lrn">
-  </div> 
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.lastname.$touched && formHolder.student.lastname.$invalid}">
-	<label>Last Name</label>
-	<input type="text" placeholder="" class="form-control" name="lastname" ng-model="student.lastname" required>
-	<span class="help-block" ng-show="formHolder.student.lastname.$touched && formHolder.student.lastname.$invalid">Last Name is required</span>
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.firstname.$touched && formHolder.student.firstname.$invalid}">
-	<label>First Name</label>
-	<input type="text" placeholder="" class="form-control" name="firstname" ng-model="student.firstname" required>
-	<span class="help-block" ng-show="formHolder.student.firstname.$touched && formHolder.student.firstname.$invalid">First Name is required</span>	
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.middlename.$touched && formHolder.student.middlename.$invalid}">
-	<label>Middle Name</label>
-	<input type="text" placeholder="" class="form-control" name="middlename" ng-model="student.middlename" required>
-	<span class="help-block" ng-show="formHolder.student.middlename.$touched && formHolder.student.middlename.$invalid">Middle Name is required</span>	
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.gender.$touched && formHolder.student.gender.$invalid}">
-	<label>Gender</label>
-	<select class="form-control" name="gender" ng-model="student.gender" required>
-		<option value="">-</option>
-		<option value="Male">Male</option>
-		<option value="Female">Female</option>
-	</select>
-	<span class="help-block" ng-show="formHolder.student.gender.$touched && formHolder.student.gender.$invalid"></span>	
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Date of Birth</label>
-	<input type="date" placeholder="" class="form-control" name="date_of_birth" ng-model="student.date_of_birth">
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Place of Birth</label>
-	<input type="text" placeholder="" class="form-control" name="place_of_birth" ng-model="student.place_of_birth">
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-8 col-sm-12 col-xs-12 form-group">
-	<label>Address</label>
-	<input type="text" placeholder="" class="form-control" name="home_address" ng-model="student.home_address">
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Contact</label>
-	<input type="text" placeholder="" class="form-control" name="contact_no" ng-model="student.contact_no">
-  </div>   
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Email</label>
-	<input type="email" placeholder="" class="form-control" name="email_address" ng-model="student.email_address">
-  </div>
-</div>
-<div class="ln_solid"></div>
-<h4><strong>Other Details</strong></h4>
-<div class="ln_solid"></div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Mother Tongue</label>
-	<input type="text" placeholder="" class="form-control" name="mother_tongue" ng-model="student.mother_tongue">
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Religion</label>
-	<input type="text" placeholder="" class="form-control" name="religion" ng-model="student.religion">
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Ethnicity</label>
-	<input type="text" placeholder="" class="form-control" name="ethnicity" ng-model="student.ethnicity">
-  </div> 
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Dialect</label>
-	<input type="text" placeholder="" class="form-control" name="dialect" ng-model="student.dialect">
-  </div>  
-</div>
-<div class="ln_solid"></div>
-<div class="row">
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group">
-	<label>Government Program:&nbsp;</label>
-	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.gp4ps" value="4Ps"> 4Ps
-	</label>
-	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.gpips" value="IPs"> IPs
-	</label>
-	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.ecd" value="ECD"> ECD
-	</label>
-	<label class="checkbox-inline">
-	  <input type="checkbox" name="govt_program" ng-model="student.pwd" value="PWD"> PWD
-	</label>	
-  </div>
-  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-show="student.pwd">
-	<label>PWD State below</label>
-	<input type="text" placeholder="" class="form-control" name="pwd_detail" ng-model="student.pwd_detail">
-  </div>   
-</div>
-<div class="ln_solid"></div>
-<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent(this)">Add</button></h4>
-<div class="ln_solid"></div>
-<div ng-repeat="pg in parents_guardians">
-<div class="ln_solid" ng-show="$index > 0"></div>
-<div class="row">
-	<div class="col-md-12 col-sm-12 col-xs-12">
-		<a href="javascript:;" class="pull-right" ng-click="form.delParent(this,pg)"><i class="fa fa-close"></i></a>	
+<div class="" role="tabpanel" data-example-id="togglable-tabs">
+  <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#basic_profile" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Basic Profile</a>
+	</li>
+	<li role="presentation" class=""><a href="#enrollments" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Enrollments</a>
+	</li>
+  </ul>
+  <div id="myTabContent" class="tab-content">
+	<div role="tabpanel" class="tab-pane fade active in" id="basic_profile" aria-labelledby="home-tab">
+	
+	<form name="formHolder.student" id="formHolder.student" novalidate>
+	
+	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': !btns.ok.disabled, 'fa-ban': btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+	<div class="clearfix"></div>
+	
+	<div class="row">
+	  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.student_status.$touched && formHolder.student.student_status.$invalid}">
+		<label>Status:&nbsp;</label>
+		<label class="radio-inline">
+		  <input type="radio" name="student_status" ng-model="student.student_status" value="Regular" ng-disabled="!btns.ok.disabled"> Regular
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="student_status" ng-model="student.student_status" value="Transferee" ng-disabled="!btns.ok.disabled"> Transferee
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="student_status" ng-model="student.student_status" value="Balik - Aral" ng-disabled="!btns.ok.disabled"> Balik - Aral
+		</label>
+		<label class="radio-inline">
+		  <input type="radio" name="student_status" ng-model="student.student_status" value="Repeater" ng-disabled="!btns.ok.disabled"> Repeater
+		</label>
+		<span class="help-block" ng-show="formHolder.student.student_status.$touched && formHolder.student.student_status.$invalid">Please select status</span>	
+	  </div>
 	</div>
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']}">
-	<label>Relationship</label>
-	<select class="form-control" name="relationship{{$index}}" ng-model="pg.relationship" required>
-		<option value="">-</option>
-		<option value="Father">Father</option>
-		<option value="Mother">Mother</option>
-		<option value="Guardian">Guardian</option>
-	</select>
-	<span class="help-block" ng-show="formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']">Please select Relationship</span>		
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-show="pg.relationship == 'Guardian'">
-	<label>Guardian Relationship</label>
-	<input type="text" placeholder="" class="form-control" ng-model="pg.guardian_relationship">
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']}">
-	<label>Last Name</label>
-	<input type="text" placeholder="" class="form-control" name="last_name{{$index}}" ng-model="pg.last_name" required>
-	<span class="help-block" ng-show="formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']">Last Name is required</span>			
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']}">
-	<label>First Name</label>
-	<input type="text" placeholder="" class="form-control" name="first_name{{$index}}" ng-model="pg.first_name" required>
-	<span class="help-block" ng-show="formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']">First Name is required</span>
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']}">
-	<label>Middle Name</label>
-	<input type="text" placeholder="" class="form-control" name="middle_name{{$index}}" ng-model="pg.middle_name" required>
-	<span class="help-block" ng-show="formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']">Middle Name is required</span>	
-  </div>  
-</div>
-<div class="row">
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Occupation</label>
-	<input type="text" placeholder="" class="form-control" ng-model="pg.occupation">
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-	<label>Contact No</label>
-	<input type="text" placeholder="" class="form-control" ng-model="pg.contact_no">
-  </div> 
-</div>
-</div>
-<div class="ln_solid"></div>
-<div class="row">
-	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
-	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">{{btns.cancel.label}}</button>
-	  <button type="button" class="btn btn-success" ng-click="form.save(this)">{{btns.ok.label}}</button>
+	<div class="ln_solid"></div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>LRN</label>
+		<input type="text" placeholder="" class="form-control" name="lrn" ng-model="student.lrn" ng-disabled="!btns.ok.disabled">
+	  </div> 
 	</div>
-</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.lastname.$touched && formHolder.student.lastname.$invalid}">
+		<label>Last Name</label>
+		<input type="text" placeholder="" class="form-control" name="lastname" ng-model="student.lastname" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.lastname.$touched && formHolder.student.lastname.$invalid">Last Name is required</span>
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.firstname.$touched && formHolder.student.firstname.$invalid}">
+		<label>First Name</label>
+		<input type="text" placeholder="" class="form-control" name="firstname" ng-model="student.firstname" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.firstname.$touched && formHolder.student.firstname.$invalid">First Name is required</span>	
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.middlename.$touched && formHolder.student.middlename.$invalid}">
+		<label>Middle Name</label>
+		<input type="text" placeholder="" class="form-control" name="middlename" ng-model="student.middlename" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.middlename.$touched && formHolder.student.middlename.$invalid">Middle Name is required</span>	
+	  </div>  
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.gender.$touched && formHolder.student.gender.$invalid}">
+		<label>Gender</label>
+		<select class="form-control" name="gender" ng-model="student.gender" ng-disabled="!btns.ok.disabled" required>
+			<option value="">-</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<span class="help-block" ng-show="formHolder.student.gender.$touched && formHolder.student.gender.$invalid"></span>	
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Date of Birth</label>
+		<input type="date" placeholder="" class="form-control" name="date_of_birth" ng-model="student.date_of_birth" ng-disabled="!btns.ok.disabled">
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Place of Birth</label>
+		<input type="text" placeholder="" class="form-control" name="place_of_birth" ng-model="student.place_of_birth" ng-disabled="!btns.ok.disabled">
+	  </div>  
+	</div>
+	<div class="row">
+	  <div class="col-md-8 col-sm-12 col-xs-12 form-group">
+		<label>Address</label>
+		<input type="text" placeholder="" class="form-control" name="home_address" ng-model="student.home_address" ng-disabled="!btns.ok.disabled">
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Contact</label>
+		<input type="text" placeholder="" class="form-control" name="contact_no" ng-model="student.contact_no" ng-disabled="!btns.ok.disabled">
+	  </div>   
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Email</label>
+		<input type="email" placeholder="" class="form-control" name="email_address" ng-model="student.email_address" ng-disabled="!btns.ok.disabled">
+	  </div>
+	</div>
+	<div class="ln_solid"></div>
+	<h4><strong>Other Details</strong></h4>
+	<div class="ln_solid"></div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Mother Tongue</label>
+		<input type="text" placeholder="" class="form-control" name="mother_tongue" ng-model="student.mother_tongue" ng-disabled="!btns.ok.disabled">
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Religion</label>
+		<input type="text" placeholder="" class="form-control" name="religion" ng-model="student.religion" ng-disabled="!btns.ok.disabled">
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Ethnicity</label>
+		<input type="text" placeholder="" class="form-control" name="ethnicity" ng-model="student.ethnicity" ng-disabled="!btns.ok.disabled">
+	  </div> 
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Dialect</label>
+		<input type="text" placeholder="" class="form-control" name="dialect" ng-model="student.dialect" ng-disabled="!btns.ok.disabled">
+	  </div>  
+	</div>
+	<div class="ln_solid"></div>
+	<div class="row">
+	  <div class="col-md-6 col-sm-12 col-xs-12 form-group">
+		<label>Government Program:&nbsp;</label>
+		<label class="checkbox-inline">
+		  <input type="checkbox" name="govt_program" ng-model="student.gp4ps" value="4Ps" ng-disabled="!btns.ok.disabled"> 4Ps
+		</label>
+		<label class="checkbox-inline">
+		  <input type="checkbox" name="govt_program" ng-model="student.gpips" value="IPs" ng-disabled="!btns.ok.disabled"> IPs
+		</label>
+		<label class="checkbox-inline">
+		  <input type="checkbox" name="govt_program" ng-model="student.ecd" value="ECD" ng-disabled="!btns.ok.disabled"> ECD
+		</label>
+		<label class="checkbox-inline">
+		  <input type="checkbox" name="govt_program" ng-model="student.pwd" value="PWD" ng-disabled="!btns.ok.disabled"> PWD
+		</label>	
+	  </div>
+	  <div class="col-md-6 col-sm-12 col-xs-12 form-group" ng-show="student.pwd">
+		<label>PWD State below</label>
+		<input type="text" placeholder="" class="form-control" name="pwd_detail" ng-model="student.pwd_detail" ng-disabled="!btns.ok.disabled">
+	  </div>   
+	</div>
+	<div class="ln_solid"></div>
+	<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent(this)">Add</button></h4>
+	<div class="ln_solid"></div>
+	<div ng-repeat="pg in parents_guardians">
+	<div class="ln_solid" ng-show="$index > 0"></div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<a href="javascript:;" class="pull-right" ng-click="form.delParent(this,pg)"><i class="fa fa-close"></i></a>	
+		</div>
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']}">
+		<label>Relationship</label>
+		<select class="form-control" name="relationship{{$index}}" ng-model="pg.relationship" ng-disabled="!btns.ok.disabled" required>
+			<option value="">-</option>
+			<option value="Father">Father</option>
+			<option value="Mother">Mother</option>
+			<option value="Guardian">Guardian</option>
+		</select>
+		<span class="help-block" ng-show="formHolder.student.relationship{{$index}}['$touched'] && formHolder.student.relationship{{$index}}['$invalid']">Please select Relationship</span>		
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-show="pg.relationship == 'Guardian'">
+		<label>Guardian Relationship</label>
+		<input type="text" placeholder="" class="form-control" ng-model="pg.guardian_relationship" ng-disabled="!btns.ok.disabled">
+	  </div>  
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']}">
+		<label>Last Name</label>
+		<input type="text" placeholder="" class="form-control" name="last_name{{$index}}" ng-model="pg.last_name" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.last_name{{$index}}['$touched'] && formHolder.student.last_name{{$index}}['$invalid']">Last Name is required</span>			
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']}">
+		<label>First Name</label>
+		<input type="text" placeholder="" class="form-control" name="first_name{{$index}}" ng-model="pg.first_name" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.first_name{{$index}}['$touched'] && formHolder.student.first_name{{$index}}['$invalid']">First Name is required</span>
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']}">
+		<label>Middle Name</label>
+		<input type="text" placeholder="" class="form-control" name="middle_name{{$index}}" ng-model="pg.middle_name" ng-disabled="!btns.ok.disabled" required>
+		<span class="help-block" ng-show="formHolder.student.middle_name{{$index}}['$touched'] && formHolder.student.middle_name{{$index}}['$invalid']">Middle Name is required</span>	
+	  </div>  
+	</div>
+	<div class="row">
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Occupation</label>
+		<input type="text" placeholder="" class="form-control" ng-model="pg.occupation" ng-disabled="!btns.ok.disabled">
+	  </div>
+	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		<label>Contact No</label>
+		<input type="text" placeholder="" class="form-control" ng-model="pg.contact_no" ng-disabled="!btns.ok.disabled">
+	  </div> 
+	</div>
+	</div>
+	<div class="ln_solid"></div>
+	<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+		  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
+		  <button type="button" class="btn btn-success" ng-click="form.save(this)" ng-disabled="!btns.ok.disabled">{{btns.ok.label}}</button>
+		</div>
+	</div>
 
-</form>
+	</form>
+		
+	</div>
+	<div role="tabpanel" class="tab-pane fade" id="enrollments" aria-labelledby="profile-tab">
+		<table class="table table-striped jambo_table bulk_action">
+			<thead>
+				<tr class="headings"><th>#</th><th>School Year</th><th>School ID</th><th>Level</th><th>Section</th><th>Date Enrolled</th><th></th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="enrollment in enrollments">
+					<td>{{$index+1}}</td>
+					<td>{{enrollment.enrollment_school_year}}</td>
+					<td>{{enrollment.school_id}}</td>
+					<td>{{enrollment.grade}}</td>
+					<td>{{enrollment.section}}</td>
+					<td>{{enrollment.enrollment_date}}</td>
+					<td class="last list-action">
+						<a href="javascript:;" ng-click="form.student(this,row)"><i class="fa fa-search"></i></a>
+						<a href="javascript:;" ng-click="form.delete(this,row)"><i class="fa fa-close"></i></a>						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+  </div>
+</div>

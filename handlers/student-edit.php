@@ -21,6 +21,8 @@ foreach ($parents_guardians as $key => $pg) {
 	unset($parents_guardians[$key]['update_log']);	
 }
 
-echo json_encode(array("student"=>$student[0],"parents_guardians"=>$parents_guardians));
+$enrollments = $con->getData("SELECT enrollment_school_year, school_id, grade, section, DATE_FORMAT(enrollment_date,'%M %e, %Y') enrollment_date FROM enrollments WHERE student_id = $_POST[id]");
+
+echo json_encode(array("student"=>$student[0],"parents_guardians"=>$parents_guardians,"enrollments"=>$enrollments));
 
 ?>

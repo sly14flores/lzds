@@ -5,3 +5,7 @@
 .list-action a:first-child {
 	margin-right: 5px;
 }
+
+.tools-editor i {
+	cursor: pointer;
+}
