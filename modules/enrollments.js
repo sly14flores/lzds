@@ -13,17 +13,18 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			
 		};
 		
-		self.list = function(scope) {
+		self.list = function(scope,row) {
 			
-			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			// scope.currentPage = 1;
+			// scope.pageSize = 15;		
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/enrollments-list.php'
+			  url: 'handlers/enrollments-list.php',
+			  data: {id: row.id}
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.students);
+				angular.copy(response.data, scope.enrollments);
 				
 			}, function myError(response) {
 				 
@@ -31,10 +32,12 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				
 			});		
 			
-			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/enrollments.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});			
+			$timeout(function() { 
+				$('#enrollments').html('Loading...');
+				$('#enrollments').load('lists/enrollments.html',function() {
+					$timeout(function() { $compile($('#enrollments')[0])(scope); },200);				
+				});				
+			},1000);
 			
 		};
 		

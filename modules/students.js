@@ -15,7 +15,6 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.suggest_students = [];
 			
 			scope.parents_guardians = [];
-			scope.enrollments = [];
 			scope.parents_guardians_dels = [];
 			
 			scope.btns = {
@@ -51,7 +50,6 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.student.id = 0;
 			
 			scope.parents_guardians = [];
-			scope.enrollments = [];
 			scope.parents_guardians_dels = [];			
 			
 			scope.views.panel_title = 'Add Student';			
@@ -68,6 +66,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 						
 			if (row != null) {
 				if (scope.$id > 2) scope = scope.$parent;
+				scope.enrollment.list(scope,row);
 				scope.btns.ok.label = 'Update';
 				scope.btns.cancel.label = 'Close';				
 				scope.views.panel_title = 'Edit Student Info';				
@@ -79,7 +78,6 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 					
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
-					angular.copy(response.data['enrollments'], scope.enrollments);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
 					
 				}, function myError(response) {

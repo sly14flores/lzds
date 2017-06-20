@@ -13,7 +13,6 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 	$scope.fullscreen = fullscreen;
 	
 	form.list($scope);
-	enrollment.list($scope);
 
 	$scope.form = form;	
 	$scope.enrollment = enrollment;	
