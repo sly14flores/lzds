@@ -12,6 +12,13 @@ $sql = "SELECT id, description FROM grade_levels";
 
 $levels = $con->getData($sql);
 
+foreach ($levels as $key => $level) {
+	
+	$section = $con->getData("SELECT id, description FROM sections WHERE level_id = ".$level['id']);
+	$levels[$key]['sections'] = $section;
+	
+}
+
 echo json_encode($levels);
 
 ?>

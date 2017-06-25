@@ -99,7 +99,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			scope.fee_items_del = [];	
 		
 			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			scope.pageSize = 25;		
 		
 			scope.views.panel_title = 'Fees List';		
 
@@ -189,7 +189,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			if (row != null) {
 				row.disabled = !row.disabled;
 			} else {				
-				scope.fee_items.push({disabled: false, id: 0, fee_id: 0, level: '', amount: ''});
+				scope.fee_items.push({disabled: false, id: 0, fee_id: 0, level: {id:0,description:"",sections:[]}, amount: ''});
 			}
 			
 		};		

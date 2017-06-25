@@ -1,4 +1,4 @@
-angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel) {
 	
 	function form() {
 		
@@ -44,7 +44,9 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 		};
 		
-		self.student = function(scope,row) { // form
+		self.student = function(scope,row) { // form			
+
+			scope.enrollment.list(scope,row);			
 			
 			scope.student = {};
 			scope.student.id = 0;
@@ -52,7 +54,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.parents_guardians = [];
 			scope.parents_guardians_dels = [];			
 			
-			scope.views.panel_title = 'Add Student';			
+			scope.views.panel_title = 'Add Student';
+			scope.btns.ok.disabled = false;	
 			scope.btns.ok.label = 'Save';
 			scope.btns.cancel.label = 'Cancel';
 			
@@ -60,16 +63,17 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			$('#x_content').load('forms/student.html',function() {
 				$timeout(function() {
 					$compile($('#x_content')[0])(scope);
-					scope.rows_validation = [];	
 				},100);
 			});
-						
+		
+			
 			if (row != null) {
-				if (scope.$id > 2) scope = scope.$parent;
-				scope.enrollment.list(scope,row);
+
+				scope.views.panel_title = 'Edit Student Info';			
+				scope.btns.ok.disabled = true;
 				scope.btns.ok.label = 'Update';
 				scope.btns.cancel.label = 'Close';				
-				scope.views.panel_title = 'Edit Student Info';				
+			
 				$http({
 				  method: 'POST',
 				  url: 'handlers/student-edit.php',
@@ -79,6 +83,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
+					xPanel.start('collapse-enrollments');					
 					
 				}, function myError(response) {
 					 
@@ -95,8 +100,10 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 		};
 		
-		self.list = function(scope) {		
-		
+		self.list = function(scope) {
+
+			if (scope.$id > 2) scope = scope.$parent;			
+
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
 		
@@ -131,7 +138,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/students.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+				$timeout(function() { $compile($('#x_content')[0])(scope); },100);
 			});	
 
 		};
