@@ -41,7 +41,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		self.form = function(scope,row) {
 		
 			scope.student_enrollment = {};
-			scope.student_enrollment.id = 0;			
+			scope.student_enrollment.id = 0;
+
+			scope.enrollment_fees = [];
 			
 			$('#x_content_enrollment').html('Loading...');
 			$('#x_content_enrollment').load('forms/enrollment.html',function() {
@@ -69,7 +71,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		};
 		
 		self.levelSelected = function(scope,level) {
-
+			
+			if (level == undefined) return;
+			
 			scope.sections = level.sections;						
 			
 			fees(scope);

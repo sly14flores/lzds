@@ -44,6 +44,22 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 		};
 		
+		function mode(scope,row) {
+			
+			if (row != null) {
+				scope.views.panel_title = 'Edit Student Info';			
+				scope.btns.ok.disabled = true;
+				scope.btns.ok.label = 'Update';
+				scope.btns.cancel.label = 'Close';			
+			} else {
+				scope.views.panel_title = 'Add Student';
+				scope.btns.ok.disabled = false;	
+				scope.btns.ok.label = 'Save';
+				scope.btns.cancel.label = 'Cancel';
+			}
+			
+		};
+		
 		self.student = function(scope,row) { // form			
 
 			scope.enrollment.list(scope,row);			
@@ -54,10 +70,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			scope.parents_guardians = [];
 			scope.parents_guardians_dels = [];			
 			
-			scope.views.panel_title = 'Add Student';
-			scope.btns.ok.disabled = false;	
-			scope.btns.ok.label = 'Save';
-			scope.btns.cancel.label = 'Cancel';
+			mode(scope,row);
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/student.html',function() {
@@ -67,12 +80,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			});
 		
 			
-			if (row != null) {
-
-				scope.views.panel_title = 'Edit Student Info';			
-				scope.btns.ok.disabled = true;
-				scope.btns.ok.label = 'Update';
-				scope.btns.cancel.label = 'Close';				
+			if (row != null) {		
 			
 				$http({
 				  method: 'POST',
@@ -159,6 +167,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 				scope.btns.ok.disabled = true;
 				if (scope.student.id == 0) pnotify.show('success','Notification','Student info successfully added.');
 				else pnotify.show('success','Notification','Student info successfully updated.');
+				mode(scope,{});
 				
 			}, function myError(response) {
 				 
