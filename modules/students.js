@@ -1,4 +1,4 @@
-angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel) {
+angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify) {
 	
 	function form() {
 		
@@ -145,7 +145,10 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 
 		self.save = function(scope) {			
 			
-			if (validate(scope)) return;
+			if (validate(scope)) {
+				pnotify.show('danger','Notification','Some fields are required.');
+				return;
+			}						
 			
 			$http({
 			  method: 'POST',
@@ -153,7 +156,9 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			  data: {student: scope.student, parents_guardians: scope.parents_guardians, parents_guardians_dels: scope.parents_guardians_dels}
 			}).then(function mySucces(response) {
 				
-				self.list(scope);
+				scope.btns.ok.disabled = true;
+				if (scope.student.id == 0) pnotify.show('success','Notification','Student info successfully added.');
+				else pnotify.show('success','Notification','Student info successfully updated.');
 				
 			}, function myError(response) {
 				 

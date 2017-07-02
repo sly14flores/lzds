@@ -2,27 +2,52 @@
 	<h4>Enrollment Info</h4>
 	<div class="ln_solid"></div>
 	<div class="row">
-	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.enrollment_school_year.$touched && formHolder.student_enrollment.enrollment_school_year.$invalid}">
-		<label>School Year</label>
-		<select class="form-control" name="enrollment_school_year" ng-model="student_enrollment.enrollment_school_year" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-disabled="enrollmentBtns.ok.disabled" required></select>
-		<span class="help-block" ng-show="formHolder.student_enrollment.enrollment_school_year.$touched && formHolder.student_enrollment.enrollment_school_year.$invalid">School year is required</span>
-	  </div>
-	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid}">
-		<label>Level</label>
-		<select class="form-control" name="grade" ng-model="student_enrollment.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="enrollment.levelSelected(this,student_enrollment.grade)" ng-disabled="enrollmentBtns.ok.disabled" required></select>
-		<span class="help-block" ng-show="formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid">Level year is required</span>
-	  </div>
-	  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid}">
-		<label>Section</label>
-		<select class="form-control" name="section" ng-model="student_enrollment.section" ng-options="section as section.description for section in sections track by section.id" ng-disabled="enrollmentBtns.ok.disabled" required></select>
-		<span class="help-block" ng-show="formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid">Section year is required</span>
-	  </div>	  
-	</div>
-	<div class="row">
-	  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-		<label>School ID</label>
-		<input type="text" class="form-control" name="school_id" ng-model="student_enrollment.school_id" ng-disabled="enrollmentBtns.ok.disabled">
-	  </div>		
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 50px;">
+			<div class="row">
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.enrollment_school_year.$touched && formHolder.student_enrollment.enrollment_school_year.$invalid}">
+				<label>School Year</label>
+				<select class="form-control" name="enrollment_school_year" ng-model="student_enrollment.enrollment_school_year" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-disabled="enrollmentBtns.ok.disabled" required></select>
+				<span class="help-block" ng-show="formHolder.student_enrollment.enrollment_school_year.$touched && formHolder.student_enrollment.enrollment_school_year.$invalid">School year is required</span>
+			  </div>
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+				<label>School ID</label>
+				<input type="text" class="form-control" name="school_id" ng-model="student_enrollment.school_id" ng-disabled="enrollmentBtns.ok.disabled">
+			  </div> 	  
+			</div>
+			<div class="row">
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid}">
+				<label>Level</label>
+				<select class="form-control" name="grade" ng-model="student_enrollment.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="enrollment.levelSelected(this,student_enrollment.grade)" ng-disabled="enrollmentBtns.ok.disabled" required></select>
+				<span class="help-block" ng-show="formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid">Level year is required</span>
+			  </div>
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid}">
+				<label>Section</label>
+				<select class="form-control" name="section" ng-model="student_enrollment.section" ng-options="section as section.description for section in sections track by section.id" ng-disabled="enrollmentBtns.ok.disabled" required></select>
+				<span class="help-block" ng-show="formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid">Section year is required</span>
+			  </div>		
+			</div>
+			<div class="row">
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">				
+			  </div>
+			</div>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<section class="content invoice">
+				<div class="row">
+					<div class="col-xs-12 invoice-header">
+						<h4><i class="fa fa-money"></i> Fees <i class="fa fa-download pull-right students-fees-download" ng-click="enrollment.levelSelected(this,student_enrollment.grade)"></i></h4>
+						<table class="table table-striped">
+							<thead>
+								<tr><th>#</th><th>Description</th><th>Amount</th></tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="enrollment_fee in enrollment_fees"><td>{{$index+1}}</td><td>{{enrollment_fee.description}}</td><td>{{enrollment_fee.amount}}</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+		</div>
 	</div>
 	<div class="ln_solid"></div>
 	<div class="row">

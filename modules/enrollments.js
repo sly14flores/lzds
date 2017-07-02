@@ -1,4 +1,4 @@
-angular.module('enrollments-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('enrollments-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','pnotify-module']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify) {
 	
 	function enrollment() {
 		
@@ -70,7 +70,32 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		
 		self.levelSelected = function(scope,level) {
 
-			scope.sections = level.sections;
+			scope.sections = level.sections;						
+			
+			fees(scope);
+			
+		};
+		
+		function fees(scope) {
+			
+			if (scope.student_enrollment.enrollment_school_year == undefined) {
+				scope.formHolder.student_enrollment.enrollment_school_year.$touched = true;
+				return;
+			};			
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/enrollment-fees.php',
+			  data: {school_year: scope.student_enrollment.enrollment_school_year, level: scope.student_enrollment.grade}
+			}).then(function mySucces(response) {			
+				
+				scope.enrollment_fees = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
 			
 		};
 		
