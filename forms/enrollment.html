@@ -1,5 +1,5 @@
 <form name="formHolder.student_enrollment" id="formHolder.student_enrollment" novalidate>
-	<h4>Enrollment Info <i class="glyphicon glyphicon-floppy-save pull-right students-fees-download" ng-click="enrollment.levelSelected(this,student_enrollment.grade)"></i></h4>
+	<h4>Enrollment Info </h4>
 	<div class="ln_solid"></div>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 50px;">
@@ -29,15 +29,12 @@
 			<div class="ln_solid"></div>			
 			<div class="row">
 			  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 invoice-header">
-				<h4>Statement of Account</h4>
+				<h4>Details</h4>
 				<table class="table table-bordered">
 					<tbody>
-						<tr><td>Sub Total</td><td></td></tr>
-						<tr><td>Discount</td><td><input type="text" class="form-control"></td></tr>
-						<tr><td>Total</td><td></td></tr>
-						<tr><td>Down Payment</td><td><input type="text" class="form-control"></td></tr>
-						<tr><td>OR #</td><td><input type="text" class="form-control"></td></tr>
-						<tr><td>Balance</td><td></td></tr>
+						<tr><td>Sub Total</td><td>{{details.sub_total_str}}</td></tr>
+						<tr><td>Discount</td><td><input type="text" class="form-control" ng-model="details.discount" ng-keyup="enrollment.total(this)"></td></tr>
+						<tr><td>Total</td><td>{{details.total_str}}</td></tr>
 					</tbody>
 				</table>
 			  </div>
