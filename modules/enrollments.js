@@ -46,8 +46,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		};
 		
 		self.form = function(scope,row) {
-		
-			scope.student_enrollment = {};
+
 			scope.student_enrollment.id = 0;
 			scope.details = {
 				sub_total: 0,
@@ -88,6 +87,8 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		
 			// scope.currentPage = 1;
 			// scope.pageSize = 15;		
+			
+			scope.student_enrollment.student_id = row.id;	
 			
 			if (row != null) {
 			
@@ -170,9 +171,19 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			if (validate(scope)) {
 				pnotify.show('danger','Notification','Some fields are required.');
 				return;
-			}
-
+			}	
 			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/enrollment-save.php',
+			  data: {student_enrollment: scope.student_enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
+			}).then(function mySucces(response) {
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
 			
 		}
 		
