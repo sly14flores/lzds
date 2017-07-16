@@ -46,6 +46,22 @@ $enrollee_section = array(
 	15=>"St. Peter"
 );
 
+$_enrollee_section = array(
+	"Omega"=>2,
+	"Faith"=>3,
+	"Love"=>4,
+	"Peace"=>6,
+	"Hope"=>7,
+	"Joy"=>5,
+	"Charity"=>8,
+	"St. Matthew"=>9,
+	"St. Mark"=>10,
+	"St. Luke"=>11,
+	"St. John"=>12,
+	"Alpha"=>1,
+	"St. Peter"=>13
+);
+
 $grade = array(
 	101=>"Nursery",
 	102=>"Kindergarten",
@@ -61,6 +77,23 @@ $grade = array(
 	10=>"Grade Ten",
 	11=>"Grade Eleven",
 	12=>"Grade Twelve"
+);
+
+$_grade = array(
+	"Nursery"=>1,
+	"Kindergarten"=>2,
+	"Grade One"=>3,
+	"Grade Two"=>4,
+	"Grade Three"=>5,
+	"Grade Four"=>6,
+	"Grade Five"=>7,
+	"Grade Six"=>8,
+	"Grade Seven"=>9,
+	"Grade Eight"=>10,
+	"Grade Nine"=>11,
+	"Grade Ten"=>12,
+	"Grade Eleven"=>13,
+	"Grade Twelve"=>14
 );
 
 $relationships = array(
@@ -174,8 +207,8 @@ foreach ($results as $key => $result) {
 	$enrollments[] = array(
 		"student_id"=>$student_id,
 		"school_id"=>$result["enrollee_fid"],		
-		"grade"=>$grade[$result["enrollee_grade"]],
-		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$enrollee_section[$result["enrollee_section"]]:''),
+		"grade"=>$_grade[$grade[$result["enrollee_grade"]]],
+		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$_enrollee_section[$enrollee_section[$result["enrollee_section"]]]:''),
 		"enrollment_school_year"=>$result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01"))),
 		"enrollment_date"=>$result["enrollee_date"],	
 		"registered_online"=>($result["registered_online"]=='yes')?1:0,
