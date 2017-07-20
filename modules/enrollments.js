@@ -79,7 +79,26 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				
 			});			
 			
-			schoolYear.get(scope);			
+			schoolYear.get(scope);
+
+			if (row != null) {
+
+				$http({
+				  method: 'POST',
+				  url: 'handlers/enrollment-view.php',
+				  data: {id: row.id}
+				}).then(function mySucces(response) {
+					
+					angular.copy(response.data, scope.student_enrollment);
+					scope.sections = scope.student_enrollment.grade.sections;
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});				
+			
+			};
 			
 		};		
 		
@@ -88,14 +107,19 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			// scope.currentPage = 1;
 			// scope.pageSize = 15;		
 			
-			scope.student_enrollment.student_id = row.id;	
+			if (row != null) {
+				scope.student_enrollment.student_id = row.id;
+				var id = row.id;
+			} else {
+				var id = scope.student_enrollment.student_id;
+			}
 			
 			if (row != null) {
 			
 				$http({
 				  method: 'POST',
 				  url: 'handlers/enrollments-list.php',
-				  data: {id: row.id}
+				  data: {id: id}
 				}).then(function mySucces(response) {
 					
 					angular.copy(response.data, scope.enrollments);
@@ -178,6 +202,8 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			  url: 'handlers/enrollment-save.php',
 			  data: {student_enrollment: scope.student_enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
 			}).then(function mySucces(response) {
+				
+				
 				
 			}, function myError(response) {
 				 

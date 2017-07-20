@@ -7,6 +7,14 @@ require_once '../db2.php';
 $source = new pdo_db("lzds");
 $destination = new pdo_db("lzdssystem","students");
 
+$school_years = array(
+	"2013-14"=>1,
+	"2014-15"=>2,
+	"2015-16"=>3,
+	"2016-17"=>4,
+	"2017-18"=>5
+);
+
 $fees_indexes = array(
 	"enrollee_tuition_fee"=>1,
 	"enrollee_books"=>2,
@@ -204,12 +212,13 @@ foreach ($parents_guardians as $pg) {
 $enrollments = [];
 
 foreach ($results as $key => $result) {
+	$enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
 	$enrollments[] = array(
 		"student_id"=>$student_id,
 		"school_id"=>$result["enrollee_fid"],		
 		"grade"=>$_grade[$grade[$result["enrollee_grade"]]],
 		"section"=>(isset($enrollee_section[$result["enrollee_section"]])?$_enrollee_section[$enrollee_section[$result["enrollee_section"]]]:''),
-		"enrollment_school_year"=>$result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01"))),
+		"enrollment_school_year"=>$school_years[$enrollment_school_year],
 		"enrollment_date"=>$result["enrollee_date"],	
 		"registered_online"=>($result["registered_online"]=='yes')?1:0,
 		"enrollee_rn"=>$result["enrollee_rn"],

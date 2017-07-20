@@ -61,7 +61,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 		};
 		
 		self.student = function(scope,row) { // form			
-
+			console.log(row);
 			scope.enrollment.list(scope,row);			
 			
 			scope.student = {};

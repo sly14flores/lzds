@@ -20,10 +20,9 @@
 				<select class="form-control" name="grade" ng-model="student_enrollment.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="enrollment.levelSelected(this,student_enrollment.grade)" ng-disabled="enrollmentBtns.ok.disabled" required></select>
 				<span class="help-block" ng-show="formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid">Level year is required</span>
 			  </div>
-			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid}">
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 				<label>Section</label>
-				<select class="form-control" name="section" ng-model="student_enrollment.section" ng-options="section as section.description for section in sections track by section.id" ng-disabled="enrollmentBtns.ok.disabled" required></select>
-				<span class="help-block" ng-show="formHolder.student_enrollment.section.$touched && formHolder.student_enrollment.section.$invalid">Section year is required</span>
+				<select class="form-control" name="section" ng-model="student_enrollment.section" ng-options="section as section.description for section in sections track by section.id" ng-disabled="enrollmentBtns.ok.disabled"></select>
 			  </div>		
 			</div>
 			<div class="ln_solid"></div>			
@@ -61,7 +60,7 @@
 	<div class="ln_solid"></div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
-		  <button type="button" class="btn btn-primary" type="button" ng-click="enrollment.list(this,row)">{{enrollmentBtns.cancel.label}}</button>
+		  <button type="button" class="btn btn-primary" type="button" ng-click="enrollment.list(this,null)">{{enrollmentBtns.cancel.label}}</button>
 		  <button type="button" class="btn btn-success" ng-click="enrollment.save(this)">{{enrollmentBtns.ok.label}}</button>
 		</div>
 	</div>	
