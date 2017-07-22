@@ -45,6 +45,22 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			
 		};
 		
+		function mode(scope,row) {
+			
+			if (row != null) {
+				scope.views.enrollment_panel_title = 'Edit Enrollment Info';
+				scope.enrollmentBtns.ok.disabled = true;
+				scope.enrollmentBtns.ok.label = 'Update';
+				scope.enrollmentBtns.cancel.label = 'Close';			
+			} else {
+				scope.views.enrollment_panel_title = 'Enrollment Info';				
+				scope.enrollmentBtns.ok.disabled = false;	
+				scope.enrollmentBtns.ok.label = 'Save';
+				scope.enrollmentBtns.cancel.label = 'Cancel';
+			}
+			
+		};		
+		
 		self.form = function(scope,row) {
 
 			scope.student_enrollment.id = 0;
@@ -57,6 +73,8 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			};		
 			
 			scope.enrollment_fees = [];
+			
+			mode(scope,row);			
 			
 			$('#x_content_enrollment').html('Loading...');
 			$('#x_content_enrollment').load('forms/enrollment.html',function() {
@@ -102,11 +120,17 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			
 		};		
 		
+		self.edit = function(scope) {
+			
+			scope.enrollmentBtns.ok.disabled = !scope.enrollmentBtns.ok.disabled;
+			
+		};		
+		
 		self.list = function(scope,row) {
 		
 			// scope.currentPage = 1;
 			// scope.pageSize = 15;		
-			
+			console.log(scope);
 			if (row != null) {
 				scope.student_enrollment.student_id = row.id;
 				var id = row.id;
@@ -122,7 +146,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				  data: {id: id}
 				}).then(function mySucces(response) {
 					
-					angular.copy(response.data, scope.enrollments);
+					$timeout(function() {
+						angular.copy(response.data, scope.enrollments);
+					}, 200);
 					
 				}, function myError(response) {
 					 
@@ -168,6 +194,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				
 				scope.enrollment_fees = response.data;
 				
+				scope.details.sub_total = 0;
 				angular.forEach(scope.enrollment_fees, function(item,i) {
 					scope.details.sub_total += item.amount;
 				});
@@ -188,7 +215,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			if (isNaN(scope.details.discount)) return;
 			scope.details.total = scope.details.sub_total - scope.details.discount;
 			scope.details.total_str = formatThousandsNoRounding(scope.details.total,2);
-		}
+		};
 		
 		self.save = function(scope) {
 			
@@ -203,7 +230,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			  data: {student_enrollment: scope.student_enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
 			}).then(function mySucces(response) {
 				
-				
+				if (scope.student_enrollment.id == 0) pnotify.show('success','Notification','Student successfully enrolled.');
+				else pnotify.show('success','Notification','Student enrollment info successfully updated.');				
+				mode(scope,{});
 				
 			}, function myError(response) {
 				 
@@ -211,7 +240,33 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				
 			});				
 			
-		}
+		};
+		
+		self.delete = function(scope,row) {
+			
+			var onOk = function() {
+				
+				// if (scope.$id > 2) scope = scope.$parent;			
+				console.log(scope);
+				$http({
+				  method: 'POST',
+				  url: 'handlers/enrollment-delete.php',
+				  data: {id: [row.id]}
+				}).then(function mySucces(response) {
+
+					self.list(scope,null);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+
+			};
+
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});			
+			
+		};
 		
 		function formatThousandsWithRounding(n, dp){
 		  var w = n.toFixed(dp), k = w|0, b = n < 0 ? 1 : 0,

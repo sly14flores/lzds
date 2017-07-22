@@ -1,5 +1,8 @@
 <form name="formHolder.student_enrollment" id="formHolder.student_enrollment" novalidate>
-	<h4>Enrollment Info </h4>
+
+	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': enrollmentBtns.ok.disabled, 'fa-ban': !enrollmentBtns.ok.disabled}" ng-click="enrollment.edit(this)"></i></p>
+	<div class="clearfix"></div>
+	
 	<div class="ln_solid"></div>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 50px;">
@@ -32,7 +35,7 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr><td>Sub Total</td><td>{{details.sub_total_str}}</td></tr>
-						<tr><td>Discount</td><td><input type="text" class="form-control" ng-model="details.discount" ng-keyup="enrollment.total(this)"></td></tr>
+						<tr><td>Discount</td><td><input type="text" class="form-control" ng-model="details.discount" ng-keyup="enrollment.total(this)" ng-disabled="enrollmentBtns.ok.disabled"></td></tr>
 						<tr><td>Total</td><td>{{details.total_str}}</td></tr>
 					</tbody>
 				</table>

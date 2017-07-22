@@ -12,6 +12,9 @@ $con = new pdo_db("enrollments");
 
 if ($_POST['student_enrollment']['id']) { // > 0 - update
 	$_POST['student_enrollment']['update_log'] = "CURRENT_TIMESTAMP";
+	$_POST['student_enrollment']['grade'] = $_POST['student_enrollment']['grade']['id'];
+	$_POST['student_enrollment']['section'] = $_POST['student_enrollment']['section']['id'];
+	$_POST['student_enrollment']['enrollment_school_year'] = $_POST['student_enrollment']['enrollment_school_year']['id'];
 	$enrollment = $con->updateData($_POST['student_enrollment'],'id');
 } else { // 0 - insert
 	unset($_POST['student_enrollment']['id']);

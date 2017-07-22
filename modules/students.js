@@ -199,7 +199,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
 
 		};
 
