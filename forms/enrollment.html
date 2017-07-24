@@ -64,7 +64,7 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
 		  <button type="button" class="btn btn-primary" type="button" ng-click="enrollment.list(this,null)">{{enrollmentBtns.cancel.label}}</button>
-		  <button type="button" class="btn btn-success" ng-click="enrollment.save(this)">{{enrollmentBtns.ok.label}}</button>
+		  <button type="button" class="btn btn-success" ng-disabled="enrollmentBtns.ok.disabled" ng-click="enrollment.save(this)">{{enrollmentBtns.ok.label}}</button>
 		</div>
 	</div>	
 </form>

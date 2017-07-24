@@ -129,40 +129,36 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		self.list = function(scope,row) {
 		
 			// scope.currentPage = 1;
-			// scope.pageSize = 15;		
-			console.log(scope);
+			// scope.pageSize = 15;			
+			
+			if (scope.$id > 35) scope = scope.$parent;									
+			
 			if (row != null) {
 				scope.student_enrollment.student_id = row.id;
 				var id = row.id;
 			} else {
 				var id = scope.student_enrollment.student_id;
 			}
-			
-			if (row != null) {
-			
+
 				$http({
 				  method: 'POST',
 				  url: 'handlers/enrollments-list.php',
 				  data: {id: id}
 				}).then(function mySucces(response) {
-					
-					$timeout(function() {
-						angular.copy(response.data, scope.enrollments);
-					}, 200);
+
+					angular.copy(response.data, scope.enrollments);	
 					
 				}, function myError(response) {
 					 
 				  // error
 					
 				});
-				
-			}
 			
 			$timeout(function() {
 				$('#x_content_enrollment').html('Loading...');
 				$('#x_content_enrollment').load('lists/enrollments.html',function() {
 					$timeout(function() {
-						$compile($('#x_content_enrollment')[0])(scope.$parent);
+						$compile($('#x_content_enrollment')[0])(scope);
 					},200);				
 				});				
 			},500);
@@ -244,10 +240,8 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		
 		self.delete = function(scope,row) {
 			
-			var onOk = function() {
-				
-				// if (scope.$id > 2) scope = scope.$parent;			
-				console.log(scope);
+			var onOk = function() {						
+
 				$http({
 				  method: 'POST',
 				  url: 'handlers/enrollment-delete.php',

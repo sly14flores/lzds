@@ -8,7 +8,7 @@ session_start();
 
 $con = new pdo_db();
 
-$enrollment = $con->getData("SELECT id, school_id, enrollment_school_year, grade, section FROM enrollments WHERE id = $_POST[id]");
+$enrollment = $con->getData("SELECT id, student_id, school_id, enrollment_school_year, grade, section FROM enrollments WHERE id = $_POST[id]");
 $enrollment_school_year = $con->getData("SELECT id, school_year FROM school_years WHERE id = ".$enrollment[0]['enrollment_school_year']);
 $grade = $con->getData("SELECT id, description FROM grade_levels WHERE id = ".$enrollment[0]['grade']);
 $sections = $con->getData("SELECT id, description FROM sections WHERE level_id = ".$enrollment[0]['grade']);
