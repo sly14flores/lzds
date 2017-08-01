@@ -20,7 +20,9 @@ $enrollment[0]['grade']['sections'] = $sections;
 $enrollment[0]['section'] = (count($section))?$section[0]:array("id"=>0,"description"=>"");
 
 $enrollment_fees = $con->getData("SELECT students_fees.id, students_fees.fee_item_id, (SELECT fees.description FROM fees WHERE fees.id = (SELECT fee_items.fee_id FROM fee_items WHERE fee_items.id = students_fees.fee_item_id)) description, students_fees.amount amount FROM students_fees WHERE students_fees.enrollment_id = ".$enrollment[0]['id']);
+$discount = $con->getData("SELECT amount FROM students_discounts WHERE enrollment_id = ".$enrollment[0]['id']);
+$details = array("discount"=>count($discount)?$discount[0]['amount']:0);
 
-echo json_encode(array("enrollment"=>$enrollment[0],"enrollment_fees"=>$enrollment_fees));
+echo json_encode(array("enrollment"=>$enrollment[0],"enrollment_fees"=>$enrollment_fees,"details"=>$details));
 
 ?>

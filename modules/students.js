@@ -1,4 +1,4 @@
-angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify) {
+angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI) {
 	
 	function form() {
 		
@@ -61,7 +61,9 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 		};
 		
 		self.student = function(scope,row) { // form			
-
+			
+			blockUI.show("Fetching student infos please wait...");	
+			
 			scope.enrollment.list(scope,row);			
 			
 			scope.student = {};
@@ -91,7 +93,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
-					xPanel.start('collapse-enrollments');					
+					xPanel.start('collapse-enrollments');
+					blockUI.hide();
 					
 				}, function myError(response) {
 					 
@@ -111,7 +114,9 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 		self.list = function(scope) {
 
 			if (scope.$id > 2) scope = scope.$parent;			
-
+			
+			blockUI.show("Fetching students list please wait...");			
+			
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
 		
@@ -124,6 +129,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.students);
+				blockUI.hide();
 				
 			}, function myError(response) {
 				 
@@ -147,7 +153,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/students.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);
-			});	
+			});
 
 		};
 

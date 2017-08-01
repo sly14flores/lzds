@@ -1,4 +1,4 @@
-angular.module('enrollments-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','pnotify-module']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify) {
+angular.module('enrollments-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','pnotify-module','block-ui']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI) {
 	
 	function enrollment() {
 		
@@ -10,6 +10,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			scope.bstudent_enrollment = {};
 			scope.student_enrollment.id = 0;
 			scope.enrollment_fees = [];			
+			scope.benrollment_fees = [];			
 			scope.details = {
 				sub_total: 0,
 				sub_total_str: 0,
@@ -66,6 +67,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		self.form = function(scope,row) {
 			
 			scope.student_enrollment.id = 0;
+			scope.student_enrollment.school_id = '';
 			scope.student_enrollment.enrollment_school_year = {id:0,school_year:""};
 			scope.student_enrollment.grade = {id:0,description:"",sections:[]};
 			scope.student_enrollment.section = {id:0,description:""};			
@@ -78,6 +80,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			};		
 			
 			scope.enrollment_fees = [];
+			scope.benrollment_fees = [];
 			
 			mode(scope,row);			
 			
@@ -115,7 +118,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 					angular.copy(response.data.enrollment, scope.student_enrollment);
 					angular.copy(response.data.enrollment, scope.bstudent_enrollment);
 					angular.copy(response.data.enrollment_fees, scope.enrollment_fees);
+					angular.copy(response.data.enrollment_fees, scope.benrollment_fees);
 					scope.sections = scope.student_enrollment.grade.sections;
+					scope.details.discount = response.data.details.discount;
 					details(scope);					
 					
 				}, function myError(response) {
@@ -184,12 +189,12 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			
 		};
 		
-		function fees(scope) {
+		function fees(scope) {				
 			
 			if (scope.student_enrollment.enrollment_school_year == undefined) {
 				scope.formHolder.student_enrollment.enrollment_school_year.$touched = true;
 				return;
-			};			
+			};							
 			
 			$http({
 			  method: 'POST',
@@ -197,8 +202,15 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			  data: {school_year: scope.student_enrollment.enrollment_school_year, level: scope.student_enrollment.grade}
 			}).then(function mySucces(response) {			
 				
-				scope.enrollment_fees = response.data;
-				details(scope);
+				scope.enrollment_fees = response.data;				
+				if (scope.enrollmentBtns.ok.label == 'Update') {
+					blockUI.show("Fetching fees please wait...");					
+					angular.forEach(scope.benrollment_fees, function(item,i) {
+						scope.enrollment_fees[i]['id'] = item['id'];
+					});
+					blockUI.hide();
+				};
+				details(scope);				
 				
 			}, function myError(response) {
 				 

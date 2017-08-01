@@ -15,12 +15,13 @@ if ($_POST['student_enrollment']['id']) { // > 0 - update
 	$_POST['student_enrollment']['enrollment_school_year'] = $_POST['student_enrollment']['enrollment_school_year']['id'];
 	$enrollment = $con->updateData($_POST['student_enrollment'],'id');
 	$enrollment_id = $_POST['student_enrollment']['id'];
-	var_dump($_POST['enrollment_fees']);
-/* 	$con->table = "students_fees";
+	$con->table = "students_fees";
 	foreach ($_POST['enrollment_fees'] as $key => $fee) {
 		$data = array("id"=>$fee['id'],"enrollment_id"=>$enrollment_id,"fee_item_id"=>$fee['fee_item_id'],"amount"=>$fee['amount'],"update_log"=>"CURRENT_TIMESTAMP");
 		$student_fee = $con->updateData($data,'id');
-	} */
+	}
+	$con->table = "students_discounts";
+	$student_discount = $con->updateData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['discount'],"update_log"=>"CURRENT_TIMESTAMP"),'enrollment_id');
 } else { // 0 - insert
 	unset($_POST['student_enrollment']['id']);
 	$_POST['student_enrollment']['system_log'] = "CURRENT_TIMESTAMP";	
@@ -35,6 +36,8 @@ if ($_POST['student_enrollment']['id']) { // > 0 - update
 		$data = array("enrollment_id"=>$enrollment_id,"fee_item_id"=>$fee['fee_item_id'],"amount"=>$fee['amount'],"system_log"=>"CURRENT_TIMESTAMP");
 		$student_fee = $con->insertData($data);
 	}
+	$con->table = "students_discounts";		
+	$student_discount = $con->insertData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['discount'],"system_log"=>"CURRENT_TIMESTAMP"));	
 }
 
 ?>
