@@ -7,7 +7,9 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		self.data = function(scope) {
 			
 			scope.student_enrollment = {};
+			scope.bstudent_enrollment = {};
 			scope.student_enrollment.id = 0;
+			scope.enrollment_fees = [];			
 			scope.details = {
 				sub_total: 0,
 				sub_total_str: 0,
@@ -62,8 +64,11 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 		};		
 		
 		self.form = function(scope,row) {
-
+			
 			scope.student_enrollment.id = 0;
+			scope.student_enrollment.enrollment_school_year = {id:0,school_year:""};
+			scope.student_enrollment.grade = {id:0,description:"",sections:[]};
+			scope.student_enrollment.section = {id:0,description:""};			
 			scope.details = {
 				sub_total: 0,
 				sub_total_str: 0,
@@ -107,8 +112,11 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
 					
-					angular.copy(response.data, scope.student_enrollment);
+					angular.copy(response.data.enrollment, scope.student_enrollment);
+					angular.copy(response.data.enrollment, scope.bstudent_enrollment);
+					angular.copy(response.data.enrollment_fees, scope.enrollment_fees);
 					scope.sections = scope.student_enrollment.grade.sections;
+					details(scope);					
 					
 				}, function myError(response) {
 					 
@@ -135,9 +143,10 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			
 			if (row != null) {
 				scope.student_enrollment.student_id = row.id;
+				scope.bstudent_enrollment.student_id = row.id;
 				var id = row.id;
 			} else {
-				var id = scope.student_enrollment.student_id;
+				var id = scope.bstudent_enrollment.student_id;
 			}
 
 				$http({
@@ -189,15 +198,7 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 			}).then(function mySucces(response) {			
 				
 				scope.enrollment_fees = response.data;
-				
-				scope.details.sub_total = 0;
-				angular.forEach(scope.enrollment_fees, function(item,i) {
-					scope.details.sub_total += item.amount;
-				});
-				
-				scope.details.total = scope.details.sub_total - scope.details.discount;
-				scope.details.sub_total_str = formatThousandsNoRounding(scope.details.sub_total,2);
-				scope.details.total_str = formatThousandsNoRounding(scope.details.total,2);
+				details(scope);
 				
 			}, function myError(response) {
 				 
@@ -205,6 +206,19 @@ angular.module('enrollments-module', ['angularUtils.directives.dirPagination','b
 				
 			});				
 			
+		};
+		
+		function details(scope) {
+
+			scope.details.sub_total = 0;
+			angular.forEach(scope.enrollment_fees, function(item,i) {
+				scope.details.sub_total += item.amount;
+			});
+			
+			scope.details.total = scope.details.sub_total - scope.details.discount;
+			scope.details.sub_total_str = formatThousandsNoRounding(scope.details.sub_total,2);
+			scope.details.total_str = formatThousandsNoRounding(scope.details.total,2);
+		
 		};
 		
 		self.total = function(scope) {
