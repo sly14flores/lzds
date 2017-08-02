@@ -235,15 +235,16 @@ foreach ($results as $key => $result) {
 $students_fees = [];
 
 foreach ($results as $key => $result) {
-	
-foreach ($fees_indexes as $i => $fi) {
-	$students_fees[] = array(
-		"enrollment_id"=>0,
-		"fee_item_id"=>$fi,
-		"amount"=>$result[$i],
-		"old_table_pk"=>$result["enrollee_id"]
-	);	
-}
+	// $enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
+	foreach ($fees_indexes as $i => $fi) {
+		// $fees_items = $destination->getData("SELECT FROM fees_items WHERE fee_id");
+		$students_fees[] = array(
+			"enrollment_id"=>0,
+			"fee_item_id"=>$fi,
+			"amount"=>$result[$i],
+			"old_table_pk"=>$result["enrollee_id"]
+		);	
+	}
 
 }
 

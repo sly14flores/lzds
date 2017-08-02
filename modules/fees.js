@@ -41,6 +41,51 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 		};
 		
+		self.clone = function(scope,row) {
+			
+			scope.views.panel_title = 'Clone Fee';			
+			scope.btns.ok.label = 'Save';
+			scope.btns.cancel.label = 'Cancel';
+			
+			$('#x_content').html('Loading...');
+			$('#x_content').load('forms/fee.html',function() {
+				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+			});
+
+			if (scope.$id > 2) scope = scope.$parent;
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/fee-clone.php',
+			  data: {id: row.id}
+			}).then(function mySucces(response) {
+				
+				angular.copy(response.data['fee'], scope.fee);
+				angular.copy(response.data['fee_items'], scope.fee_items);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/grade-levels.php'
+			}).then(function mySucces(response) {
+				
+				scope.levels = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});
+			
+			schoolYear.get(scope);
+			
+		};
+		
 		self.fee = function(scope,row) { // form
 			
 			scope.views.panel_title = 'Add Fee';			
@@ -99,7 +144,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			scope.fee_items_del = [];	
 		
 			scope.currentPage = 1;
-			scope.pageSize = 25;		
+			scope.pageSize = 18;		
 		
 			scope.views.panel_title = 'Fees List';		
 
@@ -180,7 +225,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
 
 		};
 		
