@@ -36,6 +36,27 @@ $fees_indexes = array(
 	"enrollee_aircon_fee"=>18
 );
 
+$fees_indexes_description = array(
+	"enrollee_tuition_fee"=>"Tuition Fee",
+	"enrollee_books"=>"Books",
+	"enrollee_pc"=>"Computer/Internet",
+	"enrollee_reg"=>"Registration Fee",
+	"enrollee_med"=>"Medical/Dental",
+	"enrollee_science_lab"=>"Science Lab",
+	"enrollee_lib"=>"Library",
+	"enrollee_id_fee"=>"ID",
+	"enrollee_insurance"=>"Insurance",
+	"enrollee_papers"=>"Test Papers",	
+	"enrollee_athletic_fee"=>"Athletic Fee",
+	"enrollee_forms_fee"=>"Forms",
+	"enrollee_handbook_fee"=>"Handbook",
+	"enrollee_luprisa"=>"LUPRISA",
+	"enrollee_energy_fee"=>"Energy Fee",
+	"enrollee_collection_fee"=>"Collection / Processing Charges",
+	"enrollee_handouts_fee"=>"Hand-Outs/SBO",	
+	"enrollee_aircon_fee"=>"Aircon Fee"
+);
+
 $enrollee_stat = array("Regular","Regular","Transferee");
 
 $enrollee_section = array(
@@ -235,17 +256,16 @@ foreach ($results as $key => $result) {
 $students_fees = [];
 
 foreach ($results as $key => $result) {
-	// $enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
-	foreach ($fees_indexes as $i => $fi) {
-		// $fees_items = $destination->getData("SELECT FROM fees_items WHERE fee_id");
+	$enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
+	foreach ($fees_indexes as $i => $fi) {;
+		$fees_items = $destination->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$fees_indexes_description[$i]."' AND fees.school_year = ".$school_years[$enrollment_school_year]);
 		$students_fees[] = array(
 			"enrollment_id"=>0,
-			"fee_item_id"=>$fi,
+			"fee_item_id"=>$fees_items[0]['id'],
 			"amount"=>$result[$i],
 			"old_table_pk"=>$result["enrollee_id"]
 		);	
 	}
-
 }
 
 // var_dump($students_fees);
