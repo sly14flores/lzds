@@ -258,7 +258,7 @@ $students_fees = [];
 foreach ($results as $key => $result) {
 	$enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
 	foreach ($fees_indexes as $i => $fi) {;
-		$fees_items = $destination->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$fees_indexes_description[$i]."' AND fees.school_year = ".$school_years[$enrollment_school_year]);
+		$fees_items = $destination->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$fees_indexes_description[$i]."' AND fees.school_year = ".$school_years[$enrollment_school_year]." AND fee_items.level = ".$_grade[$grade[$result["enrollee_grade"]]]);
 		$students_fees[] = array(
 			"enrollment_id"=>0,
 			"fee_item_id"=>$fees_items[0]['id'],
