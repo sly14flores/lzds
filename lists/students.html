@@ -12,7 +12,7 @@
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr class="even pointer" dir-paginate="row in students | itemsPerPage: pageSize" current-page="currentPage">
+	  <tr class="even pointer" dir-paginate="row in students | itemsPerPage: pageSize | filter: views.search" current-page="currentPage">
 		<td class="">{{row.lrn}}</td>
 		<td class="">{{row.fullname}}</td>
 		<td class="">{{row.contact_no}}</td>

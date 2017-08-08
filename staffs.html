@@ -195,9 +195,9 @@ require_once 'authentication.php';
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control"  ng-model="views.search" uib-typeahead="s as s.fullname for s in suggest_staffs | filter:{fullname:$viewValue}" placeholder="Search for...">
+                    <input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" ng-click="form.list(this)">Go!</button>
+                      <button class="btn btn-default" type="button" ng-click="form.list(this)">&nbsp;</button>
                     </span>
                   </div>
                 </div>

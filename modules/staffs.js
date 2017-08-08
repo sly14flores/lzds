@@ -8,6 +8,8 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 			
 			scope.formHolder = {};
 			
+			scope.views.list = false;			
+			
 			scope.staff = {};
 			scope.staff.id = 0;
 
@@ -40,6 +42,8 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 		};
 		
 		self.staff = function(scope,row) { // form
+			
+			scope.views.list = true;			
 			
 			scope.views.panel_title = 'Add Staff';			
 			scope.btns.ok.label = 'Save';
@@ -74,7 +78,9 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 		};
 		
 		self.list = function(scope) {		
-
+			
+			scope.views.list = false;			
+			
 			scope.staff = {};
 			scope.staff.id = 0;		
 		
@@ -85,8 +91,7 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staffs-list.php',
-			  data: {q: scope.views.search}
+			  url: 'handlers/staffs-list.php'
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.staffs);

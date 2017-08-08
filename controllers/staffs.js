@@ -2,9 +2,9 @@ var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-
 
 app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	
-	form.data($scope); // initialize data
-	
 	$scope.views = {};	
+	
+	form.data($scope); // initialize data	
 	
 	$scope.views.title = 'Staffs';
 	$scope.views.panel_title = 'Staffs List';

@@ -8,6 +8,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			
 			scope.formHolder = {};
 			
+			scope.views.list = false;
+			
 			scope.student = {};
 			scope.student.id = 0;
 
@@ -62,6 +64,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 		
 		self.student = function(scope,row) { // form			
 			
+			scope.views.list = true;
+			
 			blockUI.show("Fetching student infos please wait...");	
 			
 			scope.enrollment.list(scope,row);			
@@ -115,6 +119,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 
 			if (scope.$id > 2) scope = scope.$parent;			
 			
+			scope.views.list = false;
+			
 			blockUI.show("Fetching students list please wait...");			
 			
 			scope.currentPage = 1;
@@ -124,8 +130,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/students-list.php',
-			  data: {q: scope.views.search}
+			  url: 'handlers/students-list.php'
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.students);
