@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('cashier-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
 	
 	function form() {
 		
@@ -14,7 +14,27 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 			scope.staff.id = 0;
 
 			scope.staffs = [];
-			scope.suggest_staffs = [];
+			scope.suggest_staffs = [];			
+			
+			scope.school_years_ = [];
+			
+			schoolYear.get(scope);
+			
+			$timeout(function() {
+				
+				scope.school_years_.push({id: 0, school_year: "SY"});
+				
+				angular.forEach(scope.school_years,function(item,i) {
+
+					scope.school_years_.push(item);
+					
+				});
+				
+			},1000);
+			
+			scope.filter = {
+				school_year: {id: 0, school_year: "SY"}
+			};			
 			
 			scope.btns = {
 				ok: {
@@ -107,7 +127,7 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
 		
-			scope.views.panel_title = 'Staffs List';		
+			scope.views.panel_title = 'Payments List';		
 
 			$http({
 			  method: 'POST',

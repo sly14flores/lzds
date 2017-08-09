@@ -1,14 +1,16 @@
 <form name="formHolder.staff" id="formHolder.staff" novalidate>
+<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+<div class="clearfix"></div>
 <h4><strong>Basic Info</strong></h4>
 <div class="ln_solid"></div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>School ID</label>
-	<input type="text" placeholder="" class="form-control" name="school_id" ng-model="staff.school_id">
+	<input type="text" placeholder="" class="form-control" name="school_id" ng-model="staff.school_id" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 col-md-offset-4 form-group" ng-class="{'has-error': formHolder.staff.employment_status.$touched && formHolder.staff.employment_status.$invalid}">
 	<label>Employment Status</label>
-	<select class="form-control" name="employment_status" ng-model="staff.employment_status" required>
+	<select class="form-control" name="employment_status" ng-model="staff.employment_status" ng-disabled="btns.ok.disabled" required>
 		<option value="">-</option>
 		<option value="Regular">Regular</option>
 		<option value="Contractual">Contractual</option>
@@ -21,28 +23,28 @@
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.lastname.$touched && formHolder.staff.lastname.$invalid}">
 	<label>Last Name</label>
-	<input type="text" placeholder="" class="form-control" name="lastname" ng-model="staff.lastname" required>
+	<input type="text" placeholder="" class="form-control" name="lastname" ng-model="staff.lastname" ng-disabled="btns.ok.disabled" required>
 	<span class="help-block" ng-show="formHolder.staff.lastname.$touched && formHolder.staff.lastname.$invalid">Last Name is required</span>
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.firstname.$touched && formHolder.staff.firstname.$invalid}">
 	<label>First Name</label>
-	<input type="text" placeholder="" class="form-control" name="firstname" ng-model="staff.firstname" required>
+	<input type="text" placeholder="" class="form-control" name="firstname" ng-model="staff.firstname" ng-disabled="btns.ok.disabled" required>
 	<span class="help-block" ng-show="formHolder.staff.firstname.$touched && formHolder.staff.firstname.$invalid">First Name is required</span>	
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.middlename.$touched && formHolder.staff.middlename.$invalid}">
 	<label>Middle Name</label>
-	<input type="text" placeholder="" class="form-control" name="middlename" ng-model="staff.middlename" required>
+	<input type="text" placeholder="" class="form-control" name="middlename" ng-model="staff.middlename" ng-disabled="btns.ok.disabled" required>
 	<span class="help-block" ng-show="formHolder.staff.middlename.$touched && formHolder.staff.middlename.$invalid">Middle Name is required</span>	
   </div>  
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Nick Name</label>
-	<input type="text" placeholder="" class="form-control" name="nickname" ng-model="staff.nickname">
+	<input type="text" placeholder="" class="form-control" name="nickname" ng-model="staff.nickname" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.gender.$touched && formHolder.staff.gender.$invalid}">
 	<label>Gender</label>
-	<select class="form-control" name="gender" ng-model="staff.gender" required>
+	<select class="form-control" name="gender" ng-model="staff.gender" ng-disabled="btns.ok.disabled" required>
 		<option value="">-</option>
 		<option value="Male">Male</option>
 		<option value="Female">Female</option>
@@ -51,13 +53,13 @@
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Birthday</label>
-	<input type="date" placeholder="" class="form-control" name="birthday" ng-model="staff.birthday">
+	<input type="date" placeholder="" class="form-control" name="birthday" ng-model="staff.birthday" ng-disabled="btns.ok.disabled">
   </div>
 </div>
 <div class="row">
 	<div class="col-md-4 col-sm-12 col-xs-12 form-group">
 		<label>Civil Status</label>
-		<select class="form-control" name="civil_status" ng-model="staff.civil_status">
+		<select class="form-control" name="civil_status" ng-model="staff.civil_status" ng-disabled="btns.ok.disabled">
 			<option value="">-</option>
 			<option value="1">Single</option>
 			<option value="2">Married</option>
@@ -68,21 +70,21 @@
 	</div> 
   <div class="col-md-8 col-sm-12 col-xs-12 form-group">
 	<label>Address</label>
-	<input type="text" placeholder="" class="form-control" name="address" ng-model="staff.address">
+	<input type="text" placeholder="" class="form-control" name="address" ng-model="staff.address" ng-disabled="btns.ok.disabled">
   </div> 
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Contact</label>
-	<input type="text" placeholder="" class="form-control" name="contact" ng-model="staff.contact">
+	<input type="text" placeholder="" class="form-control" name="contact" ng-model="staff.contact" ng-disabled="btns.ok.disabled">
   </div> 
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Email</label>
-	<input type="email" placeholder="" class="form-control" name="email" ng-model="staff.email">
+	<input type="email" placeholder="" class="form-control" name="email" ng-model="staff.email" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Position</label>
-	<input type="text" placeholder="" class="form-control" name="position" ng-model="staff.position">
+	<input type="text" placeholder="" class="form-control" name="position" ng-model="staff.position" ng-disabled="btns.ok.disabled">
   </div> 
 </div>
 <div class="ln_solid"></div>
@@ -91,59 +93,59 @@
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Basic Pay</label>
-	<input type="text" placeholder="" class="form-control" name="basic_pay" ng-model="staff.basic_pay">
+	<input type="text" placeholder="" class="form-control" name="basic_pay" ng-model="staff.basic_pay" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>COLA</label>
-	<input type="text" placeholder="" class="form-control" name="cola" ng-model="staff.cola">
+	<input type="text" placeholder="" class="form-control" name="cola" ng-model="staff.cola" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Gross Pay</label>
-	<input type="text" placeholder="" class="form-control" name="gross_pay" ng-model="staff.gross_pay">
+	<input type="text" placeholder="" class="form-control" name="gross_pay" ng-model="staff.gross_pay" ng-disabled="btns.ok.disabled">
   </div>  
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>SSS No</label>
-	<input type="text" placeholder="" class="form-control" name="sss" ng-model="staff.sss">
+	<input type="text" placeholder="" class="form-control" name="sss" ng-model="staff.sss" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>HDMF No</label>
-	<input type="text" placeholder="" class="form-control" name="hdmf" ng-model="staff.hdmf">
+	<input type="text" placeholder="" class="form-control" name="hdmf" ng-model="staff.hdmf" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>PHIC No</label>
-	<input type="text" placeholder="" class="form-control" name="phic" ng-model="staff.phic">
+	<input type="text" placeholder="" class="form-control" name="phic" ng-model="staff.phic" ng-disabled="btns.ok.disabled">
   </div>   
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>TIN No</label>
-	<input type="text" placeholder="" class="form-control" name="tin" ng-model="staff.tin">
+	<input type="text" placeholder="" class="form-control" name="tin" ng-model="staff.tin" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>ST</label>
-	<input type="text" placeholder="" class="form-control" name="st" ng-model="staff.st">
+	<input type="text" placeholder="" class="form-control" name="st" ng-model="staff.st" ng-disabled="btns.ok.disabled">
   </div>
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>SSS Contribution</label>
-	<input type="text" placeholder="" class="form-control" name="sss_amount" ng-model="staff.sss_amount">
+	<input type="text" placeholder="" class="form-control" name="sss_amount" ng-model="staff.sss_amount" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>HDMF Contribution</label>
-	<input type="text" placeholder="" class="form-control" name="hdmf_amount" ng-model="staff.hdmf_amount">
+	<input type="text" placeholder="" class="form-control" name="hdmf_amount" ng-model="staff.hdmf_amount" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>PHIC Contribution</label>
-	<input type="text" placeholder="" class="form-control" name="phic_amount" ng-model="staff.phic_amount">
+	<input type="text" placeholder="" class="form-control" name="phic_amount" ng-model="staff.phic_amount" ng-disabled="btns.ok.disabled">
   </div>   
 </div>
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Tax Amount</label>
-	<input type="text" placeholder="" class="form-control" name="tax_amount" ng-model="staff.tax_amount">
+	<input type="text" placeholder="" class="form-control" name="tax_amount" ng-model="staff.tax_amount" ng-disabled="btns.ok.disabled">
   </div>
 </div>
 <div class="ln_solid"></div>
@@ -152,11 +154,11 @@
 <div class="row">
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Username</label>
-	<input type="text" placeholder="" class="form-control" name="username" ng-model="staff.username">
+	<input type="text" placeholder="" class="form-control" name="username" ng-model="staff.username" ng-disabled="btns.ok.disabled">
   </div>
   <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 	<label>Password</label>
-	<input type="password" placeholder="" class="form-control" name="password" ng-model="staff.password">
+	<input type="password" placeholder="" class="form-control" name="password" ng-model="staff.password" ng-disabled="btns.ok.disabled">
   </div>  
 </div>
 <div class="ln_solid"></div>
