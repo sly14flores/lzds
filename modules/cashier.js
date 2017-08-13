@@ -13,7 +13,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			scope.staff = {};
 			scope.staff.id = 0;
 
-			scope.staffs = [];
+			scope.payments = [];
 			scope.suggest_staffs = [];			
 			
 			scope.school_years_ = [];
@@ -32,9 +32,20 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				
 			},1000);
 			
-			scope.filter = {
-				school_year: {id: 0, school_year: "SY"}
-			};			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.filter = {
+					school_year: response.data
+				};
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
 			
 			scope.btns = {
 				ok: {
@@ -117,7 +128,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 		};		
 		
-		self.list = function(scope) {		
+		self.list = function(scope) {	
 			
 			scope.views.list = false;			
 			
@@ -131,10 +142,11 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staffs-list.php'
+			  url: 'handlers/payments-list.php',
+			  data: scope.filter
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.staffs);
+				angular.copy(response.data, scope.payments);
 				
 			}, function myError(response) {
 				 
@@ -156,7 +168,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			});			
 			
 			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/staffs.html',function() {
+			$('#x_content').load('lists/payments.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
 			});	
 
