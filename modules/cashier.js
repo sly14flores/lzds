@@ -12,6 +12,8 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 			scope.payment = {};
 			scope.payment.id = 0;
+			scope.payment.description = {name:"", description:"-"};
+			scope.payment.payment_month = {no:"", name:"-"};
 
 			scope.enrollments = [];		
 			scope.payments = [];		
@@ -45,7 +47,29 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				 
 			  // error
 				
-			});			
+			});
+
+			scope.descriptions = [
+				{name:"", description:"-"},
+				{name:"down_payment", description:"Down Payment"},
+				{name:"monthly_payment", description:"Monthly Payment"}
+			];
+			
+			scope.months = [
+				{no:"", name:"-"},
+				{no:"01", name:"January"},
+				{no:"02", name:"February"},
+				{no:"03", name:"March"},
+				{no:"04", name:"April"},
+				{no:"05", name:"May"},
+				{no:"06", name:"June"},
+				{no:"07", name:"July"},
+				{no:"08", name:"August"},
+				{no:"09", name:"September"},
+				{no:"10", name:"October"},
+				{no:"11", name:"November"},
+				{no:"12", name:"December"}
+			];
 			
 		};
 		
@@ -99,6 +123,9 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 		};
 		
 		self.edit = function(scope) {
+			
+			scope.payment.description = {name:"", description:"-"};
+			scope.payment.payment_month = {no:"", name:"-"};			
 			
 			var content = 'dialogs/payment.html';
 			

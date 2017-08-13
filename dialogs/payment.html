@@ -2,19 +2,19 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<label>Description</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<select class="form-control" ng-model="payment.description" name="description" ng-options="description.description for description in descriptions track by description.name" required></select>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<label>Month</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<select class="form-control" ng-model="payment.payment_month" name="payment_month" ng-options="month.name for month in months track by month.no" required></select>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<label>OR</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" ng-model="payment.official_receipt">
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<label>Amount</label>
-	<input type="text" placeholder="" class="form-control" name="">
+	<input type="text" placeholder="" class="form-control" name="amount" ng-model="payment.amount" required>
   </div>  
 </div>
 </form>
