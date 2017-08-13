@@ -10,11 +10,11 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 			scope.views.list = false;			
 			
-			scope.staff = {};
-			scope.staff.id = 0;
+			scope.payment = {};
+			scope.payment.id = 0;
 
-			scope.payments = [];
-			scope.suggest_staffs = [];			
+			scope.enrollments = [];		
+			scope.payments = [];		
 			
 			scope.school_years_ = [];
 			
@@ -47,22 +47,11 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				
 			});			
 			
-			scope.btns = {
-				ok: {
-					disabled: false,					
-					label: 'Save'					
-				},
-				cancel: {
-					disabled: false,					
-					label: 'Cancel'		
-				}
-			};
-			
 		};
 		
 		function validate(scope) {
 			
-			var controls = scope.formHolder.staff.$$controls;
+			var controls = scope.formHolder.payment.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
 				
@@ -70,61 +59,56 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 									
 			});
 
-			return scope.formHolder.staff.$invalid;
+			return scope.formHolder.payment.$invalid;
 			
 		};
 		
-		function mode(scope,row) {
+		function mode(scope) {
+
+			scope.views.panel_title = 'Payment Info';
 			
-			if (row != null) {
-				scope.views.panel_title = 'Edit Staff Info';			
-				scope.btns.ok.disabled = true;
-				scope.btns.ok.label = 'Update';
-				scope.btns.cancel.label = 'Close';			
-			} else {
-				scope.views.panel_title = 'Add Staff';
-				scope.btns.ok.disabled = false;	
-				scope.btns.ok.label = 'Save';
-				scope.btns.cancel.label = 'Cancel';
-			}
-			
-		};		
+		};
 		
-		self.staff = function(scope,row) { // form
+		self.payment = function(scope,row) { // form
 			
-			scope.views.list = true;		
+			scope.views.list = true;
 			
-			mode(scope,row);			
+			mode(scope);		
 			
 			$('#x_content').html('Loading...');
-			$('#x_content').load('forms/staff.html',function() {
+			$('#x_content').load('forms/payment.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
 			});
-						
-			if (row != null) {
-				if (scope.$id > 2) scope = scope.$parent;
+
+			if (scope.$id > 2) scope = scope.$parent;
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/payment-edit.php',
+			  data: {enrollment_id: row.id}
+			}).then(function mySucces(response) {
 				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/staff-edit.php',
-				  data: {id: row.id}
-				}).then(function mySucces(response) {
-					
-					angular.copy(response.data, scope.staff);
-					if (scope.staff.birthday != null) scope.staff.birthday = new Date(scope.staff.birthday);
-					
-				}, function myError(response) {
-					 
-				  // error
-					
-				});					
-			};			
+				angular.copy(response.data, scope.payment);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});							
 			
 		};
 		
 		self.edit = function(scope) {
 			
-			scope.btns.ok.disabled = !scope.btns.ok.disabled;
+			var content = 'dialogs/payment.html';
+			
+			var onOk = function() {
+				
+				if (scope.$id > 2) scope = scope.$parent;
+
+			};
+
+			bootstrapModal.box(scope,'Add Payment',content,onOk);			
 			
 		};		
 		
@@ -132,8 +116,8 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 			scope.views.list = false;			
 			
-			scope.staff = {};
-			scope.staff.id = 0;		
+			scope.payment = {};
+			scope.payment.id = 0;		
 		
 			scope.currentPage = 1;
 			scope.pageSize = 15;		
@@ -146,26 +130,13 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			  data: scope.filter
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.payments);
+				angular.copy(response.data, scope.enrollments);
 				
 			}, function myError(response) {
 				 
 			  // error
 				
-			});
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/staffs-suggest.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.suggest_staffs);
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});			
+			});					
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/payments.html',function() {
@@ -180,8 +151,8 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staff-save.php',
-			  data: scope.staff
+			  url: 'handlers/payment-save.php',
+			  data: scope.payment
 			}).then(function mySucces(response) {
 				
 				self.list(scope);
@@ -216,7 +187,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
 
 		};		
 		
