@@ -1,4 +1,26 @@
 <p class="tools-editor pull-right"><i class="fa fa-plus" ng-click="form.edit(this,null)"></i></p>
+	<section class="content invoice">
+		<div class="row invoice-info">
+			<div class="col-sm-3 invoice-col">
+				Fullname:&nbsp;<strong>{{enrollment_info.fullname}}</strong><br>
+				Date Enrolled:&nbsp;<strong>{{enrollment_info.enrollment_date}}</strong><br>
+				School Year:&nbsp;<strong>{{enrollment_info.enrollment_school_year}}</strong>
+			</div>			
+			<div class="col-sm-3 invoice-col">
+				LRN:&nbsp;<strong>{{enrollment_info.lrn}}</strong><br>
+				School ID:&nbsp;<strong>{{enrollment_info.school_id}}</strong><br>
+				Grade:&nbsp;<strong>{{enrollment_info.grade}}</strong><br>
+				Section:&nbsp;<strong>{{enrollment_info.section}}</strong>				
+			</div>
+			<div class="col-sm-3 invoice-col">
+				Sub Total:&nbsp;<strong>Php. {{enrollment_info.sub_total}}</strong><br>
+				Discount:&nbsp;<strong>Php. {{enrollment_info.discount}}</strong><br>
+				Total:&nbsp;<strong>Php. {{enrollment_info.sub_total-enrollment_info.discount}}</strong>
+			</div>			
+		</div>
+	</section>
+</div>
+<div class="ln_solid"></div>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<table class="table table-striped jambo_table bulk_action">
@@ -19,4 +41,10 @@
 		</tbody>
 	</table>	
   </div>  
+</div>
+<div class="ln_solid"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">Close</button>
+	</div>
 </div>

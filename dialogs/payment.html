@@ -1,20 +1,23 @@
 <form name="formHolder.payment" id="formHolder.payment" novalidate>
 <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.description.$touched && formHolder.payment.description.$invalid}">
 	<label>Description</label>
-	<select class="form-control" ng-model="payment.description" name="description" ng-options="description.description for description in descriptions track by description.name" required></select>
+	<select class="form-control" name="description" ng-model="payment.description" ng-options="description.description for description in descriptions track by description.name" required></select>
+	<span class="help-block" ng-show="formHolder.payment.description.$touched && formHolder.payment.description.$invalid">Description is required</span>
   </div>
-  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.payment_month.$touched && formHolder.payment.payment_month.$invalid}">
 	<label>Month</label>
-	<select class="form-control" ng-model="payment.payment_month" name="payment_month" ng-options="month.name for month in months track by month.no" required></select>
+	<select class="form-control" name="payment_month" ng-model="payment.payment_month" ng-options="month.name for month in months track by month.no" required></select>
+	<span class="help-block" ng-show="formHolder.payment.payment_month.$touched && formHolder.payment.payment_month.$invalid">Month is required</span>	
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group">
 	<label>OR</label>
 	<input type="text" placeholder="" class="form-control" ng-model="payment.official_receipt">
   </div>
-  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.amount.$touched && formHolder.payment.amount.$invalid}">
 	<label>Amount</label>
-	<input type="text" placeholder="" class="form-control" name="amount" ng-model="payment.amount" required>
+	<input type="number" placeholder="" class="form-control" name="amount" ng-model="payment.amount" required>
+	<span class="help-block" ng-show="formHolder.payment.amount.$touched && formHolder.payment.amount.$invalid">Amount is required</span>	
   </div>  
 </div>
 </form>
