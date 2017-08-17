@@ -12,6 +12,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			
 			scope.payment = {};
 			scope.payment.id = 0;
+			scope.payment.enrollment_id = 0;
 			scope.payment.description = {name:"", description:"-"};
 			scope.payment.payment_month = {no:"", name:"-"};
 			
@@ -52,11 +53,27 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			});
 
 			scope.descriptions = [
-				{name:"down_payment", description:"Down Payment"},
-				{name:"monthly_payment", description:"Monthly Payment"}
+				{name:undefined, description:"-"},
+				{name:"monthly_payment", description:"Monthly Payment"},
+				{name:"down_payment", description:"Down Payment"}
 			];
 			
+			scope.getDescription = function(scope,description) {
+				
+				var desc = "";
+				
+				angular.forEach(scope.descriptions, function(item,i) {
+					
+					if (item.name == description) desc = item.description;
+					
+				});
+				
+				return desc;
+				
+			};		
+			
 			scope.months = [
+				{no:undefined, name:"-"},
 				{no:"01", name:"January"},
 				{no:"02", name:"February"},
 				{no:"03", name:"March"},
@@ -70,8 +87,50 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				{no:"11", name:"November"},
 				{no:"12", name:"December"}
 			];
+
+			scope.getMonth = function(scope,month) {
+				
+				var mo = "";
+				
+				angular.forEach(scope.months, function(item,i) {
+					
+					if (item.no == month) mo = item.name;
+					
+				});
+				
+				return mo;
+				
+			};			
 			
 		};
+		
+		function getDescriptionObj(scope,description) {
+			
+			var desc = {name:undefined, description:"-"};
+			
+			angular.forEach(scope.descriptions, function(item,i) {
+				
+				if (item.name == description) desc = item;
+				
+			});
+			
+			return desc;
+			
+		};
+
+		function getMonthObj(scope,month) {
+			
+			var mo = {no:undefined, name:"-"};
+			
+			angular.forEach(scope.months, function(item,i) {
+				
+				if (item.no == month) mo = item;
+				
+			});
+			
+			return mo;
+			
+		};		
 		
 		function validate(scope) {
 			
@@ -107,24 +166,43 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			if (scope.$id > 2) scope = scope.$parent;
 
 			angular.copy(row, scope.enrollment_info);
+			scope.payment.enrollment_id = row.id;
+			
+			payments(scope,row.id);
+			
+		};
+		
+		function payments(scope,id) {
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/payment-edit.php',
-			  data: {enrollment_id: row.id}
+			  data: {enrollment_id: id}
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.payment);
+				angular.copy(response.data, scope.payments);
 				
 			}, function myError(response) {
 				 
 			  // error
 				
-			});							
+			});			
 			
 		};
 		
-		self.edit = function(scope) {				
+		self.edit = function(scope,payment) {
+			
+			if (payment == null) {
+				scope.payment.id = 0;
+				delete scope.payment.description;
+				delete scope.payment.payment_month;
+				delete scope.payment.amount;
+				delete scope.payment.official_receipt;
+			} else {
+				scope.payment = payment;
+				scope.payment.description = getDescriptionObj(scope,scope.payment.description);
+				scope.payment.payment_month = getMonthObj(scope,scope.payment.payment_month);
+			};
 			
 			var content = 'dialogs/payment.html';			
 
@@ -175,7 +253,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			  data: scope.payment
 			}).then(function mySucces(response) {
 				
-
+				payments(scope,scope.payment.enrollment_id);
 				
 			}, function myError(response) {
 				 
