@@ -182,6 +182,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				
 				angular.copy(response.data, scope.payments);
 				
+				
 			}, function myError(response) {
 				 
 			  // error
@@ -189,6 +190,24 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			});			
 			
 		};
+		
+		function enrollment_info(scope,id) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/payment-enrollment-info.php',
+			  data: {id: id}
+			}).then(function mySucces(response) {
+				
+				angular.copy(response.data, scope.enrollment_info);				
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
+			
+		}
 		
 		self.edit = function(scope,payment) {
 			
@@ -253,7 +272,8 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			  data: scope.payment
 			}).then(function mySucces(response) {
 				
-				payments(scope,scope.payment.enrollment_id);
+				payments(scope,scope.payment.enrollment_id);				
+				enrollment_info(scope,scope.payment.enrollment_id);		
 				
 			}, function myError(response) {
 				 
@@ -273,11 +293,12 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/staff-delete.php',
+				  url: 'handlers/payment-delete.php',
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
-					self.list(scope);
+					payments(scope,scope.payment.enrollment_id);
+					enrollment_info(scope,scope.payment.enrollment_id);					
 					
 				}, function myError(response) {
 					 
@@ -287,7 +308,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this payment?',onOk,function() {});
 
 		};		
 		

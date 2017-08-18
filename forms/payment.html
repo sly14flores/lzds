@@ -1,21 +1,25 @@
 <p class="tools-editor pull-right"><i class="fa fa-plus" ng-click="form.edit(this,null)"></i></p>
-	<section class="content invoice">
+<div class="clearfix"></div>
+	<section class="content invoice clearfix">
 		<div class="row invoice-info">
-			<div class="col-sm-3 invoice-col">
+			<div class="col-md-3 col-sm-3 invoice-col">
 				Fullname:&nbsp;<strong>{{enrollment_info.fullname}}</strong><br>
 				Date Enrolled:&nbsp;<strong>{{enrollment_info.enrollment_date}}</strong><br>
 				School Year:&nbsp;<strong>{{enrollment_info.enrollment_school_year}}</strong>
 			</div>			
-			<div class="col-sm-3 invoice-col">
+			<div class="col-md-3 col-sm-3 invoice-col">
 				LRN:&nbsp;<strong>{{enrollment_info.lrn}}</strong><br>
 				School ID:&nbsp;<strong>{{enrollment_info.school_id}}</strong><br>
 				Grade:&nbsp;<strong>{{enrollment_info.grade}}</strong><br>
 				Section:&nbsp;<strong>{{enrollment_info.section}}</strong>				
 			</div>
-			<div class="col-sm-3 invoice-col">
+			<div class="col-md-3 col-sm-3 invoice-col">
 				Sub Total:&nbsp;<strong>Php. {{enrollment_info.sub_total}}</strong><br>
 				Discount:&nbsp;<strong>Php. {{enrollment_info.discount}}</strong><br>
-				Total:&nbsp;<strong>Php. {{enrollment_info.sub_total-enrollment_info.discount}}</strong>
+				Total:&nbsp;<strong>Php. {{enrollment_info.total}}</strong>
+			</div>
+			<div class="col-md-3 col-sm-3 invoice-col">
+				Balance:&nbsp;<strong>Php. {{enrollment_info.balance}}</strong>
 			</div>			
 		</div>
 	</section>
