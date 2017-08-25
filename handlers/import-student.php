@@ -312,7 +312,6 @@ foreach ($enrollments as $enrollment) {
 	$import_enrollments = $destination->insertData($enrollment);
 	$enrollment_id = $destination->insertId;
 	
-	// downpayment
 	$destination->table = "students_fees";
 	foreach ($students_fees as $k => $sf) {
 		
@@ -324,8 +323,6 @@ foreach ($enrollments as $enrollment) {
 		}
 		
 	}
-	
-	// monthly payment	
 	
 	// discount
 	$destination->table = "students_discounts";
