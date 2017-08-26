@@ -12,7 +12,7 @@
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr class="even pointer" dir-paginate="row in staffs | itemsPerPage: pageSize | filter: views.search" current-page="currentPage">
+	  <tr class="even pointer" ng-repeat="row in filterData = (staffs | filter: views.search) | pagination: currentPage:pageSize">
 		<td class="">{{row.school_id}}</td>
 		<td class="">{{row.fullname}}</td>
 		<td class="">{{row.division}}</td>
@@ -24,6 +24,12 @@
 		</td>
 	  </tr>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="6" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>	
   </table>
-  <dir-pagination-controls template-url="modules/pagination/dirPagination.tpl.html" boundary-links="true"></dir-pagination-controls>
 </div>

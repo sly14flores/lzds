@@ -1,4 +1,4 @@
-angular.module('enrollments-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','pnotify-module','block-ui']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI) {
+angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI) {
 	
 	function enrollment() {
 		

@@ -1,4 +1,4 @@
-angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year','ui.bootstrap']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
 	
 	function form() {
 		
@@ -206,7 +206,8 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			scope.fee_items_del = [];	
 		
 			scope.currentPage = 1;
-			scope.pageSize = 18;		
+			scope.pageSize = 18;
+			scope.maxSize = 5;			
 		
 			scope.views.panel_title = 'Fees List';		
 
@@ -217,25 +218,13 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.fees);
+				scope.filterData = scope.fees;	
 				
 			}, function myError(response) {
 				 
 			  // error
 				
-			});
-			
-/* 			$http({
-			  method: 'POST',
-			  url: 'handlers/fees-suggest.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.suggest_fees);
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});	 */		
+			});	
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/fees.html',function() {

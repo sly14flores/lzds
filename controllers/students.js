@@ -1,4 +1,4 @@
-var app = angular.module('students',['account-module','enrollments-module','toggle-fullscreen','students-module','ui.bootstrap']);
+var app = angular.module('students',['account-module','enrollments-module','toggle-fullscreen','students-module']);
 
 app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 	
@@ -17,4 +17,14 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 	$scope.form = form;
 	$scope.enrollment = enrollment;	
 
+});
+
+app.filter('pagination', function() {
+	  return function(input, currentPage, pageSize) {
+	    if(angular.isArray(input)) {
+	      var start = (currentPage-1)*pageSize;
+	      var end = currentPage*pageSize;
+	      return input.slice(start, end);
+	    }
+	  };
 });

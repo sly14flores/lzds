@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
 	
 	function form() {
 		
@@ -105,7 +105,8 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 			scope.staff.id = 0;		
 		
 			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			scope.pageSize = 15;
+			scope.maxSize = 5;				
 		
 			scope.views.panel_title = 'Staffs List';		
 
@@ -115,6 +116,7 @@ angular.module('staffs-module', ['angularUtils.directives.dirPagination','bootst
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.staffs);
+				scope.filterData = scope.staffs;			
 				
 			}, function myError(response) {
 				 

@@ -1,4 +1,4 @@
-angular.module('students-import-module', ['angularUtils.directives.dirPagination','bootstrap-modal','ui.bootstrap','block-ui','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,blockUI,pnotify) {
+angular.module('students-import-module', ['bootstrap-modal','ui.bootstrap','block-ui','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,blockUI,pnotify) {
 	
 	function form() {
 		
@@ -29,7 +29,8 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 			scope.suggest_students = [];
 		
 			scope.currentPage = 1;
-			scope.pageSize = 30;		
+			scope.pageSize = 30;
+			scope.maxSize = 5;
 		
 			scope.views.panel_title = 'Students List';		
 
@@ -39,7 +40,8 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.enrollees);
-				scope.currentPage = scope.views.currentPage;	
+				scope.filterData = scope.enrollees;
+				scope.currentPage = scope.views.currentPage;
 				blockUI.hide();
 				
 			}, function myError(response) {

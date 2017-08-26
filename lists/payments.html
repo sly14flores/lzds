@@ -4,7 +4,7 @@
 			<tr class="headings"><th>School ID</th><th>Fullname</th><th>School Year</th><th>Level</th><th>Section</th><th>Date Enrolled</th><th></th></tr>
 		</thead>
 		<tbody>
-			<tr dir-paginate="enrollment in enrollments | itemsPerPage: pageSize | filter: views.search" current-page="currentPage">
+			<tr ng-repeat="enrollment in filterData = (enrollments | filter: views.search) | pagination: currentPage:pageSize">
 				<td>{{enrollment.school_id}}</td>
 				<td>{{enrollment.fullname}}</td>
 				<td>{{enrollment.enrollment_school_year}}</td>				
@@ -16,6 +16,12 @@
 				</td>
 			</tr>
 		</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="7" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>		
 	</table>
-	<dir-pagination-controls template-url="modules/pagination/dirPagination.tpl.html" boundary-links="true"></dir-pagination-controls>
 </div>

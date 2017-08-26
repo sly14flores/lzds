@@ -1,4 +1,4 @@
-angular.module('students-module', ['angularUtils.directives.dirPagination','bootstrap-modal','x-panel-module','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI) {
+angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI) {
 	
 	function form() {
 		
@@ -124,7 +124,8 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			blockUI.show("Fetching students list please wait...");			
 			
 			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			scope.pageSize = 15;
+			scope.maxSize = 5;			
 		
 			scope.views.panel_title = 'Students List';		
 
@@ -134,6 +135,7 @@ angular.module('students-module', ['angularUtils.directives.dirPagination','boot
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.students);
+				scope.filterData = scope.students;				
 				blockUI.hide();
 				
 			}, function myError(response) {

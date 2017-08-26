@@ -1,4 +1,4 @@
-angular.module('cashier-module', ['angularUtils.directives.dirPagination','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
 	
 	function form() {
 		
@@ -237,7 +237,8 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			scope.payment.id = 0;		
 		
 			scope.currentPage = 1;
-			scope.pageSize = 15;		
+			scope.pageSize = 15;
+			scope.maxSize = 5;				
 		
 			scope.views.panel_title = 'Payments List';		
 
@@ -248,6 +249,7 @@ angular.module('cashier-module', ['angularUtils.directives.dirPagination','boots
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.enrollments);
+				scope.filterData = scope.enrollments;				
 				
 			}, function myError(response) {
 				 
