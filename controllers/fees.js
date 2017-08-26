@@ -1,8 +1,6 @@
 var app = angular.module('fees',['account-module','toggle-fullscreen','fees-module','ui.bootstrap']);
 
-app.controller('feesCtrl',function($scope,fullscreen,form) {
-	
-	form.data($scope); // initialize data
+app.controller('feesCtrl',function($scope,fullscreen,form) {	
 	
 	$scope.views = {};	
 	
@@ -10,6 +8,8 @@ app.controller('feesCtrl',function($scope,fullscreen,form) {
 	$scope.views.panel_title = 'Fees List';
 	
 	$scope.fullscreen = fullscreen;
+	
+	form.data($scope); // initialize data	
 	
 	form.list($scope);
 

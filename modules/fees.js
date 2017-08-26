@@ -8,6 +8,8 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 			scope.formHolder = {};
 			
+			scope.views.list = false;			
+			
 			scope.fee = {};
 			scope.fee.id = 0;
 			
@@ -18,12 +20,45 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 			scope.btns = {
 				ok: {
+					disabled: false,					
 					label: 'Save'
 				},
 				cancel: {
+					disabled: false,					
 					label: 'Cancel'
 				}
 			};
+			
+			scope.school_years_ = [];
+			
+			schoolYear.get(scope);
+			
+			$timeout(function() {
+				
+				scope.school_years_.push({id: 0, school_year: "SY"});
+				
+				angular.forEach(scope.school_years,function(item,i) {
+
+					scope.school_years_.push(item);
+					
+				});
+				
+			},1000);
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.filter = {
+					school_year: response.data
+				};
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
 			
 		};
 		
@@ -43,7 +78,10 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 		
 		self.clone = function(scope,row) {
 			
-			scope.views.panel_title = 'Clone Fee';			
+			scope.views.list = true;			
+			
+			scope.views.panel_title = 'Clone Fee';
+			scope.btns.ok.disabled = false;	
 			scope.btns.ok.label = 'Save';
 			scope.btns.cancel.label = 'Cancel';
 			
@@ -86,11 +124,27 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 		};
 		
+		function mode(scope,row) {
+			
+			if (row != null) {
+				scope.views.panel_title = 'Edit Fee Info';			
+				scope.btns.ok.disabled = true;
+				scope.btns.ok.label = 'Update';
+				scope.btns.cancel.label = 'Close';			
+			} else {
+				scope.views.panel_title = 'Add Fee';
+				scope.btns.ok.disabled = false;	
+				scope.btns.ok.label = 'Save';
+				scope.btns.cancel.label = 'Cancel';
+			}
+			
+		};		
+		
 		self.fee = function(scope,row) { // form
 			
-			scope.views.panel_title = 'Add Fee';			
-			scope.btns.ok.label = 'Save';
-			scope.btns.cancel.label = 'Cancel';
+			scope.views.list = true;			
+			
+			mode(scope,row);			
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/fee.html',function() {
@@ -98,10 +152,9 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			});
 						
 			if (row != null) {
+				
 				if (scope.$id > 2) scope = scope.$parent;
-				scope.btns.ok.label = 'Update';
-				scope.btns.cancel.label = 'Close';				
-				scope.views.panel_title = 'Edit Fee Info';				
+			
 				$http({
 				  method: 'POST',
 				  url: 'handlers/fee-edit.php',
@@ -115,7 +168,8 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 					 
 				  // error
 					
-				});					
+				});
+				
 			};
 
 			$http({
@@ -135,8 +189,16 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			
 		};
 		
-		self.list = function(scope) {		
+		self.edit = function(scope) {
+			
+			scope.btns.ok.disabled = !scope.btns.ok.disabled;
+			
+		};		
+		
+		self.list = function(scope,view) {		
 
+			scope.views.list = false;		
+		
 			scope.fee = {};
 			scope.fee.id = 0;		
 		
@@ -151,7 +213,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			$http({
 			  method: 'POST',
 			  url: 'handlers/fees-list.php',
-			  data: {q: scope.views.search}
+			  data: scope.filter
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.fees);
@@ -162,7 +224,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 				
 			});
 			
-			$http({
+/* 			$http({
 			  method: 'POST',
 			  url: 'handlers/fees-suggest.php'
 			}).then(function mySucces(response) {
@@ -173,7 +235,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 				 
 			  // error
 				
-			});			
+			});	 */		
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/fees.html',function() {
@@ -192,7 +254,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 			  data: {fee: scope.fee, fee_items: scope.fee_items, fee_items_del: scope.fee_items_del}
 			}).then(function mySucces(response) {
 				
-				self.list(scope);
+				self.list(scope,'fee');
 				scope.fee_items_del = [];
 				
 			}, function myError(response) {
@@ -215,7 +277,7 @@ angular.module('fees-module', ['angularUtils.directives.dirPagination','bootstra
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
-					self.list(scope);
+					self.list(scope,'fee');
 					
 				}, function myError(response) {
 					 

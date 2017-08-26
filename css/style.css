@@ -2,7 +2,7 @@
 	width: 40px;
 }
 
-.list-action a:first-child {
+.list-action a:nth-child(1), .list-action a:nth-child(2) {
 	margin-right: 5px;
 }
 

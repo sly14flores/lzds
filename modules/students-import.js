@@ -35,8 +35,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/students-import-list.php',
-			  data: {q: scope.views.search}
+			  url: 'handlers/students-import-list.php'
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.enrollees);
@@ -47,20 +46,7 @@ angular.module('students-import-module', ['angularUtils.directives.dirPagination
 				 
 			  // error
 				
-			});
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/students-import-suggest.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.suggest_students);
-				
-			}, function myError(response) {
-				 
-			  error
-				
-			});
+			});			
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/students-import.html',function() {
