@@ -76,7 +76,7 @@ if ($result['old_table_pk'] != null) {
 	
 } else {
 	
-	$log = fopen("logs.txt","a+");
+	$log = fopen("payments-logs.txt","a+");
 	fwrite($log,"$result[id] has null old_table_pk");
 	
 }

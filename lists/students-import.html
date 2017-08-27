@@ -3,10 +3,10 @@
 	<thead>
 	  <tr class="headings">
 		<th class="column-title">ID </th>
-		<th class="column-title">School ID </th>
+		<th class="column-title">Birthdate </th>		
 		<th class="column-title">Last Name </th>
 		<th class="column-title">First Name </th>
-		<th class="column-title">Middle Name </th>		
+		<th class="column-title">Middle Name </th>				
 		<th class="column-title">School Year </th>
 		<th class="column-title">Imported </th>
 		<th class="column-title no-link last"><span class="nobr">Action</span>
@@ -16,7 +16,7 @@
 	<tbody>
 	  <tr class="even pointer" ng-class="{'added-to-list':row.added}" ng-repeat="row in filterData = (enrollees | filter: views.search) | pagination: currentPage:pageSize">
 		<td class="">{{row.enrollee_id}}</td>
-		<td class="">{{row.enrollee_fid}}</td>
+		<td class="">{{row.enrollee_dob}}</td>		
 		<td class="">{{row.enrollee_lname}}</td>
 		<td class="">{{row.enrollee_fname}}</td>
 		<td class="">{{row.enrollee_mname}}</td>

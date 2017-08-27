@@ -253,7 +253,7 @@ foreach ($results as $key => $result) {
 ** student fees
 */
 
-$students_fees = [];
+/* $students_fees = [];
 
 foreach ($results as $key => $result) {
 	$enrollment_school_year = $result["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($result["enrollee_sy"]."-01-01")));
@@ -266,7 +266,7 @@ foreach ($results as $key => $result) {
 			"old_table_pk"=>$result["enrollee_id"]
 		);	
 	}
-}
+} */
 
 // var_dump($students_fees);
 
@@ -312,7 +312,7 @@ foreach ($enrollments as $enrollment) {
 	$import_enrollments = $destination->insertData($enrollment);
 	$enrollment_id = $destination->insertId;
 	
-	$destination->table = "students_fees";
+/* 	$destination->table = "students_fees";
 	foreach ($students_fees as $k => $sf) {
 		
 		if ($sf['old_table_pk'] == $enrollment['old_table_pk']) {
@@ -322,7 +322,7 @@ foreach ($enrollments as $enrollment) {
 		
 		}
 		
-	}
+	} */
 	
 	// discount
 	$destination->table = "students_discounts";
