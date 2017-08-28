@@ -89,7 +89,7 @@ require_once '../db2.php';
 $src = new pdo_db("lzds");
 $dst = new pdo_db("lzdssystem","students_fees");
 
-$results = $dst->getData("SELECT * FROM enrollments LIMIT 1");
+$results = $dst->getData("SELECT * FROM enrollments");
 
 $i = 0;
 $total = count($results);
@@ -120,19 +120,23 @@ if ($result['old_table_pk'] != null) {
 
 	foreach ($students_fees_src as $key => $sfs) {
 		$enrollment_school_year = $sfs["enrollee_sy"].date("-y",strtotime("+1 Year",strtotime($sfs["enrollee_sy"]."-01-01")));
-		foreach ($fees_indexes as $i => $fi) {;
-			$fees_items = $dst->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$fees_indexes_description[$i]."' AND fees.school_year = ".$school_years[$enrollment_school_year]." AND fee_items.level = ".$_grade[$grade[$sfs["enrollee_grade"]]]);
+		foreach ($fees_indexes as $ii => $fi) {
+			$fees_items = $dst->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$fees_indexes_description[$ii]."' AND fees.school_year = ".$school_years[$enrollment_school_year]." AND fee_items.level = ".$_grade[$grade[$sfs["enrollee_grade"]]]);
 			$students_fees[] = array(
-				"enrollment_id"=>0,
+				"enrollment_id"=>$result['id'],
 				"fee_item_id"=>$fees_items[0]['id'],
-				"amount"=>$sfs[$i],
+				"amount"=>$sfs[$ii],
 				"old_table_pk"=>$result['old_table_pk']
 			);	
 		}
 	}
+
+	foreach ($students_fees as $data) {
 	
-	var_dump($students_fees);
+		$insert = $dst->insertData($data);
 	
+	}
+
 } else {
 
 	$log = fopen("fees-items-logs.txt","a+");
@@ -148,20 +152,7 @@ $i++;
 
 if ($i<$total) import($results[$i]);
 else echo "$percent% done...\n";
-	
+
 }
-
-/*
-
-$results = $dst->getData("SELECT * FROM students_fees");
-
-foreach ($results as $result) {	
-	$enrollment = $con->getData("SELECT grade, enrollment_school_year FROM enrollments WHERE id = ".$result['enrollment_id']);
-	$description = $con->getData("SELECT description FROM fees WHERE id = ".$result['fee_item_id']);
-	if (count($description)) {
-		$fee_item_id = $con->getData("SELECT fee_items.id FROM fee_items LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fees.description = '".$description[0]['description']."' AND fees.school_year = ".$enrollment[0]['enrollment_school_year']." AND fee_items.level = ".$enrollment[0]['grade']);
-		$con->query("UPDATE students_fees SET fee_item_id = ".$fee_item_id[0]['id']." WHERE id = ".$result['id']);
-	}
-} */
 
 ?>
