@@ -49,4 +49,6 @@ if (count($_POST['parents_guardians_dels'])) {
 	$delete = $con->deleteData(array("id"=>implode(",",$_POST['parents_guardians_dels'])));
 }
 
+echo $student_id;
+
 ?>

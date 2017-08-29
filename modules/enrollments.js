@@ -67,6 +67,7 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		self.form = function(scope,row) {
 			
 			scope.student_enrollment.id = 0;
+			scope.student_enrollment.student_id = scope.student.id;
 			scope.student_enrollment.school_id = '';
 			scope.student_enrollment.enrollment_school_year = {id:0,school_year:""};
 			scope.student_enrollment.grade = {id:0,description:"",sections:[]};
@@ -82,7 +83,7 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			scope.enrollment_fees = [];
 			scope.benrollment_fees = [];
 			
-			mode(scope,row);			
+			mode(scope,row);
 			
 			$('#x_content_enrollment').html('Loading...');
 			$('#x_content_enrollment').load('forms/enrollment.html',function() {
@@ -139,12 +140,9 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			
 		};		
 		
-		self.list = function(scope,row) {
-		
-			// scope.currentPage = 1;
-			// scope.pageSize = 15;			
-			
-			if (scope.$id > 35) scope = scope.$parent;									
+		self.list = function(scope,row) {		
+
+			if (scope.$id > 2) scope = scope.$parent;									
 			
 			if (row != null) {
 				scope.student_enrollment.student_id = row.id;
@@ -252,8 +250,12 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			  data: {student_enrollment: scope.student_enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
 			}).then(function mySucces(response) {
 				
-				if (scope.student_enrollment.id == 0) pnotify.show('success','Notification','Student successfully enrolled.');
-				else pnotify.show('success','Notification','Student enrollment info successfully updated.');				
+				if (scope.student_enrollment.id == 0) {
+					pnotify.show('success','Notification','Student successfully enrolled.');			
+					scope.bstudent_enrollment.student_id = scope.student.id;
+				} else {
+					pnotify.show('success','Notification','Student enrollment info successfully updated.');				
+				}
 				mode(scope,{});
 				
 			}, function myError(response) {

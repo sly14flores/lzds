@@ -64,11 +64,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.student = function(scope,row) { // form			
 			
-			scope.views.list = true;
-			
-			blockUI.show("Fetching student infos please wait...");	
-			
-			scope.enrollment.list(scope,row);			
+			scope.views.list = true;				
 			
 			scope.student = {};
 			scope.student.id = 0;
@@ -84,9 +80,13 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 					$compile($('#x_content')[0])(scope);
 				},100);
 			});
-		
+							
 			
-			if (row != null) {		
+			if (row != null) {							
+			
+				blockUI.show("Fetching student infos please wait...");	
+			
+				scope.enrollment.list(scope,row);				
 			
 				$http({
 				  method: 'POST',
@@ -104,7 +104,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 					 
 				  // error
 					
-				});					
+				});
+				
 			};					
 			
 		};
@@ -178,8 +179,12 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			}).then(function mySucces(response) {
 				
 				scope.btns.ok.disabled = true;
-				if (scope.student.id == 0) pnotify.show('success','Notification','Student info successfully added.');
-				else pnotify.show('success','Notification','Student info successfully updated.');
+				if (scope.student.id == 0) {
+					pnotify.show('success','Notification','Student info successfully added.');					
+					scope.student.id = response.data;
+				} else {
+					pnotify.show('success','Notification','Student info successfully updated.');
+				}
 				mode(scope,{});
 				
 			}, function myError(response) {
