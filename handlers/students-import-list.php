@@ -17,6 +17,7 @@ $students = $lzds->getData($sql);
 
 foreach ($students as $key => $student) {
 	
+	$students[$key]["enrollee_no"] = $key;
 	$students[$key]["enrollee_dob"] = date("M j, Y",strtotime($student["enrollee_dob"]));
 	$students[$key]["added"] = false;
 	$students[$key]["enrollee_imported"] = "No";

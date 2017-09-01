@@ -2,6 +2,7 @@
   <table class="table table-striped jambo_table bulk_action">
 	<thead>
 	  <tr class="headings">
+		<th class="column-title"># </th>
 		<th class="column-title">ID </th>
 		<th class="column-title">Birthdate </th>		
 		<th class="column-title">Last Name </th>
@@ -15,6 +16,7 @@
 	</thead>
 	<tbody>
 	  <tr class="even pointer" ng-class="{'added-to-list':row.added}" ng-repeat="row in filterData = (enrollees | filter: views.search) | pagination: currentPage:pageSize">
+		<td class="">{{row.enrollee_no}}</td>
 		<td class="">{{row.enrollee_id}}</td>
 		<td class="">{{row.enrollee_dob}}</td>		
 		<td class="">{{row.enrollee_lname}}</td>

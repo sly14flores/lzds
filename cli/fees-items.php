@@ -134,6 +134,8 @@ if ($result['old_table_pk'] != null) {
 	foreach ($students_fees as $data) {
 	
 		$insert = $dst->insertData($data);
+		
+		# insert discount
 	
 	}
 
