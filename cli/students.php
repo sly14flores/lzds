@@ -5,8 +5,8 @@ require_once '../db2.php';
 $source = new pdo_db("lzds");
 $destination = new pdo_db("lzdssystem","students");
 
-$start = 0;
-$end = 13;
+$start = 1740;
+$end = 1776;
 
 $results_all = $source->getData("SELECT * FROM enrollees ORDER BY enrollee_dob, enrollee_lname, enrollee_sy");
 
@@ -25,11 +25,10 @@ foreach($results as $i => $result) {
 		$merges[] = $merge;
 		break;
 	}
-	$latter = $results[$i+1];
-	if (($result['enrollee_fname'] != $latter['enrollee_fname']) && ($result['enrollee_dob'] != $latter['enrollee_dob'])) {
+	$next = $results[$i+1];
+	if (($result['enrollee_fname'] != $next['enrollee_fname']) || ($result['enrollee_dob'] != $next['enrollee_dob'])) {
 		$merges[] = $merge;
 		$merge = [];
-		continue;
 	};
 };
 

@@ -29,7 +29,7 @@ angular.module('students-import-module', ['bootstrap-modal','ui.bootstrap','bloc
 			scope.suggest_students = [];
 		
 			scope.currentPage = 1;
-			scope.pageSize = 100;
+			scope.pageSize = 150;
 			scope.maxSize = 5;
 		
 			scope.views.panel_title = 'Students List';		
