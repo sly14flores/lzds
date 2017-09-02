@@ -89,7 +89,10 @@ require_once '../db2.php';
 $src = new pdo_db("lzds");
 $dst = new pdo_db("lzdssystem","students_fees");
 
-$results = $dst->getData("SELECT * FROM enrollments");
+$start = 1701;
+$end = 1792;
+
+$results = $dst->getData("SELECT * FROM enrollments WHERE id BETWEEN $start AND $end");
 
 $i = 0;
 $total = count($results);
@@ -131,13 +134,22 @@ if ($result['old_table_pk'] != null) {
 		}
 	}
 
+	$dst->table = "students_fees";
 	foreach ($students_fees as $data) {
 	
 		$insert = $dst->insertData($data);
-		
-		# insert discount
 	
 	}
+	
+	# students_discounts
+	$dst->table = "students_discounts";
+	$student_discount = array(
+		"enrollment_id"=>$result['id'],
+		"amount"=>$students_fees_src[0]["enrollee_discount"],
+		"old_table_pk"=>$students_fees_src[0]["enrollee_id"]
+	);
+	
+	$insert_discount = $dst->insertData($student_discount);
 
 } else {
 
@@ -148,7 +160,7 @@ if ($result['old_table_pk'] != null) {
 
 $percent = ceil($c*100/$total);
 
-echo "Imported $c/$total...$percent% done\n";
+echo "Imported $result[id] ($c/$total)...$percent% done\n";
 
 $i++;
 
