@@ -64,6 +64,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.student = function(scope,row) { // form			
 			
+			scope.views.currentPage = scope.currentPage;			
+			
 			scope.views.list = true;				
 			
 			scope.student = {};
@@ -86,7 +88,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 				blockUI.show("Fetching student infos please wait...");	
 			
-				scope.enrollment.list(scope,row);				
+				$timeout(function() { scope.enrollment.list(scope,row); },500);
 			
 				$http({
 				  method: 'POST',
@@ -124,7 +126,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			blockUI.show("Fetching students list please wait...");			
 			
-			scope.currentPage = 1;
+			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 15;
 			scope.maxSize = 5;			
 		
@@ -136,7 +138,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.students);
-				scope.filterData = scope.students;				
+				scope.filterData = scope.students;
+				scope.currentPage = scope.views.currentPage;				
 				blockUI.hide();
 				
 			}, function myError(response) {
@@ -196,6 +199,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		self.delete = function(scope,row) {
+			
+			scope.views.currentPage = scope.currentPage;			
 			
 			var onOk = function() {
 				

@@ -3,7 +3,8 @@
 	<thead>
 	  <tr class="headings">
 		<th class="column-title">LRN </th>
-		<th class="column-title">Fullname </th>
+		<th class="column-title">Fullname </th>		
+		<th class="column-title">Birthday </th>		
 		<th class="column-title">Contact </th>
 		<th class="column-title">Recent Level </th>
 		<th class="column-title">Recent SY </th>
@@ -15,6 +16,7 @@
 	  <tr class="even pointer" ng-repeat="row in filterData = (students | filter: views.search) | pagination: currentPage:pageSize">
 		<td class="">{{row.lrn}}</td>
 		<td class="">{{row.fullname}}</td>
+		<td class="">{{row.date_of_birth}}</td>
 		<td class="">{{row.contact_no}}</td>
 		<td class="">{{row.current_level}}</td>
 		<td class="">{{row.current_sy}}</td>

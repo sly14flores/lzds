@@ -2,7 +2,9 @@ var app = angular.module('students',['account-module','enrollments-module','togg
 
 app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 	
-	$scope.views = {};		
+	$scope.views = {};
+
+	$scope.views.currentPage = 1;
 	
 	form.data($scope); // initialize data
 	enrollment.data($scope); // initialize data	

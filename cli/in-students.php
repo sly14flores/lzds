@@ -5,7 +5,7 @@ require_once '../db2.php';
 $source = new pdo_db("lzds");
 $destination = new pdo_db("lzdssystem","students");
 
-$in = "(334,641,1090,1860)";
+$in = "()";
 
 $results = $source->getData("SELECT * FROM enrollees WHERE enrollee_id IN $in");
 
