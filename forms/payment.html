@@ -14,12 +14,13 @@
 				Section:&nbsp;<strong>{{enrollment_info.section}}</strong>				
 			</div>
 			<div class="col-md-3 col-sm-3 invoice-col">
-				Sub Total:&nbsp;<strong>Php. {{enrollment_info.sub_total}}</strong><br>
-				Discount:&nbsp;<strong>Php. {{enrollment_info.discount}}</strong><br>
-				Total:&nbsp;<strong>Php. {{enrollment_info.total}}</strong>
+				Sub Total:&nbsp;<strong>Php. {{formatThousandsNoRounding(enrollment_info.sub_total,2)}}</strong><br>
+				Discount:&nbsp;<strong>Php. {{formatThousandsNoRounding(enrollment_info.discount,2)}}</strong><br>
+				Total:&nbsp;<strong>Php. {{formatThousandsNoRounding(enrollment_info.total,2)}}</strong>
 			</div>
 			<div class="col-md-3 col-sm-3 invoice-col">
-				Balance:&nbsp;<strong>Php. {{enrollment_info.balance}}</strong>
+				Total Payments:&nbsp;<strong>Php. {{formatThousandsNoRounding(enrollment_info.payments,2)}}</strong><br>
+				Balance:&nbsp;<strong>Php. {{formatThousandsNoRounding(enrollment_info.balance,2)}}</strong>
 			</div>			
 		</div>
 	</section>
@@ -33,10 +34,10 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="row in payments">
-				<td>{{getDescription(this,row.description)}}</td>
-				<td>{{getMonth(this,row.payment_month)}}</td>
+				<td>{{row.description.description}}</td>
+				<td>{{row.payment_month.name}}</td>
 				<td>{{row.official_receipt}}</td>				
-				<td>{{row.amount}}</td>
+				<td>{{formatThousandsNoRounding(row.amount,2)}}</td>
 				<td>{{row.payment_date}}</td>
 				<td class="last list-action">
 					<a href="javascript:;" ng-click="form.edit(this,row)"><i class="fa fa-edit"></i></a>

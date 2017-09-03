@@ -5,6 +5,10 @@ require_once '../db2.php';
 $src = new pdo_db("lzds");
 $dst = new pdo_db("lzdssystem","payments");
 
+// $start = 1;
+// $end = 1789;
+
+// $results = $dst->getData("SELECT * FROM enrollments WHERE id BETWEEN $start AND $end");
 $results = $dst->getData("SELECT * FROM enrollments");
 
 $i = 0;
@@ -83,7 +87,7 @@ if ($result['old_table_pk'] != null) {
 
 $percent = ceil($c*100/$total);
 
-echo "Imported $c/$total...$percent% done\n";
+echo "Imported $result[id] ($c/$total)...$percent% done\n";
 
 $i++;
 

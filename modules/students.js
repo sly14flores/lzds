@@ -47,9 +47,9 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		function mode(scope,row) {
-			
+			console.log(row);
 			if (row != null) {
-				scope.views.panel_title = 'Edit Student Info';			
+				scope.views.panel_title = 'Edit Student Info'+' ('+row.fullname+')';
 				scope.btns.ok.disabled = true;
 				scope.btns.ok.label = 'Update';
 				scope.btns.cancel.label = 'Close';			

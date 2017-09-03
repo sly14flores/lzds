@@ -70,7 +70,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				
 				return desc;
 				
-			};		
+			};	
 			
 			scope.months = [
 				{no:undefined, name:"-"},
@@ -101,34 +101,6 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				return mo;
 				
 			};			
-			
-		};
-		
-		function getDescriptionObj(scope,description) {
-			
-			var desc = {name:undefined, description:"-"};
-			
-			angular.forEach(scope.descriptions, function(item,i) {
-				
-				if (item.name == description) desc = item;
-				
-			});
-			
-			return desc;
-			
-		};
-
-		function getMonthObj(scope,month) {
-			
-			var mo = {no:undefined, name:"-"};
-			
-			angular.forEach(scope.months, function(item,i) {
-				
-				if (item.no == month) mo = item;
-				
-			});
-			
-			return mo;
 			
 		};		
 		
@@ -210,17 +182,15 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		}
 		
 		self.edit = function(scope,payment) {
-			
+
 			if (payment == null) {
 				scope.payment.id = 0;
 				delete scope.payment.description;
 				delete scope.payment.payment_month;
 				delete scope.payment.amount;
 				delete scope.payment.official_receipt;
-			} else {
-				scope.payment = payment;
-				scope.payment.description = getDescriptionObj(scope,scope.payment.description);
-				scope.payment.payment_month = getMonthObj(scope,scope.payment.payment_month);
+			} else {				
+				scope.payment = angular.copy(payment);
 			};
 			
 			var content = 'dialogs/payment.html';			

@@ -14,7 +14,7 @@ if ( (isset($_POST['q'])) && ($_POST['q'] != "") ) $sql .= " WHERE CONCAT(enroll
 $sql .= " ORDER BY enrollee_dob, enrollee_lname, enrollee_sy";
 
 $students = $lzds->getData($sql);
-
+$not_yet_imported = [];
 foreach ($students as $key => $student) {
 	
 	$students[$key]["enrollee_no"] = $key;
@@ -23,9 +23,10 @@ foreach ($students as $key => $student) {
 	$students[$key]["enrollee_imported"] = "No";
 	$imported = $lzdssystem->getData("SELECT * FROM enrollments WHERE old_table_pk = ".$student['enrollee_id']);
 	if (count($imported)) $students[$key]["enrollee_imported"] = "Yes";
+	if (count($imported) == 0) $not_yet_imported[] = $students[$key];
 	
 }
 
-echo json_encode($students);
+echo json_encode($not_yet_imported);
 
 ?>
