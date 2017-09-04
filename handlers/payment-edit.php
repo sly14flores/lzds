@@ -61,6 +61,7 @@ foreach ($payments as $i => $payment) {
 	
 	$payments[$i]['description'] = getDescriptionObj($payment['description']);
 	$payments[$i]['payment_month'] = getMonthObj($payment['payment_month']);
+	$payments[$i]['payment_date_str'] = date("F j, Y",strtotime($payments[$i]['payment_date']));
 	
 };
 

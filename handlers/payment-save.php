@@ -8,6 +8,7 @@ $con = new pdo_db("payments");
 
 if ($_POST['id']) {
 	
+	unset($_POST['payment_date_str']);	
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";
 	$_POST['payment_date'] = "CURRENT_TIMESTAMP";
 	$_POST['description'] = $_POST['description']['name'];
@@ -17,6 +18,7 @@ if ($_POST['id']) {
 } else {
 	
 	unset($_POST['id']);
+	unset($_POST['payment_date_str']);
 	$_POST['system_log'] = "CURRENT_TIMESTAMP";
 	$_POST['payment_date'] = "CURRENT_TIMESTAMP";
 	$_POST['description'] = $_POST['description']['name'];

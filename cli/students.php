@@ -70,7 +70,15 @@ $enrollee_section = array(
 	12=>"St. Luke",
 	13=>"St. John",
 	14=>"Alpha",
-	15=>"St. Peter"
+	15=>"St. Peter",
+	16=>"Alpha",
+	17=>"Genesis",
+	18=>"St.Peter (ABM)",
+	19=>"St. Peter (GAS)",
+	20=>"St. Peter (STEM)",
+	21=>"St. Paul (GAS)",
+	22=>"St. Paul (ABM)",
+	23=>"St. Paul (STEM)"
 );
 
 $_enrollee_section = array(
@@ -86,7 +94,14 @@ $_enrollee_section = array(
 	"St. Luke"=>11,
 	"St. John"=>12,
 	"Alpha"=>1,
-	"St. Peter"=>13
+	"St. Peter"=>13,
+	"Genesis"=>14,
+	"St.Peter (ABM)"=>15,
+	"St. Peter (GAS)"=>16,
+	"St. Peter (STEM)"=>17,
+	"St. Paul (GAS)"=>18,
+	"St. Paul (ABM)"=>19,
+	"St. Paul (STEM)"=>20	
 );
 
 $grade = array(

@@ -89,8 +89,8 @@ require_once '../db2.php';
 $src = new pdo_db("lzds");
 $dst = new pdo_db("lzdssystem","students_fees");
 
-$start = 1701;
-$end = 1792;
+$start = 1901;
+$end = 2000;
 
 $results = $dst->getData("SELECT * FROM enrollments WHERE id BETWEEN $start AND $end");
 
