@@ -1,5 +1,6 @@
 <?php
 
+require_once '../db2.php';
 
 $src = new pdo_db("lzds");
 $dst = new pdo_db("lzdssystem","enrollments");
