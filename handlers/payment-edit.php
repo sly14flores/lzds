@@ -56,7 +56,7 @@ function getMonthObj($month) {
 
 $con = new pdo_db();
 
-$payments = $con->getData("SELECT id, enrollment_id, description, payment_month, amount, official_receipt, payment_date FROM payments WHERE enrollment_id = ".$_POST['enrollment_id']);
+$payments = $con->getData("SELECT id, enrollment_id, description, payment_month, amount, amount amount_str, official_receipt, payment_date FROM payments WHERE enrollment_id = ".$_POST['enrollment_id']);
 foreach ($payments as $i => $payment) {
 	
 	$payments[$i]['description'] = getDescriptionObj($payment['description']);

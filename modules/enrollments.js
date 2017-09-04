@@ -222,7 +222,7 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 
 			scope.details.sub_total = 0;
 			angular.forEach(scope.enrollment_fees, function(item,i) {
-				scope.details.sub_total += item.amount;
+				scope.details.sub_total += parseFloat(item.amount);
 			});
 			
 			scope.details.total = scope.details.sub_total - scope.details.discount;
