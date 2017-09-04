@@ -206,7 +206,7 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 			scope.fee_items_del = [];	
 		
 			scope.currentPage = 1;
-			scope.pageSize = 18;
+			scope.pageSize = 25;
 			scope.maxSize = 5;			
 		
 			scope.views.panel_title = 'Fees List';		
