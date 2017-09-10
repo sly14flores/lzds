@@ -1,4 +1,4 @@
-angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI) {
+angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost) {
 	
 	function enrollment() {
 		
@@ -289,6 +289,12 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});			
 			
 		};
+		
+		self.print = function(scope) {
+			
+			printPost.show('reports/template.php',{filter:'test'});
+			
+		};				
 		
 		function formatThousandsWithRounding(n, dp){
 		  var w = n.toFixed(dp), k = w|0, b = n < 0 ? 1 : 0,
