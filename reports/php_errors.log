@@ -1,0 +1,16 @@
+[24-Sep-2017 17:52:39 Asia/Manila] PHP Fatal error:  Uncaught Error: Using $this when not in object context in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:171
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(75): {closure}(Object(PDF))
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(334): PDF->Header()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(237): FPDF->AddPage()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 171
+[24-Sep-2017 23:41:36 Asia/Manila] PHP Notice:  Undefined variable: p in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 146
+[24-Sep-2017 23:41:36 Asia/Manila] PHP Stack trace:
+[24-Sep-2017 23:41:36 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:0
+[24-Sep-2017 23:41:36 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:327
+[24-Sep-2017 23:41:36 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to a member function SetTextColor() on unknown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:146
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(327): PDF->body(Array)
+#1 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 146

@@ -2,7 +2,7 @@
 
 $params = json_decode($_POST['params'],true);
 
-var_dump($params); exit();
+$filter = $params['filter'];
 
 $params = []; # comment this if production/live
 require('../fpdf181/fpdf.php');

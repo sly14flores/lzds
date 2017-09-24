@@ -291,8 +291,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		};
 		
 		self.print = function(scope) {
-			
-			printPost.show('reports/template.php',{filter:'test'});
+
+			printPost.show('reports/enrollment.php',{filter:{id: scope.enrollment_row.id}});
 			
 		};				
 		
