@@ -120,7 +120,7 @@ class PDF extends FPDF {
 				$this->SetX($header_x);
 			}
 			// $this->Rect($header_x,$header_y,$h['width'],$hh,'DF');
-			$this->Rect($header_x,$header_y,$h['width'],0.1,'DF');
+			$this->Rect($header_x,$header_y,$h['width'],0.2,'DF');
 			$this->Rect($header_x,$header_y+8,$h['width'],0.1,'DF');
 			// $this->MultiCell($h['width'],7,$h['column'],1,'C',true);
 			$this->MultiCell($h['width'],8,$h['column'],0,'C');
