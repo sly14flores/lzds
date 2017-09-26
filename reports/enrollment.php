@@ -109,7 +109,7 @@ class PDF extends FPDF {
 		$hh=5*$nb;
 	
 		// Header
-		$header_y = $this->GetY();
+		$header_y = $this->GetY()-15;
 		$header_x = $this->GetX();
 		$x_stack = 0;
 		foreach ($headers as $i => $h) {
@@ -123,6 +123,7 @@ class PDF extends FPDF {
 			$this->Rect($header_x,$header_y,$h['width'],0.2,'DF');
 			$this->Rect($header_x,$header_y+8,$h['width'],0.1,'DF');
 			// $this->MultiCell($h['width'],7,$h['column'],1,'C',true);
+			if ($i == 0) $this->SetY($header_y-.125); # first column in headers fix
 			$this->MultiCell($h['width'],8,$h['column'],0,'C');
 		}
 		$this->Ln($hh-5);
@@ -139,8 +140,8 @@ class PDF extends FPDF {
 			$rh=5*$nb;
 			
 			$this->CheckPageBreak($rh);
-			
-			$body_y = $this->GetY();
+
+			$body_y = $this->GetY();		
 			$body_x = $this->GetX();		
 			$x_stack = 0;
 			$this->SetTextColor(38,50,56);
@@ -154,7 +155,6 @@ class PDF extends FPDF {
 				$df = 'D';
 				if ($body['striped']) if ($fill) $df = 'DF';
 				if ($key == (count($data)-1)) $this->Rect($body_x,$body_y+6,$h['width'],0.1,$df);
-				// $this->MultiCell($h['width'],5,$row[array_keys($row)[$i]],0,'C',$fill);
 				$this->MultiCell($h['width'],6,$row[array_keys($row)[$i]],0,'C');
 			}
 			
@@ -175,10 +175,9 @@ class PDF extends FPDF {
 }
 # start
 $top_margin = 5;
-$body_top_margin = 4;
+$body_top_margin = 0;
 $header = array(
 	function($p) {
-		// $p->SetDrawColor();
 		$p->Image("../img/lzds-logo-gray.png",173,25,25);	
 	},
 	function($p) {
@@ -186,16 +185,16 @@ $header = array(
 		$p->SetFont('Arial','B',14);	
 		$p->SetXY(18,15);
 		$p->darkerText();
-		$p->Cell(0,5,"Lord of Zion Divine School",0,0,'L');
+		$p->Cell(0,5,"Lord of Zion Divine School",0,1,'L');
 		$p->SetFont('Arial','B',12);		
 		$p->SetXY(160,15);
-		$p->Cell(0,5,"Enrollment Report",0,0,'L');	
+		$p->Cell(0,5,"Enrollment Report",0,1,'L');	
 		$p->SetFont('Arial','',10);
 		$p->darkText();
 		$p->SetXY(18,25);
-		$p->Cell(0,5,"Paratong, Bacnotan, La Union, 2515",0,0,'L');
+		$p->Cell(0,5,"Paratong, Bacnotan, La Union, 2515",0,1,'L');
 		$p->SetXY(18,30);
-		$p->Cell(0,5,"Tel. No.: (072) 607 4004",0,0,'L');
+		$p->Cell(0,5,"Tel. No.: (072) 607 4004",0,1,'L');
 		$p->SetDrawColor(120,144,156);
 		$p->SetFillColor(120,144,156);
 		$p->Rect(18,60,180,0.5,"DF");
@@ -206,21 +205,21 @@ $header = array(
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(18,65);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"Name",0,0,'L');
+		$p->Cell(0,5,"Name",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(18,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Flores, Sylvester Bulilan",0,0,'L');	
+		$p->Cell(0,5,"Flores, Sylvester Bulilan",0,1,'L');	
 	},
 	function($p) { # LRN
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(18,80);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"LRN",0,0,'L');
+		$p->Cell(0,5,"LRN",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(18,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"1010101010",0,0,'L');
+		$p->Cell(0,5,"1010101010",0,1,'L');
 	},
 	function($p) { # Address
 		$p->SetFont('Arial','',9);	
@@ -236,48 +235,78 @@ $header = array(
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(130,65);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"Level",0,0,'L');
+		$p->Cell(0,5,"Level",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(130,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Grade 12",0,0,'L');
+		$p->Cell(0,5,"Grade 12",0,1,'L');
 	},
 	function($p) { # Section
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(130,80);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"Section",0,0,'L');
+		$p->Cell(0,5,"Section",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(130,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Omega",0,0,'L');	
+		$p->Cell(0,5,"Omega",0,1,'L');	
 	},
 	function($p) { # School Year
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(160,65);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"School Year",0,0,'L');
+		$p->Cell(0,5,"School Year",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(160,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"2017-18",0,0,'L');
+		$p->Cell(0,5,"2017-18",0,1,'L');
 	},
 	function($p) { # Date
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(160,80);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"Date",0,0,'L');
+		$p->Cell(0,5,"Date",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(160,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"June 5, 2017",0,0,'L');	
+		$p->Cell(0,5,"June 5, 2017",0,1,'L');	
 	},
-	function($p) { # Date
+	function($p) { # School Fees
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(19,105);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"School Fees",0,0,'L');	
-	},	
+		$p->Cell(0,5,"School Fees",0,1,'L');	
+	},
+	function($p) { # Sub Total
+		$p->SetFont('Arial','',9);	
+		$p->SetXY(135,105);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Sub Total",0,1,'R');
+		$p->SetFont('Arial','',11);	
+		$p->SetXY(150,105);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(30,5,"10,000",0,1,'R');
+	},
+	function($p) { # Discount
+		$p->SetFont('Arial','',9);	
+		$p->SetXY(135,115);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Discount",0,1,'R');
+		$p->SetFont('Arial','',11);	
+		$p->SetXY(150,115);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(30,5,"5,000",0,1,'R');	
+	},
+	function($p) { # Discount
+		$p->SetFont('Arial','',9);
+		$p->SetXY(135,125);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Total",0,0,'R');
+		$p->SetFont('Arial','',11);
+		$p->SetXY(150,125);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(30,5,"5,000",0,0,'R');
+	},
 	function($p) { # always last item
 		echo null; # important in include
 		global $body_top_margin;

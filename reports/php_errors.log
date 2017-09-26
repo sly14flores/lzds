@@ -14,3 +14,37 @@ Stack trace:
 #0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(327): PDF->body(Array)
 #1 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 146
+[26-Sep-2017 22:25:50 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 117
+[26-Sep-2017 22:25:50 Asia/Manila] PHP Stack trace:
+[26-Sep-2017 22:25:50 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:0
+[26-Sep-2017 22:25:50 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:375
+[26-Sep-2017 22:25:50 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(376): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[26-Sep-2017 22:26:08 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 117
+[26-Sep-2017 22:26:08 Asia/Manila] PHP Stack trace:
+[26-Sep-2017 22:26:08 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:0
+[26-Sep-2017 22:26:08 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:375
+[26-Sep-2017 22:26:08 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(376): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[26-Sep-2017 22:26:11 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 117
+[26-Sep-2017 22:26:11 Asia/Manila] PHP Stack trace:
+[26-Sep-2017 22:26:11 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:0
+[26-Sep-2017 22:26:11 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php:375
+[26-Sep-2017 22:26:11 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php(376): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[26-Sep-2017 22:33:39 Asia/Manila] PHP Parse error:  syntax error, unexpected 'l' (T_STRING) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 148
