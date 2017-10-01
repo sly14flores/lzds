@@ -4,10 +4,23 @@ $params = json_decode($_POST['params'],true);
 
 $filter = $params['filter'];
 
-$params = []; # comment this if production/live
-
 require('../fpdf181/fpdf.php');
 require('../db.php');
+
+$con = new pdo_db();
+
+$enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date FROM enrollments WHERE id = ".$filter['id']);
+$_fees = $con->getData("SELECT (SELECT fees.description FROM fees WHERE fees.id = (SELECT fee_items.fee_id FROM fee_items WHERE fee_items.id = students_fees.fee_item_id)) description, students_fees.amount amount FROM students_fees WHERE students_fees.enrollment_id = ".$filter['id']);
+$fees = [];
+$sub_total = 0;
+$total = 0;
+foreach ($_fees as $_fee) {
+	$fees[] = $_fee;
+	$sub_total += $_fee['amount'];
+}
+$fees[] = array("description"=>"Total","amount"=>$sub_total);
+
+$total = $sub_total-$enrollment[0]['discount'];
 
 class PDF extends FPDF {
 	function CheckPageBreak($h) {
@@ -64,16 +77,12 @@ class PDF extends FPDF {
 	function Header() {
 		
 		global $top_margin, $header; # array-multi
-		
-		$this->Ln($top_margin);		
-		if ($this->PageNo()>1) {
-			if ($top_margin <= 5) $top_margin+=5;
-			$this->Ln($top_margin);
-		}
-		
+
+		$this->Ln($top_margin);
+
 		foreach ($header as $h) {
 			$h($this);
-		};		
+		};	
 	}
 	// Page footer
 	function Footer() {
@@ -95,11 +104,10 @@ class PDF extends FPDF {
 	function body($body) {		
 		
 		$body['start']($this); # start
-		$lr_margin = $body['lr_margin'];		
+		$lr_margin = $body['lr_margin'];
+		$body_top_margin = $body['top_margin'];		
 		$headers = $body['headers'];
 		$data = $body['data'];
-		$this->SetMargins($lr_margin,0);
-		$this->Cell(0,5,"",0,1,'L');
 		
 		// Calculate the height of the header
 		$nb=0;
@@ -107,29 +115,31 @@ class PDF extends FPDF {
 			$nb=max($nb,$this->NbLines($h['width'],$h['column']));
 		}
 		$hh=5*$nb;
-	
-		// Header
-		$header_y = $this->GetY()-15;
-		$header_x = $this->GetX();
-		$x_stack = 0;
-		foreach ($headers as $i => $h) {
-			if ($i > 0) {
-				$x_stack += $headers[$i-1]['width'];
-				$this->SetY($header_y);
-				$header_x = $lr_margin+$x_stack;
-				$this->SetX($header_x);
-			}
-			// $this->Rect($header_x,$header_y,$h['width'],$hh,'DF');
-			$this->Rect($header_x,$header_y,$h['width'],0.2,'DF');
-			$this->Rect($header_x,$header_y+8,$h['width'],0.1,'DF');
-			// $this->MultiCell($h['width'],7,$h['column'],1,'C',true);
-			if ($i == 0) $this->SetY($header_y-.125); # first column in headers fix
-			$this->MultiCell($h['width'],8,$h['column'],0,'C');
-		}
-		$this->Ln($hh-5);
 		
+		$spacer = "  ";
+		
+		# Header
+		$hln = 7;
+		$this->SetXY($lr_margin,$body_top_margin);
+		$this->SetMargins($lr_margin,0);
+		foreach ($headers as $i => $h) {
+			$header_x = $this->GetX();			
+			$header_y = $this->GetY();
+			$this->Rect($header_x,$header_y,$h['width'],$hln,'DF');
+			$this->MultiCell($h['width'],$hln,$spacer.$h['column'],0,'L');
+			$this->SetXY($header_x+$h['width'],$header_y);
+		}		
+		$this->Ln($hln);
+		# end Header			
+		
+		$this->SetLineWidth(.65); # border width		
+		$this->Line($lr_margin+.2,$body_top_margin,120-.2,$body_top_margin);		
+		
+		$this->SetFont('Arial','',8);		
+		$this->SetLineWidth(0);		
 		$fill = false;
 		$body['striped_bg']($this);
+		$total_i = count($data)-1;
 		foreach($data as $key => $row) {			
 			
 			// Calculate the height of each body row
@@ -139,29 +149,36 @@ class PDF extends FPDF {
 			}
 			$rh=5*$nb;
 			
-			$this->CheckPageBreak($rh);
+			$pageBreak = $this->CheckPageBreak($rh);
 
-			$body_y = $this->GetY();		
-			$body_x = $this->GetX();		
-			$x_stack = 0;
-			$this->SetTextColor(38,50,56);
+			// $this->SetTextColor(38,50,56);	
 			foreach ($headers as $i => $h) {
-				if ($i > 0) {
-					$x_stack += $headers[$i-1]['width'];
-					$this->SetY($body_y);
-					$body_x = $lr_margin+$x_stack;
-					$this->SetX($body_x);
-				}
+				if ($key == $total_i) break;
+				$body_x = $this->GetX();					
+				$body_y = $this->GetY();
 				$df = 'D';
 				if ($body['striped']) if ($fill) $df = 'DF';
-				if ($key == (count($data)-1)) $this->Rect($body_x,$body_y+6,$h['width'],0.1,$df);
-				$this->MultiCell($h['width'],6,$row[array_keys($row)[$i]],0,'C');
+				$this->Rect($body_x,$body_y,$h['width'],$rh,$df);
+				$content = iconv('UTF-8', 'ISO-8859-1', ($i>0)?"Php. ".number_format($row[array_keys($row)[$i]],2):$row[array_keys($row)[$i]]);					
+				$this->MultiCell($h['width'],5,$spacer.$content,0,'L');
+				$this->SetXY($body_x+$h['width'],$body_y);
 			}
+			if ($key == $total_i) $rh = 2;			
+			$this->Ln($rh);	
+			$fill = !$fill;		
 			
-			if ($key > 0) $this->Ln($rh-5);		
-			$fill = !$fill;
-			
-		}		
+		}
+		
+		# Total
+		$this->SetFont('Arial','B',9);		
+		foreach ($headers as $i => $h) {
+			$body_x = $this->GetX();					
+			$body_y = $this->GetY();
+			$content = iconv('UTF-8', 'ISO-8859-1', $data[$total_i]['description']);
+			if ($i > 0 )$content = iconv('UTF-8', 'ISO-8859-1', "Php. ".number_format($data[$total_i]['amount'],2));
+			$this->MultiCell($h['width'],5,$spacer.$content,0,'L');
+			$this->SetXY($body_x+$h['width'],$body_y);
+		}	
 		
 	}
 	
@@ -175,7 +192,7 @@ class PDF extends FPDF {
 }
 # start
 $top_margin = 5;
-$body_top_margin = 0;
+
 $header = array(
 	function($p) {
 		$p->Image("../img/lzds-logo-gray.png",173,25,25);	
@@ -202,6 +219,7 @@ $header = array(
 		$p->Rect(18,100,180,0.1,"DF");
 	},
 	function($p) { # Name
+		global $enrollment;
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(18,65);
 		$p->SetTextColor(144,164,174);
@@ -209,9 +227,10 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(18,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Flores, Sylvester Bulilan",0,1,'L');	
+		$p->Cell(0,5,$enrollment[0]['fullname'],0,1,'L');	
 	},
 	function($p) { # LRN
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(18,80);
 		$p->SetTextColor(144,164,174);
@@ -219,19 +238,21 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(18,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"1010101010",0,1,'L');
+		$p->Cell(0,5,$enrollment[0]['lrn'],0,1,'L');
 	},
 	function($p) { # Address
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(90,65);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"Address",0,0,'L');
+		$p->Cell(0,5,"Address",0,1,'L');
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(90,71);
 		$p->SetTextColor(38,50,56);
-		$p->MultiCell(30,5,"#77 Lapog Rd., Tanqui, San Fernando City, La Union",0,'L',false);	
+		$p->MultiCell(30,5,$enrollment[0]['address'],0,'L',false);	
 	},
 	function($p) { # Level
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(130,65);
 		$p->SetTextColor(144,164,174);
@@ -239,9 +260,10 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(130,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Grade 12",0,1,'L');
+		$p->Cell(0,5,$enrollment[0]['grade'],0,1,'L');
 	},
 	function($p) { # Section
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(130,80);
 		$p->SetTextColor(144,164,174);
@@ -249,9 +271,10 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(130,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"Omega",0,1,'L');	
+		$p->Cell(0,5,$enrollment[0]['section'],0,1,'L');	
 	},
 	function($p) { # School Year
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(160,65);
 		$p->SetTextColor(144,164,174);
@@ -259,9 +282,10 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(160,71);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"2017-18",0,1,'L');
+		$p->Cell(0,5,$enrollment[0]['school_year'],0,1,'L');
 	},
 	function($p) { # Date
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(160,80);
 		$p->SetTextColor(144,164,174);
@@ -269,7 +293,7 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(160,86);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(0,5,"June 5, 2017",0,1,'L');	
+		$p->Cell(0,5,date("M j, Y",strtotime($enrollment[0]['enrollment_date'])),0,1,'L');	
 	},
 	function($p) { # School Fees
 		$p->SetFont('Arial','',10);	
@@ -278,6 +302,7 @@ $header = array(
 		$p->Cell(0,5,"School Fees",0,1,'L');	
 	},
 	function($p) { # Sub Total
+		global $enrollment, $sub_total;		
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(135,105);
 		$p->SetTextColor(144,164,174);
@@ -285,9 +310,10 @@ $header = array(
 		$p->SetFont('Arial','',11);	
 		$p->SetXY(150,105);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(30,5,"10,000",0,1,'R');
+		$p->Cell(45,5,"Php. ".number_format($sub_total,2),0,1,'R');
 	},
 	function($p) { # Discount
+		global $enrollment;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(135,115);
 		$p->SetTextColor(144,164,174);
@@ -295,17 +321,18 @@ $header = array(
 		$p->SetFont('Arial','',11);	
 		$p->SetXY(150,115);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(30,5,"5,000",0,1,'R');	
+		$p->Cell(45,5,"Php. ".number_format($enrollment[0]['discount'],2),0,1,'R');	
 	},
-	function($p) { # Discount
+	function($p) { # Total
+		global $enrollment, $total;	
 		$p->SetFont('Arial','',9);
 		$p->SetXY(135,125);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(20,5,"Total",0,0,'R');
+		$p->Cell(20,5,"Total",0,1,'R');
 		$p->SetFont('Arial','',11);
 		$p->SetXY(150,125);
 		$p->SetTextColor(38,50,56);
-		$p->Cell(30,5,"5,000",0,0,'R');
+		$p->Cell(45,5,"Php. ".number_format($total,2),0,1,'R');
 	},
 	function($p) { # always last item
 		echo null; # important in include
@@ -328,30 +355,11 @@ $headers = array(
 );
 # query here
 #
-$data = [
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000),
-	array("description"=>"Tuition Fee","amount"=>5000)
-];
+$data = $fees;
+
 $body = array(
 	"lr_margin"=>20,
+	"top_margin"=>115,	
 	"striped"=>false,
 	"striped_bg"=>function($p) {
 		$p->SetFillColor(223,223,223); # background color		
@@ -364,7 +372,7 @@ $body = array(
 		$p->SetDrawColor(144,164,174); # border color
 		$p->SetFillColor(255,255,255); # background color
 		$p->SetTextColor(144,164,174); # font color
-		$p->SetLineWidth(.1); # border width
+		$p->SetLineWidth(0); # border width
 		$p->SetFont('Arial','B',8);
 	}
 );
