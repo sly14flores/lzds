@@ -410,3 +410,344 @@ Stack trace:
 #3 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
 [01-Oct-2017 18:13:56 Asia/Manila] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\enrollment.php on line 173
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 179
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 179
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 180
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 179
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 180
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 179
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 180
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 179
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Notice:  Undefined offset: -1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 180
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:04:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:410
+[01-Oct-2017 20:04:53 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:179) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(411): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[01-Oct-2017 20:20:16 Asia/Manila] PHP Notice:  Undefined index: enrollment_id in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 18
+[01-Oct-2017 20:20:16 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:20:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:20:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT descript...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(18): pdo_db->getData('SELECT descript...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[01-Oct-2017 20:20:55 Asia/Manila] PHP Notice:  Undefined index: enrollment_id in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 18
+[01-Oct-2017 20:20:55 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:20:55 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:20:55 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT descript...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(18): pdo_db->getData('SELECT descript...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 50
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:160
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 50
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:160
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 50
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:160
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 50
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:160
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:422
+[01-Oct-2017 20:21:13 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:21:13 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:174) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(423): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:22:31 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:22:31 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(424): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 51
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. PDF->NbLines() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:161
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Warning:  iconv() expects parameter 3 to be string, array given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:23:24 Asia/Manila] PHP   3. iconv() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:191
+[01-Oct-2017 20:23:24 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(424): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:26:27 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:26:27 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:175) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(424): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[01-Oct-2017 20:27:52 Asia/Manila] PHP Warning:  number_format() expects parameter 1 to be float, string given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php on line 192
+[01-Oct-2017 20:27:52 Asia/Manila] PHP Stack trace:
+[01-Oct-2017 20:27:52 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:0
+[01-Oct-2017 20:27:52 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:423
+[01-Oct-2017 20:27:52 Asia/Manila] PHP   3. number_format() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php:192
+[01-Oct-2017 20:27:52 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(424): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271

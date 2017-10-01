@@ -9,18 +9,36 @@ require('../db.php');
 
 $con = new pdo_db();
 
-$enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date FROM enrollments WHERE id = ".$filter['id']);
-$_fees = $con->getData("SELECT (SELECT fees.description FROM fees WHERE fees.id = (SELECT fee_items.fee_id FROM fee_items WHERE fee_items.id = students_fees.fee_item_id)) description, students_fees.amount amount FROM students_fees WHERE students_fees.enrollment_id = ".$filter['id']);
-$fees = [];
-$sub_total = 0;
-$total = 0;
-foreach ($_fees as $_fee) {
-	$fees[] = $_fee;
-	$sub_total += $_fee['amount'];
-}
-$fees[] = array("description"=>"Total","amount"=>$sub_total);
-
+$enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) sub_total FROM enrollments WHERE id = ".$filter['id']);
+$sub_total = $enrollment[0]['sub_total'];
 $total = $sub_total-$enrollment[0]['discount'];
+
+$payments = [];
+
+$_payments = $con->getData("SELECT description, payment_month, official_receipt, amount, payment_date FROM payments WHERE enrollment_id = ".$filter['id']);
+
+$total_payment = 0;
+$balance = 0;
+foreach ($_payments as $i => $_payment) {
+	
+	$_payments[$i]['description'] = getDescriptionObj($_payment['description'])['description'];
+	$_payments[$i]['payment_month'] = getMonthObj($_payment['payment_month'])['name'];
+	$_payments[$i]['payment_date'] = date("M j, Y",strtotime($_payment['payment_date']));
+	
+	$payments[] = $_payments[$i];
+	$total_payment += $_payment['amount'];
+	
+};
+
+$balance = $sub_total-$total_payment;
+
+$payments[] = array(
+	"description"=>"",
+	"payment_month"=>"",
+	"official_receipt"=>"",
+	"amount"=>"Total",
+	"payment_date"=>$total_payment
+);
 
 class PDF extends FPDF {
 	function CheckPageBreak($h) {
@@ -114,9 +132,7 @@ class PDF extends FPDF {
 		foreach ($headers as $h) {
 			$nb=max($nb,$this->NbLines($h['width'],$h['column']));
 		}
-		$hh=5*$nb;
-		
-		$spacer = "  ";
+		$hh=5*$nb;		
 		
 		# Header
 		$hln = 7;
@@ -126,14 +142,14 @@ class PDF extends FPDF {
 			$header_x = $this->GetX();			
 			$header_y = $this->GetY();
 			$this->Rect($header_x,$header_y,$h['width'],$hln,'DF');
-			$this->MultiCell($h['width'],$hln,$spacer.$h['column'],0,'L');
+			$this->MultiCell($h['width'],$hln,$h['column'],0,'L');
 			$this->SetXY($header_x+$h['width'],$header_y);
 		}		
 		$this->Ln($hln);
 		# end Header			
 		
 		$this->SetLineWidth(.65); # border width		
-		$this->Line($lr_margin+.2,$body_top_margin,120-.2,$body_top_margin);		
+		$this->Line($lr_margin+.2,$body_top_margin,130-.2,$body_top_margin);		
 		
 		$this->SetFont('Arial','',8);		
 		$this->SetLineWidth(0);		
@@ -149,7 +165,7 @@ class PDF extends FPDF {
 			}
 			$rh=5*$nb;
 			
-			$pageBreak = $this->CheckPageBreak($rh);
+			$pageBreak = $this->CheckPageBreak($hln);
 
 			// $this->SetTextColor(38,50,56);	
 			foreach ($headers as $i => $h) {
@@ -158,26 +174,27 @@ class PDF extends FPDF {
 				$body_y = $this->GetY();
 				$df = 'D';
 				if ($body['striped']) if ($fill) $df = 'DF';
-				$this->Rect($body_x,$body_y,$h['width'],$rh,$df);
-				$content = iconv('UTF-8', 'ISO-8859-1', ($i>0)?"Php. ".number_format($row[array_keys($row)[$i]],2):$row[array_keys($row)[$i]]);					
-				$this->MultiCell($h['width'],5,$spacer.$content,0,'L');
+				$this->Rect($body_x,$body_y,$h['width'],$hln,$df);
+				$content = iconv('UTF-8', 'ISO-8859-1', ($i==3)?"Php. ".number_format($row[array_keys($row)[$i]],2):$row[array_keys($row)[$i]]);					
+				$this->MultiCell($h['width'],5,$content,0,'L');
 				$this->SetXY($body_x+$h['width'],$body_y);
 			}
-			if ($key == $total_i) $rh = 2;			
-			$this->Ln($rh);	
+			if ($key == $total_i) $hln = 2;			
+			$this->Ln($hln);	
 			$fill = !$fill;		
 			
 		}
 		
 		# Total
 		if (count($data)) {
-			$this->SetFont('Arial','B',9);		
+			$this->SetFont('Arial','B',9);
 			foreach ($headers as $i => $h) {
 				$body_x = $this->GetX();					
 				$body_y = $this->GetY();
-				$content = iconv('UTF-8', 'ISO-8859-1', $data[$total_i]['description']);
-				if ($i > 0 )$content = iconv('UTF-8', 'ISO-8859-1', "Php. ".number_format($data[$total_i]['amount'],2));
-				$this->MultiCell($h['width'],5,$spacer.$content,0,'L');
+				$content = "";
+				if ($i == 3) $content = iconv('UTF-8', 'ISO-8859-1', $data[$total_i]['amount']);
+				if ($i == 4)$content = iconv('UTF-8', 'ISO-8859-1', "Php. ".number_format($data[$total_i]['payment_date'],2));
+				$this->MultiCell($h['width'],5,$content,0,'L');
 				$this->SetXY($body_x+$h['width'],$body_y);
 			}
 		}
@@ -207,7 +224,7 @@ $header = array(
 		$p->Cell(0,5,"Lord of Zion Divine School",0,1,'L');
 		$p->SetFont('Arial','B',12);		
 		$p->SetXY(160,15);
-		$p->Cell(0,5,"Enrollment Report",0,1,'L');	
+		$p->Cell(0,5,"Payments Report",0,1,'L');	
 		$p->SetFont('Arial','',10);
 		$p->darkText();
 		$p->SetXY(18,25);
@@ -301,12 +318,12 @@ $header = array(
 		$p->SetFont('Arial','',10);	
 		$p->SetXY(19,105);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(0,5,"School Fees",0,1,'L');	
+		$p->Cell(0,5,"Payments",0,1,'L');	
 	},
 	function($p) { # Sub Total
 		global $enrollment, $sub_total;		
 		$p->SetFont('Arial','',9);	
-		$p->SetXY(135,105);
+		$p->SetXY(140,105);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Sub Total",0,1,'R');
 		$p->SetFont('Arial','',11);	
@@ -317,7 +334,7 @@ $header = array(
 	function($p) { # Discount
 		global $enrollment;	
 		$p->SetFont('Arial','',9);	
-		$p->SetXY(135,115);
+		$p->SetXY(140,115);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Discount",0,1,'R');
 		$p->SetFont('Arial','',11);	
@@ -328,7 +345,7 @@ $header = array(
 	function($p) { # Total
 		global $enrollment, $total;	
 		$p->SetFont('Arial','',9);
-		$p->SetXY(135,125);
+		$p->SetXY(140,125);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Total",0,1,'R');
 		$p->SetFont('Arial','',11);
@@ -336,6 +353,28 @@ $header = array(
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($total,2),0,1,'R');
 	},
+	function($p) { # Total Payment
+		global $enrollment, $total_payment;	
+		$p->SetFont('Arial','',9);
+		$p->SetXY(140,135);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Total Payment",0,1,'R');
+		$p->SetFont('Arial','',11);
+		$p->SetXY(150,135);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(45,5,"Php. ".number_format($total_payment,2),0,1,'R');
+	},
+	function($p) { # Balance
+		global $enrollment, $balance;	
+		$p->SetFont('Arial','',9);
+		$p->SetXY(140,145);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Balance",0,1,'R');
+		$p->SetFont('Arial','',11);
+		$p->SetXY(150,145);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(45,5,"Php. ".number_format($balance,2),0,1,'R');
+	},	
 	function($p) { # always last item
 		echo null; # important in include
 		global $body_top_margin;
@@ -352,12 +391,14 @@ $footer = array(
 	}
 );
 $headers = array(
-	array("width"=>60,"column"=>"Description"),
-	array("width"=>40,"column"=>"Amount"),
+	array("width"=>25,"column"=>"Description"),
+	array("width"=>20,"column"=>"Month"),
+	array("width"=>15,"column"=>"OR"),
+	array("width"=>20,"column"=>"Amount"),
+	array("width"=>30,"column"=>"Date")
 );
-# query here
-#
-$data = $fees;
+
+$data = $payments;
 
 $body = array(
 	"lr_margin"=>20,
@@ -384,5 +425,55 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->body($body);
 $pdf->Output();
+
+function getDescriptionObj($description) {
+	
+	$descriptions = array(
+		array("name"=>"undefined","description"=>"-"),
+		array("name"=>"monthly_payment","description"=>"Monthly Payment"),
+		array("name"=>"down_payment","description"=>"Down Payment")
+	);
+	
+	$obj = array("name"=>"undefined","description"=>"-");
+	
+	foreach ($descriptions as $i => $item) {
+		
+		if ($item['name'] == $description) $obj = $item;
+		
+	};
+	
+	return $obj;
+	
+};
+
+function getMonthObj($month) {
+	
+	$months = array(
+		array("no"=>"undefined", "name"=>"-"),
+		array("no"=>"01", "name"=>"January"),
+		array("no"=>"02", "name"=>"February"),
+		array("no"=>"03", "name"=>"March"),
+		array("no"=>"04", "name"=>"April"),
+		array("no"=>"05", "name"=>"May"),
+		array("no"=>"06", "name"=>"June"),
+		array("no"=>"07", "name"=>"July"),
+		array("no"=>"08", "name"=>"August"),
+		array("no"=>"09", "name"=>"September"),
+		array("no"=>"10", "name"=>"October"),
+		array("no"=>"11", "name"=>"November"),
+		array("no"=>"12", "name"=>"December")
+	);
+	
+	$obj = array("no"=>"undefined", "name"=>"-");
+	
+	foreach ($months as $i => $item) {
+		
+		if ($item['no'] == $month) $obj = $item;
+		
+	};
+	
+	return $obj;
+	
+};
 
 ?>

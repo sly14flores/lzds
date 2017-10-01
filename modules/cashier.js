@@ -1,4 +1,4 @@
-angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost) {
 	
 	function form() {
 		
@@ -282,6 +282,12 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this payment?',onOk,function() {});
 
+		};
+
+		self.print = function(scope) {
+
+			printPost.show('reports/payment.php',{filter:{id: scope.enrollment_info.id}});
+			
 		};		
 		
 	};
