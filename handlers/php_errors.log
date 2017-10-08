@@ -1,0 +1,81 @@
+[08-Oct-2017 18:45:31 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php on line 30
+[08-Oct-2017 18:45:31 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 18:45:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php:0
+[08-Oct-2017 18:45:31 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'lzdssystem.schedule_details' doesn't exist in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:55
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(55): PDO->query('ALTER TABLE sch...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(61): pdo_db->auto_increment_one()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php(37): pdo_db->insertData(Array)
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 55
+[08-Oct-2017 18:53:12 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php on line 30
+[08-Oct-2017 18:53:12 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 18:53:12 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php:0
+[08-Oct-2017 18:53:12 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'lzdssystem.schedule_details' doesn't exist in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:55
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(55): PDO->query('ALTER TABLE sch...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(61): pdo_db->auto_increment_one()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php(37): pdo_db->insertData(Array)
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 55
+[08-Oct-2017 18:58:57 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'lzdssystem.schedule_details' doesn't exist in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:55
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(55): PDO->query('ALTER TABLE sch...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(61): pdo_db->auto_increment_one()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php(37): pdo_db->insertData(Array)
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 55
+[08-Oct-2017 18:59:45 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'schedule' in 'field list' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:82
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(82): PDO->prepare('INSERT INTO sch...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php(37): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 82
+[08-Oct-2017 19:00:51 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect time value: '1970-01-01T00:00:00.000Z' for column 'morning_in' at row 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:83
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(83): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-save.php(37): pdo_db->insertData(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 83
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 18
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
+[08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
+[08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0

@@ -1,0 +1,69 @@
+<form name="formHolder.schedule" id="formHolder.schedule" novalidate>
+<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+<div class="clearfix"></div>
+<h4><strong>Schedule Info</strong></h4>
+<div class="ln_solid"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.schedule.description.$touched && formHolder.schedule.description.$invalid}">
+	<label>Description</label>
+	<input type="text" placeholder="" class="form-control" name="description" ng-model="schedule.description" ng-disabled="btns.ok.disabled" required>
+	<span class="help-block" ng-show="formHolder.schedule.description.$touched && formHolder.schedule.description.$invalid">Description is required</span>
+  </div>   
+</div>
+<div class="ln_solid"></div>
+<h4><strong>Schedule Details</strong></h4>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<table class="table">
+			<thead>
+				<tr><th>Day</th><th>Morning In</th><th>Morning Cutoff</th><th>Morning Out</th><th>Lunch Cutoff</th><th>Afternoon In</th><th>Afternoon Cutoff</th><th>Afternoon Out</th><th ng-show="!btns.ok.disabled">Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="schedule_item in schedule_details">
+					<td class="form-group">
+						<input type="text" class="form-control" ng-model="schedule_item.schedule_day" ng-disabled="true">
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.morning_in{{$index}}['$touched'] && formHolder.schedule.morning_in{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="morning_in{{$index}}" ng-model="schedule_item.morning_in" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.morning_in{{$index}}['$touched'] && formHolder.schedule.morning_in{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.morning_cutoff{{$index}}['$touched'] && formHolder.schedule.morning_cutoff{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="morning_cutoff{{$index}}" ng-model="schedule_item.morning_cutoff" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.morning_cutoff{{$index}}['$touched'] && formHolder.schedule.morning_cutoff{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.morning_out{{$index}}['$touched'] && formHolder.schedule.morning_out{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="morning_out{{$index}}" ng-model="schedule_item.morning_out" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.morning_out{{$index}}['$touched'] && formHolder.schedule.morning_out{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.lunch_break_cutoff{{$index}}['$touched'] && formHolder.schedule.lunch_break_cutoff{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="lunch_break_cutoff{{$index}}" ng-model="schedule_item.lunch_break_cutoff" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.lunch_break_cutoff{{$index}}['$touched'] && formHolder.schedule.lunch_break_cutoff{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.afternoon_in{{$index}}['$touched'] && formHolder.schedule.afternoon_in{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="afternoon_in{{$index}}" ng-model="schedule_item.afternoon_in" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.afternoon_in{{$index}}['$touched'] && formHolder.schedule.afternoon_in{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.afternoon_cutoff{{$index}}['$touched'] && formHolder.schedule.afternoon_cutoff{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="afternoon_cutoff{{$index}}" ng-model="schedule_item.afternoon_cutoff" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.afternoon_cutoff{{$index}}['$touched'] && formHolder.schedule.afternoon_cutoff{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="form-group" ng-class="{'has-error': formHolder.schedule.afternoon_out{{$index}}['$touched'] && formHolder.schedule.afternoon_out{{$index}}['$invalid']}">
+						<input type="time" class="form-control" name="afternoon_out{{$index}}" ng-model="schedule_item.afternoon_out" ng-disabled="schedule_item.disabled" required>
+						<span class="help-block" ng-show="formHolder.schedule.afternoon_out{{$index}}['$touched'] && formHolder.schedule.afternoon_out{{$index}}['$invalid']">Required</span>
+					</td>
+					<td class="last list-action" ng-show="!btns.ok.disabled">
+						<a href="javascript:;" ng-click="form.schedule_item(this,schedule_item)"><i class="fa" ng-class="{'fa-pencil': schedule_item.disabled, 'fa-check': !schedule_item.disabled}"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="ln_solid"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">{{btns.cancel.label}}</button>
+	  <button type="button" class="btn btn-success" ng-click="form.save(this,'schedule')">{{btns.ok.label}}</button>
+	</div>
+</div>
+</form>

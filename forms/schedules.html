@@ -1,0 +1,54 @@
+<form name="formHolder.fee" id="formHolder.fee" novalidate>
+<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+<div class="clearfix"></div>
+<h4><strong>Fee Info</strong></h4>
+<div class="ln_solid"></div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.school_year.$touched && formHolder.fee.school_year.$invalid}">
+	<label>School Year</label>
+	<select class="form-control" name="school_year" ng-model="fee.school_year" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-disabled="btns.ok.disabled" required></select>
+	<span class="help-block" ng-show="formHolder.fee.school_year.$touched && formHolder.fee.school_year.$invalid">School year is required</span>			
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.category.$touched && formHolder.fee.category.$invalid}">
+	<label>Category</label>
+	<input type="text" placeholder="" class="form-control" name="category" ng-model="fee.category" uib-typeahead="category as category.category for category in categories | filter:{category:$viewValue}" ng-disabled="btns.ok.disabled" required>
+	<span class="help-block" ng-show="formHolder.fee.category.$touched && formHolder.fee.category.$invalid">Category is required</span>		
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.fee.description.$touched && formHolder.fee.description.$invalid}">
+	<label>Description</label>
+	<input type="text" placeholder="" class="form-control" name="description" ng-model="fee.description" ng-disabled="btns.ok.disabled" required>
+	<span class="help-block" ng-show="formHolder.fee.description.$touched && formHolder.fee.description.$invalid">Description is required</span>
+  </div>   
+</div>
+<div class="ln_solid"></div>
+<h4><strong>Fee Items</strong></h4>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<button type="button" class="btn btn-info pull-right" type="button" ng-click="form.fee_item(this,null)">Add</button>
+		<table class="table">
+			<thead>
+				<tr><th>Level</th><th>Amount</th><th ng-show="!btns.ok.disabled">Action</th></tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="fee_item in fee_items">
+					<td>
+						<select class="form-control" name="level" ng-model="fee_item.level" ng-options="level as level.description for level in levels track by level.id" ng-disabled="fee_item.disabled"></select>
+					</td>
+					<td><input type="text" placeholder="" class="form-control" name="amount" ng-model="fee_item.amount" ng-disabled="fee_item.disabled"></td>
+					<td class="last list-action" ng-show="!btns.ok.disabled">
+						<a href="javascript:;" ng-click="form.fee_item(this,fee_item)"><i class="fa" ng-class="{'fa-pencil': fee_item.disabled, 'fa-check': !fee_item.disabled}"></i></a>
+						<a href="javascript:;" ng-click="form.delete_fee_item(this,fee_item)"><i class="fa fa-close"></i></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="ln_solid"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)">{{btns.cancel.label}}</button>
+	  <button type="button" class="btn btn-success" ng-click="form.save(this)">{{btns.ok.label}}</button>
+	</div>
+</div>
+</form>
