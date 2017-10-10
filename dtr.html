@@ -20,24 +20,13 @@ require_once 'authentication.php';
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- PNotify -->
-    <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-	
+
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	<style type="text/css">
-	
-		.added-to-list {			
-			background-color: #9cceff!important;
-		}
-	
-	</style>	
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="studentsImport" ng-controller="studentsImportCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="dtr" ng-controller="dtrCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -69,22 +58,22 @@ require_once 'authentication.php';
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="students.html">Students</a></li>					
-                      <li><a href="staffs.html">Staffs</a></li>
+                      <li><a href="students.html">Students</a></li>
+                      <li><a href="staffs.html">Staffs</a></li>					  
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  <li class="active"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
                       <li><a href="cashier.html">Cashier</a></li>
-                      <li><a href="dtr.html">DTR</a></li>
+                      <li class="active"><a href="dtr.html">DTR</a></li>
                     </ul>				  
                   </li>				  
-                  <li class="active"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="school-fees.html">School Fees</a></li>
-                      <li><a href="schedules.html">Schedules</a></li>
+                      <li><a href="school-fees.html">School Fees</a></li>					
+                      <li><a href="schedules.html">Schedules</a></li>					  
                       <li><a href="groups.html">Groups</a></li>
-                      <li class="active"><a href="students-import.html">Import Students</a></li>					  
+                      <li><a href="students-import.html">Import Students</a></li>					  
                     </ul>
                   </li>
                 </ul>
@@ -209,32 +198,73 @@ require_once 'authentication.php';
               <div class="title_left">
                 <h3>{{views.title}}</h3>
               </div>
-
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" ng-model="views.search" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">&nbsp;</button>
-                    </span>
-                  </div>
-                </div>
               </div>
             </div>
-
+			<div class="clearfix"></div>
+			
+			<div style="padding: 0 10px;">
+			<div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group pull-right top_search">
+				<div class="x_panel">
+                  <div class="x_title">
+                    <h2>View DTR</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <form>
+                      <label>Year :</label>
+                      <input type="text" class="form-control">
+                      <label>Month :</label>
+                      <input type="text" class="form-control">
+                      <label>Staff :</label>
+                      <input type="text" class="form-control">
+                      <br/>
+                      <span class="btn btn-primary pull-right">Go!</span>
+                    </form>
+                  </div>
+                </div>
+                </div>			  
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group pull-right top_search">
+				<div class="x_panel">
+                  <div class="x_title">
+                    <h2>Utility</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <form>
+                      <label>Year :</label>
+                      <input type="text" class="form-control">
+                      <label>Month :</label>
+                      <input type="text" class="form-control">
+                      <br/>
+                      <span class="btn btn-primary pull-right">Go!</span>
+                    </form>
+                  </div>
+                </div>
+                </div>
+			</div>
+			</div>
+			
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-				  <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="tile-stats">
-					  <div class="icon"><i class="fa fa-upload"></i></div>
-					  <div class="count">{{views.import_size}}</div>
-					  <h3>Import Records</h3>
-					  <p>{{views.import_enrollees}}</p>
-					</div>
-				  </div>				  
-			  </div>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -245,8 +275,8 @@ require_once 'authentication.php';
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="javascript:;" ng-click="form.import(this)">Import Records</a></li>
-                          <li><a href="javascript:;" ng-click="form.clear(this)">Clear List</a></li>
+                          <li><a href="javascript:;" ng-click="form.staff(this,null)">Add New Staff</a></li>
+                          <li><a href="javascript:;" ng-click="form.list(this)">Staffs List</a></li>
                         </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
@@ -280,16 +310,11 @@ require_once 'authentication.php';
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
-    <!-- PNotify -->
-    <script src="vendors/pnotify/dist/pnotify.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
     
     <!-- Custom Theme Scripts -->
-    <script src="build/js/custom.js"></script>
+    <script src="build/js/custom.min.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
-    <script src="vendors/blockUI/jquery.blockUI.js"></script>
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
@@ -297,11 +322,9 @@ require_once 'authentication.php';
 	<script src="modules/bootstrap-modal.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
-	<script src="modules/blockui.js"></script>
-	<script src="modules/pnotify.js"></script>
-	<script src="modules/students-import.js"></script>
+	<script src="modules/dtr.js"></script>
 	
-	<script src="controllers/students-import.js"></script>
+	<script src="controllers/dtr.js"></script>
 
   </body>
 </html>
