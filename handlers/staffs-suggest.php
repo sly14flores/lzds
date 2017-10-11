@@ -12,6 +12,7 @@ $sql = "SELECT id, CONCAT(firstname, ' ', middlename, ' ', lastname) fullname FR
 
 $staffs = $con->getData($sql);
 
+header("Content-type: application/json");
 echo json_encode($staffs);
 
 ?>

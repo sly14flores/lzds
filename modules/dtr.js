@@ -8,12 +8,37 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 			scope.formHolder = {};
 			
-			scope.views.list = false;			
-			
-			scope.staff = {};
-			scope.staff.id = 0;
+			// scope.views.list = false;			
 
-			scope.staffs = [];
+			scope.months = [
+				{month:"01",description:"January"},
+				{month:"02",description:"February"},
+				{month:"03",description:"March"},
+				{month:"04",description:"April"},
+				{month:"05",description:"May"},
+				{month:"06",description:"June"},
+				{month:"07",description:"July"},
+				{month:"08",description:"August"},
+				{month:"09",description:"September"},
+				{month:"10",description:"October"},
+				{month:"11",description:"November"},
+				{month:"12",description:"December"},
+			];
+			
+			var d = new Date();
+
+			scope.staffDtr = {
+				id: 0,
+				fullname: '',
+				month: scope.months[d.getMonth()],
+				year: d.getFullYear()
+			};
+			
+			scope.downloadDtr = {
+				year: d.getFullYear(),
+				month: scope.months[d.getMonth()]
+			};
+			
 			scope.suggest_staffs = [];
 			
 			scope.btns = {
@@ -29,9 +54,9 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 		};
 		
-		function validate(scope) {
+		function validate(scope,form) {
 			
-			var controls = scope.formHolder.staff.$$controls;
+			var controls = scope.formHolder[form].$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
 				
@@ -39,7 +64,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 									
 			});
 
-			return scope.formHolder.staff.$invalid;
+			return scope.formHolder[form].$invalid;
 			
 		};
 		
@@ -188,7 +213,22 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
 
-		};		
+		};
+		
+		self.download = function(scope) {
+
+		};
+		
+		self.dtr = function(scope) {
+
+		};
+		
+		self.staffSelect = function(scope, item, model, label, event) {
+
+			scope.staffDtr.fullname = item['fullname'];
+			scope.staffDtr.id = item['id'];
+
+		};
 		
 	};
 	
