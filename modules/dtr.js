@@ -39,6 +39,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 				month: scope.months[d.getMonth()]
 			};
 			
+			scope.logs = [];
+			
 			scope.suggest_staffs = [];
 			
 			scope.btns = {
@@ -216,8 +218,56 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 		};
 		
 		self.download = function(scope) {
+			
+			if (validate(scope,'downloadDtr')) return;
 
+			scope.downloadProgress = 0;
+			scope.downloadProgressStatus = '';
+			scope.downloadI = 0;
+			scope.logs = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/logs-fetch.php',
+			  data: scope.downloadDtr
+			}).then(function mySucces(response) {
+				
+				scope.logs = angular.copy(response.data);
+				if (scope.logs.length > 0) {
+					download(scope,scope.downloadI);					
+				}
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
 		};
+		
+		function download(scope,i) {
+			
+			$http({
+				method: 'POST',
+				url: 'handlers/dtr-import.php',
+				data: scope.logs[i]
+			}).then(function mySucces(response) {
+				
+				++scope.downloadI;
+				scope.downloadProgress = Math.ceil(scope.downloadI*100/(scope.logs.length));
+				scope.downloadProgressStatus = 'Analyzing '+scope.downloadI+' of '+scope.logs.length+' ('+scope.downloadProgress+'%)';
+				if (scope.downloadI < scope.logs.length) {
+					download(scope,scope.downloadI);
+				} else {
+
+				}
+				
+			}, function myError(response) {
+				
+				
+			});			
+			
+		}
 		
 		self.dtr = function(scope) {
 

@@ -79,3 +79,18 @@ Stack trace:
 [08-Oct-2017 19:11:41 Asia/Manila] PHP Notice:  Undefined variable: fee_items in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 19
 [08-Oct-2017 19:11:41 Asia/Manila] PHP Stack trace:
 [08-Oct-2017 19:11:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[12-Oct-2017 21:51:59 Asia/Manila] PHP Notice:  Array to string conversion in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\logs-fetch.php on line 9
+[12-Oct-2017 21:51:59 Asia/Manila] PHP Stack trace:
+[12-Oct-2017 21:51:59 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\logs-fetch.php:0
+[12-Oct-2017 21:51:59 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017-Array' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php:37
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php(37): PDO->query('SELECT * FROM a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\logs-fetch.php(12): pdo_db->getData('SELECT * FROM a...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php on line 37
+[12-Oct-2017 21:52:25 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2017-10' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php:37
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php(37): PDO->query('SELECT * FROM a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\logs-fetch.php(12): pdo_db->getData('SELECT * FROM a...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db2.php on line 37

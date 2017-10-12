@@ -250,13 +250,14 @@ require_once 'authentication.php';
                   </div>
                   <div class="x_content">
 					<div class="progress">
-						<div class="progress-bar progress-bar-info" data-transitiongoal="{{downloadProgress}}" aria-valuenow="{{downloadProgress}}" style="width: {{}}%;">{{downloadProgressStatus}}</div>
-                    </div>		  
-                    <form>
+						<div class="progress-bar progress-bar-info" data-transitiongoal="{{downloadProgress}}" aria-valuenow="{{downloadProgress}}" style="width: {{downloadProgress}}%;"></div>
+                    </div>
+					<p>{{downloadProgressStatus}}</p>
+                    <form name="formHolder.downloadDtr" id="formHolder.downloadDtr">
                       <label>Year :</label>
-                      <input type="text" class="form-control" ng-model="downloadDtr.year">
+                      <input type="text" class="form-control" name="year" ng-model="downloadDtr.year" required>
                       <label>Month :</label>
-                      <select class="form-control" ng-model="downloadDtr.month" ng-options="m.description for m in months track by m.month"></select>
+                      <select class="form-control" name="month" ng-model="downloadDtr.month" ng-options="m.description for m in months track by m.month" required></select>
                       <br/>
                       <span class="btn btn-primary pull-right" ng-click="form.download(this);">Go!</span>
                     </form>					
