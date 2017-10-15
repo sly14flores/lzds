@@ -8,7 +8,11 @@
 	<label>School ID</label>
 	<input type="text" placeholder="" class="form-control" name="school_id" ng-model="staff.school_id" ng-disabled="btns.ok.disabled">
   </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 col-md-offset-4 form-group" ng-class="{'has-error': formHolder.staff.employment_status.$touched && formHolder.staff.employment_status.$invalid}">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+	<label>RFID</label>
+	<input type="text" placeholder="" class="form-control" name="rfid" ng-model="staff.rfid" ng-disabled="btns.ok.disabled">
+  </div>  
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.employment_status.$touched && formHolder.staff.employment_status.$invalid}">
 	<label>Employment Status</label>
 	<select class="form-control" name="employment_status" ng-model="staff.employment_status" ng-disabled="btns.ok.disabled" required>
 		<option value="">-</option>

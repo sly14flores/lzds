@@ -222,7 +222,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			if (validate(scope,'downloadDtr')) return;
 
 			scope.downloadProgress = 0;
-			scope.downloadProgressStatus = '';
+			scope.downloadProgressStatus = 'Downloading logs please wait...';
 			scope.downloadI = 0;
 			scope.logs = [];
 			
@@ -232,6 +232,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			  data: scope.downloadDtr
 			}).then(function mySucces(response) {
 				
+				scope.downloadProgressStatus = 'Initiating import...';
 				scope.logs = angular.copy(response.data);
 				if (scope.logs.length > 0) {
 					download(scope,scope.downloadI);					
@@ -239,7 +240,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 				
 			}, function myError(response) {
 				 
-			  // error
+				scope.downloadProgressStatus = 'Cannot connect to Kiosk please check connectivity';
 				
 			});			
 			
@@ -255,11 +256,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 				
 				++scope.downloadI;
 				scope.downloadProgress = Math.ceil(scope.downloadI*100/(scope.logs.length));
-				scope.downloadProgressStatus = 'Analyzing '+scope.downloadI+' of '+scope.logs.length+' ('+scope.downloadProgress+'%)';
+				scope.downloadProgressStatus = 'Imported '+scope.downloadI+' of '+scope.logs.length+' logs ('+scope.downloadProgress+'%)';
 				if (scope.downloadI < scope.logs.length) {
 					download(scope,scope.downloadI);
 				} else {
-
+				scope.downloadProgressStatus = 'Imported '+scope.downloadI+' of '+scope.logs.length+' logs ('+scope.downloadProgress+'%). Import Complete';
 				}
 				
 			}, function myError(response) {
