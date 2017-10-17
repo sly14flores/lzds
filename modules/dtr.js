@@ -6,9 +6,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 		
 		self.data = function(scope) { // initialize data
 			
-			scope.formHolder = {};
-			
-			// scope.views.list = false;			
+			scope.formHolder = {};		
 
 			scope.months = [
 				{month:"01",description:"January"},
@@ -29,9 +27,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 
 			scope.staffDtr = {
 				id: 0,
+				rfid: '',
 				fullname: '',
 				month: scope.months[d.getMonth()],
-				year: d.getFullYear()
+				year: d.getFullYear(),
+				option: false
 			};
 			
 			scope.downloadDtr = {
@@ -42,6 +42,19 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			scope.logs = [];
 			
 			scope.suggest_staffs = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/staffs-suggest.php'
+			}).then(function mySucces(response) {
+				
+				angular.copy(response.data, scope.suggest_staffs);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
 			
 			scope.btns = {
 				ok: {
@@ -88,8 +101,6 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 		
 		self.staff = function(scope,row) { // form
 			
-			scope.views.list = true;		
-			
 			mode(scope,row);			
 			
 			$('#x_content').html('Loading...');
@@ -124,45 +135,29 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 		};		
 		
-		self.list = function(scope) {		
-			
-			scope.views.list = false;			
-			
-			scope.staff = {};
-			scope.staff.id = 0;		
-		
-			scope.currentPage = 1;
-			scope.pageSize = 15;
-			scope.maxSize = 5;				
-		
-			scope.views.panel_title = 'Sly Flores';		
+		self.dtr = function(scope,opt) {
 
-			$http({
-			  method: 'POST',
-			  url: 'handlers/staffs-list.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.staffs);
-				scope.filterData = scope.staffs;			
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});
+			if (scope.staffDtr.id == 0) return;
+			
+			scope.staffDtr.option = opt;
+			
+			scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
+			
+			scope.dtr = [];
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staffs-suggest.php'
-			}).then(function mySucces(response) {
+			  url: 'handlers/dtr-staff.php',
+			  data: scope.staffDtr
+			}).then(function mySucces(response) {					
 				
-				angular.copy(response.data, scope.suggest_staffs);
+				scope.dtr = angular.copy(response.data);
 				
 			}, function myError(response) {
 				 
 			  // error
 				
-			});			
+			});					
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/dtr.html',function() {
@@ -268,16 +263,13 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 				
 			});			
 			
-		}
-		
-		self.dtr = function(scope) {
-
-		};
+		}		
 		
 		self.staffSelect = function(scope, item, model, label, event) {
 
 			scope.staffDtr.fullname = item['fullname'];
 			scope.staffDtr.id = item['id'];
+			scope.staffDtr.rfid = item['rfid'];
 
 		};
 		

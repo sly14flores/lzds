@@ -2,34 +2,34 @@
   <table class="table table-striped jambo_table bulk_action">
 	<thead>
 	  <tr class="headings">
-		<th class="column-title">ID </th>
-		<th class="column-title">Fullname </th>
-		<th class="column-title">Division </th>
-		<th class="column-title">Position </th>
-		<th class="column-title">Address </th>
+		<th class="column-title">Date </th>
+		<th class="column-title">Day </th>
+		<th class="column-title">Morning In </th>
+		<th class="column-title">Morning Out </th>
+		<th class="column-title">Afternoon In </th>
+		<th class="column-title">Afternoon Out </th>
+		<th class="column-title">Tardiness </th>
+		<th class="column-title">Undertime </th>
 		<th class="column-title no-link last"><span class="nobr">Action</span>
 		</th>
 	  </tr>
 	</thead>
 	<tbody>
-	  <tr class="even pointer" ng-repeat="row in filterData = (staffs | filter: views.search) | pagination: currentPage:pageSize">
-		<td class="">{{row.school_id}}</td>
-		<td class="">{{row.fullname}}</td>
-		<td class="">{{row.division}}</td>
-		<td class="">{{row.position}}</td>
-		<td class="">{{row.address}}</td>
+	  <tr class="even pointer" ng-repeat="row in dtr">
+		<td class="">{{row.date}}</td>
+		<td class="">{{row.day}}</td>
+		<td class="">{{row.morning_in}}</td>
+		<td class="">{{row.morning_out}}</td>
+		<td class="">{{row.afternoon_in}}</td>
+		<td class="">{{row.afternoon_out}}</td>
+		<td class="">{{row.tardiness}}</td>
+		<td class="">{{row.undertime}}</td>
 		<td class="last list-action">
 			<a href="javascript:;" ng-click="form.staff(this,row)"><i class="fa fa-search" style="margin-right: 10px;"></i></a>
 			<a href="javascript:;" ng-click="form.delete(this,row)"><i class="fa fa-close"></i></a>
 		</td>
 	  </tr>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="6" style="text-align: center;">
-				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
-			</td>
-		</tr>
+	</tbody><tfoot>
 	</tfoot>	
   </table>
 </div>

@@ -8,7 +8,7 @@ session_start();
 
 $con = new pdo_db();
 
-$sql = "SELECT id, CONCAT(firstname, ' ', middlename, ' ', lastname) fullname FROM staffs WHERE id > 1";
+$sql = "SELECT id, rfid, CONCAT(firstname, ' ', middlename, ' ', lastname) fullname FROM staffs WHERE id > 1";
 
 $staffs = $con->getData($sql);
 
