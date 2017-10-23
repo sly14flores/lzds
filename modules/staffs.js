@@ -27,6 +27,19 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 				}
 			};
 			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/schedules-list.php'			 
+			}).then(function mySucces(response) {
+				
+				scope.schedules = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
 		};
 		
 		function validate(scope) {

@@ -367,7 +367,21 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 
 			row.disabled = !row.disabled;
 			
-		};			
+		};
+
+		self.schedule_clone = function(scope,row) {
+
+			var index = scope.schedule_details.indexOf(row);
+			
+			scope.schedule_details[index]['morning_in'] = scope.schedule_details[0]['morning_in'];
+			scope.schedule_details[index]['morning_cutoff'] = scope.schedule_details[0]['morning_cutoff'];
+			scope.schedule_details[index]['morning_out'] = scope.schedule_details[0]['morning_out'];
+			scope.schedule_details[index]['lunch_break_cutoff'] = scope.schedule_details[0]['lunch_break_cutoff'];
+			scope.schedule_details[index]['afternoon_in'] = scope.schedule_details[0]['afternoon_in'];
+			scope.schedule_details[index]['afternoon_cutoff'] = scope.schedule_details[0]['afternoon_cutoff'];
+			scope.schedule_details[index]['afternoon_out'] = scope.schedule_details[0]['afternoon_out'];
+			
+		};		
 		
 	};
 	

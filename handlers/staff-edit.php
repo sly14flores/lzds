@@ -9,6 +9,9 @@ session_start();
 $con = new pdo_db();
 
 $staff = $con->getData("SELECT * FROM staffs WHERE id = $_POST[id]");
+$schedule = $con->getData("SELECT id, description FROM schedules WHERE id = ".$staff[0]['schedule_id']);
+
+$staff[0]['schedule_id'] = $schedule[0];
 
 if ($staff[0]['birthday'] == "0000-00-00") $staff[0]['birthday'] = null;
 if ($staff[0]['birthday'] != null) $staff[0]['birthday'] = date("m/d/Y",strtotime($staff[0]['birthday']));

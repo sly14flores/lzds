@@ -151,6 +151,10 @@
 	<label>Tax Amount</label>
 	<input type="text" placeholder="" class="form-control" name="tax_amount" ng-model="staff.tax_amount" ng-disabled="btns.ok.disabled">
   </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+	<label>Schedule</label>
+	<select class="form-control" name="schedule_id" ng-model="staff.schedule_id" ng-options="schedule.description for schedule in schedules track by schedule.id" ng-disabled="btns.ok.disabled" required></select>
+  </div>  
 </div>
 <div class="ln_solid"></div>
 <h4><strong>Account Info</strong></h4>

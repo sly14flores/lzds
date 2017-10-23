@@ -136,7 +136,9 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 		};		
 		
 		self.dtr = function(scope,opt) {
-
+			
+			// if (opt) // confirm
+			
 			if (scope.staffDtr.id == 0) return;
 			
 			scope.staffDtr.option = opt;

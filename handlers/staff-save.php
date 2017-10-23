@@ -18,6 +18,8 @@ if (isset($_POST['birthday'])) $_POST['birthday'] = date("Y-m-d",strtotime($_POS
 **
 */
 
+$_POST['schedule_id'] = $_POST['schedule_id']['id'];
+
 if ($_POST['id']) { // > 0 - update
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";
 	$staff = $con->updateData($_POST,'id');

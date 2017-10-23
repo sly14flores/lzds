@@ -52,6 +52,7 @@
 						<span class="help-block" ng-show="formHolder.schedule.afternoon_out{{$index}}['$touched'] && formHolder.schedule.afternoon_out{{$index}}['$invalid']">Required</span>
 					</td>
 					<td class="last list-action" ng-show="!btns.ok.disabled">
+						<a href="javascript:;" ng-show="$index>0" ng-click="form.schedule_clone(this,schedule_item)" ng-disabled="schedule_item.disabled"><i class="fa fa-clone"></i></a>
 						<a href="javascript:;" ng-click="form.schedule_item(this,schedule_item)"><i class="fa" ng-class="{'fa-pencil': schedule_item.disabled, 'fa-check': !schedule_item.disabled}"></i></a>
 					</td>
 				</tr>
