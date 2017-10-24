@@ -275,6 +275,43 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 
 		};
 		
+		self.logs = function(scope,row) {
+			
+			console.log(row);
+			
+			scope.backlogs = [];
+			scope.dtr_day = angular.copy(row);
+			scope.dtr_day.morning_in = new Date("2000-01-01 "+row.morning_in);
+			scope.dtr_day.morning_out = new Date("2000-01-01 "+row.morning_out);
+			scope.dtr_day.afternoon_in = new Date("2000-01-01 "+row.afternoon_in);
+			scope.dtr_day.afternoon_out = new Date("2000-01-01 "+row.afternoon_out);
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/backlogs.php',
+			  data: {rfid: row.rfid, date: row.ddate}
+			}).then(function mySucces(response) {
+				
+				scope.backlogs = angular.copy(response.data);
+				
+			}, function myError(response) {				 
+				
+			});				
+			
+			var content = 'dialogs/log.html';			
+
+			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);			
+			
+		};
+		
+		self.allot = function(scope) {
+			
+		};
+		
+		self.dtrLogs = function(scope) {
+			
+		};
+		
 	};
 	
 	return new form();

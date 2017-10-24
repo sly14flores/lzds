@@ -1,0 +1,43 @@
+<form name="formHolder.log" id="formHolder.log" novalidate>
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
+		<label>Morning In</label>
+		<input type="time" class="form-control" ng-model="dtr_day.morning_in">
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
+		<label>Morning Out</label>  
+		<input type="time" class="form-control" ng-model="dtr_day.morning_out">
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
+		<label>Afternoon In</label>  
+		<input type="time" class="form-control" ng-model="dtr_day.afternoon_in">
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
+		<label>Afternoon Out</label>  
+		<input type="time" class="form-control" ng-model="dtr_day.afternoon_out">
+  </div>  
+</div>
+</form>
+<hr>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Log</th><th>Allotment</th><th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="bl in backlogs">
+			<td>{{bl.log}}</td>
+			<td>
+				<select class="form-control" ng-model="dtr_allotment">
+					<option value="">-</option>
+					<option value="morning_in">Morning In</option>
+					<option value="morning_out">Morning Out</option>
+					<option value="afternoon_in">Afternoon In</option>
+					<option value="afternoon_out">Afternoon Out</option>
+				</select>
+			</td>
+			<td><span class="fa fa-upload" ng-click="form.allot(scope,bl)"></span></td>
+		</tr>
+	</tbody>
+</table>
