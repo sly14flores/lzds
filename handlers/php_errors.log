@@ -2902,3 +2902,9 @@ Stack trace:
 [23-Oct-2017 22:18:46 Asia/Manila] PHP Stack trace:
 [23-Oct-2017 22:18:46 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
 [23-Oct-2017 22:18:46 Asia/Manila] PHP   2. header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:38
+[25-Oct-2017 15:56:56 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '2017-10-02T23:11:57.000Z' for column 'morning_in' at row 1 in C:\Users\sly\Desktop\UwAmp310\www\lzds\db.php:176
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\lzds\db.php(176): PDOStatement->execute(Array)
+#1 C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\dtr-day-logs.php(18): pdo_db->updateData(Array, 'id')
+#2 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\lzds\db.php on line 176

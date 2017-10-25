@@ -2,19 +2,19 @@
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
 		<label>Morning In</label>
-		<input type="time" class="form-control" ng-model="dtr_day.morning_in">
+		<input type="time" class="form-control" ng-model="dtr_day.morning_in" ng-disabled="dtr_day.disabled.morning_in">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
 		<label>Morning Out</label>  
-		<input type="time" class="form-control" ng-model="dtr_day.morning_out">
+		<input type="time" class="form-control" ng-model="dtr_day.morning_out" ng-disabled="dtr_day.disabled.morning_out">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
 		<label>Afternoon In</label>  
-		<input type="time" class="form-control" ng-model="dtr_day.afternoon_in">
+		<input type="time" class="form-control" ng-model="dtr_day.afternoon_in" ng-disabled="dtr_day.disabled.afternoon_in">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
 		<label>Afternoon Out</label>  
-		<input type="time" class="form-control" ng-model="dtr_day.afternoon_out">
+		<input type="time" class="form-control" ng-model="dtr_day.afternoon_out" ng-disabled="dtr_day.disabled.afternoon_out">
   </div>  
 </div>
 </form>
@@ -37,7 +37,7 @@
 					<option value="afternoon_out">Afternoon Out</option>
 				</select>
 			</td>
-			<td><span class="fa fa-upload" ng-click="form.allot(scope,bl)"></span></td>
+			<td><span class="fa fa-upload" ng-click="form.allot(this,bl)" style="cursor: pointer;"></span></td>
 		</tr>
 	</tbody>
 </table>

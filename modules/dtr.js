@@ -275,16 +275,21 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 
 		};
 		
-		self.logs = function(scope,row) {
+		self.logs = function(scope,row) {			
 			
-			console.log(row);
+			scope.backlogs = [];			
 			
-			scope.backlogs = [];
-			scope.dtr_day = angular.copy(row);
-			scope.dtr_day.morning_in = new Date("2000-01-01 "+row.morning_in);
-			scope.dtr_day.morning_out = new Date("2000-01-01 "+row.morning_out);
-			scope.dtr_day.afternoon_in = new Date("2000-01-01 "+row.afternoon_in);
-			scope.dtr_day.afternoon_out = new Date("2000-01-01 "+row.afternoon_out);
+			scope.dtr_day = angular.copy(row);			
+			scope.dtr_day.morning_in = new Date(row.ddate+" "+row.morning_in);
+			scope.dtr_day.morning_out = new Date(row.ddate+" "+row.morning_out);
+			scope.dtr_day.afternoon_in = new Date(row.ddate+" "+row.afternoon_in);
+			scope.dtr_day.afternoon_out = new Date(row.ddate+" "+row.afternoon_out);						
+			
+			scope.dtr_day.disabled = {};
+			scope.dtr_day.disabled.morning_in = row.morning_in == '-'?false:true;
+			scope.dtr_day.disabled.morning_out = row.morning_out == '-'?false:true;
+			scope.dtr_day.disabled.afternoon_in = row.afternoon_in == '-'?false:true;
+			scope.dtr_day.disabled.afternoon_out = row.afternoon_out == '-'?false:true;
 			
 			$http({
 			  method: 'POST',
@@ -300,15 +305,31 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 			var content = 'dialogs/log.html';			
 
-			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);			
+			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);						
 			
 		};
 		
-		self.allot = function(scope) {
+		self.allot = function(scope,bl) {
+			
+			if (scope.dtr_allotment == "") return;
+			
+			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log);
 			
 		};
 		
 		self.dtrLogs = function(scope) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/dtr-day-logs.php',
+			  data: scope.dtr_day
+			}).then(function mySucces(response) {
+				
+				self.dtr(scope,false);
+				
+			}, function myError(response) {				 
+				
+			});		
 			
 		};
 		
