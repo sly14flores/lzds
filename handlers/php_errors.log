@@ -2908,3 +2908,9 @@ Stack trace:
 #1 C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\dtr-day-logs.php(18): pdo_db->updateData(Array, 'id')
 #2 {main}
   thrown in C:\Users\sly\Desktop\UwAmp310\www\lzds\db.php on line 176
+[25-Oct-2017 22:55:45 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php on line 14
+[25-Oct-2017 22:55:45 Asia/Manila] PHP Stack trace:
+[25-Oct-2017 22:55:45 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php:0
+[25-Oct-2017 22:56:02 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php on line 14
+[25-Oct-2017 22:56:02 Asia/Manila] PHP Stack trace:
+[25-Oct-2017 22:56:02 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php:0
