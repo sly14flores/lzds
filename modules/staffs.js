@@ -40,6 +40,9 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 				
 			});			
 			
+			scope.data = {};
+			scope.pagination = {};
+			
 		};
 		
 		function validate(scope) {
@@ -59,7 +62,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		function mode(scope,row) {
 			
 			if (row != null) {
-				scope.views.panel_title = 'Edit Staff Info';			
+				scope.views.panel_title = 'Staff Info';			
 				scope.btns.ok.disabled = true;
 				scope.btns.ok.label = 'Update';
 				scope.btns.cancel.label = 'Close';			
@@ -73,6 +76,12 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		};		
 		
 		self.staff = function(scope,row) { // form
+			
+			scope.leaves.data(scope);
+			
+			$timeout(function() {
+				scope.leaves.list(scope);
+			},1000);
 			
 			scope.views.list = true;		
 			

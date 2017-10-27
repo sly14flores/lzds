@@ -1,6 +1,6 @@
-var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-module','ui.bootstrap']);
+var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-module','leaves-module','ui.bootstrap']);
 
-app.controller('staffsCtrl',function($scope,fullscreen,form) {
+app.controller('staffsCtrl',function($scope,fullscreen,form,leaves) {
 	
 	$scope.views = {};	
 	
@@ -13,7 +13,9 @@ app.controller('staffsCtrl',function($scope,fullscreen,form) {
 	
 	form.list($scope);
 
-	$scope.form = form;	
+	$scope.form = form;
+	
+	$scope.leaves = leaves;
 
 });
 
