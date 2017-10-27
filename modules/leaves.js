@@ -47,7 +47,8 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/leaves-list.php'
+			  url: 'handlers/leaves-list.php',
+			  data: {id: scope.staff_id}
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.data.leaves);
@@ -63,6 +64,25 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 			$('#x_content_leaves').load('lists/leaves.html',function() {
 				$timeout(function() { $compile($('#x_content_leaves')[0])(scope); },100);				
 			});				
+			
+		};
+		
+		self.leave = function(scope,leave) {
+
+			if (leave == null) {
+				scope.data.leave = {};
+				scope.data.leave.id = 0;
+			} else {				
+				scope.data.leave = angular.copy(leave);
+			};
+			
+			var content = 'dialogs/leave.html';	
+
+			bootstrapModal.box(scope,'Add Leave',content,self.save);			
+			
+		};
+
+		self.save = function(scope) {
 			
 		};
 		

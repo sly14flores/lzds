@@ -1,0 +1,23 @@
+<form name="formHolder.leave" id="formHolder.leave" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.leave.leave_date.$touched && formHolder.leave.leave_date.$invalid}">
+	<label>Date</label>
+	<input type="date" class="form-control" name="leave_date" ng-model="leave.leave_date" required>
+	<span class="help-block" ng-show="formHolder.leave.leave_date.$touched && formHolder.leave.leave_date.$invalid">Date is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.leave.leave_description.$touched && formHolder.leave.leave_description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="leave_description" ng-model="leave.leave_description" required>
+	<span class="help-block" ng-show="formHolder.leave.leave_description.$touched && formHolder.leave.leave_description.$invalid">Description is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.leave.leave_wholeday.$touched && formHolder.leave.leave_wholeday.$invalid}">
+	<label>Wholeday/Halfday</label>
+	<select class="form-control" name="leave_wholeday" ng-model="leave.leave_wholeday" required>
+		<option value="wholeday">Wholeday</option>		
+		<option value="am">AM</option>
+		<option value="pm">PM</option>		
+	</select>
+	<span class="help-block" ng-show="formHolder.leave.leave_wholeday.$touched && formHolder.leave.leave_wholeday.$invalid">Please specify if wholeday or halfday</span>		
+  </div> 
+</div>
+</form>

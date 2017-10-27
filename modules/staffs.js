@@ -40,6 +40,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 				
 			});			
 			
+			scope.staff_id = 0;
+			
 			scope.data = {};
 			scope.pagination = {};
 			
@@ -80,6 +82,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 			scope.leaves.data(scope);
 			
 			$timeout(function() {
+				scope.staff_id = row.id;
 				scope.leaves.list(scope);
 			},1000);
 			
