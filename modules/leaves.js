@@ -21,10 +21,10 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 		function validate(scope) {
 			
 			var controls = scope.formHolder.leave.$$controls;
-			
+
 			angular.forEach(controls,function(elem,i) {
 				
-				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
+				if (elem.$$attr.$attr.required) scope.$apply(function() { elem.$touched = elem.$invalid; });
 									
 			});
 
@@ -72,8 +72,10 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 			if (leave == null) {
 				scope.data.leave = {};
 				scope.data.leave.id = 0;
-			} else {				
+				scope.data.leave.staff_id = scope.staff_id;
+			} else {
 				scope.data.leave = angular.copy(leave);
+				scope.data.leave.leave_date = new Date(leave.leave_date);
 			};
 			
 			var content = 'dialogs/leave.html';	
@@ -84,7 +86,53 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 
 		self.save = function(scope) {
 			
+			if (scope.$id > 2) scope = scope.$parent;				
+			
+			if (validate(scope)) return false;
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/leave-save.php',
+			  data: scope.data.leave
+			}).then(function mySucces(response) {
+				
+				self.list(scope);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});
+			
+			return true;			
+			
 		};
+		
+		self.delete = function(scope,row) {
+			
+			var onOk = function() {
+				
+				if (scope.$id > 2) scope = scope.$parent;			
+				
+				$http({
+				  method: 'POST',
+				  url: 'handlers/leave-delete.php',
+				  data: {id: [row.id]}
+				}).then(function mySucces(response) {
+
+					self.list(scope);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+
+			};
+
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this leave?',onOk,function() {});
+
+		};		
 		
 	};	
 	

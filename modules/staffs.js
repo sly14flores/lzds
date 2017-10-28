@@ -80,10 +80,14 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		self.staff = function(scope,row) { // form
 			
 			scope.leaves.data(scope);
+			scope.tos.data(scope);
+			scope.loans.data(scope);
 			
 			$timeout(function() {
 				scope.staff_id = row.id;
 				scope.leaves.list(scope);
+				scope.tos.list(scope);
+				scope.loans.list(scope);
 			},1000);
 			
 			scope.views.list = true;		

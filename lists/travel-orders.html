@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">Date </th>
+		<th class="column-title">Description </th>
+		<th class="column-title">Wholeday/Halfday </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span>
+		</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer" ng-repeat="t in pagination.tos.filterData = (data.tos | filter: views.tos.search) | pagination: pagination.tos.currentPage:pagination.tos.pageSize">
+		<td class="">{{t.to_date}}</td>
+		<td class="">{{t.to_description}}</td>
+		<td class="">{{t.to_wholeday}}</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="tos.to(this,t)"><i class="fa fa-search" style="margin-right: 10px;"></i></a>
+			<a href="javascript:;" ng-click="tos.delete(this,t)"><i class="fa fa-close"></i></a>
+		</td>
+	  </tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="pagination.tos.filterData.length" max-size="pagination.tos.maxSize" items-per-page="pagination.tos.pageSize" ng-model="pagination.tos.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>	
+  </table>
+</div>

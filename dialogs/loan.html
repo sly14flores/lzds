@@ -1,0 +1,29 @@
+<form name="formHolder.loan" id="formHolder.loan" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_date.$touched && formHolder.loan.loan_date.$invalid}">
+	<label>Date</label>
+	<input type="date" class="form-control" name="loan_date" ng-model="data.loan.loan_date" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_date.$touched && formHolder.loan.loan_date.$invalid">Date is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_description.$touched && formHolder.loan.loan_description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="loan_description" ng-model="data.loan.loan_description" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_description.$touched && formHolder.loan.loan_description.$invalid">Description is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_amount.$touched && formHolder.loan.loan_amount.$invalid}">
+	<label>Amount</label>
+	<input type="text" class="form-control" name="loan_amount" ng-model="data.loan.loan_amount" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_amount.$touched && formHolder.loan.loan_amount.$invalid">Amount is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_months.$touched && formHolder.loan.loan_months.$invalid}">
+	<label>No of months</label>
+	<input type="text" class="form-control" name="loan_months" ng-model="data.loan.loan_months" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_months.$touched && formHolder.loan.loan_months.$invalid">No of months is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid}">
+	<label>Monthly Payment</label>
+	<input type="text" class="form-control" name="loan_monthly" ng-model="data.loan.loan_monthly" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid">Monthly payment required</span>	
+  </div>  
+</div>
+</form>

@@ -6,6 +6,8 @@
 	</li>
 	<li role="presentation" class=""><a href="#travel_orders" role="tab" data-toggle="tab" aria-expanded="false">Travel Orders</a>
 	</li>
+	<li role="presentation" class=""><a href="#loans" role="tab" data-toggle="tab" aria-expanded="false">Loans</a>
+	</li>	
   </ul>
   <div id="myTabContent" class="tab-content">
 	<div role="tabpanel" class="tab-pane fade active in" id="basic_info">
@@ -211,7 +213,46 @@
 		</div>
 	</div>
 	<div role="tabpanel" class="tab-pane fade" id="travel_orders">
-
+		<div class="x_panel">
+		  <div class="x_title">
+			<h2>{{views.tos.panel_title}}</h2>
+			<ul class="nav navbar-right panel_toolbox">
+			  <li><a class="collapse-tos"><i class="fa fa-chevron-up"></i></a>
+			  </li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
+				<ul class="dropdown-menu" role="menu">
+				  <li><a href="javascript:;" ng-click="tos.to(this,null)">Add New TO</a></li>
+				  <li><a href="javascript:;" ng-click="tos.list(this)">TOs List</a></li>
+				</ul>
+			  </li>
+			  <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
+			</ul>
+			<div class="clearfix"></div>
+		  </div>
+		  <div id="x_content_tos" class="x_content"></div>
+		</div>
 	</div>
+	<div role="tabpanel" class="tab-pane fade" id="loans">
+		<div class="x_panel">
+		  <div class="x_title">
+			<h2>{{views.loans.panel_title}}</h2>
+			<ul class="nav navbar-right panel_toolbox">
+			  <li><a class="collapse-loans"><i class="fa fa-chevron-up"></i></a>
+			  </li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
+				<ul class="dropdown-menu" role="menu">
+				  <li><a href="javascript:;" ng-click="loans.loan(this,null)">Add New Loan</a></li>
+				  <li><a href="javascript:;" ng-click="loans.list(this)">Loans List</a></li>
+				</ul>
+			  </li>
+			  <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
+			</ul>
+			<div class="clearfix"></div>
+		  </div>
+		  <div id="x_content_loans" class="x_content"></div>
+		</div>
+	</div>	
   </div>
 </div>

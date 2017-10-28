@@ -1,0 +1,23 @@
+<form name="formHolder.to" id="formHolder.to" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.to.to_date.$touched && formHolder.to.to_date.$invalid}">
+	<label>Date</label>
+	<input type="date" class="form-control" name="to_date" ng-model="data.to.to_date" required>
+	<span class="help-block" ng-show="formHolder.to.to_date.$touched && formHolder.to.to_date.$invalid">Date is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.to.to_description.$touched && formHolder.to.to_description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="to_description" ng-model="data.to.to_description" required>
+	<span class="help-block" ng-show="formHolder.to.to_description.$touched && formHolder.to.to_description.$invalid">Description is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.to.to_wholeday.$touched && formHolder.to.to_wholeday.$invalid}">
+	<label>Wholeday/Halfday</label>
+	<select class="form-control" name="to_wholeday" ng-model="data.to.to_wholeday" required>
+		<option value="Wholeday">Wholeday</option>		
+		<option value="AM">AM</option>
+		<option value="PM">PM</option>		
+	</select>
+	<span class="help-block" ng-show="formHolder.to.to_wholeday.$touched && formHolder.to.to_wholeday.$invalid">Please specify if wholeday or halfday</span>		
+  </div> 
+</div>
+</form>
