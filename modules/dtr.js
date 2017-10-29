@@ -135,36 +135,48 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 		};		
 		
-		self.dtr = function(scope,opt) {
+		self.dtr = function(scope,opt) {			
 			
-			// if (opt) // confirm
+			if (scope.staffDtr.id == 0) return;							
 			
-			if (scope.staffDtr.id == 0) return;
+			var onOk = function() {
 			
-			scope.staffDtr.option = opt;
+				scope.staffDtr.option = opt;
 			
-			scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
+				scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
 			
-			scope.dtr = [];
+				scope.dtr = [];			
 			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/dtr-staff.php',
-			  data: scope.staffDtr
-			}).then(function mySucces(response) {					
+				$http({
+				  method: 'POST',
+				  url: 'handlers/dtr-staff.php',
+				  data: scope.staffDtr
+				}).then(function mySucces(response) {					
+					
+					scope.dtr = angular.copy(response.data);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
 				
-				scope.dtr = angular.copy(response.data);
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});					
+				$('#x_content').html('Loading...');
+				$('#x_content').load('lists/dtr.html',function() {
+					$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+				});				
+
+			};
 			
-			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/dtr.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});	
+			if (!opt) {
+				
+				onOk();
+				
+			} else {
+				
+				bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
+				
+			}			
 
 		};
 

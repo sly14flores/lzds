@@ -2941,3 +2941,17 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loan-save.php(13): pdo_db->updateData(Array, 'id')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 175
+[29-Oct-2017 23:21:11 Asia/Manila] PHP Parse error:  syntax error, unexpected '$leave' (T_VARIABLE) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 39
+[29-Oct-2017 23:24:12 Asia/Manila] PHP Notice:  Undefined index: leave_description in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 43
+[29-Oct-2017 23:24:12 Asia/Manila] PHP Stack trace:
+[29-Oct-2017 23:24:12 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[29-Oct-2017 23:24:12 Asia/Manila] PHP Notice:  Undefined index: leave_wholeday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 43
+[29-Oct-2017 23:24:12 Asia/Manila] PHP Stack trace:
+[29-Oct-2017 23:24:12 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[29-Oct-2017 23:55:22 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect time value: '-483' for column 'tardiness' at row 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:83
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(83): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php(102): pdo_db->insertData(Array)
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php(25): generateDtr(Object(pdo_db), Object(log_order))
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 83
