@@ -1,0 +1,14 @@
+<form name="formHolder.holiday" id="formHolder.holiday" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.holiday.holiday_date.$touched && formHolder.holiday.holiday_date.$invalid}">
+	<label>Date</label>
+	<input type="date" class="form-control" name="holiday_date" ng-model="holiday.holiday_date" required>
+	<span class="help-block" ng-show="formHolder.holiday.holiday_date.$touched && formHolder.holiday.holiday_date.$invalid">Date is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.holiday.holiday_description.$touched && formHolder.holiday.holiday_description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="holiday_description" ng-model="holiday.holiday_description" required>
+	<span class="help-block" ng-show="formHolder.holiday.holiday_description.$touched && formHolder.holiday.holiday_description.$invalid">Description is required</span>	
+  </div>
+</div>
+</form>

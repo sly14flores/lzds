@@ -26,7 +26,7 @@ require_once 'authentication.php';
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="dashboard" ng-controller="dashboardCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="holidays" ng-controller="holidaysCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -66,16 +66,16 @@ require_once 'authentication.php';
                     <ul class="nav child_menu">
                       <li><a href="cashier.html">Cashier</a></li>
                       <li><a href="dtr.html">DTR</a></li>
-                      <li><a href="payroll.html">Payroll</a></li>
-                    </ul>				
-                  </li>
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                      <li><a href="payroll.html">Payroll</a></li>					  
+                    </ul>				  
+                  </li>				  
+                  <li class="active"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="school-fees.html">School Fees</a></li>
-                      <li><a href="schedules.html">Schedules</a></li>					  
-                      <li><a href="holidays.html">Holidays</a></li>					  
+                      <li><a href="schedules.html">Schedules</a></li>
+                      <li class="active"><a href="holidays.html">Holidays</a></li>						  
                       <li><a href="groups.html">Groups</a></li>
-                      <li><a href="students-import.html">Import Students</a></li>
+                      <li><a href="students-import.html">Import Students</a></li>					  
                     </ul>
                   </li>
                 </ul>
@@ -198,11 +198,11 @@ require_once 'authentication.php';
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">			
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button">&nbsp;</button>
                     </span>
                   </div>
                 </div>
@@ -219,22 +219,18 @@ require_once 'authentication.php';
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
-                      <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
+                          <li><a href="javascript:;" ng-click="form.holiday(this,null)">Add New Holiday</a></li>
+                          <li><a href="javascript:;" ng-click="form.list(this)">Holidays List</a></li>
                         </ul>
-                      </li>-->
-                      <!--<li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>-->
+                      </li>
+                      <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div id="x_content" class="x_content">
-				  </div>
+                  <div id="x_content" class="x_content"></div>
                 </div>
               </div>
             </div>
@@ -267,14 +263,16 @@ require_once 'authentication.php';
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
 	
-	<script src="angular/angular.min.js"></script>
-	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
-	
+	<script src="angular/angular.min.js"></script>	
+	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
+
 	<script src="modules/bootstrap-modal.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
+	<script src="modules/school-year.js"></script>
+	<script src="modules/holidays.js"></script>
 	
-	<script src="controllers/dashboard.js"></script>
+	<script src="controllers/holidays.js"></script>
 
   </body>
 </html>

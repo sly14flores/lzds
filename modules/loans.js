@@ -76,6 +76,7 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal','x-panel-module'
 			} else {
 				scope.data.loan = angular.copy(loan);
 				scope.data.loan.loan_date = new Date(loan.loan_date);
+				scope.data.loan.loan_effectivity = new Date(loan.loan_effectivity);
 			};
 			
 			var content = 'dialogs/loan.html';	

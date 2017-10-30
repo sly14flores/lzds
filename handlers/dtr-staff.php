@@ -45,7 +45,7 @@ foreach ($_Dtrs as $key => $dtr) {
 	foreach ($tos as $to) {
 		$_Dtrs[$key]['remarks'] .= "Travel Order: ".$to['to_description']. ", ".$to['to_wholeday'];
 	}		
-	
+	if ($_Dtrs[$key]['absent']) $_Dtrs[$key]['remarks'] = "Absent";	
 }
 
 header("Content-type: application/json");
@@ -91,30 +91,22 @@ function generateDtr($con,$analyze) {
 		# tardiness
 		$schedules = $analyze->schedules;
 		$morning_in = "$day ".$schedules[date("l",strtotime($day))]['morning_in'];
-		$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
-		$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));
 		
-		if ( (date("H:i:s",strtotime($dtr['morning_in'])) != "00:00:00") && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
+		# if working day and late
+		if ( is_working_day($day) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
 			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
 			$dtr['tardiness'] = gmdate('H:i:s',$tardiness);
-		}
-		
-		# if absent
-		
-		# on leave
-		if ($dtr['tardiness'] != "00:00:00") {
-			foreach ($leaves as $leave) {
-				if ($leave['leave_wholeday'] != "PM") $dtr['tardiness'] = "00:00:00";
-			}
-		}
-			
-		# on travel order
-		if ($dtr['tardiness'] != "00:00:00") {
-			foreach ($tos as $to) {
-				if ($to['to_wholeday'] != "PM") $dtr['tardiness'] = "00:00:00";
-			}
 		}		
 		
+		# if on leave or travel
+		if (is_onleave_travel($con,$day)) $dtr['tardiness'] = "00:00:00";		
+		
+		# if absent but not on leave or travel
+		if (is_absent($dtr,$day) && !is_onleave_travel($con,$day)) {
+			$dtr['tardiness'] = "00:00:00";			
+			$dtr['absent'] = 1;
+		};
+
 		$log = $con->insertData($dtr);
 		
 		$day = date("Y-m-d",strtotime("+1 Day",strtotime($day)));
@@ -135,5 +127,88 @@ function staff_id($con,$rfid) {
 	return $staff_id;
 	
 }
+
+function is_working_day($day) {
+	
+	$is_working_day = false;
+	
+	switch (date("l",strtotime($day))) {
+		
+		case "Monday":
+			$is_working_day = true;
+		break;
+		
+		case "Tuesday":
+			$is_working_day = true;		
+		break;
+		
+		case "Wednesday":
+			$is_working_day = true;		
+		break;
+		
+		case "Thursday":
+			$is_working_day = true;		
+		break;
+		
+		case "Friday":
+			$is_working_day = true;		
+		break;
+		
+	}
+	
+	return $is_working_day;
+	
+}
+
+function is_onleave_travel($con,$day) {
+	
+	$is_onleave_travel = false;
+	
+	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
+	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));
+	
+	# on leave
+	foreach ($leaves as $leave) {
+		if ($leave['leave_wholeday'] != "PM") $is_onleave_travel = true;
+	}
+
+	# on travel order
+	foreach ($tos as $to) {
+		if ($to['to_wholeday'] != "PM") $is_onleave_travel = true;
+	}
+	
+	return $is_onleave_travel;
+
+}
+
+function is_absent($dtr,$day) {
+	
+	$is_absent = false;
+	
+	if (!is_working_day($day)) return $is_absent; # if Saturday or Sunday
+	
+	if (is_holiday($day)) return $is_absent; # except Holidays
+	
+	if ( (date("H:i:s",strtotime($dtr['morning_in'])) == "00:00:00") && (date("H:i:s",strtotime($dtr['morning_out'])) == "00:00:00") && (date("H:i:s",strtotime($dtr['afternoon_in'])) == "00:00:00") && (date("H:i:s",strtotime($dtr['afternoon_out'])) == "00:00:00") ) $is_absent = true;
+	
+	return $is_absent;
+	
+};
+
+function is_holiday($day) {
+	
+	global $con;
+	
+	$holidays = $con->getData("SELECT * FROM holidays WHERE holiday_date = '$day'");
+	
+	$is_holiday = false;
+	
+	foreach ($holidays as $holiday) {
+		$is_holiday = true;
+	}
+	
+	return $is_holiday;
+	
+};
 
 ?>

@@ -24,6 +24,11 @@
 	<label>Monthly Payment</label>
 	<input type="text" class="form-control" name="loan_monthly" ng-model="data.loan.loan_monthly" required>
 	<span class="help-block" ng-show="formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid">Monthly payment required</span>	
-  </div>  
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_effectivity.$touched && formHolder.loan.loan_effectivity.$invalid}">
+	<label>Effectivity Date</label>
+	<input type="date" class="form-control" name="loan_effectivity" ng-model="data.loan.loan_effectivity" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_effectivity.$touched && formHolder.loan.loan_effectivity.$invalid">Monthly payment required</span>	
+  </div>   
 </div>
 </form>
