@@ -147,17 +147,19 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		
 		self.schedule = function(scope,row) { // form
 			
+			console.log(scope.schedule_details);
+			
 			scope.views.list = true;			
 			
 			mode(scope,row);		
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/schedule.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+				$timeout(function() { $compile($('#x_content')[0])(scope); },500);				
 			});
 						
 			if (row != null) {
-				console.log(scope);
+
 				if (scope.$id > 2) scope = scope.$parent;
 			
 				$http({
