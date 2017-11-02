@@ -3487,3 +3487,66 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loan-save.php(20): pdo_db->insertData(Array)
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 83
+[02-Nov-2017 23:18:02 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:18:02 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:18:02 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:19:33 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:19:33 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:19:33 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:35:48 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:35:48 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:35:48 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:35:50 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:35:50 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:35:50 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:36:33 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:36:33 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:36:33 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:40:16 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:40:16 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:40:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:43:47 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:43:47 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:43:47 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:44:20 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:44:20 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:44:20 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:44:50 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:44:50 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:44:50 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[02-Nov-2017 23:48:36 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[02-Nov-2017 23:48:36 Asia/Manila] PHP Stack trace:
+[02-Nov-2017 23:48:36 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:00:13 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:00:13 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:00:13 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:02:17 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:02:17 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:02:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:04:30 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:04:30 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:04:30 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:06:41 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:06:41 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:06:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:07:32 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:07:32 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:07:32 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:09:35 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:09:35 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:09:35 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:11:22 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:11:22 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:11:22 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:12:14 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:12:14 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:12:14 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:16:01 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:16:01 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:16:01 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:16:43 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:16:43 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:16:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0
+[03-Nov-2017 00:17:49 Asia/Manila] PHP Notice:  Undefined index: staff in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php on line 15
+[03-Nov-2017 00:17:49 Asia/Manila] PHP Stack trace:
+[03-Nov-2017 00:17:49 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\account-profile.php:0

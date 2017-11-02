@@ -1,0 +1,31 @@
+<form name="formHolder.level" id="formHolder.level" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.level.description.$touched && formHolder.level.description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="description" ng-model="level.description" required>
+	<span class="help-block" ng-show="formHolder.level.description.$touched && formHolder.level.description.$invalid">Description is required</span>	
+  </div>
+</div>
+<h3>Sections</h3>
+<button type="button" class="btn btn-primary" ng-click="form.addSection(this)">Add</button>
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>Description</th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="s in level.sections">
+		<td class="form-group" ng-class="{'has-error': formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']}">
+			<input type="text" class="form-control" name="description{{$index}}" ng-model="s.description" ng-disabled="s.disabled" required>
+			<span class="help-block" ng-show="formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']">Description is required</span>				
+		</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="form.editSection(this,s)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': s.disabled, 'fa-ban': !s.disabled}"></i></a>
+			<a href="javascript:;" ng-click="form.removeSection(this,s)"><i class="fa fa-close"></i></a>
+		</td>
+	</tr>
+</tbody>
+</table>
+</form>
