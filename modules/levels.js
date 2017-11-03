@@ -8,7 +8,8 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 	
 			scope.level = {};
 			scope.level.id = 0;
-			scope.level.sections = [];			
+			scope.level.sections = [];
+			scope.level.dels = [];
 
 			scope.levels = [];
 			
@@ -70,8 +71,10 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 				scope.level = {};
 				scope.level.id = 0;
 				scope.level.sections = [];
+				scope.level.dels = [];				
 			} else {
 				scope.level = angular.copy(level);
+				scope.level.dels = [];
 			};
 			
 			var content = 'dialogs/level.html';	
@@ -143,6 +146,8 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 			
 			var index = scope.level.sections.indexOf(section);
 			scope.level.sections.splice(index,1);
+			
+			scope.level.dels.push(section.id);
 			
 		};
 		

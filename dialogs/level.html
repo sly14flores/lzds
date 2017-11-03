@@ -22,7 +22,7 @@
 			<span class="help-block" ng-show="formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']">Description is required</span>				
 		</td>
 		<td class="last list-action">
-			<a href="javascript:;" ng-click="form.editSection(this,s)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': s.disabled, 'fa-ban': !s.disabled}"></i></a>
+			<a href="javascript:;" ng-click="form.editSection(this,s)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': s.disabled, 'fa-check': !s.disabled}"></i></a>
 			<a href="javascript:;" ng-click="form.removeSection(this,s)"><i class="fa fa-close"></i></a>
 		</td>
 	</tr>
