@@ -1,4 +1,4 @@
-angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost) {
+angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI) {
 	
 	function form() {
 		
@@ -7,7 +7,11 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.data = function(scope) { // initialize data
 			
 			scope.formHolder = {};		
-
+			
+			scope.sheet = {};
+			scope.sheet.individual = {};
+			scope.sheet.all = [];
+			
 			scope.months = [
 				{month:"01",description:"January"},
 				{month:"02",description:"February"},
@@ -23,17 +27,25 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				{month:"12",description:"December"},
 			];
 			
+			scope.periods = {first: "First Half", second: "Second Half"};
+			
 			var d = new Date();
-
-			scope.staffDtr = {
+			
+			scope.payroll = {};
+			scope.payroll.all = {
+				month: scope.months[d.getMonth()],
+				period: "first",
+				year: d.getFullYear(),
+				option: false			
+			};
+			scope.payroll.individual = {
 				id: 0,
-				rfid: '',
 				fullname: '',
 				month: scope.months[d.getMonth()],
 				period: "first",
 				year: d.getFullYear(),
-				option: false
-			};			
+				option: false				
+			};		
 			
 			scope.suggest_staffs = [];
 			
@@ -63,9 +75,9 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 		};		
 		
-		function validate(scope) {
+		function validate(scope,form) {
 			
-			var controls = scope.formHolder.payment.$$controls;
+			var controls = scope.formHolder['form'].$$controls;
 
 			angular.forEach(controls,function(elem,i) {
 
@@ -73,183 +85,29 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 									
 			});
 
-			return scope.formHolder.payment.$invalid;
+			return scope.formHolder['form'].$invalid;
 			
 		};
 		
-		function mode(scope) {
-
-			scope.views.panel_title = 'Payment Info';
+		self.all = function(scope,reprocess) {
 			
 		};
+
+		self.individual = function(scope,reprocess) {
+
+			if (scope.payroll.individual.id == 0) return;			
+			
+			scope.sheet.individual = {};		
+			
+			scope.views.panel_title = scope.payroll.individual.fullname+' ('+scope.periods[scope.payroll.individual.period]+', '+scope.payroll.individual.month.description+' '+scope.payroll.individual.year+')';				
 		
-		self.payroll = function(scope,opt) {
-			
-			if (scope.staffDtr.id == 0) return;							
-			
-			var onOk = function() {
-			
-				scope.staffDtr.option = opt;
-			
-				scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
-			
-				scope.dtr = [];			
-			
-				$http({
-				  method: 'POST',
-				  url: 'handlers/dtr-staff.php',
-				  data: scope.staffDtr
-				}).then(function mySucces(response) {					
-					
-					scope.dtr = angular.copy(response.data);
-					
-				}, function myError(response) {
-					 
-				  // error
-					
-				});
-				
-				$('#x_content').html('Loading...');
-				$('#x_content').load('lists/payroll-individual.html',function() {
-					$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-				});		
-
-			};
-			
-			if (!opt) {
-				
-				onOk();
-				
-			} else {
-				
-				bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
-				
-			}			
-			
-		};
-		
-		self.payment = function(scope,row) { // form
-			
-			scope.views.list = true;
-			
-			mode(scope);		
-
-			$('#x_content').html('Loading...');
-			$('#x_content').load('forms/payment.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});
-
-			if (scope.$id > 2) scope = scope.$parent;
-
-			angular.copy(row, scope.enrollment_info);
-			scope.payment.enrollment_id = row.id;
-			
-			payments(scope,row.id);
-			
-		};
-		
-		function payments(scope,id) {
-			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/payment-edit.php',
-			  data: {enrollment_id: id}
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.payments);
+			  url: 'handlers/payroll-individual.php',
+			  data: scope.payroll.individual
+			}).then(function mySucces(response) {										
 				
 				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});			
-			
-		};
-		
-		function enrollment_info(scope,id) {
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/payment-enrollment-info.php',
-			  data: {id: id}
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.enrollment_info);				
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});				
-			
-		}
-		
-		self.edit = function(scope,payment) {
-
-			if (payment == null) {
-				scope.payment.id = 0;
-				delete scope.payment.description;
-				delete scope.payment.payment_month;
-				delete scope.payment.amount;
-				delete scope.payment.official_receipt;
-			} else {				
-				scope.payment = angular.copy(payment);
-			};
-			
-			var content = 'dialogs/payment.html';			
-
-			bootstrapModal.box(scope,'Add Payment',content,self.save);			
-			
-		};		
-		
-		self.list = function(scope) {	
-			
-			scope.views.list = false;			
-			
-			scope.payment = {};
-			scope.payment.id = 0;		
-		
-			scope.currentPage = 1;
-			scope.pageSize = 15;
-			scope.maxSize = 5;				
-		
-			scope.views.panel_title = 'Payments List';		
-
-			$http({
-			  method: 'POST',
-			  url: 'handlers/payments-list.php',
-			  data: scope.filter
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.enrollments);
-				scope.filterData = scope.enrollments;				
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});					
-			
-			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/payments.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});	
-
-		};
-
-		self.save = function(scope) {
-
-			if (validate(scope)) return false;
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/payment-save.php',
-			  data: scope.payment
-			}).then(function mySucces(response) {
-				
-				payments(scope,scope.payment.enrollment_id);				
-				enrollment_info(scope,scope.payment.enrollment_id);		
 				
 			}, function myError(response) {
 				 
@@ -257,42 +115,25 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				
 			});
 			
-			return true;
+			$('#x_content').html('Loading...');
+			$('#x_content').load('lists/individual.html',function() {
+				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+			});		
 		
 		};
 		
-		self.delete = function(scope,row) {
+		self.edit = function(scope) {
 			
-			var onOk = function() {
-				
-				if (scope.$id > 2) scope = scope.$parent;			
-				
-				$http({
-				  method: 'POST',
-				  url: 'handlers/payment-delete.php',
-				  data: {id: [row.id]}
-				}).then(function mySucces(response) {
-
-					payments(scope,scope.payment.enrollment_id);
-					enrollment_info(scope,scope.payment.enrollment_id);					
-					
-				}, function myError(response) {
-					 
-				  // error
-					
-				});
-
-			};
-
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this payment?',onOk,function() {});
-
+			scope.btns.ok.disabled = !scope.btns.ok.disabled;			
+			
 		};
+		
+		self.staffSelect = function(scope, item, model, label, event) {
 
-		self.print = function(scope) {
+			scope.payroll.individual.fullname = item['fullname'];
+			scope.payroll.individual.id = item['id'];
 
-			printPost.show('reports/payment.php',{filter:{id: scope.enrollment_info.id}});
-			
-		};		
+		};	
 		
 	};
 	

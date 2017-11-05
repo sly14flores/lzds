@@ -206,6 +206,38 @@ require_once 'authentication.php';
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group pull-right top_search">
 				<div class="x_panel">
                   <div class="x_title">
+                    <h2>Payroll Sheet</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+					  <li><a href="javascript:;">&nbsp;</a></li>
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <form name="formHolder.all" id="formHolder.all">
+					  <div class="form-group">
+						<label>Year :</label>
+						<input type="text" class="form-control" ng-model="payroll.all.year">
+					  </div>
+                      <label>Month :</label>
+                      <select class="form-control" ng-model="payroll.all.month" ng-options="m.description for m in months track by m.month"></select>
+                      <label>Period :</label>
+                      <select class="form-control" ng-model="payroll.all.period">
+						<option value="first">First</option>
+						<option value="second">Second</option>
+					  </select>
+                      <span class="btn btn-primary pull-right" ng-click="form.all(this,false)">Go!</span>
+                    </form>
+                  </div>
+                </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group pull-right top_search">
+				<div class="x_panel">
+                  <div class="x_title">
                     <h2>Individual Payroll</h2>
                     <ul class="nav navbar-right panel_toolbox">
 					  <li><a href="javascript:;">&nbsp;</a></li>
@@ -218,26 +250,26 @@ require_once 'authentication.php';
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <form name="formHolder.staff" id="formHolder.staff">
+                    <form name="formHolder.individual" id="formHolder.individual">
 					  <div class="form-group">
 						<label>Year :</label>
-						<input type="text" class="form-control" ng-model="staffDtr.year">
+						<input type="text" class="form-control" ng-model="payroll.individual.year">
 					  </div>
                       <label>Month :</label>
-                      <select class="form-control" ng-model="staffDtr.month" ng-options="m.description for m in months track by m.month"></select>
+                      <select class="form-control" ng-model="payroll.individual.month" ng-options="m.description for m in months track by m.month"></select>
                       <label>Period :</label>
-                      <select class="form-control" ng-model="staffDtr.period">
+                      <select class="form-control" ng-model="payroll.individual.period">
 						<option value="first">First</option>
 						<option value="second">Second</option>
 					  </select>
                       <label>Staff :</label>
-                      <input type="text" class="form-control" ng-model="staffDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_staffs | filter:{fullname:$viewValue}" typeahead-on-select="form.staffSelect(this, $item, $model, $label, $event)">
+                      <input type="text" class="form-control" ng-model="payroll.individual.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_staffs | filter:{fullname:$viewValue}" typeahead-on-select="form.staffSelect(this, $item, $model, $label, $event)">
                       <br/>
-                      <span class="btn btn-primary pull-right" ng-click="form.payroll(this,false)">Go!</span>
+                      <span class="btn btn-primary pull-right" ng-click="form.individual(this,false)">Go!</span>
                     </form>
                   </div>
                 </div>
-                </div>
+                </div>				
 			</div>
 			</div>
 			
@@ -250,12 +282,6 @@ require_once 'authentication.php';
                     <h2>{{views.panel_title}}</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="javascript:;" ng-click="form.payroll(this,true)">Re-process</a></li>
-                        </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
                     </ul>
@@ -293,6 +319,7 @@ require_once 'authentication.php';
     <script src="build/js/custom.min.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>	
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
@@ -300,6 +327,7 @@ require_once 'authentication.php';
 	<script src="modules/bootstrap-modal.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
+	<script src="modules/blockui.js"></script>	
 	<script src="modules/school-year.js"></script>
 	<script src="modules/window-open-post.js"></script>	
 	<script src="modules/payroll.js"></script>
