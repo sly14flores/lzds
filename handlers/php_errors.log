@@ -3640,3 +3640,48 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(126): pdo_db->getData('SELECT * FROM l...')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 23:39:44 Asia/Manila] PHP Warning:  gmdate() expects parameter 2 to be integer, float given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php on line 33
+[05-Nov-2017 23:39:44 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 23:39:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 23:39:44 Asia/Manila] PHP   2. tardiness() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:140
+[05-Nov-2017 23:39:44 Asia/Manila] PHP   3. gmdate() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php:33
+[05-Nov-2017 23:41:31 Asia/Manila] PHP Warning:  gmdate() expects parameter 2 to be integer, float given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php on line 33
+[05-Nov-2017 23:41:31 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 23:41:31 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 23:41:31 Asia/Manila] PHP   2. tardiness() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:140
+[05-Nov-2017 23:41:31 Asia/Manila] PHP   3. gmdate() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php:33
+[05-Nov-2017 23:47:40 Asia/Manila] PHP Warning:  date() expects parameter 2 to be integer, float given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php on line 33
+[05-Nov-2017 23:47:40 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 23:47:40 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 23:47:40 Asia/Manila] PHP   2. tardiness() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:140
+[05-Nov-2017 23:47:40 Asia/Manila] PHP   3. date() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php:33
+[05-Nov-2017 23:50:00 Asia/Manila] PHP Warning:  date() expects parameter 2 to be integer, float given in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php on line 33
+[05-Nov-2017 23:50:00 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 23:50:00 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 23:50:00 Asia/Manila] PHP   2. tardiness() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:140
+[05-Nov-2017 23:50:00 Asia/Manila] PHP   3. date() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php:33
+[05-Nov-2017 23:59:51 Asia/Manila] PHP Parse error:  syntax error, unexpected '+=' (T_PLUS_EQUAL) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\classes.php on line 47
+[06-Nov-2017 00:00:41 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:130
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(130): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(156): pdo_db->insertDataMulti(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 130
+[06-Nov-2017 00:03:25 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:130
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(130): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(154): pdo_db->insertDataMulti(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 130
+[06-Nov-2017 00:04:10 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:130
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(130): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(154): pdo_db->insertDataMulti(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 130
+[06-Nov-2017 00:07:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:130
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(130): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(156): pdo_db->insertDataMulti(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 130

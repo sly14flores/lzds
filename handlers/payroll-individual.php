@@ -81,6 +81,7 @@ $payroll_deductions[] = array(
 	"payroll_id"=>$payroll_id,
 	"description"=>"SSS",
 	"description_field"=>$sss_period,
+	"unit"=>"",	
 	"amount"=>$staff[0][$sss_period],	
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
@@ -91,6 +92,7 @@ $payroll_deductions[] = array(
 	"payroll_id"=>$payroll_id,
 	"description"=>"HDMF",
 	"description_field"=>$hdmf_period,
+	"unit"=>"",	
 	"amount"=>$staff[0][$hdmf_period],	
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
@@ -101,6 +103,7 @@ $payroll_deductions[] = array(
 	"payroll_id"=>$payroll_id,
 	"description"=>"PHIC",
 	"description_field"=>$phic_period,
+	"unit"=>"",	
 	"amount"=>$staff[0][$phic_period],	
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
@@ -111,14 +114,16 @@ $payroll_deductions[] = array(
 	"payroll_id"=>$payroll_id,
 	"description"=>"Tax",
 	"description_field"=>$tax_period,
+	"unit"=>"",	
 	"amount"=>$staff[0][$tax_period],	
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
 
 # Loans
 $first_day = date("Y-").$_POST['month']['month']."-01";
+$middle_day = date("Y-").$_POST['month']['month']."-15";
 $last_day = date("Y-m-t",strtotime($first_day));
-$period_date = ($_POST['period'])?$first_day:$last_day;
+$period_date = ($_POST['period'])?$middle_day:$last_day;
 
 $loans = $con->getData("SELECT * FROM loans WHERE staff_id = ".$_POST['id']." AND '$period_date' >= loan_effectivity");
 
@@ -129,15 +134,34 @@ foreach ($loans as $key => $loan) {
 		"payroll_id"=>$payroll_id,
 		"description"=>$loan['loan_description'],
 		"description_field"=>"loan_".$loan['id'],
+		"unit"=>"",		
 		"amount"=>$loan[$loan_period],
 		"system_log"=>"CURRENT_TIMESTAMP"
-	);	
+	);
 	
-}
+};
 
 # Tardiness
+$tardiness = tardiness($con,$staff[0],$first_day,$last_day);
+$payroll_deductions[] = array(
+	"payroll_id"=>$payroll_id,
+	"description"=>"Tardiness",
+	"description_field"=>"tardiness",
+	"unit"=>$tardiness['tardiness'],
+	"amount"=>$tardiness['amount'],
+	"system_log"=>"CURRENT_TIMESTAMP"
+);
 
 # AWOL
+$absences = absences($con,$staff[0],$first_day,$last_day);
+$payroll_deductions[] = array(
+	"payroll_id"=>$payroll_id,
+	"description"=>"AWOL",
+	"description_field"=>"absences",
+	"unit"=>$absences['absences'],
+	"amount"=>$absences['amount'],
+	"system_log"=>"CURRENT_TIMESTAMP"
+);
 
 $hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = $payroll_id");
 
