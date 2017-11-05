@@ -15,15 +15,25 @@
 	<input type="text" class="form-control" name="loan_amount" ng-model="data.loan.loan_amount" required>
 	<span class="help-block" ng-show="formHolder.loan.loan_amount.$touched && formHolder.loan.loan_amount.$invalid">Amount is required</span>	
   </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid}">
+	<label>Monthly Payment (Full)</label>
+	<input type="text" class="form-control" name="loan_monthly" ng-model="data.loan.loan_monthly" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid">Monthly full payment is required</span>	
+  </div>  
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly_first.$touched && formHolder.loan.loan_monthly_first.$invalid}">
+	<label>Monthly Payment (First Half)</label>
+	<input type="text" class="form-control" name="loan_monthly_first" ng-model="data.loan.loan_monthly_first" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_monthly_first.$touched && formHolder.loan.loan_monthly_first.$invalid">First half payment is required</span>	
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly_second.$touched && formHolder.loan.loan_monthly_second.$invalid}">
+	<label>Monthly Payment (Second Half)</label>
+	<input type="text" class="form-control" name="loan_monthly_second" ng-model="data.loan.loan_monthly_second" required>
+	<span class="help-block" ng-show="formHolder.loan.loan_monthly_second.$touched && formHolder.loan.loan_monthly_second.$invalid">Second half payment is required</span>	
+  </div>  
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_months.$touched && formHolder.loan.loan_months.$invalid}">
 	<label>No of months</label>
 	<input type="text" class="form-control" name="loan_months" ng-model="data.loan.loan_months" required>
 	<span class="help-block" ng-show="formHolder.loan.loan_months.$touched && formHolder.loan.loan_months.$invalid">No of months is required</span>	
-  </div>
-  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid}">
-	<label>Monthly Payment</label>
-	<input type="text" class="form-control" name="loan_monthly" ng-model="data.loan.loan_monthly" required>
-	<span class="help-block" ng-show="formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid">Monthly payment required</span>	
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_effectivity.$touched && formHolder.loan.loan_effectivity.$invalid}">
 	<label>Effectivity Date</label>

@@ -1,4 +1,4 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
 	
 	function form() {
 		
@@ -31,7 +31,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 				fullname: '',
 				month: scope.months[d.getMonth()],
 				year: d.getFullYear(),
-				option: false
+				option: false,
+				schedule_id: 0
 			};
 			
 			scope.downloadDtr = {
@@ -135,9 +136,17 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			
 		};		
 		
-		self.dtr = function(scope,opt) {			
+		self.dtr = function(scope,opt) {	
 			
-			if (scope.staffDtr.id == 0) return;							
+			if (scope.staffDtr.id == 0) {
+				pnotify.show('danger','Notification','Please select staff');
+				return;
+			};
+
+			if (scope.staffDtr.schedule_id == 0) {
+				pnotify.show('danger','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
+				return;
+			};
 			
 			var onOk = function() {
 			
@@ -284,6 +293,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal']).factory('form',
 			scope.staffDtr.fullname = item['fullname'];
 			scope.staffDtr.id = item['id'];
 			scope.staffDtr.rfid = item['rfid'];
+			scope.staffDtr.schedule_id = item['schedule_id'];
 
 		};
 		

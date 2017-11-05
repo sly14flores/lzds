@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
 	
 	function form() {
 		
@@ -175,7 +175,10 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 
 		self.save = function(scope) {			
 			
-			if (validate(scope)) return;
+			if (validate(scope)) {
+				pnotify.show('danger','Notification','Please full up require fields');				
+				return;
+			};
 			
 			$http({
 			  method: 'POST',

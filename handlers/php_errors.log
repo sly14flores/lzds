@@ -3565,3 +3565,78 @@ Stack trace:
 [03-Nov-2017 19:21:54 Asia/Manila] PHP Notice:  Undefined index: dels in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php on line 10
 [03-Nov-2017 19:21:54 Asia/Manila] PHP Stack trace:
 [03-Nov-2017 19:21:54 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php:0
+[05-Nov-2017 17:08:27 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'loan_monthly' in 'field list' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, DATE...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loans-list.php(11): pdo_db->getData('SELECT id, DATE...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 17:13:44 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(loan_effectivity,'%M %e, %Y') loan_effectivity FROM loans WHERE staff_id = 2' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, DATE...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loans-list.php(11): pdo_db->getData('SELECT id, DATE...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 17:14:19 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(loan_effectivity,'%M %e, %Y') loan_effectivity FROM loans WHERE staff_id = 2' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, DATE...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loans-list.php(11): pdo_db->getData('SELECT id, DATE...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 17:14:39 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(loan_effectivity,'%M %e, %Y') loan_effectivity FROM loans WHERE staff_id = 2' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, DATE...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\loans-list.php(11): pdo_db->getData('SELECT id, DATE...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 19:13:37 Asia/Manila] PHP Notice:  Undefined index: id in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php on line 10
+[05-Nov-2017 19:13:37 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 19:13:38 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 19:13:38 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM s...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(10): pdo_db->getData('SELECT * FROM s...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 19:32:49 Asia/Manila] PHP Notice:  Array to string conversion in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php on line 20
+[05-Nov-2017 19:32:49 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 19:32:49 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 19:32:49 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[month]' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM p...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(20): pdo_db->getData('SELECT * FROM p...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 19:33:00 Asia/Manila] PHP Notice:  Array to string conversion in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php on line 20
+[05-Nov-2017 19:33:00 Asia/Manila] PHP Stack trace:
+[05-Nov-2017 19:33:00 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php:0
+[05-Nov-2017 19:33:00 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[month]' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM p...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(20): pdo_db->getData('SELECT * FROM p...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 19:48:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'payroll_id' in 'field list' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:129
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(129): PDO->prepare('INSERT INTO pay...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(66): pdo_db->insertDataMulti(Array)
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 129
+[05-Nov-2017 20:44:22 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM l...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(126): pdo_db->getData('SELECT * FROM l...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 20:44:45 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM l...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(126): pdo_db->getData('SELECT * FROM l...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[05-Nov-2017 20:45:05 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM l...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-individual.php(126): pdo_db->getData('SELECT * FROM l...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39

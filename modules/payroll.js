@@ -9,7 +9,13 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.formHolder = {};		
 			
 			scope.sheet = {};
+			
 			scope.sheet.individual = {};
+			scope.sheet.individual.id = 0;
+			scope.sheet.individual.payroll_pays = [];
+			scope.sheet.individual.payroll_deductions = [];
+			scope.sheet.individual.payroll_bonuses = [];
+			
 			scope.sheet.all = [];
 			
 			scope.months = [
@@ -96,16 +102,20 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.individual = function(scope,reprocess) {
 
 			if (scope.payroll.individual.id == 0) return;			
-			
+
 			scope.sheet.individual = {};		
-			
+			scope.sheet.individual.id = 0;
+			scope.sheet.individual.payroll_pays = [];
+			scope.sheet.individual.payroll_deductions = [];
+			scope.sheet.individual.payroll_bonuses = [];
+
 			scope.views.panel_title = scope.payroll.individual.fullname+' ('+scope.periods[scope.payroll.individual.period]+', '+scope.payroll.individual.month.description+' '+scope.payroll.individual.year+')';				
 		
 			$http({
 			  method: 'POST',
 			  url: 'handlers/payroll-individual.php',
 			  data: scope.payroll.individual
-			}).then(function mySucces(response) {										
+			}).then(function mySucces(response) {									
 				
 				
 				
@@ -133,7 +143,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.payroll.individual.fullname = item['fullname'];
 			scope.payroll.individual.id = item['id'];
 
-		};	
+		};
 		
 	};
 	

@@ -14,8 +14,9 @@
 		<form name="formHolder.staff" id="formHolder.staff" novalidate>
 		<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
 		<div class="clearfix"></div>
+		<hr>		
 		<h4><strong>Basic Info</strong></h4>
-		<div class="ln_solid"></div>
+		<hr>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>School ID</label>
@@ -104,9 +105,9 @@
 			<input type="text" placeholder="" class="form-control" name="position" ng-model="staff.position" ng-disabled="btns.ok.disabled">
 		  </div> 
 		</div>
-		<div class="ln_solid"></div>
+		<hr>
 		<h4><strong>Payroll Info</strong></h4>
-		<div class="ln_solid"></div>
+		<hr>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Basic Pay</label>
@@ -116,10 +117,12 @@
 			<label>COLA</label>
 			<input type="text" placeholder="" class="form-control" name="cola" ng-model="staff.cola" ng-disabled="btns.ok.disabled">
 		  </div>
+		</div>		
+		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Gross Pay</label>
 			<input type="text" placeholder="" class="form-control" name="gross_pay" ng-model="staff.gross_pay" ng-disabled="btns.ok.disabled">
-		  </div>  
+		  </div>  		
 		</div>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
@@ -145,33 +148,73 @@
 			<input type="text" placeholder="" class="form-control" name="st" ng-model="staff.st" ng-disabled="btns.ok.disabled">
 		  </div>
 		</div>
+		<h4 style="margin-top: 10px;"><strong>Deductions</strong></h4>		
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>SSS Contribution</label>
 			<input type="text" placeholder="" class="form-control" name="sss_amount" ng-model="staff.sss_amount" ng-disabled="btns.ok.disabled">
 		  </div>
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>First Half</label>
+			<input type="text" placeholder="" class="form-control" name="sss_amount_first" ng-model="staff.sss_amount_first" ng-disabled="btns.ok.disabled">
+		  </div> 
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Second Half</label>
+			<input type="text" placeholder="" class="form-control" name="sss_amount_second" ng-model="staff.sss_amount_second" ng-disabled="btns.ok.disabled">
+		  </div> 		  
+		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>HDMF Contribution</label>
 			<input type="text" placeholder="" class="form-control" name="hdmf_amount" ng-model="staff.hdmf_amount" ng-disabled="btns.ok.disabled">
 		  </div>
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>First Half</label>
+			<input type="text" placeholder="" class="form-control" name="hdmf_amount_first" ng-model="staff.hdmf_amount_first" ng-disabled="btns.ok.disabled">
+		  </div>
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Second Half</label>
+			<input type="text" placeholder="" class="form-control" name="hdmf_amount_second" ng-model="staff.hdmf_amount_second" ng-disabled="btns.ok.disabled">
+		  </div>		  
+		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>PHIC Contribution</label>
 			<input type="text" placeholder="" class="form-control" name="phic_amount" ng-model="staff.phic_amount" ng-disabled="btns.ok.disabled">
-		  </div>   
+		  </div>
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>First Half</label>
+			<input type="text" placeholder="" class="form-control" name="phic_amount_first" ng-model="staff.phic_amount_first" ng-disabled="btns.ok.disabled">
+		  </div>
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Second Half</label>
+			<input type="text" placeholder="" class="form-control" name="phic_amount_second" ng-model="staff.phic_amount_second" ng-disabled="btns.ok.disabled">
+		  </div>		  
 		</div>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Tax Amount</label>
 			<input type="text" placeholder="" class="form-control" name="tax_amount" ng-model="staff.tax_amount" ng-disabled="btns.ok.disabled">
-		  </div>
+		  </div> 
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>First Half</label>
+			<input type="text" placeholder="" class="form-control" name="tax_amount_first" ng-model="staff.tax_amount_first" ng-disabled="btns.ok.disabled">
+		  </div> 
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Second Half</label>
+			<input type="text" placeholder="" class="form-control" name="tax_amount_second" ng-model="staff.tax_amount_second" ng-disabled="btns.ok.disabled">
+		  </div> 		  
+		</div>
+		<h4 style="margin-top: 25px;"><strong>DTR Info</strong></h4>
+		<hr>
+		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Schedule</label>
 			<select class="form-control" name="schedule_id" ng-model="staff.schedule_id" ng-options="schedule.description for schedule in schedules track by schedule.id" ng-disabled="btns.ok.disabled" required></select>
 		  </div>  
-		</div>
-		<div class="ln_solid"></div>
-		<h4><strong>Account Info</strong></h4>
-		<div class="ln_solid"></div>
+		</div>		
+		<h4 style="margin-top: 25px;"><strong>Account Info</strong></h4>
+		<hr>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Username</label>

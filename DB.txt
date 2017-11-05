@@ -1,0 +1,228 @@
+ALTER TABLE `staffs`  ADD `sss_amount_first` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `sss_amount`;
+
+ALTER TABLE `staffs`  ADD `sss_amount_second` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `sss_amount_first`;
+
+ALTER TABLE `staffs`  ADD `hdmf_amount_first` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `hdmf_amount`;
+
+ALTER TABLE `staffs`  ADD `hdmf_amount_second` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `hdmf_amount_first`;
+
+ALTER TABLE `staffs`  ADD `phic_amount_first` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `phic_amount`;
+
+ALTER TABLE `staffs`  ADD `phic_amount_second` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `phic_amount_first`
+
+ALTER TABLE `staffs`  ADD `tax_amount_first` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `tax_amount`;
+
+ALTER TABLE `staffs`  ADD `tax_amount_second` FLOAT(10,2) NOT NULL DEFAULT '0'  AFTER `tax_amount_first`;
+
+
+
+
+ALTER TABLE `loans` CHANGE `loan_monthly` `loan_monthly_first` FLOAT(10,2) NULL DEFAULT NULL;
+
+ALTER TABLE `loans`  ADD `loan_monthly_second` FLOAT(10,2) NULL  AFTER `loan_monthly_first`;
+
+
+
+
+ALTER TABLE `loans`  ADD `loan_monthly` FLOAT(10,2) NULL  AFTER `loan_months`;
+
+
+
+
+CREATE TABLE `payroll` (
+  `id` int(10) NOT NULL,
+  `staff_id` int(10) DEFAULT NULL,
+  `payroll_period` varchar(10) DEFAULT NULL,
+  `payroll_date` date DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `staff_id` (`staff_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD CONSTRAINT `payroll_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+
+
+CREATE TABLE `payroll_pays` (
+  `id` int(10) NOT NULL,
+  `payroll_id` int(10) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `payroll_pays`
+--
+ALTER TABLE `payroll_pays`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payroll_id` (`payroll_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `payroll_pays`
+--
+ALTER TABLE `payroll_pays`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `payroll_pays`
+--
+ALTER TABLE `payroll_pays`
+  ADD CONSTRAINT `payroll_pays_ibfk_1` FOREIGN KEY (`payroll_id`) REFERENCES `payroll` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+
+
+
+
+CREATE TABLE `payroll_deductions` (
+  `id` int(10) NOT NULL,
+  `payroll_id` int(10) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `unit` varchar(50) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `payroll_deductions`
+--
+ALTER TABLE `payroll_deductions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payroll_id` (`payroll_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `payroll_deductions`
+--
+ALTER TABLE `payroll_deductions`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `payroll_deductions`
+--
+ALTER TABLE `payroll_deductions`
+  ADD CONSTRAINT `payroll_deductions_ibfk_1` FOREIGN KEY (`payroll_id`) REFERENCES `payroll` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+
+
+
+
+CREATE TABLE `payroll_bonuses` (
+  `id` int(10) NOT NULL,
+  `payroll_id` int(10) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `payroll_bonuses`
+--
+ALTER TABLE `payroll_bonuses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `payroll_id` (`payroll_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `payroll_bonuses`
+--
+ALTER TABLE `payroll_bonuses`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `payroll_bonuses`
+--
+ALTER TABLE `payroll_bonuses`
+  ADD CONSTRAINT `payroll_bonuses_ibfk_1` FOREIGN KEY (`payroll_id`) REFERENCES `payroll` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+
+
+
+
+ALTER TABLE `payroll_pays`  ADD `description_field` VARCHAR(50) NULL  AFTER `description`;
+
+
+
+
+
+
+ALTER TABLE `payroll_deductions`  ADD `description_field` VARCHAR(50) NULL  AFTER `description`;
+
+
+
+
+
+
+ALTER TABLE `payroll_bonuses`  ADD `description_field` VARCHAR(50) NULL  AFTER `description`;
+
+
+
+
+
+
+ALTER TABLE `payroll`  ADD `payroll_month` INT(10) NULL  AFTER `staff_id`;
