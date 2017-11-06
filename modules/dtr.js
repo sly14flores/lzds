@@ -136,7 +136,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			
 		};		
 		
-		self.dtr = function(scope,opt) {	
+		self.dtr = function(scope,opt) {
 			
 			if (scope.staffDtr.id == 0) {
 				pnotify.show('danger','Notification','Please select staff');

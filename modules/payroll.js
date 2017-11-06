@@ -102,33 +102,49 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.individual = function(scope,reprocess) {
 
 			if (scope.payroll.individual.id == 0) return;			
-
-			scope.sheet.individual = {};		
-			scope.sheet.individual.id = 0;
-			scope.sheet.individual.payroll_pays = [];
-			scope.sheet.individual.payroll_deductions = [];
-			scope.sheet.individual.payroll_bonuses = [];
-
-			scope.views.panel_title = scope.payroll.individual.fullname+' ('+scope.periods[scope.payroll.individual.period]+', '+scope.payroll.individual.month.description+' '+scope.payroll.individual.year+')';				
-		
-			$http({
-			  method: 'POST',
-			  url: 'handlers/payroll-individual.php',
-			  data: scope.payroll.individual
-			}).then(function mySucces(response) {									
-				
-				
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});
 			
-			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/individual.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-			});		
+			var onOk = function() {
+			
+				scope.sheet.individual = {};	
+				scope.sheet.individual.id = 0;
+				scope.sheet.individual.payroll_pays = [];
+				scope.sheet.individual.payroll_deductions = [];
+				scope.sheet.individual.payroll_bonuses = [];
+
+				scope.views.panel_title = scope.payroll.individual.fullname+' ('+scope.periods[scope.payroll.individual.period]+', '+scope.payroll.individual.month.description+' '+scope.payroll.individual.year+')';				
+				
+				scope.payroll.individual.option = reprocess;
+				
+				$http({
+				  method: 'POST',
+				  url: 'handlers/payroll-individual.php',
+				  data: scope.payroll.individual
+				}).then(function mySucces(response) {								
+					
+					scope.sheet.individual = response.data;
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+				
+				$('#x_content').html('Loading...');
+				$('#x_content').load('lists/individual.html',function() {
+					$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+				});
+
+			};
+		
+			if (!reprocess) {
+				
+				onOk();
+				
+			} else {
+				
+				bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-process this payroll?',onOk,function() {});				
+				
+			}		
 		
 		};
 		

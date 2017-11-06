@@ -226,3 +226,11 @@ ALTER TABLE `payroll_bonuses`  ADD `description_field` VARCHAR(50) NULL  AFTER `
 
 
 ALTER TABLE `payroll`  ADD `payroll_month` INT(10) NULL  AFTER `staff_id`;
+
+
+
+
+
+
+
+ALTER TABLE `dtr`  ADD `is_halfday` TINYINT NOT NULL DEFAULT '0'  AFTER `absent`;

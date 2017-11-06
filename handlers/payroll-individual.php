@@ -19,9 +19,17 @@ $payroll = array(
 
 $hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']);
 
+if ($_POST['option']) {
+	if (count($hasPayroll)) {
+		$delete = $con->deleteData(array("id"=>implode(",",array($hasPayroll[0]['id']))));
+		$hasPayroll = [];
+	}
+};
+
 if (count($hasPayroll) == 0) {
 	$con->insertData($payroll);
-	$payroll_id = $con->insertId;	
+	$payroll_id = $con->insertId;
+	$hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']);	
 } else {
 	$payroll_id = $hasPayroll[0]['id'];
 }
@@ -70,6 +78,7 @@ $hasPayrollPays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = $
 if (count($hasPayrollPays) == 0) {
 	$con->table = "payroll_pays";
 	$con->insertDataMulti($payroll_pays);
+	$hasPayrollPays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = $payroll_id");	
 }
 
 # Payroll Deductions
@@ -122,13 +131,13 @@ $payroll_deductions[] = array(
 # Loans
 $first_day = date("Y-").$_POST['month']['month']."-01";
 $middle_day = date("Y-").$_POST['month']['month']."-15";
-$last_day = date("Y-m-t",strtotime($first_day));
+$last_day = ($_POST['period']=="first")?date("Y-m-15",strtotime($first_day)):date("Y-m-t",strtotime($first_day));
 $period_date = ($_POST['period'])?$middle_day:$last_day;
 
 $loans = $con->getData("SELECT * FROM loans WHERE staff_id = ".$_POST['id']." AND '$period_date' >= loan_effectivity");
 
 $loan_period = "loan_monthly_".$_POST['period'];
-foreach ($loans as $key => $loan) {		
+foreach ($loans as $key => $loan) {
 	
 	$payroll_deductions[] = array(
 		"payroll_id"=>$payroll_id,
@@ -168,6 +177,44 @@ $hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE pa
 if (count($hasPayrollDeductions) == 0) {
 	$con->table = "payroll_deductions";
 	$con->insertDataMulti($payroll_deductions);
+	$hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = $payroll_id");	
 }
+
+# Payroll Bonuses
+$payroll_bonuses = [];
+
+# 13th Month
+$payroll_bonuses[] = array(
+	"payroll_id"=>$payroll_id,
+	"description"=>"13th Month",
+	"description_field"=>"thirteenth_month",
+	"amount"=>0,
+	"system_log"=>"CURRENT_TIMESTAMP"
+);
+
+# Christmas
+$payroll_bonuses[] = array(
+	"payroll_id"=>$payroll_id,
+	"description"=>"Christmas Bonus",
+	"description_field"=>"christmas_bonus",
+	"amount"=>0,
+	"system_log"=>"CURRENT_TIMESTAMP"
+);
+
+$hasPayrollBonuses = $con->getData("SELECT * FROM payroll_bonuses WHERE payroll_id = $payroll_id");
+
+if (count($hasPayrollBonuses) == 0) {
+	$con->table = "payroll_bonuses";
+	$con->insertDataMulti($payroll_bonuses);
+	$hasPayrollBonuses = $con->getData("SELECT * FROM payroll_bonuses WHERE payroll_id = $payroll_id");	
+}
+
+$response = $hasPayroll[0];
+$response['payroll_pays'] = $payroll_pays;
+$response['payroll_deductions'] = $payroll_deductions;
+$response['payroll_bonuses'] = $payroll_bonuses;
+
+header("Content-type: application/json");
+echo json_encode($response);
 
 ?>

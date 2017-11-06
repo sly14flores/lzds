@@ -31,8 +31,22 @@ function tardiness($con,$staff,$first_day,$last_day) {
 	}
 	
 	# amount computation
+	$hms = explode(":",$total_tardiness);
+	$h = (int)$hms[0];
+	$m = (int)$hms[1];
+	$s = (int)$hms[2];
 	
-	return array("tardiness"=>$total_tardiness,"amount"=>0);
+	$per_hour = 60;
+	$per_minute = 1;	
+	$per_second = 100/60;
+
+	$hd = $h*$per_hour;
+	$md = $m*$per_minute;
+	$sd = $s*$per_second;
+	
+	$amount = $hd+$md+$sd;
+	
+	return array("tardiness"=>$total_tardiness,"amount"=>$amount);
 	
 }
 
@@ -49,6 +63,12 @@ function absences($con,$staff,$first_day,$last_day) {
 			$total_absences += $a['absent'];
 			
 		}
+		
+		if ($a['is_halfday'] > 0) {
+			
+			$total_absences += .5;
+			
+		}		
 		
 	}
 
