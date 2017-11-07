@@ -234,3 +234,48 @@ ALTER TABLE `payroll`  ADD `payroll_month` INT(10) NULL  AFTER `staff_id`;
 
 
 ALTER TABLE `dtr`  ADD `is_halfday` TINYINT NOT NULL DEFAULT '0'  AFTER `absent`;
+
+
+
+
+
+
+CREATE TABLE `loans_payments` (
+  `id` int(10) NOT NULL,
+  `loan_id` int(10) DEFAULT NULL,
+  `payroll_id` int(10) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `loans_payments`
+--
+ALTER TABLE `loans_payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `loan_id` (`loan_id`),
+  ADD KEY `payroll_id` (`payroll_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `loans_payments`
+--
+ALTER TABLE `loans_payments`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `loans_payments`
+--
+ALTER TABLE `loans_payments`
+  ADD CONSTRAINT `loans_payments_ibfk_1` FOREIGN KEY (`payroll_id`) REFERENCES `payroll` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

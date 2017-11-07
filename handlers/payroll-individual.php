@@ -147,7 +147,21 @@ foreach ($loans as $key => $loan) {
 		"amount"=>$loan[$loan_period],
 		"system_log"=>"CURRENT_TIMESTAMP"
 	);
+
+	$loan_payment = array(
+		"loan_id"=>$loan['id'],
+		"payroll_id"=>$payroll_id,
+		"amount"=>$loan[$loan_period],
+		"system_log"=>"CURRENT_TIMESTAMP"
+	);
+
+	$hasLoan = $con->getData("SELECT * FROM loans_payments WHERE payroll_id = $payroll_id AND loan_id = ".$loan['id']);
 	
+	if (count($hasLoan) == 0) {
+		$con->table = "loans_payments";
+		$con->insertData($loan_payment);
+	};
+
 };
 
 # Tardiness
@@ -179,6 +193,7 @@ if (count($hasPayrollDeductions) == 0) {
 	$con->insertDataMulti($payroll_deductions);
 	$hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = $payroll_id");	
 }
+
 
 # Payroll Bonuses
 $payroll_bonuses = [];
