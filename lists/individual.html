@@ -1,115 +1,65 @@
-<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
-<p class="tools-editor pull-right" style="margin-right: 10px;" ng-click="form.print(this)"><i class="fa fa-print"></i></p>	
+<p class="tools-editor pull-right" ng-show="!btns.ok.disabled"><i class="fa fa-save" ng-click="form.update(this)"></i></p>
+<p class="tools-editor pull-right" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+<p class="tools-editor pull-right" style="margin-right: 10px;"><i class="fa fa-print" ng-click="form.print(this)"></i></p>	
 <div class="clearfix"></div>
 
 <div class="ln_solid"></div>
 <form class="form-horizontal form-label-left">
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Basic Pay</label>
+		  <div class="form-group" ng-repeat="pp in sheet.individual.payroll_pays" ng-if="pp.description_field == 'basic_pay'">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">{{pp.description}}</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" disabled>
+			  <input type="text" class="form-control" ng-model="pp.amount" disabled>
 			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Sub Allowances</label>
+		  </div>	
+		  <div class="form-group" ng-repeat="pp in sheet.individual.payroll_pays" ng-if="pp.description_field != 'basic_pay'">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">{{pp.description}}</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Incentives</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Bonus</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
+			  <input type="text" class="form-control" ng-model="pp.amount" ng-disabled="btns.ok.disabled">
 			</div>
 		  </div>
 		  <div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Gross Pay</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" disabled>
+			  <input type="text" class="form-control" ng-model="sheet.individual.gross_pay" disabled>
 			</div>
 		  </div>
 		<div class="ln_solid"></div>	
 		<h4>Deductions</h4>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">SSS</label>
+		  <div class="form-group" ng-repeat="pd in sheet.individual.payroll_deductions" ng-if="pd.description_field != 'tardiness' && pd.description_field != 'absences'">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">{{pd.description}}</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
+			  <input type="text" class="form-control" ng-model="pd.amount" ng-disabled="btns.ok.disabled">
 			</div>
 		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">HDMF</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">PHIC</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Tax</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Loan</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Tardiness</label>
+		  <div class="form-group" ng-repeat="pd in sheet.individual.payroll_deductions" ng-if="pd.description_field == 'tardiness' || pd.description_field == 'absences'">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">{{pd.description}}</label>
 			<div class="col-md-3 col-sm-3 col-xs-6">
-			  <input type="text" class="form-control" disabled>
+			  <input type="text" class="form-control" ng-model="pd.unit" disabled>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
+			  <input type="text" class="form-control" ng-model="pd.amount" ng-disabled="btns.ok.disabled">
 			</div>			
-		  </div>		  
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">AWOL</label>
-			<div class="col-md-3 col-sm-3 col-xs-6">
-			  <input type="text" class="form-control" disabled>
-			</div>
-			<div class="col-md-6 col-sm-6 col-xs-6">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
 		  </div>		  
 		  <div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Total</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" disabled>
+			  <input type="text" class="form-control" ng-model="sheet.individual.total_deductions" disabled>
 			</div>
 		  </div>		  
 	</div>
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-disabled="btns.ok.disabled">
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">13th Month</label>
+		  <div class="form-group" ng-repeat="pb in sheet.individual.payroll_bonuses">
+			<label class="control-label col-md-3 col-sm-3 col-xs-12">{{pb.description}}</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-md-3 col-sm-3 col-xs-12">Christmas Bonus</label>
-			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" ng-disabled="btns.ok.disabled">
+			  <input type="text" class="form-control" ng-model="pb.amount" ng-disabled="btns.ok.disabled">
 			</div>
 		  </div>
 		  <div class="form-group">
 			<label class="control-label col-md-3 col-sm-3 col-xs-12">Net Pay</label>
 			<div class="col-md-9 col-sm-9 col-xs-12">
-			  <input type="text" class="form-control" disabled>
+			  <input type="text" class="form-control" ng-model="sheet.individual.net_pay" disabled>
 			</div>
 		  </div>		  
 	</div>

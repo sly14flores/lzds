@@ -78,7 +78,8 @@ $hasPayrollPays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = $
 if (count($hasPayrollPays) == 0) {
 	$con->table = "payroll_pays";
 	$con->insertDataMulti($payroll_pays);
-	$hasPayrollPays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = $payroll_id");	
+} else {
+	$payroll_pays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = $payroll_id");
 }
 
 # Payroll Deductions
@@ -171,7 +172,7 @@ $payroll_deductions[] = array(
 	"description"=>"Tardiness",
 	"description_field"=>"tardiness",
 	"unit"=>$tardiness['tardiness'],
-	"amount"=>$tardiness['amount'],
+	"amount"=>round($tardiness['amount']),
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
 
@@ -191,7 +192,8 @@ $hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE pa
 if (count($hasPayrollDeductions) == 0) {
 	$con->table = "payroll_deductions";
 	$con->insertDataMulti($payroll_deductions);
-	$hasPayrollDeductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = $payroll_id");	
+} else {
+	$payroll_deductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = $payroll_id");		
 }
 
 
@@ -221,7 +223,8 @@ $hasPayrollBonuses = $con->getData("SELECT * FROM payroll_bonuses WHERE payroll_
 if (count($hasPayrollBonuses) == 0) {
 	$con->table = "payroll_bonuses";
 	$con->insertDataMulti($payroll_bonuses);
-	$hasPayrollBonuses = $con->getData("SELECT * FROM payroll_bonuses WHERE payroll_id = $payroll_id");	
+} else {
+	$payroll_bonuses = $con->getData("SELECT * FROM payroll_bonuses WHERE payroll_id = $payroll_id");
 }
 
 $response = $hasPayroll[0];

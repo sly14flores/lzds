@@ -1,4 +1,4 @@
-angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI) {
+angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI,pnotify) {
 	
 	function form() {
 		
@@ -70,7 +70,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 			scope.btns = {
 				ok: {
-					disabled: false,					
+					disabled: true,					
 					label: 'Save'					
 				},
 				cancel: {
@@ -98,10 +98,51 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.all = function(scope,reprocess) {
 			
 		};
+		
+		function process(scope) {
+			
+			scope.sheet.individual.gross_pay = 0;
+			scope.sheet.individual.total_deductions = 0;
+			scope.sheet.individual.basic_pay = 0;			
+			scope.sheet.individual.bonuses = 0;		
+			
+			angular.forEach(scope.sheet.individual.payroll_pays,function(item,i) {
+				
+				scope.sheet.individual.gross_pay += item.amount;
+				
+			});
 
+			angular.forEach(scope.sheet.individual.payroll_deductions,function(item,i) {
+				
+				scope.sheet.individual.total_deductions += item.amount;
+				
+			});
+
+			angular.forEach(scope.sheet.individual.payroll_bonuses,function(item,i) {
+				
+				scope.sheet.individual.bonuses += item.amount;
+				
+			});			
+			
+			$timeout(function() {
+				
+				scope.sheet.individual.net_pay = scope.sheet.individual.gross_pay - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses;
+				
+			},200);
+			
+		};
+		
 		self.individual = function(scope,reprocess) {
 
-			if (scope.payroll.individual.id == 0) return;			
+			if (scope.payroll.individual.id == 0) {
+				pnotify.show('alert','Notification','No staff selected');				
+				return;
+			};
+			
+			if ((scope.payroll.individual.employment_status == 'EOC') || (scope.payroll.individual.employment_status == 'Resigned')) {
+				pnotify.show('alert','Notification','Staff employment status is '+scope.payroll.individual.employment_status);
+				return;
+			};
 			
 			var onOk = function() {
 			
@@ -122,6 +163,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				}).then(function mySucces(response) {								
 					
 					scope.sheet.individual = response.data;
+					process(scope);
 					
 				}, function myError(response) {
 					 
@@ -151,6 +193,26 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.edit = function(scope) {
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;			
+			
+		};
+		
+		self.update = function(scope) {				
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/payroll-individual-update.php',
+			  data: scope.sheet.individual
+			}).then(function mySucces(response) {
+				
+				self.individual(scope,false);
+				scope.btns.ok.disabled = true;
+				pnotify.show('success','Notification','Payroll Info Updated');
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});					
 			
 		};
 		
