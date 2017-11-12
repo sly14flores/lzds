@@ -47,6 +47,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.payroll.individual = {
 				id: 0,
 				fullname: '',
+				employment_status: '',
 				month: scope.months[d.getMonth()],
 				period: "first",
 				year: d.getFullYear(),
@@ -160,7 +161,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				  method: 'POST',
 				  url: 'handlers/payroll-individual.php',
 				  data: scope.payroll.individual
-				}).then(function mySucces(response) {								
+				}).then(function mySucces(response) {					
 					
 					scope.sheet.individual = response.data;
 					process(scope);
@@ -186,7 +187,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				
 				bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-process this payroll?',onOk,function() {});				
 				
-			}		
+			};	
 		
 		};
 		
@@ -220,6 +221,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			scope.payroll.individual.fullname = item['fullname'];
 			scope.payroll.individual.id = item['id'];
+			scope.payroll.individual.employment_status = item['employment_status'];		
 
 		};
 		
