@@ -1,4 +1,4 @@
-angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI,pnotify) {
+angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui','pnotify-module','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI,pnotify,jspdf) {
 	
 	function form() {
 		
@@ -78,7 +78,9 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					disabled: false,					
 					label: 'Cancel'		
 				}
-			};			
+			};
+			
+			jspdf.init();
 			
 		};		
 		
@@ -197,7 +199,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 		};
 		
-		self.update = function(scope) {				
+		self.update = function(scope) {			
 			
 			$http({
 			  method: 'POST',
@@ -223,6 +225,23 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.payroll.individual.id = item['id'];
 			scope.payroll.individual.employment_status = item['employment_status'];		
 
+		};
+		
+		self.print = function(scope,payroll) {
+			
+			var doc = new jsPDF({
+				orientation: 'portrait',
+				unit: 'pt',
+				format: [792, 612]
+			});
+
+			doc.setFontSize(10);
+			doc.setTextColor(40,40,40);
+			doc.text(103, 20, 'Municipality of San Juan');
+			
+			var blob = doc.output("blob");
+			window.open(URL.createObjectURL(blob));			
+			
 		};
 		
 	};
