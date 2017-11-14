@@ -210,7 +210,7 @@
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Schedule</label>
-			<select class="form-control" name="schedule_id" ng-model="staff.schedule_id" ng-options="schedule.description for schedule in schedules track by schedule.id" ng-disabled="btns.ok.disabled" required></select>
+			<select class="form-control" ng-model="staff.schedule_id" ng-options="schedule.description for schedule in schedules track by schedule.id" ng-disabled="btns.ok.disabled"></select>
 		  </div>  
 		</div>		
 		<h4 style="margin-top: 25px;"><strong>Account Info</strong></h4>

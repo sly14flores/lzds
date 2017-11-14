@@ -18,7 +18,7 @@ if (isset($_POST['birthday'])) $_POST['birthday'] = date("Y-m-d",strtotime($_POS
 **
 */
 
-$_POST['schedule_id'] = $_POST['schedule_id']['id'];
+$_POST['schedule_id'] = (isset($_POST['schedule_id']['id']))?$_POST['schedule_id']['id']:0;
 
 if ($_POST['id']) { // > 0 - update
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";
