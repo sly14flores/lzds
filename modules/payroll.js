@@ -107,22 +107,22 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 			angular.forEach(scope.sheet.individual.payroll_pays,function(item,i) {
 				
-				scope.sheet.individual.gross_pay += item.amount;
+				scope.sheet.individual.gross_pay += parseFloat(item.amount);
 				
 			});
 
 			angular.forEach(scope.sheet.individual.payroll_deductions,function(item,i) {
 				
-				scope.sheet.individual.total_deductions += item.amount;
+				scope.sheet.individual.total_deductions += parseFloat(item.amount);
 				
 			});
 
 			angular.forEach(scope.sheet.individual.payroll_bonuses,function(item,i) {
 				
-				scope.sheet.individual.bonuses += item.amount;
+				scope.sheet.individual.bonuses += parseFloat(item.amount);
 				
-			});			
-			
+			});
+
 			$timeout(function() {
 				
 				scope.sheet.individual.net_pay = scope.sheet.individual.gross_pay - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses;
