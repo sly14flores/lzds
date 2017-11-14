@@ -58,7 +58,7 @@ $payroll_pays[] = array(
 # Incentives
 $payroll_pays[] = array(
 	"payroll_id"=>$payroll_id,
-	"description"=>"Sub Allowances",
+	"description"=>"Incentives",
 	"description_field"=>"incentives",
 	"amount"=>0,
 	"system_log"=>"CURRENT_TIMESTAMP"
