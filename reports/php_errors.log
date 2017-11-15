@@ -751,3 +751,46 @@ Stack trace:
 #2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\payment.php(424): FPDF->Output()
 #3 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:08:08 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php:334) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:13:00 Asia/Manila] PHP Parse error:  syntax error, unexpected '$value' (T_VARIABLE) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php on line 340
+[16-Nov-2017 00:13:15 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php:334) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:14:37 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php:334) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:15:06 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:15:49 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php:334) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[16-Nov-2017 00:34:22 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php:334) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271

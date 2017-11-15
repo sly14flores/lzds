@@ -201,7 +201,9 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.list = function(scope) {	
 			
-			scope.views.list = false;			
+			scope.views.list = false;
+
+			scope.enrollment_info = {};
 			
 			scope.payment = {};
 			scope.payment.id = 0;		
@@ -288,7 +290,13 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			printPost.show('reports/payment.php',{filter:{id: scope.enrollment_info.id}});
 			
-		};		
+		};
+		
+		self.soa = function(scope) {
+
+			printPost.show('reports/soa.php',{filter:{id: scope.enrollment_info.id}});		
+		
+		};
 		
 	};
 	
