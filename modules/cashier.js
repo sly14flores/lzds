@@ -291,13 +291,13 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			printPost.show('reports/payment.php',{filter:{id: scope.enrollment_info.id}});
 			
 		};
-		
+
 		self.soa = function(scope) {
 
 			printPost.show('reports/soa.php',{filter:{id: scope.enrollment_info.id}});		
 		
 		};
-		
+
 	};
 	
 	return new form();

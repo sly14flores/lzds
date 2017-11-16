@@ -254,6 +254,24 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			doc.line(470, 205, 470, 235); // ID Divider
 			doc.line(470, 220, 562, 220); // ID Verial Divider
 
+			doc.setFillColor(220,220,220);			
+			doc.rect(51, 206, 68, 28, 'F');		
+			doc.setFontSize(12);
+			doc.setFontType('bold');		
+			doc.text(65, 224, 'Name:');
+			
+			// Staff Name
+			doc.text(130, 224, 'Flores');			
+			doc.text(240, 224, 'Sylvester');			
+			doc.text(430, 224, 'F');			
+
+			doc.setFillColor(220,220,220);			
+			doc.rect(471, 206, 90, 13, 'F');				
+			doc.text(510, 217, 'ID');
+			doc.setFillColor(169,169,169);			
+			doc.rect(471, 221, 90, 13, 'F');				
+			doc.text(510, 232, '1');			
+			
 			// Basic Pay
 			doc.line(50, 245, 400, 245);		
 			doc.line(400, 265, 562, 265);
@@ -262,8 +280,10 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			// Gross Pay
 			doc.line(50, 325, 400, 325);
 			doc.line(400, 345, 562, 345);
-			doc.line(400, 325, 400, 345);		
+			doc.line(400, 325, 400, 345);	
 
+			
+			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));		
 
