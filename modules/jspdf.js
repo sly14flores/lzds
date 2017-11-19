@@ -7,7 +7,7 @@ angular.module('jspdf-module', []).factory('jspdf', function() {
 		self.init = function() {
 			
 			(function(API){
-				API.myText = function(txt, options, x, y) {
+				API.myText = function(txt, options, x, y, col2 = false, pWidth = null) {
 					options = options ||{};
 					/* Use the options align property to specify desired text alignment
 					 * Param x will be ignored if desired text alignment is 'center'.
@@ -20,6 +20,7 @@ angular.module('jspdf-module', []).factory('jspdf', function() {
 
 						// Get page width
 						var pageWidth = this.internal.pageSize.width;
+						if (pWidth != null) pageWidth = pWidth;
 
 						// Get the actual text's width
 						/* You multiply the unit width of your string by your font size and divide
@@ -31,6 +32,8 @@ angular.module('jspdf-module', []).factory('jspdf', function() {
 
 						// Calculate text's x coordinate
 						x = ( pageWidth - txtWidth ) / 2;
+						if (col2) x += pageWidth;
+						
 					}
 
 					// Draw text at x,y

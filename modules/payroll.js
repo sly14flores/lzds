@@ -46,8 +46,12 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			};
 			scope.payroll.individual = {
 				id: 0,
+				school_id: '',
 				fullname: '',
 				employment_status: '',
+				lastname: '',
+				firstname: '',
+				mi: '',
 				month: scope.months[d.getMonth()],
 				period: "first",
 				year: d.getFullYear(),
@@ -101,9 +105,9 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		function process(scope) {
 			
 			scope.sheet.individual.gross_pay = 0;
-			scope.sheet.individual.total_deductions = 0;
-			scope.sheet.individual.basic_pay = 0;			
-			scope.sheet.individual.bonuses = 0;		
+			scope.sheet.individual.gross_pay_half = 0;
+			scope.sheet.individual.total_deductions = 0;		
+			scope.sheet.individual.bonuses = 0;	
 			
 			angular.forEach(scope.sheet.individual.payroll_pays,function(item,i) {
 				
@@ -125,7 +129,8 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			$timeout(function() {
 				
-				scope.sheet.individual.net_pay = scope.sheet.individual.gross_pay - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses;
+				scope.sheet.individual.net_pay = (scope.sheet.individual.gross_pay - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses)/2;
+				scope.sheet.individual.gross_pay_half = scope.sheet.individual.gross_pay/2;			
 				
 			},200);
 			
@@ -219,12 +224,22 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			scope.payroll.individual.fullname = item['fullname'];
 			scope.payroll.individual.id = item['id'];
-			scope.payroll.individual.employment_status = item['employment_status'];		
+			scope.payroll.individual.school_id = item['school_id'];
+			scope.payroll.individual.employment_status = item['employment_status'];
+			scope.payroll.individual.lastname = item['lastname'];
+			scope.payroll.individual.firstname = item['firstname'];
+			scope.payroll.individual.mi = item['mi'];
 
 		};
 		
 		self.print = function(scope,payroll) {
 			
+			var period = {
+				first: '15th',
+				second: '30th'
+			};
+			
+			console.log(scope.sheet.individual);
 			var doc = new jsPDF({
 				orientation: 'portrait',
 				unit: 'pt',
@@ -248,29 +263,29 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			doc.myText("INDIVIDUAL TEACHER'S ACCOUNT FORM",{align: "center"},0,185);
 
 			// doc.rect(50, 205, 512, 30);
-			doc.rect(50, 205, 512, 400);
+			doc.rect(50, 205, 512, 405);
 			doc.line(50, 235, 562, 235); // Horizontal Divider
 			doc.line(120, 205, 120, 235); // Name Divider
 			doc.line(470, 205, 470, 235); // ID Divider
 			doc.line(470, 220, 562, 220); // ID Verial Divider
 
-			doc.setFillColor(220,220,220);			
-			doc.rect(51, 206, 68, 28, 'F');		
+			doc.setFillColor(220,220,220);	
+			doc.rect(51, 206, 68, 28, 'F');
 			doc.setFontSize(12);
-			doc.setFontType('bold');		
+			doc.setFontType('bold');
 			doc.text(65, 224, 'Name:');
 			
 			// Staff Name
-			doc.text(130, 224, 'Flores');			
-			doc.text(240, 224, 'Sylvester');			
-			doc.text(430, 224, 'F.');			
+			doc.text(130, 224, scope.payroll.individual.lastname);			
+			doc.text(240, 224, scope.payroll.individual.firstname);			
+			doc.text(430, 224,  scope.payroll.individual.mi+'.');			
 
 			doc.setFillColor(220,220,220);			
 			doc.rect(471, 206, 90, 13, 'F');				
 			doc.text(510, 217, 'ID');
 			doc.setFillColor(169,169,169);			
 			doc.rect(471, 221, 90, 13, 'F');				
-			doc.text(510, 232, '1');			
+			doc.text(500, 232, scope.payroll.individual.school_id);			
 			
 			// Basic Pay
 			doc.line(50, 245, 400, 245);		
@@ -279,14 +294,17 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 			// Text
 			doc.text(57, 258, 'Basic Pay');
-			doc.text(520, 258, '14000');
+			doc.text(520, 258, scope.sheet.individual.basic_pay.toString());
 
 			doc.setFontSize(11);			
-			doc.setFontType('normal');			
-			doc.text(125, 275, 'Sub Allowances');	
-			doc.text(365, 275, '1000');
-			doc.text(125, 288, 'Incentives');
-			doc.text(365, 288, '500');			
+			doc.setFontType('normal');
+			var y = 275;
+			angular.forEach(scope.sheet.individual.payroll_pays,function(item,i) {
+				if (i == 0) return;
+				doc.text(125, y, item.description);
+				doc.text(365, y, item.amount.toString());
+				y+=13;
+			});
 			
 			// Gross Pay
 			doc.line(50, 325, 400, 325);
@@ -299,23 +317,111 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			doc.setFillColor(240,240,240);			
 			doc.rect(51, 348, 510, 15, 'F');			
 			doc.text(57, 340, 'Gross Pay');
-			doc.text(520, 340, '14000');
+			doc.text(520, 340, scope.sheet.individual.gross_pay.toString());
 			doc.text(320, 360, 'Period:');
-			doc.text(365, 360, '15th, December');
-			doc.text(520, 360, '7000');	
+			doc.text(365, 360, period[scope.sheet.individual.payroll_period]);
+			doc.text(520, 360, scope.sheet.individual.gross_pay_half.toString());
 			
 			// Less
 			doc.text(57, 390, 'Less:');
+			// Text
 			doc.setFontSize(11);		
-			doc.setFontType('normal');			
-			doc.text(125, 402, 'SSS');
-			doc.text(365, 402, '100');
-			doc.text(125, 415, 'HDMF');
-			doc.text(365, 415, '100');		
-					
+			doc.setFontType('normal');
+			var y = 402;
+			angular.forEach(scope.sheet.individual.payroll_deductions,function(item,i) {
+				doc.text(125, y, item.description);
+				doc.text(365, y, item.amount.toString());
+				y+=14;
+			});
+
+			// Total Deductions
+			doc.line(50, 508, 400, 508);
+			doc.line(400, 528, 562, 528);
+			doc.line(400, 508, 400, 528);		
+			doc.setFontSize(12);
+			doc.setFontType('bold');
+			doc.text(57, 522, 'Total Deduction');
+			// Text
+			doc.text(520, 522, scope.sheet.individual.total_deductions.toString());			
+			
+			// Add
+			doc.text(57, 545, 'Add:');
+			// Text
+			doc.setFontSize(11);
+			doc.setFontType('normal');
+			var y = 545;
+			angular.forEach(scope.sheet.individual.payroll_bonuses,function(item,i) {
+				doc.text(125, y, item.description);
+				doc.text(365, y, item.amount.toString());
+				y+=13;
+			});
+			
+			// Net Pay
+			doc.setFontSize(12);
+			doc.setFontType('bold');
+			doc.text(57, 595, 'Net Pay');
+			doc.line(50, 580, 400, 580);
+			doc.line(400, 600, 562, 600);
+			doc.line(400, 580, 400, 600);			
+			// Text
+			doc.text(520, 595, scope.sheet.individual.net_pay.toString());
+			
+			// Acknowledgment
+			var columns = [
+				{title: "Month", dataKey: "month"},
+				{title: period[scope.sheet.individual.payroll_period]+" Date", dataKey: "date"},
+				{title: "Amount", dataKey: "amount"},
+				{title: "Signature", dataKey: "signature"},
+			];
+			var rows = [{"month": scope.months[parseInt(scope.sheet.individual.payroll_month)-1]['description'],"date":  "", "amount": "", "signature": ""}];
+			doc.autoTable(columns, rows, {
+				// tableLineColor: [189, 195, 199],
+				// tableLineWidth: 0.75,
+				margin: {top: 625, left: 50},
+				tableWidth: 500,
+				columnStyles: {
+					month: {columnWidth: 130},
+					date: {columnWidth: 125},
+					amount: {columnWidth: 125},
+					signature: {columnWidth: 130}
+				},
+				styles: {
+					lineColor: [75, 75, 75],
+					lineWidth: 0.50,
+					cellPadding: 3
+				},
+				headerStyles: {
+					halign: 'center',		
+					fillColor: [191, 191, 191],
+					textColor: 50,
+					fontSize: 10
+				},
+				bodyStyles: {
+					halign: 'center',
+					fillColor: [255, 255, 255],
+					textColor: 50,
+					fontSize: 10
+				},
+				alternateRowStyles: {
+					fillColor: [255, 255, 255]
+				}
+			});		
+			
+			// Signatories
+			doc.setFontSize(10);
+			doc.setFontType('normal');
+			doc.text(57, 680, 'Approved by:');
+			doc.myText('Directress',{align: "center"},0,740,false,300);			
+			doc.text(340, 680, 'Prepared by:');
+			doc.myText('Administrative Officer',{align: "center"},0,740,true,300);
+
+			doc.setFontSize(12);
+			doc.setFontType('bold');
+			doc.myText('Normita Q. Tria',{align: "center"},0,725,false,300);
+			doc.myText('Frederick Q. Tria',{align: "center"},0,725,true,300);
 			
 			var blob = doc.output("blob");
-			window.open(URL.createObjectURL(blob));		
+			window.open(URL.createObjectURL(blob));
 
 		};
 		

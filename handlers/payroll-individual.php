@@ -34,6 +34,8 @@ if (count($hasPayroll) == 0) {
 	$payroll_id = $hasPayroll[0]['id'];
 }
 
+$hasPayroll[0]['basic_pay'] = $staff[0]['basic_pay'];
+
 # Payroll Pays
 $payroll_pays = [];
 
