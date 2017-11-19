@@ -263,7 +263,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			// Staff Name
 			doc.text(130, 224, 'Flores');			
 			doc.text(240, 224, 'Sylvester');			
-			doc.text(430, 224, 'F');			
+			doc.text(430, 224, 'F.');			
 
 			doc.setFillColor(220,220,220);			
 			doc.rect(471, 206, 90, 13, 'F');				
@@ -276,13 +276,43 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			doc.line(50, 245, 400, 245);		
 			doc.line(400, 265, 562, 265);
 			doc.line(400, 245, 400, 265);
+			
+			// Text
+			doc.text(57, 258, 'Basic Pay');
+			doc.text(520, 258, '14000');
 
+			doc.setFontSize(11);			
+			doc.setFontType('normal');			
+			doc.text(125, 275, 'Sub Allowances');	
+			doc.text(365, 275, '1000');
+			doc.text(125, 288, 'Incentives');
+			doc.text(365, 288, '500');			
+			
 			// Gross Pay
 			doc.line(50, 325, 400, 325);
 			doc.line(400, 345, 562, 345);
 			doc.line(400, 325, 400, 345);	
-
+	
+			// Text
+			doc.setFontSize(12);	
+			doc.setFontType('bold');
+			doc.setFillColor(240,240,240);			
+			doc.rect(51, 348, 510, 15, 'F');			
+			doc.text(57, 340, 'Gross Pay');
+			doc.text(520, 340, '14000');
+			doc.text(320, 360, 'Period:');
+			doc.text(365, 360, '15th, December');
+			doc.text(520, 360, '7000');	
 			
+			// Less
+			doc.text(57, 390, 'Less:');
+			doc.setFontSize(11);		
+			doc.setFontType('normal');			
+			doc.text(125, 402, 'SSS');
+			doc.text(365, 402, '100');
+			doc.text(125, 415, 'HDMF');
+			doc.text(365, 415, '100');		
+					
 			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));		
