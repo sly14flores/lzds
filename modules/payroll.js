@@ -230,16 +230,15 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.payroll.individual.firstname = item['firstname'];
 			scope.payroll.individual.mi = item['mi'];
 
-		};
+		};				
 		
-		self.print = function(scope,payroll) {
+		self.print = function(scope) {
 			
 			var period = {
 				first: '15th',
 				second: '30th'
 			};
-			
-			console.log(scope.sheet.individual);
+
 			var doc = new jsPDF({
 				orientation: 'portrait',
 				unit: 'pt',
@@ -423,6 +422,10 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));
 
+		};
+		
+		self.printAll = function(scope) {
+			
 		};
 		
 	};
