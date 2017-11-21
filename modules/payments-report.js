@@ -1,4 +1,4 @@
-angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
+angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,printPost) {
 	
 	function form() {
 		
@@ -8,7 +8,68 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 			
 			scope.formHolder = {};
 			
-			scope.views.list = false;
+			scope.report = {};
+			scope.report.balances = {
+				school_year: {id: 0, school_year: "-"},
+				level: {id: 0, description: "All"},
+				section: {}
+			};
+			
+			scope.school_years_ = [];
+			
+			schoolYear.get(scope);
+			
+			$timeout(function() {
+				
+				scope.school_years_.push({id: 0, school_year: "SY"});
+				
+				angular.forEach(scope.school_years,function(item,i) {
+
+					scope.school_years_.push(item);
+					
+				});
+				
+			},1000);
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.report.balances.school_year = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
+			scope.levels_ = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/grade-levels.php'
+			}).then(function mySucces(response) {
+				
+				scope.levels = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
+			
+			$timeout(function() {
+				
+				scope.levels_.push({id: 0, description: "-"});
+				
+				angular.forEach(scope.levels,function(item,i) {
+
+					scope.levels_.push(item);
+					
+				});
+				
+			},1000);			
 			
 			scope.btns = {
 				ok: {
@@ -22,6 +83,24 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 			};				
 			
 		};
+		
+		self.levelSelected = function(scope,level) {
+			
+			if (level == undefined) return;
+			
+			scope.sections = [];
+			
+			scope.report.balances.section = {id: 0, description: "All"};
+			
+			scope.sections.push({id: 0, description: "All"});
+			
+			angular.forEach(level.sections,function(item,i) {
+
+				scope.sections.push(item);
+
+			});
+			
+		};		
 		
 		function validate(scope,form) {
 			
@@ -39,11 +118,21 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 		
 		self.balances = function(scope) {
 			
+			if (scope.report.balances.school_year.id == 0) {
+				pnotify.show('danger','Notification','Please select school year.');
+				return;				
+			};
+			
+			if (scope.report.balances.level.id == 0) {
+				pnotify.show('danger','Notification','Please select level.');
+				return;				
+			};			
+			
+			printPost.show('reports/balances.php',scope.report.balances);			
+			console.log(scope.report.balances);
 		};
 		
 		self.list = function(scope) {
-			
-			scope.views.list = false;			
 
 			$http({
 			  method: 'POST',

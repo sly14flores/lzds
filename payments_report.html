@@ -226,17 +226,14 @@ require_once 'authentication.php';
                     <form name="formHolder.individual" id="formHolder.individual">
 					  <div class="form-group">
 						<label>School Year :</label>
-						<input type="text" class="form-control" ng-model="payroll.individual.year">
+						<select class="form-control" ng-model="report.balances.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>
 					  </div>
                       <label>Level :</label>
-                      <select class="form-control" ng-model="payroll.individual.month" ng-options="m.description for m in months track by m.month"></select>
+                      <select class="form-control" ng-model="report.balances.level" ng-options="level as level.description for level in levels_ track by level.id" ng-change="form.levelSelected(this,report.balances.level)"></select>
                       <label>Section :</label>
-                      <select class="form-control" ng-model="payroll.individual.period">
-						<option value="first">First</option>
-						<option value="second">Second</option>
-					  </select>
+                      <select class="form-control" ng-model="report.balances.section" ng-options="section as section.description for section in sections track by section.id"></select>
                       <br/>
-                      <span class="btn btn-primary pull-right" ng-click="form.individual(this,false)">Generate!</span>
+                      <span class="btn btn-primary pull-right" ng-click="form.balances(this)">Generate!</span>
                     </form>					
 				  </div>
                 </div>
@@ -282,6 +279,8 @@ require_once 'authentication.php';
 	<script src="modules/x-panel.js"></script>	
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
+	<script src="modules/school-year.js"></script>
+	<script src="modules/window-open-post.js"></script>	
 	<script src="modules/pnotify.js"></script>	
 	<script src="modules/payments-report.js"></script>
 	

@@ -794,3 +794,137 @@ Stack trace:
 #2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\soa.php(327): FPDF->Output()
 #3 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[21-Nov-2017 23:18:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlen' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(12): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[21-Nov-2017 23:22:42 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'lzdssystem.student_fees' doesn't exist in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT SUM(amou...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(16): pdo_db->getData('SELECT SUM(amou...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined variable: payments in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 378
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 226
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:217-227}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 237
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:228-238}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 248
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:239-249}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 259
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:250-260}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 270
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:261-271}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 281
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:272-282}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 292
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:283-293}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 320
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:402
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:311-321}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:79
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 136
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Stack trace:
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[21-Nov-2017 23:23:06 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:403
+[21-Nov-2017 23:23:06 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:237) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(404): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 00:03:17 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php on line 3
+[22-Nov-2017 00:03:17 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 00:03:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:0
+[22-Nov-2017 00:03:17 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php(251): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 00:03:30 Asia/Manila] PHP Notice:  Undefined index: params in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php on line 3
+[22-Nov-2017 00:03:30 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 00:03:30 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:0
+[22-Nov-2017 00:03:30 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php(251): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 00:07:18 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:30) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(279): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 00:09:20 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to undefined method PDF::darkerText() in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:211
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(109): {closure}(Object(PDF))
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(334): PDF->Header()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(265): FPDF->AddPage()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 211
+[22-Nov-2017 00:17:18 Asia/Manila] PHP Warning:  fopen(../img/pglu-logo.png): failed to open stream: No such file or directory in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 1259
+[22-Nov-2017 00:17:18 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:0
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:635
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:177-194}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:73
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   5. FPDF->Image() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php:190
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   6. FPDF->_parsepng() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:885
+[22-Nov-2017 00:17:18 Asia/Manila] PHP   7. fopen() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:1259
+[22-Nov-2017 00:17:18 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Can't open image file: ../img/pglu-logo.png in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1261): FPDF->Error('Can't open imag...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(885): FPDF->_parsepng('../img/pglu-log...')
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php(190): FPDF->Image('../img/pglu-log...', 10, 10, 30)
+#3 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php(73): {closure}(Object(PDF))
+#4 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(334): PDF->Header()
+#5 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\template.php(635): FPDF->AddPage()
+#6 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 00:26:29 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to undefined function darkerText() in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:237
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(109): {closure}(Object(PDF))
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(334): PDF->Header()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(282): FPDF->AddPage()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 237

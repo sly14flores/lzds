@@ -1,19 +1,23 @@
 <?php
 
-$params = json_decode($_POST['params'],true);
+// $params = json_decode($_POST['params'],true);
 
-$filter = $params['filter'];
-
-$params = []; # comment this if production/live
 require('../fpdf181/fpdf.php');
 require('../db.php');
+
+$con = new pdo_db();
+
 class PDF extends FPDF {
+
 	function CheckPageBreak($h) {
 		//If the height h would cause an overflow, add a new page immediately
 		if($this->GetY()+$h>$this->PageBreakTrigger) {
-			$this->AddPage($this->CurOrientation);		
-		}
+			$this->AddPage($this->CurOrientation);
+			return true;
+		}		
+		return false;		
 	}
+
 	function NbLines($w,$txt) {
 		//Computes the number of lines a MultiCell of width w will take
 		$cw=&$this->CurrentFont['cw'];
@@ -60,19 +64,17 @@ class PDF extends FPDF {
 	
 	// Page header
 	function Header() {
-		
+
 		global $top_margin, $header; # array-multi
-		
-		$this->Ln($top_margin);		
-		if ($this->PageNo()>1) {
-			if ($top_margin <= 5) $top_margin+=5;
-			$this->Ln($top_margin);
-		}
+
+		$this->Ln($top_margin);
 		
 		foreach ($header as $h) {
 			$h($this);
-		};		
+		};	
+
 	}
+
 	// Page footer
 	function Footer() {
 		global $footer;
@@ -86,18 +88,17 @@ class PDF extends FPDF {
 		// Arial italic 8
 		$this->SetFont('Arial','I',8);
 		// Page number
-		$this->SetTextColor(66,66,66);	
+		$this->SetTextColor(66,66,66);
 		$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'L');
 	}
 	
 	function body($body) {
 		
 		$body['start']($this); # start
-		$lr_margin = $body['lr_margin'];		
+		$lr_margin = $body['lr_margin'];
+		$body_top_margin = $body['top_margin'];		
 		$headers = $body['headers'];
 		$data = $body['data'];
-		$this->SetMargins($lr_margin,0);
-		$this->Cell(0,5,"",0,1,'L');
 		
 		// Calculate the height of the header
 		$nb=0;
@@ -105,128 +106,511 @@ class PDF extends FPDF {
 			$nb=max($nb,$this->NbLines($h['width'],$h['column']));
 		}
 		$hh=5*$nb;
-	
-		// Header
-		$header_y = $this->GetY();
-		$header_x = $this->GetX();
-		$x_stack = 0;
+		
+		# Header
+		$this->SetXY($lr_margin,$body_top_margin);
 		foreach ($headers as $i => $h) {
-			if ($i > 0) {
-				$x_stack += $headers[$i-1]['width'];
-				$this->SetY($header_y);
-				$header_x = $lr_margin+$x_stack;
-				$this->SetX($header_x);
-			}
+			$header_x = $this->GetX();			
+			$header_y = $this->GetY();
 			$this->Rect($header_x,$header_y,$h['width'],$hh,'DF');
-			// $this->MultiCell($h['width'],7,$h['column'],1,'C',true);
 			$this->MultiCell($h['width'],5,$h['column'],0,'C');
+			$this->SetXY($header_x+$h['width'],$header_y);			
 		}
-		$this->Ln($hh-5);
+		$this->Ln($hh);
+		# end Header		
 		
 		$fill = false;
 		$body['striped_bg']($this);
-		foreach($data as $key => $row) {			
+		foreach($data as $key => $row) {	
 			
-			// Calculate the height of each body row
+			// Calculate the height of each body row column
 			$nb=0;
 			foreach ($headers as $i => $h) {
 				$nb=max($nb,$this->NbLines($h['width'],$row[array_keys($row)[$i]]));
 			}
 			$rh=5*$nb;
-			
-			$this->CheckPageBreak($rh);
-			
-			$body_y = $this->GetY();
-			$body_x = $this->GetX();		
-			$x_stack = 0;
-			foreach ($headers as $i => $h) {
-				if ($i > 0) {
-					$x_stack += $headers[$i-1]['width'];
-					$this->SetY($body_y);
-					$body_x = $lr_margin+$x_stack;
-					$this->SetX($body_x);
+
+			$pageBreak = $this->CheckPageBreak($rh);
+
+			if ($pageBreak) { # if page break render header
+				if ($this->PageNo()>1) {
+					$this->SetXY($lr_margin,$body_top_margin);
 				}
+				$this->SetFillColor(60,159,223); # background color
+				# Header
+				foreach ($headers as $i => $h) {
+					$header_x = $this->GetX();			
+					$header_y = $this->GetY();
+					$this->Rect($header_x,$header_y,$h['width'],$hh,'DF');
+					$this->MultiCell($h['width'],5,$h['column'],0,'C');
+					$this->SetXY($header_x+$h['width'],$header_y);
+				}
+				$this->Ln($hh);
+				# end Header
+			}
+			
+			$this->SetFillColor(223,223,223);		
+			foreach ($headers as $i => $h) {
+				$body_x = $this->GetX();					
+				$body_y = $this->GetY();
 				$df = 'D';
 				if ($body['striped']) if ($fill) $df = 'DF';
 				$this->Rect($body_x,$body_y,$h['width'],$rh,$df);
-				// $this->MultiCell($h['width'],5,$row[array_keys($row)[$i]],0,'C',$fill);
-				$this->MultiCell($h['width'],5,$row[array_keys($row)[$i]],0,'C');
+				$content = iconv('UTF-8', 'ISO-8859-1', $row[array_keys($row)[$i]]);					
+				$this->MultiCell($h['width'],5,$content,0,'C');
+				$this->SetXY($body_x+$h['width'],$body_y);
 			}
-			
-			if ($key > 0) $this->Ln($rh-5);		
+			$this->Ln($rh);				
 			$fill = !$fill;
-			
-		}		
-		
+
+		}
+
 	}
+
 }
+
 # start
+
 $top_margin = 5;
-$body_top_margin = 0;
+
 $header = array(
 	function($p) {
 		echo null; # important in include
-		$p->SetFont('Arial','B',12);
 		$p->SetTextColor(66,66,66);
-		$p->Cell(0,5,"Provincial Government of La Union",0,1,'C');	
-	},
-	function($p) { # always last item
-		echo null; # important in include
-		global $body_top_margin;
-		$p->Ln($body_top_margin);		
-		if ($p->PageNo()>1) {
-			if ($body_top_margin <= 2) $body_top_margin+=5;
-			$p->Ln($body_top_margin);
-		}
+		$p->SetFont('Arial','',10);
+		$p->Cell(0,6,"Republic of the Philippines",0,1,'C');
+		$p->SetFont('Arial','B',12);
+		$p->Cell(0,6,"PROVINCIAL GOVERNMENT OF LA UNION",0,1,'C');
+		$p->SetFont('Arial','',10);
+		$p->Cell(0,6,"City of San Fernando",0,1,'C');
+		$p->Ln(2);
+		$p->SetFont('Arial','B',14);
+		$p->Cell(0,7,"List of Employees",0,1,'C');
+
+		$p->Image("../img/pglu-logo.png",10,10,30);
+		$p->Image("../img/ILOVELAUNION.png",230,5,40);
+
+		$p->SetDrawColor(0,0,0);	
 	}
 );
+
 $footer = array(
 	function($p) {
 		echo null; # important in include
 	}
 );
+
 $headers = array(
-	array("width"=>30,"column"=>"Header 1"),
-	array("width"=>25,"column"=>"Header 2"),
-	array("width"=>25,"column"=>"Header 3"),
-	array("width"=>25,"column"=>"Header 4"),
-	array("width"=>25,"column"=>"Header 5"),
-	array("width"=>25,"column"=>"Header 6"),
-	array("width"=>30,"column"=>"Header 7")
+	array("width"=>20,"column"=>"Picture"),
+	array("width"=>15,"column"=>"ID"),
+	array("width"=>50,"column"=>"Name"),
+	array("width"=>25,"column"=>"Gender"),
+	array("width"=>30,"column"=>"Department"),
+	array("width"=>30,"column"=>"Status of Appointment"),
+	array("width"=>35,"column"=>"Position"),
+	array("width"=>55,"column"=>"Address")
 );
+
 # query here
+
 #
-$data = [
-array(
-	"col1"=>1,
-	"col2"=>2,
-	"col3"=>3,
-	"col4"=>4,
-	"col5"=>5,
-	"col6"=>6,
-	"col7"=>"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-),
-array(
-	"col1"=>11,
-	"col2"=>12,
-	"col3"=>13,
-	"col4"=>14,
-	"col5"=>15,
-	"col6"=>16,
-	"col7"=>"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-),
-array(
-	"col1"=>11,
-	"col2"=>12,
-	"col3"=>13,
-	"col4"=>14,
-	"col5"=>15,
-	"col6"=>16,
-	"col7"=>"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-)
-];
+
+$data = array(
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),
+	array(
+		"Picture"=>"",
+		"ID"=>"",
+		"Name"=>"",
+		"Gender"=>"",
+		"Department"=>"",
+		"Status of Appointment"=>"",
+		"Position"=>"",
+		"Address"=>""
+	),	
+);
+
 $body = array(
-	"lr_margin"=>20,
+	"lr_margin"=>10,
+	"top_margin"=>45,
 	"striped"=>false,
 	"striped_bg"=>function($p) {
 		$p->SetFillColor(223,223,223); # background color		
@@ -243,10 +627,13 @@ $body = array(
 		$p->SetFont('Arial','B',8);
 	}
 );
+
 # end
-$pdf = new PDF('P','mm','Letter'); # set here if Portrait(P)/Landscape(L)
+
+$pdf = new PDF('L','mm','Letter'); # set here if Portrait(P)/Landscape(L)
 $pdf->AliasNbPages();
 $pdf->AddPage();
+
 $pdf->body($body);
 $pdf->Output();
 
