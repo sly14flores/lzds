@@ -9,15 +9,22 @@ require('../db.php');
 
 $con = new pdo_db();
 
+$level = "";
+$section = "All";
+
 $wheres = [];
 if ($filter['school_year']['id']) {
 	$wheres[] = array("field"=>"enrollment_school_year","value"=>$filter['school_year']['id']);
 }
 if ($filter['level']['id']) {
 	$wheres[] = array("field"=>"grade","value"=>$filter['level']['id']);	
+	$levels = $con->getData("SELECT description FROM grade_levels WHERE id = ".$filter['level']['id']);	
+	$level = $levels[0]['description'];
 }
 if ($filter['section']['id']) {
 	$wheres[] = array("field"=>"section","value"=>$filter['section']['id']);	
+	$sections = $con->getData("SELECT description FROM sections WHERE id = ".$filter['section']['id']);	
+	$section = $sections[0]['description'];	
 }
 
 $where = "";
@@ -36,7 +43,7 @@ foreach($enrollments as $key => $enrollment) {
 	$student_payments = $con->getData("SELECT SUM(amount) student_payments FROM payments WHERE enrollment_id = ".$enrollment['id']);
 
 	$balance = $student_fees[0]['student_fees'] - $student_discount[0]['student_discount'] - $student_payments[0]['student_payments'];
-	$enrollments[$key]['balance'] = $balance;
+	$enrollments[$key]['balance'] = "Php. ".number_format(round($balance,2));
 	$total += $balance;
 	
 	unset($enrollments[$key]['id']);
@@ -118,7 +125,7 @@ class PDF extends FPDF {
 		foreach ($footer as $f) {
 			$f($this);
 		};
-		
+
 		// Position at 1.5 cm from bottom	
 		$this->SetY(-10);
 		// Arial italic 8
@@ -157,7 +164,9 @@ class PDF extends FPDF {
 		
 		$fill = false;
 		$body['striped_bg']($this);
-		foreach($data as $key => $row) {	
+		foreach($data as $key => $row) {
+			
+			$this->SetX($lr_margin);
 			
 			// Calculate the height of each body row column
 			$nb=0;
@@ -183,6 +192,9 @@ class PDF extends FPDF {
 				}
 				$this->Ln($hh);
 				# end Header
+				
+				$this->SetX($lr_margin);
+				
 			}
 			
 			$this->SetFillColor(223,223,223);		
@@ -200,6 +212,11 @@ class PDF extends FPDF {
 			$fill = !$fill;
 
 		}
+		
+		$this->Ln();	
+		$this->SetX(20);
+		global $total
+		$this->Cell(240,10,"Total: Php.".number_format(round($total,2)),1,1,'R');
 
 	}
 	
@@ -221,6 +238,7 @@ $header = array(
 	},
 	function($p) {
 		echo null; # important in include
+		global $level, $section;
 		$p->SetFont('Arial','B',14);	
 		$p->SetXY(18,15);
 		$p->darkerText();
@@ -236,9 +254,9 @@ $header = array(
 		$p->Cell(0,5,"Tel. No.: (072) 607 4004",0,1,'L');
 		$p->darkerText();
 		$p->SetXY(18,38);
-		$p->Cell(0,5,"SY: ",0,1,'L');
+		$p->Cell(0,5,"SY: $level",0,1,'L');
 		$p->SetXY(18,43);
-		$p->Cell(0,5,"Grade: ",0,1,'L');	
+		$p->Cell(0,5,"Grade: $section",0,1,'L');	
 		
 	}
 );

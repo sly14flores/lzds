@@ -928,3 +928,76 @@ Stack trace:
 #2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(282): FPDF->AddPage()
 #3 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 237
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Notice:  Undefined variable: level in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 248
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:293
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:231-252}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:116
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Notice:  Undefined variable: section in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 250
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:293
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   3. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   4. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:231-252}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:116
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Notice:  Undefined variable: level in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 248
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:294
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   3. PDF->CheckPageBreak() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:178
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   4. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:58
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   5. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   6. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:231-252}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:116
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Notice:  Undefined variable: section in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 250
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:294
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   3. PDF->CheckPageBreak() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:178
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   4. FPDF->AddPage() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:58
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   5. PDF->Header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[22-Nov-2017 07:40:53 Asia/Manila] PHP   6. {closure:C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:231-252}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:116
+[22-Nov-2017 07:40:53 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:248) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1052): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(295): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Warning:  Missing argument 2 for FPDF::SetXY(), called in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 217 and defined in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 973
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:302
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   3. FPDF->SetXY() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:217
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Notice:  Undefined variable: y in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 977
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:302
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   3. FPDF->SetXY() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:217
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Notice:  Undefined variable: p in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 218
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:48:40 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:302
+[22-Nov-2017 07:48:40 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to a member function Cell() on unknown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:218
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(302): PDF->body(Array)
+#1 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 218
+[22-Nov-2017 07:48:52 Asia/Manila] PHP Warning:  Missing argument 2 for FPDF::SetXY(), called in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 217 and defined in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 973
+[22-Nov-2017 07:48:52 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:302
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   3. FPDF->SetXY() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:217
+[22-Nov-2017 07:48:52 Asia/Manila] PHP Notice:  Undefined variable: y in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 977
+[22-Nov-2017 07:48:52 Asia/Manila] PHP Stack trace:
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   2. PDF->body() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:302
+[22-Nov-2017 07:48:52 Asia/Manila] PHP   3. FPDF->SetXY() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php:217
+[22-Nov-2017 07:48:52 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php(303): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[22-Nov-2017 07:52:29 Asia/Manila] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE), expecting ',' or ';' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 219
+[22-Nov-2017 07:52:48 Asia/Manila] PHP Parse error:  syntax error, unexpected '$this' (T_VARIABLE), expecting ',' or ';' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\reports\balances.php on line 219
