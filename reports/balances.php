@@ -204,7 +204,8 @@ class PDF extends FPDF {
 				$df = 'D';
 				if ($body['striped']) if ($fill) $df = 'DF';
 				$this->Rect($body_x,$body_y,$h['width'],$rh,$df);
-				$content = iconv('UTF-8', 'ISO-8859-1', $row[array_keys($row)[$i]]);					
+				$content = iconv('UTF-8', 'ISO-8859-1', $row[array_keys($row)[$i]]);
+				// $content = utf8_encode($row[array_keys($row)[$i]]);
 				$this->MultiCell($h['width'],5,$content,0,'C');
 				$this->SetXY($body_x+$h['width'],$body_y);
 			}
@@ -215,8 +216,9 @@ class PDF extends FPDF {
 		
 		$this->Ln();	
 		$this->SetX(20);
-		global $total
-		$this->Cell(240,10,"Total: Php.".number_format(round($total,2)),1,1,'R');
+		global $total;
+		$this->SetFont('Arial','B',14);
+		$this->Cell(240,10,"Total: Php.".number_format(round($total,2)),0,1,'R');
 
 	}
 	
