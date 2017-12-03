@@ -12,7 +12,7 @@ $con = new pdo_db("students");
 ** filters: date
 */
 
-if (isset($_POST['date_of_birth'])) $_POST['date_of_birth'] = date("Y-m-d",strtotime($_POST['date_of_birth']));
+if (isset($_POST['student']['date_of_birth'])) $_POST['student']['date_of_birth'] = date("Y-m-d",strtotime($_POST['student']['date_of_birth']));
 	
 /*
 **

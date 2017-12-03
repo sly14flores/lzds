@@ -229,8 +229,10 @@ require_once 'authentication.php';
                   <div class="x_content">
                     <form name="formHolder.all" id="formHolder.all">
 					  <div class="form-group">
-						<label>Year :</label>
-						<input type="text" class="form-control" ng-model="payroll.all.year">
+						<label>School Year :</label>
+						<select class="form-control" ng-model="payroll.all.payroll_sy" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id">
+							<option value="0">SY</option>
+						</select>						
 					  </div>
                       <label>Month :</label>
                       <select class="form-control" ng-model="payroll.all.month" ng-options="m.description for m in months track by m.month"></select>
@@ -261,8 +263,10 @@ require_once 'authentication.php';
                   <div class="x_content">
                     <form name="formHolder.individual" id="formHolder.individual">
 					  <div class="form-group">
-						<label>Year :</label>
-						<input type="text" class="form-control" ng-model="payroll.individual.year">
+						<label>School Year :</label>
+						<select class="form-control" ng-model="payroll.individual.payroll_sy" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id">
+							<option value="0">SY</option>
+						</select>
 					  </div>
                       <label>Month :</label>
                       <select class="form-control" ng-model="payroll.individual.month" ng-options="m.description for m in months track by m.month"></select>

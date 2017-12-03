@@ -13,6 +13,7 @@ $payroll = array(
 	"staff_id"=>$_POST['id'],
 	"payroll_period"=>$_POST['period'],
 	"payroll_month"=>$_POST['month']['month'],
+	"payroll_sy"=>$_POST['payroll_sy']['id'],
 	"payroll_date"=>"CURRENT_TIMESTAMP",
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
