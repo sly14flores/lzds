@@ -3,6 +3,7 @@
 	<thead>
 	  <tr class="headings">
 		<th class="column-title">Date </th>
+		<th class="column-title">Type </th>
 		<th class="column-title">Description </th>
 		<th class="column-title">Amount </th>
 		<th class="column-title">No of Months </th>
@@ -16,6 +17,7 @@
 	<tbody>
 	  <tr class="even pointer" ng-repeat="ln in pagination.loans.filterData = (data.loans | filter: views.loans.search) | pagination: pagination.loans.currentPage:pagination.loans.pageSize">
 		<td class="">{{ln.loan_date}}</td>
+		<td class="">{{ln.loan_type}}</td>
 		<td class="">{{ln.loan_description}}</td>
 		<td class="">{{ln.loan_amount}}</td>
 		<td class="">{{ln.loan_months}}</td>
@@ -31,7 +33,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="8" style="text-align: center;">
+			<td colspan="9" style="text-align: center;">
 				<ul uib-pagination boundary-links="true" total-items="pagination.loans.filterData.length" max-size="pagination.loans.maxSize" items-per-page="pagination.loans.pageSize" ng-model="pagination.loans.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 			</td>
 		</tr>

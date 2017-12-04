@@ -5,6 +5,14 @@
 	<input type="date" class="form-control" name="loan_date" ng-model="data.loan.loan_date" required>
 	<span class="help-block" ng-show="formHolder.loan.loan_date.$touched && formHolder.loan.loan_date.$invalid">Date is required</span>
   </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_type.$touched && formHolder.loan.loan_type.$invalid}">
+	<label>Type</label>
+	<select class="form-control" name="loan_type" ng-model="data.loan.loan_type" required>
+		<option value="Salary">Salary</option>		
+		<option value="Others">Others</option>		
+	</select>
+	<span class="help-block" ng-show="formHolder.loan.loan_type.$touched && formHolder.loan.loan_type.$invalid">Type is required</span>
+  </div>  
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_description.$touched && formHolder.loan.loan_description.$invalid}">
 	<label>Description</label>
 	<input type="text" class="form-control" name="loan_description" ng-model="data.loan.loan_description" required>
@@ -15,6 +23,10 @@
 	<input type="text" class="form-control" name="loan_amount" ng-model="data.loan.loan_amount" required>
 	<span class="help-block" ng-show="formHolder.loan.loan_amount.$touched && formHolder.loan.loan_amount.$invalid">Amount is required</span>	
   </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+	<label>Offset</label>
+	<input type="text" class="form-control" name="loan_offset" ng-model="data.loan.loan_offset">
+  </div>  
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_monthly.$touched && formHolder.loan.loan_monthly.$invalid}">
 	<label>Monthly Payment (Full)</label>
 	<input type="text" class="form-control" name="loan_monthly" ng-model="data.loan.loan_monthly" required>
