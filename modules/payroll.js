@@ -163,7 +163,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 			$timeout(function() {
 				
-				scope.sheet.individual.net_pay = (scope.sheet.individual.gross_pay - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses)/2;
+				scope.sheet.individual.net_pay = (scope.sheet.individual.gross_pay)/2 - scope.sheet.individual.total_deductions + scope.sheet.individual.bonuses;
 				scope.sheet.individual.gross_pay_half = scope.sheet.individual.gross_pay/2;			
 				
 			},200);
@@ -601,18 +601,18 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 				doc.setLineWidth(1);
 				doc.line(290, 485, 835, 485);
-				doc.text(298, 480, '10000'); // Basic Pay		
-				doc.text(343, 480, '10000'); // COLA
-				doc.text(388, 480, '10000'); // Gross Pay
-				doc.text(433, 480, '10000'); // SSS
-				doc.text(478, 480, '10000'); // HDMF
-				doc.text(523, 480, '10000'); // PHIC
-				doc.text(568, 480, '10000'); // Tax
-				doc.text(613, 480, '10000'); // Salary Loan
-				doc.text(659, 480, '10000'); // Other Loans
-				doc.text(705, 480, '10000'); // Total Deductions
-				doc.text(753, 480, '10000'); // Incentive
-				doc.text(798, 480, '10000'); // Net Pay
+				doc.text(298, 480, all.total.basic_pay); // Basic Pay		
+				doc.text(343, 480, all.total.cola); // COLA
+				doc.text(388, 480, all.total.gross_pay); // Gross Pay
+				doc.text(433, 480, all.total.sss); // SSS
+				doc.text(478, 480, all.total.hdmf); // HDMF
+				doc.text(523, 480, all.total.phic); // PHIC
+				doc.text(568, 480, all.total.tax); // Tax
+				doc.text(613, 480, all.total.salary_loan); // Salary Loan
+				doc.text(659, 480, all.total.other_loans); // Other Loans
+				doc.text(705, 480, all.total.total_deductions); // Total Deductions
+				doc.text(753, 480, all.total.incentive); // Incentive
+				doc.text(798, 480, all.total.net_pay); // Net Pay
 				
 				// Signatories
 				doc.setFontSize(10);

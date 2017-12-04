@@ -73,3 +73,19 @@ Stack trace:
 [03-Dec-2017 20:33:58 Asia/Manila] PHP Notice:  Undefined variable: year in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 11
 [03-Dec-2017 20:33:58 Asia/Manila] PHP Stack trace:
 [03-Dec-2017 20:33:58 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Notice:  Undefined index: sss_amount_first in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 51
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Notice:  Undefined index: hdmf_amount_first in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 52
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Notice:  Undefined index: phic_amount_first in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 53
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Notice:  Undefined index: tax_amount_first in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 54
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:54) in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php on line 66
+[04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
+[04-Dec-2017 11:18:32 Asia/Manila] PHP   2. header() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:66
