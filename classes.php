@@ -68,13 +68,18 @@ function absences($con,$staff,$first_day,$last_day) {
 			
 			$total_absences += .5;
 			
-		}		
+		}	
 		
 	}
 
-	# amount computation	
+	# amount computation
+	$basic_pay = $staff['basic_pay'];
+	$per_day = $basic_pay/22;
+
+	$amount = 0;
+	$amount = $total_absences*$per_day;
 	
-	return array("absences"=>$total_absences,"amount"=>0);
+	return array("absences"=>$total_absences,"amount"=>$amount);
 	
 }
 

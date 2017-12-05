@@ -84,7 +84,29 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal','x-panel-module'
 			bootstrapModal.box(scope,'Add Loan',content,self.save);			
 			
 		};
+		
+		self.payments = function(scope,ln) {
+			
+			var content = 'dialogs/loan-payments.html';	
 
+			bootstrapModal.box2(scope,'Loan Payments',content,function() {});
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/loan-payments.php',
+			  data: {id: ln.id}
+			}).then(function mySucces(response) {
+				
+				scope.loan_payments = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
+		};
+		
 		self.save = function(scope) {
 			
 			if (scope.$id > 2) scope = scope.$parent;				

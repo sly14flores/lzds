@@ -11,7 +11,12 @@ $con = new pdo_db();
 $staff = $con->getData("SELECT * FROM staffs WHERE id = $_POST[id]");
 $schedule = $con->getData("SELECT id, description FROM schedules WHERE id = ".$staff[0]['schedule_id']);
 
-$staff[0]['schedule_id'] = (count($schedule))?$schedule[0]:array("id"=>0,"description"=>"");
+if ($staff[0]['schedule_id'] < 0) {
+	$staff[0]['schedule_id'] = array("id"=>-1,"description"=>"Exempted");
+} else {
+	$staff[0]['schedule_id'] = (count($schedule))?$schedule[0]:array("id"=>0,"description"=>"");
+}
+
 
 if ($staff[0]['birthday'] == "0000-00-00") $staff[0]['birthday'] = null;
 if ($staff[0]['birthday'] != null) $staff[0]['birthday'] = date("m/d/Y",strtotime($staff[0]['birthday']));

@@ -56,18 +56,18 @@ foreach ($payroll as $key => $p) {
 	
 	$deductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = ".$p['id']);		
 	
+	$rows[$key]["salary_loan"] = 0;
+	$rows[$key]["other_loans"] = 0;	
 	$deduction_total = 0;
 	foreach ($deductions as $deduction) {
 		if ($deduction['description_field'] == "sss_amount_".$period) $rows[$key]["sss_premium"] = $deduction['amount'];
 		if ($deduction['description_field'] == "hdmf_amount_".$period) $rows[$key]["hdmf_premium"] = $deduction['amount'];
 		if ($deduction['description_field'] == "phic_amount_".$period) $rows[$key]["phic_premium"] = $deduction['amount'];
 		if ($deduction['description_field'] == "tax_amount_".$period) $rows[$key]["tax"] = $deduction['amount'];
+		if ($deduction['description_field'] == "Salary") $rows[$key]["salary_loan"] += $deduction['amount'];
+		if ($deduction['description_field'] == "Others") $rows[$key]["other_loans"] += $deduction['amount'];
 		$deduction_total += $deduction['amount'];		
 	}
-	
-	$rows[$key]["salary_loan"] = 0;
-	
-	$rows[$key]["other_loans"] = 0;
 	
 	$rows[$key]["deduction"] = $deduction_total;
 

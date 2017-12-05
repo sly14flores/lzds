@@ -11,7 +11,13 @@ $con = new pdo_db();
 
 $sql = "SELECT id, description FROM schedules";
 
-$schedules = $con->getData($sql);
+$_schedules = $con->getData($sql);
+$schedules = [];
+
+$schedules[] = array("id"=>-1,"description"=>"Exempted");
+foreach ($_schedules as $i => $s) {
+	$schedules[] = $s;
+}
 
 header("Content-type: application/json");
 echo json_encode($schedules);

@@ -89,3 +89,15 @@ Stack trace:
 [04-Dec-2017 11:18:32 Asia/Manila] PHP Stack trace:
 [04-Dec-2017 11:18:32 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:0
 [04-Dec-2017 11:18:32 Asia/Manila] PHP   2. header() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\payroll-all.php:66
+[05-Dec-2017 11:55:15 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php on line 15
+[05-Dec-2017 11:55:15 Asia/Manila] PHP Stack trace:
+[05-Dec-2017 11:55:15 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php:0
+[05-Dec-2017 11:55:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php on line 15
+[05-Dec-2017 11:55:28 Asia/Manila] PHP Stack trace:
+[05-Dec-2017 11:55:28 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\staff-edit.php:0
+[05-Dec-2017 15:11:42 Asia/Manila] PHP Notice:  Undefined index: payroll_period in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\loan-payments.php on line 15
+[05-Dec-2017 15:11:42 Asia/Manila] PHP Stack trace:
+[05-Dec-2017 15:11:42 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\loan-payments.php:0
+[05-Dec-2017 15:11:42 Asia/Manila] PHP Notice:  Undefined index: payroll_date in C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\loan-payments.php on line 16
+[05-Dec-2017 15:11:42 Asia/Manila] PHP Stack trace:
+[05-Dec-2017 15:11:42 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\handlers\loan-payments.php:0

@@ -35,10 +35,10 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				scope.schedules = response.data;
 				
 			}, function myError(response) {
-				 
+			
 			  // error
-				
-			});			
+			
+			});	
 			
 			scope.staff_id = 0;
 			

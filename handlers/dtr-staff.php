@@ -53,7 +53,10 @@ header("Content-type: application/json");
 echo json_encode($_Dtrs);
 
 function generateDtr($con,$analyze) {
-
+	
+	$schedule = $con->getData("SELECT schedule_id FROM staffs WHERE id = ".$_POST['id']);
+	$exempted = ($schedule[0]['schedule_id']<0)?true:false;
+	
 	$start = $_POST['year']."-".$_POST['month']['month']."-01";
 	$end = date("Y-m-t",strtotime($start));
 
@@ -96,26 +99,32 @@ function generateDtr($con,$analyze) {
 		# if working day and late
 		if ( is_working_day($day) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
 			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
-			$dtr['tardiness'] = gmdate('H:i:s',$tardiness);
+			if (!$exempted) $dtr['tardiness'] = gmdate('H:i:s',$tardiness);
 		}		
 		
 		# if on leave or travel
-		if (is_onleave_travel_am($con,$day)) $dtr['tardiness'] = "00:00:00";		
+		if (is_onleave_travel_am($con,$day)) if (!$exempted) $dtr['tardiness'] = "00:00:00";		
 		
 		# if absent but not on leave or travel
 		if (is_absent($dtr,$day) && !is_onleave_travel($con,$day)) {
-			$dtr['tardiness'] = "00:00:00";			
-			$dtr['absent'] = 1;
+			if (!$exempted) {
+				$dtr['tardiness'] = "00:00:00";			
+				$dtr['absent'] = 1;
+			}
 		};
 		
 		# if halfday
 		if (is_halfday_am($dtr,$day) && !is_onleave_travel_am($con,$day)) {
-			$dtr['tardiness'] = "00:00:00";
-			$dtr['is_halfday'] = 1;
+			if (!$exempted) {
+				$dtr['tardiness'] = "00:00:00";
+				$dtr['is_halfday'] = 1;
+			}
 		};
 
 		if (is_halfday_pm($dtr,$day) && !is_onleave_travel_pm($con,$day)) {
-			$dtr['is_halfday'] = 1;
+			if (!$exempted) {
+				$dtr['is_halfday'] = 1;
+			}
 		};
 
 		$log = $con->insertData($dtr);
