@@ -14,7 +14,7 @@ if ($by == "Month") {
 	$filter = " AND time_log >= '".date("Y-m-d 00:00:00",strtotime($_POST['dateFrom']))."' AND time_log <= '".date("Y-m-d 23:59:59",strtotime($_POST['dateTo']))."'";
 }
 
-$sql = "SELECT attendances.id, attendances.rfid, attendances.time_log FROM attendances LEFT JOIN profiles ON attendances.rfid = profiles.rfid WHERE profile_type = 'Staff'$filter";
+$sql = "SELECT attendances.id, attendances.rfid, attendances.time_log FROM attendances LEFT JOIN profiles ON attendances.rfid = profiles.rfid WHERE profile_type = 'Student'$filter";
 $logs = $con->getData($sql);
 
 header("Content-type: application/json");

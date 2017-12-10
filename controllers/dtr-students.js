@@ -6,7 +6,7 @@ app.controller('dtrCtrl',function($scope,fullscreen,form) {
 	
 	form.data($scope); // initialize data	
 	
-	$scope.views.title = 'Staffs DTR';
+	$scope.views.title = 'Students DTR';
 	$scope.views.panel_title = '';
 	
 	$scope.fullscreen = fullscreen;

@@ -1,17 +1,47 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear) {
 	
 	function form() {
 		
 		function isAO(val) {
 			return val instanceof Array || val instanceof Object ? true : false;
-		};
+		};		
 		
 		var self = this;
 		
 		self.data = function(scope) { // initialize data
 			
 			scope.formHolder = {};		
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/grade-levels.php'
+			}).then(function mySucces(response) {
+				
+				scope.levels = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
 
+			scope.sections = [];
+			
+			schoolYear.get(scope);
+
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.studentDtr.sy = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
 			scope.months = [
 				{month:"01",description:"January"},
 				{month:"02",description:"February"},
@@ -26,41 +56,32 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 				{month:"11",description:"November"},
 				{month:"12",description:"December"},
 			];
-			
+
 			var d = new Date();
 
-			scope.staffDtr = {
+			scope.studentDtr = {
+				by: "Section",
 				id: 0,
 				rfid: '',
 				fullname: '',
+				grade: {id:0,description:""},
+				section: {id:0,description:""},
+				sy: {id:0,school_year:""},
 				month: scope.months[d.getMonth()],
 				year: d.getFullYear(),
 				option: false,
 				schedule_id: 0
 			};
-			
+
 			scope.downloadDtr = {
-				by: "Month",
+				by: "Month",				
 				year: d.getFullYear(),
 				month: scope.months[d.getMonth()]
 			};
-			
+
 			scope.logs = [];
 			
-			scope.suggest_staffs = [];
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/staffs-suggest.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.suggest_staffs);
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});			
+			scope.suggest_students = [];				
 			
 			scope.btns = {
 				ok: {
@@ -72,6 +93,10 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 					label: 'Cancel'		
 				}
 			};
+			
+			$timeout(function() {
+				self.studentsSuggest(scope);
+			},500);
 			
 		};
 		
@@ -87,32 +112,56 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 
 			return scope.formHolder[form].$invalid;
 			
-		};				
+		};		
+		
+		self.studentsSuggest = function(scope) {
+			
+			scope.studentDtr.fullname = '';
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/students-suggest-dtr.php',
+			  data: {sy: scope.studentDtr.sy.id}
+			}).then(function mySucces(response) {
+				
+				angular.copy(response.data, scope.suggest_students);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
+		};
 		
 		self.dtr = function(scope,opt) {
 			
-			if (scope.staffDtr.id == 0) {
-				pnotify.show('danger','Notification','Please select staff');
+			console.log(scope.studentDtr);
+			
+			return;
+			
+			if (scope.studentDtr.id == 0) {
+				pnotify.show('danger','Notification','Please select student');
 				return;
 			};
 
-			if (scope.staffDtr.schedule_id == 0) {
-				pnotify.show('danger','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
+			if (scope.studentDtr.schedule_id == 0) {
+				pnotify.show('danger','Notification','Student has no defined schedule, please set it first in the student current enrollment');
 				return;
 			};
 			
 			var onOk = function() {
 			
-				scope.staffDtr.option = opt;
+				scope.studentDtr.option = opt;
 			
-				scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
+				scope.views.panel_title = scope.studentDtr.fullname+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
 			
 				scope.dtr = [];			
 			
 				$http({
 				  method: 'POST',
-				  url: 'handlers/dtr-staff.php',
-				  data: scope.staffDtr
+				  url: 'handlers/dtr-student.php',
+				  data: scope.studentDtr
 				}).then(function mySucces(response) {					
 					
 					scope.dtr = angular.copy(response.data);
@@ -124,7 +173,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 				});
 				
 				$('#x_content').html('Loading...');
-				$('#x_content').load('lists/dtr.html',function() {
+				$('#x_content').load('lists/dtr-student.html',function() {
 					$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
 				});				
 
@@ -143,7 +192,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 		};
 		
 		self.download = function(scope) {
-
+			
 			if (validate(scope,'downloadDtr')) return;
 
 			scope.downloadProgress = 0;
@@ -153,15 +202,15 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/logs-fetch.php',
+			  url: 'handlers/logs-fetch-students.php',
 			  data: scope.downloadDtr
 			}).then(function mySucces(response) {
 				
-				if (isAO(response.data)) {
-				
+				if (isAO(response.data)) {	
+
 					scope.logs = angular.copy(response.data);
 					if (scope.logs.length > 0) {
-						scope.downloadProgressStatus = 'Initiating import...';
+						scope.downloadProgressStatus = 'Initiating import...';						
 						download(scope,scope.downloadI);					
 					} else {
 						scope.downloadProgressStatus = 'No logs found';						
@@ -201,12 +250,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			
 		}		
 		
-		self.staffSelect = function(scope, item, model, label, event) {
+		self.studentSelect = function(scope, item, model, label, event) {
 
-			scope.staffDtr.fullname = item['fullname'];
-			scope.staffDtr.id = item['id'];
-			scope.staffDtr.rfid = item['rfid'];
-			scope.staffDtr.schedule_id = item['schedule_id'];
+			scope.studentDtr.fullname = item['fullname'];
+			scope.studentDtr.id = item['id'];
+			scope.studentDtr.rfid = item['rfid'];
+			scope.studentDtr.schedule_id = item['schedule_id'];
 
 		};
 		
