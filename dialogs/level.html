@@ -12,14 +12,18 @@
 <thead>
 	<tr>
 		<th>Description</th>
+		<th>Teacher</th>
 		<th></th>
 	</tr>
 </thead>
 <tbody>
 	<tr ng-repeat="s in level.sections">
-		<td class="form-group" ng-class="{'has-error': formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']}">
+		<td class="form-group" ng-class="{'has-error': formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']}" style="width: 150px;">
 			<input type="text" class="form-control" name="description{{$index}}" ng-model="s.description" ng-disabled="s.disabled" required>
 			<span class="help-block" ng-show="formHolder.level.description{{$index}}['$touched'] && formHolder.level.description{{$index}}['$invalid']">Description is required</span>				
+		</td>
+		<td>
+			<select class="form-control" name="teacher" ng-model="s.teacher" ng-options="teacher.fullname for teacher in teachers track by teacher.id" ng-disabled="s.disabled"></select>
 		</td>
 		<td class="last list-action">
 			<a href="javascript:;" ng-click="form.editSection(this,s)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': s.disabled, 'fa-check': !s.disabled}"></i></a>

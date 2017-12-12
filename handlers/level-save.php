@@ -44,12 +44,14 @@ if (count($sections)) {
 		
 		if ($section['id']) {
 			
+			$sections[$key]['teacher'] = $sections[$key]['teacher']['id'];
 			$sections[$key]['update_log'] = "CURRENT_TIMESTAMP";
 			$insert = $con->updateData($sections[$key],'id');			
 			
 		} else {
 			
-			unset($sections[$key]['id']);		
+			unset($sections[$key]['id']);
+			$sections[$key]['teacher'] = $sections[$key]['teacher']['id'];			
 			$sections[$key]['system_log'] = "CURRENT_TIMESTAMP";
 			$sections[$key]['level_id'] = $level_id;
 			$insert = $con->insertData($sections[$key]);			

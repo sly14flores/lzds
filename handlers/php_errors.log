@@ -4406,3 +4406,47 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[12-Dec-2017 07:32:55 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') fullname FROM staffs WHERE field_of_work = 'Teaching'' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, () f...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\teachers.php(9): pdo_db->getData('SELECT id, () f...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[12-Dec-2017 07:40:04 Asia/Manila] PHP Notice:  Array to string conversion in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 176
+[12-Dec-2017 07:40:04 Asia/Manila] PHP Stack trace:
+[12-Dec-2017 07:40:04 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php:0
+[12-Dec-2017 07:40:04 Asia/Manila] PHP   2. pdo_db->updateData() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php:48
+[12-Dec-2017 07:40:04 Asia/Manila] PHP   3. PDOStatement->execute() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:176
+[12-Dec-2017 07:40:04 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: 'Array' for column 'teacher' at row 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:176
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(176): PDOStatement->execute(Array)
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php(48): pdo_db->updateData(Array, 'id')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 176
+[12-Dec-2017 07:41:53 Asia/Manila] PHP Notice:  Undefined index: teacher in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php on line 47
+[12-Dec-2017 07:41:53 Asia/Manila] PHP Stack trace:
+[12-Dec-2017 07:41:53 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\level-save.php:0
+[12-Dec-2017 07:48:16 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, CONC...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\levels-list.php(19): pdo_db->getData('SELECT id, CONC...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[12-Dec-2017 21:09:19 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, CONC...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\levels-list.php(19): pdo_db->getData('SELECT id, CONC...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[12-Dec-2017 21:09:57 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT id, CONC...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\levels-list.php(19): pdo_db->getData('SELECT id, CONC...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[12-Dec-2017 21:19:41 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 24
+[12-Dec-2017 21:19:41 Asia/Manila] PHP Stack trace:
+[12-Dec-2017 21:19:41 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0
+[12-Dec-2017 21:19:54 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php on line 24
+[12-Dec-2017 21:19:54 Asia/Manila] PHP Stack trace:
+[12-Dec-2017 21:19:54 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedule-edit.php:0

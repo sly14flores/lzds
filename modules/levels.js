@@ -13,6 +13,21 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 
 			scope.levels = [];
 			
+			scope.teachers = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/teachers.php'
+			}).then(function mySucces(response) {
+				
+				scope.teachers = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
 		};
 		
 		function validate(scope) {
@@ -131,7 +146,7 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		
 		self.addSection = function(scope) {
 			
-			scope.level.sections.push({id:0, description: '', disabled: false});
+			scope.level.sections.push({id:0, description: '', teacher: {id:0, fullname: ''}, disabled: false});
 			
 		};
 		

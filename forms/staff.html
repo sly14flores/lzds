@@ -105,6 +105,16 @@
 			<input type="text" placeholder="" class="form-control" name="position" ng-model="staff.position" ng-disabled="btns.ok.disabled">
 		  </div> 
 		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Field of work</label>
+			<select class="form-control" name="field_of_work" ng-model="staff.field_of_work" ng-disabled="btns.ok.disabled">
+				<option value="Teaching">Teaching</option>
+				<option value="Admin">Admin</option>
+				<option value="Maintenance">Maintenance</option>
+			</select>
+		  </div> 			
+		</div>
 		<hr>
 		<h4><strong>Payroll Info</strong></h4>
 		<hr>
