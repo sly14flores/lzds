@@ -4,10 +4,22 @@
 <h4><strong>Schedule Info</strong></h4>
 <div class="ln_solid"></div>
 <div class="row">
-  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.schedule.description.$touched && formHolder.schedule.description.$invalid}">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.schedule.description.$touched && formHolder.schedule.description.$invalid}">
 	<label>Description</label>
 	<input type="text" placeholder="" class="form-control" name="description" ng-model="schedule.description" ng-disabled="btns.ok.disabled" required>
 	<span class="help-block" ng-show="formHolder.schedule.description.$touched && formHolder.schedule.description.$invalid">Description is required</span>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+	<label>For Student</label>
+	<select class="form-control" name="for_student" ng-model="schedule.for_student" ng-disabled="btns.ok.disabled">
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.schedule.section.$touched && formHolder.schedule.section.$invalid}" ng-show="schedule.for_student == '1'">
+	<label>Section</label>
+	<select class="form-control" name="section" ng-model="schedule.section" ng-options="s.description for s in sections track by s.id" ng-disabled="btns.ok.disabled" ng-required="schedule.for_student == '1'"></select>
+	<span class="help-block" ng-show="formHolder.schedule.section.$touched && formHolder.schedule.section.$invalid">Section is required</span>
   </div>   
 </div>
 <div class="ln_solid"></div>

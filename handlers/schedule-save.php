@@ -8,6 +8,9 @@ session_start();
 
 $con = new pdo_db("schedules");
 
+$_POST['schedule']['for_student'] = intval($_POST['schedule']['for_student']);
+$_POST['schedule']['section'] = ($_POST['schedule']['for_student'])?$_POST['schedule']['section']['id']:0;
+
 if ($_POST['schedule']['id']) { // > 0 - update
 	$_POST['schedule']['system_log'] = "CURRENT_TIMESTAMP";
 	$schedule = $con->updateData($_POST['schedule'],'id');

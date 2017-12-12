@@ -102,6 +102,22 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 			scope.schedules = [];
 			
+			scope.sections = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/sections.php'
+			}).then(function mySucces(response) {
+				
+				scope.sections = angular.copy(response.data);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
+			
 			scope.btns = {
 				ok: {
 					disabled: false,					
@@ -145,9 +161,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 		};		
 		
-		self.schedule = function(scope,row) { // form
-			
-			console.log(scope.schedule_details);
+		self.schedule = function(scope,row) { // form			
 			
 			scope.views.list = true;			
 			
@@ -157,7 +171,9 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			$('#x_content').load('forms/schedule.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },500);				
 			});
-						
+			
+			scope.schedule.for_student = "0";
+			
 			if (row != null) {
 
 				if (scope.$id > 2) scope = scope.$parent;
@@ -169,6 +185,10 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				}).then(function mySucces(response) {				
 					
 					angular.copy(response.data['schedule'], scope.schedule);
+					
+					if (response.data['schedule_details'].length == 0) {
+						response.data['schedule_details'] = angular.copy(scope.schedule_details);
+					};
 					
 					angular.forEach(response.data['schedule_details'],function(item,i) {
 						response.data['schedule_details'][i].morning_in = new Date("2000-01-01 "+item.morning_in);
