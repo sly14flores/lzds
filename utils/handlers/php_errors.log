@@ -1,0 +1,28 @@
+[17-Dec-2017 20:47:30 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enrollments.rfid FROM enrollments LEFT JOIN students ON enrollments.student_id =' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\students-suggest.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[17-Dec-2017 20:47:59 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enrollments.rfid FROM enrollments LEFT JOIN students ON enrollments.student_id =' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\students-suggest.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[17-Dec-2017 20:59:37 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enrollments.rfid FROM enrollments LEFT JOIN students ON enrollments.student_id =' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\students-suggest.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[17-Dec-2017 21:17:02 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to undefined function pdo_db() in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php:7
+Stack trace:
+#0 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php on line 7
+[17-Dec-2017 21:18:49 Asia/Manila] PHP Notice:  Undefined index: rfid in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php on line 9
+[17-Dec-2017 21:18:49 Asia/Manila] PHP Stack trace:
+[17-Dec-2017 21:18:49 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php:0
+[17-Dec-2017 21:19:26 Asia/Manila] PHP Notice:  Undefined index: rfid in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php on line 9
+[17-Dec-2017 21:19:26 Asia/Manila] PHP Stack trace:
+[17-Dec-2017 21:19:26 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\utils\handlers\student-rfid-update.php:0
