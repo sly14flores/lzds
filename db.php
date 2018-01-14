@@ -42,7 +42,56 @@ class pdo_db {
 		return $results;
 
 	}	
+	
+	function get($where,$columns = []) {
+		
+		$fields = "*";
+		
+		if (count($columns)) {
+			$fields = "";
+			foreach ($columns as $col) {
+				$fields .= $col.", ";
+			};
+			$fields = substr($fields,0,strlen($fields)-2);
+		};
+		
+		$filters = "";
+		
+		$i = 1;
+		foreach ($where as $p => $w) {			
+			if ($i == 1) $filters .= " WHERE $p = $w";
+			else $filters .= " AND $p = $w";
+			++$i;
+		};
+		
+		$sql = "SELECT $fields FROM ".$this->table."$filters";
 
+		$results = $this->getData($sql);
+		
+		return $results;
+		
+	}
+	
+	function all($columns = []) {
+		
+		$fields = "*";
+		
+		if (count($columns)) {
+			$fields = "";
+			foreach ($columns as $col) {
+				$fields .= $col.", ";
+			};
+			$fields = substr($fields,0,strlen($fields)-2);
+		};
+
+		$sql = "SELECT $fields FROM ".$this->table;
+
+		$results = $this->getData($sql);
+		
+		return $results;
+
+	}	
+	
 	function query($sql) {
 		
 		return $this->db->query($sql);
