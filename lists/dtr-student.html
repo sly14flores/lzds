@@ -1,0 +1,31 @@
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">Date </th>
+		<th class="column-title">Day </th>
+		<th class="column-title">Morning In </th>
+		<th class="column-title">Morning Out </th>
+		<th class="column-title">Afternoon In </th>
+		<th class="column-title">Afternoon Out </th>
+		<th class="column-title">Tardiness </th>
+		<!-- <th class="column-title">Undertime </th> -->
+		<th class="column-title">Remarks </th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer" ng-repeat="row in dtr.student">
+		<td class="">{{row.date}}</td>
+		<td class="">{{row.day}}</td>
+		<td class="">{{row.morning_in}}</td>
+		<td class="">{{row.morning_out}}</td>
+		<td class="">{{row.afternoon_in}}</td>
+		<td class="">{{row.afternoon_out}}</td>
+		<td class="">{{row.tardiness}}</td>
+		<!-- <td class="">{{row.undertime}}</td> -->
+		<td class="">{{row.remarks}}</td>
+	  </tr>
+	</tbody><tfoot>
+	</tfoot>	
+  </table>
+</div>

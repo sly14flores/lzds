@@ -4465,3 +4465,111 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\schedules-list.php(24): pdo_db->getData('SELECT id, desc...')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:05:49 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:05:49 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:05:49 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:05:49 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:34:44 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:34:44 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:34:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:34:44 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:35:10 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:35:10 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:35:10 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:35:10 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:35:19 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:35:19 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:35:19 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:35:19 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:36:24 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:36:24 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:36:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:36:24 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:38:58 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:38:58 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:38:58 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:38:58 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:39:37 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:39:37 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:39:37 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:39:37 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:41:38 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:41:38 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:41:38 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:41:38 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:42:52 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:42:52 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:42:52 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:42:52 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:43:14 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:43:14 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:43:14 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:43:14 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:44:00 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:44:00 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:44:00 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:44:00 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[14-Jan-2018 20:45:24 Asia/Manila] PHP Notice:  Undefined index: sy in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php on line 11
+[14-Jan-2018 20:45:24 Asia/Manila] PHP Stack trace:
+[14-Jan-2018 20:45:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php:0
+[14-Jan-2018 20:45:24 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39

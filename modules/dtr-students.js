@@ -60,7 +60,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			var d = new Date();
 
 			scope.studentDtr = {
-				by: "Section",
+				by: "Student",
 				id: 0,
 				rfid: '',
 				fullname: '',
@@ -98,6 +98,10 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				self.studentsSuggest(scope);
 			},500);
 			
+			scope.dtr = {};
+			scope.dtr.student = [];
+			scope.dtr.section = [];
+			
 		};
 		
 		function validate(scope,form) {
@@ -134,60 +138,117 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 		};
 		
-		self.dtr = function(scope,opt) {
+		self.dtr = function(scope,opt) {				
 			
-			console.log(scope.studentDtr);
-			
-			return;
-			
-			if (scope.studentDtr.id == 0) {
-				pnotify.show('danger','Notification','Please select student');
-				return;
-			};
+			switch (scope.studentDtr.by) {
+				
+				case 'Student':
+				
+					if (scope.studentDtr.id == 0) {
+						pnotify.show('danger','Notification','Please select student');
+						return;
+					};
 
-			if (scope.studentDtr.schedule_id == 0) {
-				pnotify.show('danger','Notification','Student has no defined schedule, please set it first in the student current enrollment');
-				return;
-			};
-			
-			var onOk = function() {
-			
-				scope.studentDtr.option = opt;
-			
-				scope.views.panel_title = scope.studentDtr.fullname+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
-			
-				scope.dtr = [];			
-			
-				$http({
-				  method: 'POST',
-				  url: 'handlers/dtr-student.php',
-				  data: scope.studentDtr
-				}).then(function mySucces(response) {					
-					
-					scope.dtr = angular.copy(response.data);
-					
-				}, function myError(response) {
-					 
-				  // error
-					
-				});
+					/* if (scope.studentDtr.schedule_id == 0) {
+						pnotify.show('danger','Notification','Student has no defined schedule, please set it first in the student current enrollment');
+						return;
+					}; */					
 				
-				$('#x_content').html('Loading...');
-				$('#x_content').load('lists/dtr-student.html',function() {
-					$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-				});				
+					var onOk = function() {
+					
+						scope.studentDtr.option = opt;
+					
+						scope.views.panel_title = scope.studentDtr.fullname+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
+					
+						scope.dtr.student = [];			
+					
+						$http({
+						  method: 'POST',
+						  url: 'handlers/dtr-student.php',
+						  data: scope.studentDtr
+						}).then(function mySucces(response) {					
+							
+							scope.dtr.student = angular.copy(response.data);
+							
+						}, function myError(response) {
+							 
+						  // error
+							
+						});
+						
+						$('#x_content').html('Loading...');
+						$('#x_content').load('lists/dtr-student.html',function() {
+							$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+						});				
 
+					};
+					
+					if (!opt) {
+						
+						onOk();
+						
+					} else {
+						
+						bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
+						
+					}				
+				
+				break;
+				
+				case 'Section':
+						
+					if (scope.studentDtr.grade.id == 0) {
+						pnotify.show('danger','Notification','Please select grade');
+						return;
+					};
+
+					if (scope.studentDtr.section.id == 0) {
+						pnotify.show('danger','Notification','Please select section');
+						return;
+					};
+
+					var onOk = function() {
+					
+						scope.studentDtr.option = opt;
+					
+						scope.views.panel_title = scope.studentDtr.grade.description+'/'+scope.studentDtr.section.description+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
+					
+						scope.dtr.section = [];			
+					
+						$http({
+						  method: 'POST',
+						  url: 'handlers/dtr-sections.php',
+						  data: scope.studentDtr
+						}).then(function mySucces(response) {					
+							
+							scope.dtr.section = angular.copy(response.data);
+							
+						}, function myError(response) {
+							 
+						  // error
+							
+						});
+						
+						$('#x_content').html('Loading...');
+						$('#x_content').load('lists/dtr-sections.html',function() {
+							$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+						});				
+
+					};
+
+					if (!opt) {
+						
+						onOk();
+						
+					} else {
+						
+						bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
+						
+					}					
+				
+				break;
+				
 			};
-			
-			if (!opt) {
-				
-				onOk();
-				
-			} else {
-				
-				bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
-				
-			}			
 
 		};
 		
