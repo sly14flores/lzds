@@ -202,6 +202,9 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 					
 					angular.copy(response.data['schedule_details'], scope.schedule_details);
 					
+					if (scope.$id > 2) scope = scope.$parent;
+					
+					
 				}, function myError(response) {
 					 
 				  // error
@@ -218,8 +221,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 		};		
 		
-		self.list = function(scope) {		
-
+		self.list = function(scope) {			
+			
 			scope.views.list = false;		
 		
 			scope.schedule = {};
@@ -228,7 +231,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			scope.schedule_details = [
 				{
 				  id: 0,
-				  schedule_day: "Monday",
+				  schedule_day: "Mon",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -240,7 +243,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Tuesday",
+				  schedule_day: "Tue",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -252,7 +255,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Wednesday",
+				  schedule_day: "Wed",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -264,7 +267,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Thursday",
+				  schedule_day: "Thu",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -276,7 +279,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Friday",
+				  schedule_day: "Fri",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -288,7 +291,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Saturday",
+				  schedule_day: "Sat",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -300,7 +303,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				},
 				{
 				  id: 0,
-				  schedule_day: "Sunday",
+				  schedule_day: "Sun",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),

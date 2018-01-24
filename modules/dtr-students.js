@@ -12,6 +12,21 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			scope.formHolder = {};		
 			
+			scope.months = [
+				{month:"01",description:"January"},
+				{month:"02",description:"February"},
+				{month:"03",description:"March"},
+				{month:"04",description:"April"},
+				{month:"05",description:"May"},
+				{month:"06",description:"June"},
+				{month:"07",description:"July"},
+				{month:"08",description:"August"},
+				{month:"09",description:"September"},
+				{month:"10",description:"October"},
+				{month:"11",description:"November"},
+				{month:"12",description:"December"},
+			];			
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/grade-levels.php'
@@ -29,34 +44,6 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			schoolYear.get(scope);
 
-			$http({
-			  method: 'POST',
-			  url: 'handlers/current-sy.php'
-			}).then(function mySucces(response) {
-
-				scope.studentDtr.sy = response.data;
-				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});			
-			
-			scope.months = [
-				{month:"01",description:"January"},
-				{month:"02",description:"February"},
-				{month:"03",description:"March"},
-				{month:"04",description:"April"},
-				{month:"05",description:"May"},
-				{month:"06",description:"June"},
-				{month:"07",description:"July"},
-				{month:"08",description:"August"},
-				{month:"09",description:"September"},
-				{month:"10",description:"October"},
-				{month:"11",description:"November"},
-				{month:"12",description:"December"},
-			];
-
 			var d = new Date();
 
 			scope.studentDtr = {
@@ -64,14 +51,31 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				id: 0,
 				rfid: '',
 				fullname: '',
+				sgrade: '',
+				ssection: '',
 				grade: {id:0,description:""},
 				section: {id:0,description:""},
 				sy: {id:0,school_year:""},
 				month: scope.months[d.getMonth()],
 				year: d.getFullYear(),
-				option: false,
-				schedule_id: 0
-			};
+				option: false
+			};			
+			
+			$timeout(function() {
+				$http({
+				  method: 'POST',
+				  url: 'handlers/current-sy.php'
+				}).then(function mySucces(response) {
+
+					scope.studentDtr.sy = response.data;
+					$timeout(function() { self.studentsSuggest(scope); },500);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+			},500);
 
 			scope.downloadDtr = {
 				by: "Month",				
@@ -92,11 +96,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 					disabled: false,					
 					label: 'Cancel'		
 				}
-			};
-			
-			$timeout(function() {
-				self.studentsSuggest(scope);
-			},500);
+			};			
 			
 			scope.dtr = {};
 			scope.dtr.student = [];
@@ -149,16 +149,16 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 						return;
 					};
 
-					/* if (scope.studentDtr.schedule_id == 0) {
-						pnotify.show('danger','Notification','Student has no defined schedule, please set it first in the student current enrollment');
+					if (scope.studentDtr.ssection == '') {
+						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
 						return;
-					}; */					
+					};				
 				
 					var onOk = function() {
 					
 						scope.studentDtr.option = opt;
 					
-						scope.views.panel_title = scope.studentDtr.fullname+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
+						scope.views.panel_title = scope.studentDtr.fullname+': '+scope.studentDtr.sgrade+' '+scope.studentDtr.ssection+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
 					
 						scope.dtr.student = [];			
 					
@@ -310,16 +310,17 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			});			
 			
 		}		
-		
+
 		self.studentSelect = function(scope, item, model, label, event) {
 
 			scope.studentDtr.fullname = item['fullname'];
+			scope.studentDtr.sgrade = item['grade'];
+			scope.studentDtr.ssection = item['section'];
 			scope.studentDtr.id = item['id'];
 			scope.studentDtr.rfid = item['rfid'];
-			scope.studentDtr.schedule_id = item['schedule_id'];
 
 		};
-		
+
 		self.logs = function(scope,row) {			
 			
 			scope.backlogs = [];			

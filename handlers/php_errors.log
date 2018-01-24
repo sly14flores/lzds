@@ -4573,3 +4573,9 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[24-Jan-2018 23:09:34 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'level' in 'field list' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
