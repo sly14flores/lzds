@@ -4579,3 +4579,461 @@ Stack trace:
 #1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\students-suggest-dtr.php(13): pdo_db->getData('SELECT enrollme...')
 #2 {main}
   thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[25-Jan-2018 23:37:29 Asia/Manila] PHP Notice:  Undefined offset: 0 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 10
+[25-Jan-2018 23:37:29 Asia/Manila] PHP Stack trace:
+[25-Jan-2018 23:37:29 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[25-Jan-2018 23:37:29 Asia/Manila] PHP   2. log_order->__construct() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:9
+[25-Jan-2018 23:37:29 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY id' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM s...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php(10): pdo_db->getData('SELECT * FROM s...')
+#2 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php(9): log_order->__construct(Object(pdo_db), 1697)
+#3 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:23 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:23 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:24 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:24 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 68
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 69
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php on line 70
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:25
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   3. log_order_student->allot() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:79
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\analyzer.php:70) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php on line 52
+[26-Jan-2018 00:00:25 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:0
+[26-Jan-2018 00:00:25 Asia/Manila] PHP   2. header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-student.php:52
+[26-Jan-2018 00:06:15 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:15 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:15 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:15 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Sunday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Sunday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:16 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:16 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Sunday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Thursday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Friday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Saturday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Sunday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Monday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Tuesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Notice:  Undefined index: Wednesday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 97
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. generateDtr() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:25
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:97) in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php on line 52
+[26-Jan-2018 00:06:17 Asia/Manila] PHP Stack trace:
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:0
+[26-Jan-2018 00:06:17 Asia/Manila] PHP   2. header() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\dtr-staff.php:52

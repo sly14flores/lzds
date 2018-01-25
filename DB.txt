@@ -1,3 +1,27 @@
-ALTER TABLE `schedules`  ADD `for_student` INT(10) NOT NULL DEFAULT '0'  AFTER `description`;
+CREATE TABLE `dtr_students` (
+  `id` int(10) NOT NULL,
+  `rfid` varchar(50) DEFAULT NULL,
+  `ddate` date DEFAULT NULL,
+  `morning_in` datetime DEFAULT NULL,
+  `morning_out` datetime DEFAULT NULL,
+  `afternoon_in` datetime DEFAULT NULL,
+  `afternoon_out` datetime DEFAULT NULL,
+  `tardiness` time DEFAULT NULL,
+  `undertime` time DEFAULT NULL,
+  `absent` tinyint(4) NOT NULL DEFAULT '0',
+  `is_halfday` tinyint(4) NOT NULL DEFAULT '0',
+  `system_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE `schedules`  ADD `section` INT(10) NOT NULL DEFAULT '0'  AFTER `for_student`;
+ALTER TABLE `dtr_students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `dtr_students`
+--
+ALTER TABLE `dtr_students`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
