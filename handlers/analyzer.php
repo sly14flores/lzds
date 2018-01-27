@@ -93,7 +93,7 @@ function staff_id($con,$rfid) {
 	
 }
 
-function is_working_day($day) {
+function is_working_day($day) { # has work/classes
 	
 	$is_working_day = false;
 	

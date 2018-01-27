@@ -28,7 +28,7 @@ $_Dtrs = $con->getData($sql);
 foreach ($_Dtrs as $key => $dtr) {
 	
 	$_Dtrs[$key]['date'] = date("F j",strtotime($dtr['ddate']));
-	$_Dtrs[$key]['day'] = date("l",strtotime($dtr['ddate']));
+	$_Dtrs[$key]['day'] = date("D",strtotime($dtr['ddate']));
 	$_Dtrs[$key]['morning_in'] = (date("H:i:s",strtotime($dtr['morning_in']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['morning_in']));
 	$_Dtrs[$key]['morning_out'] = (date("H:i:s",strtotime($dtr['morning_out']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['morning_out']));
 	$_Dtrs[$key]['afternoon_in'] = (date("H:i:s",strtotime($dtr['afternoon_in']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['afternoon_in']));
@@ -92,40 +92,37 @@ function generateDtr($con,$analyze) {
 			"system_log"=>"CURRENT_TIMESTAMP"
 		);
 		
-		/* # tardiness
+		# tardiness
 		$schedules = $analyze->schedules;
-		$morning_in = "$day ".$schedules[date("l",strtotime($day))]['morning_in'];
+		$morning_in = "$day ".$schedules[date("D",strtotime($day))]['morning_in'];
 		
-		# if working day and late
+		# if has classes and late
 		if ( is_working_day($day) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
 			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
 			if (!$exempted) $dtr['tardiness'] = gmdate('H:i:s',$tardiness);
-		}		
+		}
 		
-		# if on leave or travel
-		if (is_onleave_travel_am($con,$day)) if (!$exempted) $dtr['tardiness'] = "00:00:00";		
-		
-		# if absent but not on leave or travel
-		if (is_absent($dtr,$day) && !is_onleave_travel($con,$day)) {
+		# if absent
+		if (is_absent($dtr,$day)) {
 			if (!$exempted) {
 				$dtr['tardiness'] = "00:00:00";			
 				$dtr['absent'] = 1;
 			}
-		};
+		};		
 		
 		# if halfday
-		if (is_halfday_am($dtr,$day) && !is_onleave_travel_am($con,$day)) {
+		if (is_halfday_am($dtr,$day)) {
 			if (!$exempted) {
 				$dtr['tardiness'] = "00:00:00";
 				$dtr['is_halfday'] = 1;
 			}
 		};
-
-		if (is_halfday_pm($dtr,$day) && !is_onleave_travel_pm($con,$day)) {
+		
+		if (is_halfday_pm($dtr,$day)) {
 			if (!$exempted) {
 				$dtr['is_halfday'] = 1;
 			}
-		}; */
+		};
 
 		$log = $con->insertData($dtr);
 		
