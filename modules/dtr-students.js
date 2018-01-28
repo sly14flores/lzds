@@ -100,7 +100,6 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			scope.dtr = {};
 			scope.dtr.student = [];
-			scope.dtr.section = [];
 			
 		};
 		
@@ -211,28 +210,15 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 					
 						scope.studentDtr.option = opt;
 					
-						scope.views.panel_title = scope.studentDtr.grade.description+'/'+scope.studentDtr.section.description+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
-					
-						scope.dtr.section = [];			
-					
-						$http({
-						  method: 'POST',
-						  url: 'handlers/dtr-sections.php',
-						  data: scope.studentDtr
-						}).then(function mySucces(response) {					
-							
-							scope.dtr.section = angular.copy(response.data);
-							
-						}, function myError(response) {
-							 
-						  // error
-							
-						});
+						scope.views.panel_title = scope.studentDtr.grade.description+'/'+scope.studentDtr.section.description+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';					
 						
 						$('#x_content').html('Loading...');
 						$('#x_content').load('lists/dtr-sections.html',function() {
-							$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-						});				
+							$timeout(function() {
+								$compile($('#x_content')[0])(scope);
+								startSectionDtr(scope);
+							},100);
+						});			
 
 					};
 
@@ -244,7 +230,43 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 						
 						bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
 						
-					}					
+					}
+
+					function startSectionDtr(scope) {
+
+						$timeout(function() {
+							$('#dtr-sections').append('<h5>Fetching students for '+scope.studentDtr.grade.description+' '+scope.studentDtr.section.description+'...</h5>');
+							$http({
+							  method: 'POST',
+							  url: 'handlers/dtr-sections.php',
+							  data: scope.studentDtr
+							}).then(function mySucces(response) {											
+								
+								var msg = '';
+								if (response.data.length > 0) {
+									msg = '<h5>'+response.data.length+' students found...</h5>';
+									$('#dtr-sections').append(msg);
+									$timeout(function() {
+										msg = '<h5>Initiating DTR analyzer...</h5>';
+										$('#dtr-sections').append(msg);
+									},100);
+								} else {
+									msg = '<h5>No students records found...</h5>';
+									$('#dtr-sections').append(msg);
+								}							
+								
+							}, function myError(response) {
+								 
+							  // error
+								
+							});							
+						},300);
+						
+						/*
+						** start analyzing dtr
+						*/
+
+					};
 				
 				break;
 				

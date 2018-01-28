@@ -243,6 +243,10 @@ require_once 'authentication.php';
                       <label>Month :</label>
                       <select class="form-control" ng-model="studentDtr.month" ng-options="m.description for m in months track by m.month"></select>
 					  </div>
+					  <div class="form-group">						  
+						<label>School Year :</label>
+						<select class="form-control" ng-model="studentDtr.sy" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-change="form.studentsSuggest(this)"></select>
+					  </div>					  
 					  <div ng-show="studentDtr.by == 'Section'">
 						  <div class="form-group">					  
 							<label>Grade :</label>
@@ -254,10 +258,6 @@ require_once 'authentication.php';
 						  </div>
 					  </div>
 					  <div ng-show="studentDtr.by == 'Student'">
-						<div class="form-group">						  
-							<label>School Year :</label>
-							<select class="form-control" ng-model="studentDtr.sy" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-change="form.studentsSuggest(this)"></select>
-						</div>
 						<div class="form-group">						
 							<label>Student :</label>
 							<input type="text" class="form-control" ng-model="studentDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_students | filter:{fullname:$viewValue}" typeahead-on-select="form.studentSelect(this, $item, $model, $label, $event)" ng-required="studentDtr.by == 'Student'">
