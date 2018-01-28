@@ -249,6 +249,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 									$timeout(function() {
 										msg = '<h5>Initiating DTR analyzer...</h5>';
 										$('#dtr-sections').append(msg);
+										initAnalyze(scope,response.data);
 									},100);
 								} else {
 									msg = '<h5>No students records found...</h5>';
@@ -265,7 +266,56 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 						/*
 						** start analyzing dtr
 						*/
+						function initAnalyze(scope,students) {
+						
+							scope.analyze = {};
+							scope.analyze.i = 0;
+						
+							function analyzeDtr(scope,students) {
+								
+								scope.analyze.id = students[scope.analyze.i]['id'];
+								scope.analyze.rfid = students[scope.analyze.i]['rfid'];
+								scope.analyze.year = scope.studentDtr.year;
+								scope.analyze.month = scope.studentDtr.month;
+								scope.analyze.option = scope.studentDtr.option;								
+								
+								$('#dtr-sections').append('<span>Analyzing DTR for <strong>'+students[scope.analyze.i]['fullname']+'</strong> ('+(scope.analyze.i+1).toString()+'/'+students.length.toString()+')</span>');
+								
+								$http({
+								  method: 'POST',
+								  url: 'handlers/dtr-student.php',
+								  data: scope.analyze
+								}).then(function mySucces(response) {					
+									
+									++scope.analyze.i;
+									$('#dtr-sections').append('<span>...done</span><br>');
+									$timeout(function() {
+										if (scope.analyze.i < students.length) {
+											analyzeDtr(scope,students);
+										} else {
+											generateExcel(scope);
+										}
+									},200);
+									
+								}, function myError(response) {
+									 
+								  // error
+									
+								});							
+								
+							};
+							
+							analyzeDtr(scope,students);
 
+						};
+						
+						/*
+						** generate excel
+						*/
+						function generateExcel(scope) {
+							$('#dtr-sections').append('<h5>Generating excel...</h5>');
+						};
+						
 					};
 				
 				break;
