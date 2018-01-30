@@ -1,0 +1,1152 @@
+[28-Jan-2018 21:36:19 Asia/Manila] PHP Warning:  unlink(C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.xlsx): Permission denied in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 236
+[28-Jan-2018 21:36:19 Asia/Manila] PHP Stack trace:
+[28-Jan-2018 21:36:19 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[28-Jan-2018 21:36:19 Asia/Manila] PHP   2. PHPExcel_Writer_Excel2007->save() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:143
+[28-Jan-2018 21:36:19 Asia/Manila] PHP   3. unlink() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:236
+[28-Jan-2018 21:36:20 Asia/Manila] PHP Warning:  ZipArchive::close(): Renaming temporary file failed: Permission denied in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 398
+[28-Jan-2018 21:36:20 Asia/Manila] PHP Stack trace:
+[28-Jan-2018 21:36:20 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[28-Jan-2018 21:36:20 Asia/Manila] PHP   2. PHPExcel_Writer_Excel2007->save() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:143
+[28-Jan-2018 21:36:20 Asia/Manila] PHP   3. ZipArchive->close() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:398
+[28-Jan-2018 21:36:20 Asia/Manila] PHP Fatal error:  Uncaught PHPExcel_Writer_Exception: Could not close zip file C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.xlsx. in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:399
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php(143): PHPExcel_Writer_Excel2007->save('C:\\Users\\SLY On...')
+#1 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 399
+[28-Jan-2018 22:04:06 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'student.firstname' in 'order clause' in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT enrollme...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php(85): pdo_db->getData('SELECT enrollme...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[28-Jan-2018 22:10:20 Asia/Manila] PHP Warning:  unlink(C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.xlsx): Permission denied in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 236
+[28-Jan-2018 22:10:20 Asia/Manila] PHP Stack trace:
+[28-Jan-2018 22:10:20 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[28-Jan-2018 22:10:20 Asia/Manila] PHP   2. PHPExcel_Writer_Excel2007->save() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:145
+[28-Jan-2018 22:10:20 Asia/Manila] PHP   3. unlink() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:236
+[28-Jan-2018 22:10:21 Asia/Manila] PHP Warning:  ZipArchive::close(): Renaming temporary file failed: Permission denied in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 398
+[28-Jan-2018 22:10:21 Asia/Manila] PHP Stack trace:
+[28-Jan-2018 22:10:21 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[28-Jan-2018 22:10:21 Asia/Manila] PHP   2. PHPExcel_Writer_Excel2007->save() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:145
+[28-Jan-2018 22:10:21 Asia/Manila] PHP   3. ZipArchive->close() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:398
+[28-Jan-2018 22:10:22 Asia/Manila] PHP Fatal error:  Uncaught PHPExcel_Writer_Exception: Could not close zip file C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.xlsx. in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php:399
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php(145): PHPExcel_Writer_Excel2007->save('C:\\Users\\SLY On...')
+#1 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\PHPExcel\Writer\Excel2007.php on line 399
+[28-Jan-2018 22:29:32 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM WHERE ddate = '2018-01-01' AND rfid = '0002856986'' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM d...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php(95): pdo_db->getData('SELECT * FROM d...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[28-Jan-2018 22:29:53 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM WHERE ddate = '2018-01-01' AND rfid = '0002856986'' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT * FROM d...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php(95): pdo_db->getData('SELECT * FROM d...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:42 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:42 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:43 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:43 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: absent in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 103
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Notice:  Undefined index: is_halfday in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php on line 107
+[30-Jan-2018 22:00:44 Asia/Manila] PHP Stack trace:
+[30-Jan-2018 22:00:44 Asia/Manila] PHP   1. {main}() C:\Users\SLY One\Desktop\UwAmp310\www\lzds\excel\form2excel.php:0

@@ -290,7 +290,7 @@ require_once 'authentication.php';
 					<p>{{downloadProgressStatus}}</p>
                     <form name="formHolder.downloadDtr" id="formHolder.downloadDtr">
                       <label>By :</label>
-                      <select class="form-control" name="month" ng-model="downloadDtr.by">
+                      <select class="form-control" name="month" ng-model="downloadDtr.by" ng-change="form.dtrBySelected(this)">
 						<option value="Month">Month</option>
 						<option value="Date">Date</option>
 					  </select>

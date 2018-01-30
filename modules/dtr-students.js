@@ -313,7 +313,24 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 						** generate excel
 						*/
 						function generateExcel(scope) {
-							$('#dtr-sections').append('<h5>Generating excel...</h5>');
+							
+							$('#dtr-sections').append('<br><span>Generating excel report please wait...</span>');
+							
+							$http({
+							  method: 'POST',
+							  url: 'excel/form2excel.php',
+							  data: scope.studentDtr
+							}).then(function mySucces(response) {				
+
+								$('#dtr-sections').append('<span>...done</span><br>');								
+								$('#dtr-sections').append('<span class="btn btn-default"><a href="'+response.data+'">Download</a></span>');								
+								
+							}, function myError(response) {
+								 
+							  // error
+								
+							});
+							
 						};
 						
 					};
@@ -448,6 +465,14 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			}, function myError(response) {				 
 				
 			});		
+			
+		};
+		
+		self.dtrBySelected = function(scope) {
+			
+			scope.views.panel_title = '';
+			
+			$('#x_content').html('');			
 			
 		};
 		
