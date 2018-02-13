@@ -86,22 +86,23 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			if (row != null) {							
 			
-				blockUI.show("Fetching student infos please wait...");	
-			
-				$timeout(function() { scope.enrollment.list(scope,row); },500);
+				blockUI.show("Fetching student infos please wait...");							
 			
 				$http({
 				  method: 'POST',
 				  url: 'handlers/student-edit.php',
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
-					
+
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
 					xPanel.start('collapse-enrollments');
+
+					$timeout(function() { scope.enrollment.list(scope,row); },500);					
+
 					blockUI.hide();
-					
+
 				}, function myError(response) {
 					 
 				  // error
