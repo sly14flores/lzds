@@ -17,19 +17,7 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 			
 			scope.school_years_ = [];
 			
-			schoolYear.get(scope);
-			
-			$timeout(function() {
-				
-				scope.school_years_.push({id: 0, school_year: "SY"});
-				
-				angular.forEach(scope.school_years,function(item,i) {
-
-					scope.school_years_.push(item);
-					
-				});
-				
-			},1000);
+			schoolYear.get(scope);			
 
 			$http({
 			  method: 'POST',
@@ -57,19 +45,31 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 				 
 			  // error
 				
-			});				
-			
-			$timeout(function() {
-				
-				scope.levels_.push({id: 0, description: "-"});
-				
-				angular.forEach(scope.levels,function(item,i) {
+			});			
 
-					scope.levels_.push(item);
+			angular.element(document).ready(function () {
+			
+				$timeout(function() {
 					
-				});
-				
-			},1000);			
+					scope.school_years_.push({id: 0, school_year: "SY"});
+					
+					angular.forEach(scope.school_years,function(item,i) {
+
+						scope.school_years_.push(item);
+						
+					});				
+					
+					scope.levels_.push({id: 0, description: "-"});
+					
+					angular.forEach(scope.levels,function(item,i) {
+
+						scope.levels_.push(item);
+						
+					});
+
+				},500);
+
+			});
 			
 			scope.btns = {
 				ok: {
