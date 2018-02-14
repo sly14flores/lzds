@@ -67,7 +67,7 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 						
 					});
 
-				},500);
+				},1000);
 
 			});
 			
