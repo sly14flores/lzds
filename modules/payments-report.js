@@ -47,7 +47,7 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 				
 			});			
 
-			angular.element(document).ready(function () {
+			// angular.element(document).ready(function () {
 			
 				$timeout(function() {
 					
@@ -69,7 +69,7 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 
 				},1000);
 
-			});
+			// });
 			
 			scope.btns = {
 				ok: {
