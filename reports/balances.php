@@ -33,7 +33,9 @@ foreach($wheres as $i => $w) {
 	else $where.=" WHERE ".$w['field']." = ".$w['value'];
 }
 
-$enrollments = $con->getData("SELECT enrollments.id, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT students.contact_no FROM students WHERE students.id = enrollments.student_id) contact_no FROM enrollments".$where);
+$order = " ORDER BY students.gender DESC, lastname, firstname, middlename";
+
+$enrollments = $con->getData("SELECT enrollments.id, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, students.gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT students.contact_no FROM students WHERE students.id = enrollments.student_id) contact_no FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where.$order);
 
 $total = 0;
 foreach($enrollments as $key => $enrollment) {
@@ -268,10 +270,11 @@ $footer = array(
 	}
 );
 $headers = array(
-	array("width"=>20,"column"=>"ID"),
-	array("width"=>30,"column"=>"Grade"),
-	array("width"=>30,"column"=>"Section"),
+	array("width"=>15,"column"=>"ID"),
+	array("width"=>25,"column"=>"Grade"),
+	array("width"=>25,"column"=>"Section"),
 	array("width"=>50,"column"=>"Name"),
+	array("width"=>15,"column"=>"Gender"),
 	array("width"=>50,"column"=>"Address"),
 	array("width"=>30,"column"=>"Contact No"),
 	array("width"=>30,"column"=>"Balance")
