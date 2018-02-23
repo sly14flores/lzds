@@ -30,7 +30,7 @@ foreach ($_payments as $i => $_payment) {
 	
 };
 
-$balance = $sub_total-$total_payment;
+$balance = $total-$total_payment;
 
 $payments[] = array(
 	"description"=>"",
