@@ -109,12 +109,6 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		};
 		
-		self.enroll = function(scope) {
-			
-			
-			
-		};
-		
 		self.view = function(scope) {
 			
 			var onOk = function() {
