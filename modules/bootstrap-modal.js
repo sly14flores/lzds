@@ -90,7 +90,7 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 		dialog.init(function() {
 			dialog.find('.bootbox-body').load(content);
 			$('.modal-content').css({"width": "150%","left": "-25%"});			
-			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 100);
+			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 500);
 		});
 
 	};	

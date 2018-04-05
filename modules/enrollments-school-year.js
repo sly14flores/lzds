@@ -49,6 +49,23 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 			//
 			
+			scope.student_enrollment = {};
+			scope.student_enrollment.id = 0;
+			scope.enrollment_fees = [];			
+			scope.details = {
+				sub_total: 0,
+				sub_total_str: 0,
+				discount: 0,
+				total: 0,
+				total_str: 0
+			};			
+			
+			scope.btns = {
+				edit: {
+					disabled: true,
+				}
+			};
+			
 		};
 		
 		self.levelSelected = function(scope,level) {
@@ -109,13 +126,35 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		};
 		
-		self.view = function(scope) {
+		self.view = function(scope,enrollee) {			
 			
 			var onOk = function() {
 				
 			};
 			
-			bootstrapModal.box2(scope,'Student Enrollment Info','dialogs/enrollment.html',onOk,'Update');
+			bootstrapModal.box2(scope,enrollee.fullname,'dialogs/enrollment.html',onOk,'Update');
+			
+		};
+
+		self.edit = function(scope) {
+			
+			scope.btns.edit.disabled = !scope.btns.edit.disabled;
+			
+		};
+
+		self.levelSelectedD = function(scope,level) {
+			
+			if (level == undefined) return;
+			
+			scope.sections_d = [];			
+			
+			scope.sections_d.push({id: 0, description: "All"});
+			
+			angular.forEach(level.sections,function(item,i) {
+
+				scope.sections_d.push(item);
+
+			});
 			
 		};		
 		
