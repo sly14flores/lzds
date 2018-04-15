@@ -1,0 +1,10 @@
+<NotepadPlus>
+    <Session activeView="0">
+        <mainView activeIndex="0">
+            <File firstVisibleLine="227" xOffset="474" scrollWidth="3927" startPos="11116" endPos="11116" selMode="0" lang="HTML" encoding="-1" filename="C:\Users\SLY One\Desktop\UwAmp310\www\lzds\summary_report.html" backupFilePath="" originalFileLastModifTimestamp="1523793254" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="512" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="230" xOffset="0" scrollWidth="478450" startPos="33966" endPos="33966" selMode="0" lang="JavaScript" encoding="-1" filename="C:\Users\SLY One\Desktop\UwAmp310\www\lzds\modules\summary-report.js" backupFilePath="" originalFileLastModifTimestamp="1523805963" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+            <File firstVisibleLine="5" xOffset="0" scrollWidth="5051" startPos="202" endPos="202" selMode="0" lang="PHP" encoding="-1" filename="C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\report-summary.php" backupFilePath="" originalFileLastModifTimestamp="1523805622" mapFirstVisibleDisplayLine="-1" mapFirstVisibleDocLine="-1" mapLastVisibleDocLine="-1" mapNbLine="-1" mapHigherPos="-1" mapWidth="-1" mapHeight="-1" mapKByteInDoc="16777217" mapWrapIndentMode="-1" mapIsWrap="no" />
+        </mainView>
+        <subView activeIndex="0" />
+    </Session>
+</NotepadPlus>

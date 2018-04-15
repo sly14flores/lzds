@@ -150,17 +150,15 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			doc.setFontSize(12);
 			doc.setFontType('bold');			
 
-			var columns = [
+			var levels = [
 				{title: "Level", dataKey: "level"},
 				{title: "Total Students", dataKey: "total_students"},			
 				{title: "Tuition Fees", dataKey: "tuition_fees"},
 				{title: "Total Collections", dataKey: "total_collections"},
 				{title: "Total Balance", dataKey: "total_balance"}
-			];				
+			];
 
-			rows = data.levels;
-
-			doc.autoTable(columns, rows, {
+			doc.autoTable(levels, data.levels, {
 				// tableLineColor: [189, 195, 199],
 				// tableLineWidth: 0.75,
 				margin: {top: 220, left: 50},
@@ -193,6 +191,54 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					fillColor: [255, 255, 255]
 				}
 			});		
+			
+			var overall = [
+				{title: "", dataKey: "level"},
+				{title: "Total Students", dataKey: "total_students"},			
+				{title: "Tuition Fees", dataKey: "tuition_fees"},
+				{title: "Total Collections", dataKey: "total_collections"},
+				{title: "Total Balance", dataKey: "total_balance"}
+			];			
+			
+ 			doc.autoTable(overall, data.overall, {
+				// tableLineColor: [189, 195, 199],
+				// tableLineWidth: 0.75,
+				margin: {top: 560, left: 50},
+				tableWidth: 500,
+				columnStyles: {
+					level: {columnWidth: 100},
+					total_students: {columnWidth: 100},					
+					tuition_fees: {columnWidth: 100},
+					total_collections: {columnWidth: 100},
+					total_balance: {columnWidth: 100}
+				},
+				styles: {
+					lineColor: [75, 75, 75],
+					lineWidth: 0.50,
+					cellPadding: 5
+				},
+				headerStyles: {
+					halign: 'center',		
+					fillColor: [191, 191, 191],
+					textColor: 50,
+					fontSize: 10
+				},
+				bodyStyles: {
+					halign: 'left',
+					fillColor: [255, 255, 255],
+					textColor: 50,
+					fontSize: 10
+				},
+				alternateRowStyles: {
+					fillColor: [255, 255, 255]
+				}
+			});	
+			
+			var d = new Date();
+			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];			
+			doc.setFontSize(9);
+			doc.setFontType('italic');
+			doc.myText('Generated on: '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds(),{align: "center"},0,730);
 			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));				
