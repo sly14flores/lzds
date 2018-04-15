@@ -82,7 +82,8 @@ require_once 'authentication.php';
                   </li>
                   <li class="active"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li class="active"><a href="payments_report.html">Payments</a></li>				  
+                      <li class="active"><a href="payments_report.html">Payments</a></li>
+                      <li><a href="summary_report.html">Summary</a></li>
                     </ul>				  
                   </li>				  
                   <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
@@ -229,7 +230,7 @@ require_once 'authentication.php';
                     <div class="clearfix"></div>
                   </div>
                   <div id="x_content" class="x_content">
-                    <form name="formHolder.individual" id="formHolder.individual">
+                    <form>
 					  <div class="form-group">
 						<label>School Year :</label>
 						<select class="form-control" ng-model="report.balances.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>

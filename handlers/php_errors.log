@@ -1,0 +1,6 @@
+[15-Apr-2018 21:13:06 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') total_students FROM enrollments WHERE grade = 1 AND enrollment_school_year = 5' at line 1 in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php:39
+Stack trace:
+#0 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php(39): PDO->query('SELECT count() ...')
+#1 C:\Users\SLY One\Desktop\UwAmp310\www\lzds\handlers\report-summary.php(28): pdo_db->getData('SELECT count() ...')
+#2 {main}
+  thrown in C:\Users\SLY One\Desktop\UwAmp310\www\lzds\db.php on line 39

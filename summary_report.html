@@ -30,7 +30,7 @@ require_once 'authentication.php';
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="dtr" ng-controller="dtrCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="summaryReport" ng-controller="summaryReportCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -72,18 +72,18 @@ require_once 'authentication.php';
                       <li><a href="enrollment-online.html">Online</a></li>
                     </ul>
                   </li>					  
-                  <li class="active"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  <li><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
                       <li><a href="cashier.html">Cashier</a></li>
-                      <li class="active"><a href="dtr.html">DTR (Staffs)</a></li>
+                      <li><a href="dtr.html">DTR (Staffs)</a></li>
                       <li><a href="dtr-students.html">DTR (Students)</a></li>					  
                       <li><a href="payroll.html">Payroll</a></li>					  
                     </ul>				  
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
+                  <li class="active"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
                       <li><a href="payments_report.html">Payments</a></li>
-                      <li><a href="summary_report.html">Summary</a></li>
+                      <li class="active"><a href="summary_report.html">Summary</a></li>
                     </ul>				  
                   </li>				  
                   <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
@@ -213,109 +213,31 @@ require_once 'authentication.php';
               <div class="title_left">
                 <h3>{{views.title}}</h3>
               </div>
-              <div class="title_right">
-              </div>
             </div>
-			<div class="clearfix"></div>
-			<div style="padding: 0 10px;">
-			<div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group pull-right top_search">
-				<div class="x_panel">
-                  <div class="x_title">
-                    <h2>View DTR</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <form name="formHolder.staff" id="formHolder.staff">
-					  <div class="form-group">
-						<label>Year :</label>
-						<input type="text" class="form-control" ng-model="staffDtr.year">
-					  </div>
-                      <label>Month :</label>
-                      <select class="form-control" ng-model="staffDtr.month" ng-options="m.description for m in months track by m.month"></select>
-                      <label>Staff :</label>
-                      <input type="text" class="form-control" ng-model="staffDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_staffs | filter:{fullname:$viewValue}" typeahead-on-select="form.staffSelect(this, $item, $model, $label, $event)">
-                      <br/>
-                      <span class="btn btn-primary pull-right" ng-click="form.dtr(this,false)">Go!</span>
-                    </form>
-                  </div>
-                </div>
-                </div>			  
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group pull-right top_search">
-				<div class="x_panel">
-                  <div class="x_title">
-                    <h2>DTR Importer</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-					  <li><a href="javascript:;">&nbsp;</a></li>
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-					<div class="progress">
-						<div class="progress-bar progress-bar-info" data-transitiongoal="{{downloadProgress}}" aria-valuenow="{{downloadProgress}}" style="width: {{downloadProgress}}%;"></div>
-                    </div>
-					<p>{{downloadProgressStatus}}</p>
-                    <form name="formHolder.downloadDtr" id="formHolder.downloadDtr">
-                      <label>By :</label>
-                      <select class="form-control" name="month" ng-model="downloadDtr.by">
-						<option value="Month">Month</option>
-						<option value="Date">Date</option>
-					  </select>
-					  <div ng-show="downloadDtr.by == 'Month'">
-						  <label>Year :</label>
-						  <input type="text" class="form-control" name="year" ng-model="downloadDtr.year" ng-required="downloadDtr.by == 'Month'">
-						  <label>Month :</label>
-						  <select class="form-control" name="month" ng-model="downloadDtr.month" ng-options="m.description for m in months track by m.month" ng-required="downloadDtr.by == 'Month'"></select>
-					  </div>
-					  <div ng-show="downloadDtr.by == 'Date'">
-						  <label>From :</label>
-						  <input type="date" class="form-control" name="dateFrom" ng-model="downloadDtr.dateFrom" ng-required="downloadDtr.by == 'Date'">
-						  <label>To :</label>
-						  <input type="date" class="form-control" name="dateTo" ng-model="downloadDtr.dateTo" ng-required="downloadDtr.by == 'Date'">
-					  </div>
-                      <br/>
-                      <span class="btn btn-primary pull-right" ng-click="form.download(this);">Go!</span>
-                    </form>					
-                  </div>
-                </div>
-                </div>
-			</div>
-			</div>
-			
-            <div class="clearfix"></div>
 
+            <div class="clearfix"></div>
+			<div style="margin-top: 20px;"></div>
             <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>{{views.panel_title}}</h2>
+                    <h2>Summary</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="javascript:;" ng-click="form.dtr(this,true)">Re-analyze</a></li>
-                        </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div id="x_content" class="x_content"></div>
+                  <div id="x_content" class="x_content">
+                    <form>
+					  <div class="form-group">
+						<label>School Year :</label>
+						<select class="form-control" ng-model="report.summary.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>
+					  </div>
+                      <span class="btn btn-primary pull-right" ng-click="form.summary(this)">Generate!</span>
+                    </form>					
+				  </div>
                 </div>
               </div>
             </div>
@@ -345,23 +267,29 @@ require_once 'authentication.php';
     <!-- PNotify -->
     <script src="vendors/pnotify/dist/pnotify.js"></script>
     <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>     
-	
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script> 	
+    
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
+
+    <script src="vendors/jspdf/jspdf.min.js"></script>
+    <script src="vendors/jspdf/jspdf.plugin.autotable.js"></script>
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
-
+	
 	<script src="modules/bootstrap-modal.js"></script>
+	<script src="modules/x-panel.js"></script>	
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/dtr.js"></script>
+	<script src="modules/school-year.js"></script>
+	<script src="modules/pnotify.js"></script>
+	<script src="modules/jspdf.js"></script>	
+	<script src="modules/summary-report.js"></script>
 	
-	<script src="controllers/dtr.js"></script>
+	<script src="controllers/summary-report.js"></script>
 
   </body>
 </html>
