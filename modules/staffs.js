@@ -82,6 +82,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			scope.leaves.data(scope);
 			scope.tos.data(scope);
 			scope.loans.data(scope);
+			scope.records.data(scope);
 			
 			$timeout(function() {
 				scope.staff_id = row.id;

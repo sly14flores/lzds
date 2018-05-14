@@ -1,1 +1,43 @@
-UPDATE `students_fees` SET amount = 396 WHERE `fee_item_id` = 1267
+--
+-- Table structure for table `staffs_records`
+--
+
+CREATE TABLE `staffs_records` (
+  `id` int(11) NOT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `record_type` varchar(1000) DEFAULT NULL,
+  `record_subject` varchar(1000) DEFAULT NULL,
+  `record_text` longtext,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `staffs_records`
+--
+ALTER TABLE `staffs_records`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `staff_id` (`staff_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `staffs_records`
+--
+ALTER TABLE `staffs_records`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `staffs_records`
+--
+ALTER TABLE `staffs_records`
+  ADD CONSTRAINT `staffs_records_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs_records` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

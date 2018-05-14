@@ -62,7 +62,7 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 			
 			$('#x_content_records').html('Loading...');
 			$('#x_content_records').load('lists/records.html',function() {
-				$timeout(function() { $compile($('#x_content_leaves')[0])(scope); },100);				
+				$timeout(function() { $compile($('#x_content_records')[0])(scope); },100);				
 			});				
 			
 		};

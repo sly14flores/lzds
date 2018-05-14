@@ -1,6 +1,6 @@
-var app = angular.module('staffs',['account-module','toggle-fullscreen','staffs-module','leaves-module','travel-orders-module','loans-module','ui.bootstrap']);
+var app = angular.module('staffs',['ui.bootstrap','account-module','toggle-fullscreen','staffs-module','leaves-module','travel-orders-module','loans-module','records-module']);
 
-app.controller('staffsCtrl',function($scope,fullscreen,form,leaves,tos,loans) {
+app.controller('staffsCtrl',function($scope,fullscreen,form,leaves,tos,loans,records) {
 	
 	$scope.views = {};	
 	
@@ -18,6 +18,7 @@ app.controller('staffsCtrl',function($scope,fullscreen,form,leaves,tos,loans) {
 	$scope.leaves = leaves;
 	$scope.tos = tos;
 	$scope.loans = loans;
+	$scope.records = records;
 
 });
 
