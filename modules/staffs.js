@@ -89,6 +89,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				scope.leaves.list(scope);
 				scope.tos.list(scope);
 				scope.loans.list(scope);
+				scope.records.list(scope);
 			},1000);
 			
 			scope.views.list = true;		

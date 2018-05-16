@@ -74,13 +74,12 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 				scope.data.record.id = 0;
 				scope.data.record.staff_id = scope.staff_id;
 			} else {
-				scope.data.record = angular.copy(leave);
-				// scope.data.record.leave_date = new Date(record.leave_date);
+				scope.data.record = angular.copy(record);
 			};
 			
-			var content = 'dialogs/record.html';	
+			var content = 'dialogs/record.html';
 
-			bootstrapModal.box(scope,'Add Leave',content,self.save);			
+			bootstrapModal.box(scope,'Add Record',content,self.save);			
 			
 		};
 
