@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_type.$touched && formHolder.record.record_type.$invalid}">
 	<label>Type</label>
-	<input type="text" class="form-control" name="record_type" ng-model="data.record.record_type" required>
+	<select class="form-control" name="record_type" ng-model="data.record.record_type" ng-options="t for t in record_types" required></select>
 	<span class="help-block" ng-show="formHolder.record.record_type.$touched && formHolder.record.record_type.$invalid">Type is required</span>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_subject.$touched && formHolder.record.record_subject.$invalid}">
@@ -12,7 +12,7 @@
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_text.$touched && formHolder.record.record_text.$invalid}">
 	<label>Content</label>
-	<input type="text" class="form-control" name="record_text" ng-model="data.record.record_text" required>
+	<textarea style="height: 150px;" class="form-control" name="record_text" ng-model="data.record.record_text" required></textarea>
 	<span class="help-block" ng-show="formHolder.record.record_text.$touched && formHolder.record.record_text.$invalid">Content is required</span>
   </div> 
 </div>

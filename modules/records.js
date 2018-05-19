@@ -14,7 +14,7 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 			scope.data.record.id = 0;
 			scope.data.records = [];
 	
-			scope.pagination.records = {};
+			scope.pagination.records = {};			
 			
 		};
 		
@@ -69,17 +69,22 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 		
 		self.record = function(scope,record) {
 
+			scope.record_types = ["Employment History","Employee Performance Development and Improvement","Employment Termination Records"];
+		
+			var title = 'Add Record';
+		
 			if (record == null) {
 				scope.data.record = {};
 				scope.data.record.id = 0;
 				scope.data.record.staff_id = scope.staff_id;
 			} else {
 				scope.data.record = angular.copy(record);
+				title = 'Edit Record Info';
 			};
-			
+
 			var content = 'dialogs/record.html';
 
-			bootstrapModal.box(scope,'Add Record',content,self.save);			
+			bootstrapModal.box(scope,title,content,self.save);			
 			
 		};
 
@@ -131,7 +136,13 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
 
-		};		
+		};
+		
+		self.print = function(scope) {
+			
+			
+			
+		};
 		
 	};	
 	
