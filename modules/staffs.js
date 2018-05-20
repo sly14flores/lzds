@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf) {
 	
 	function form() {
 		
@@ -45,6 +45,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			scope.data = {};
 			scope.pagination = {};
 			
+			jspdf.init();			
+			
 		};
 		
 		function validate(scope) {
@@ -78,14 +80,14 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};		
 		
 		self.staff = function(scope,row) { // form
-			
+			console.log(row);
 			scope.leaves.data(scope);
 			scope.tos.data(scope);
 			scope.loans.data(scope);
 			scope.records.data(scope);
 			
 			$timeout(function() {
-				scope.staff_id = row.id;
+				scope.staff_id = (row==null)?0:row.id;
 				scope.leaves.list(scope);
 				scope.tos.list(scope);
 				scope.loans.list(scope);
