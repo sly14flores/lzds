@@ -156,7 +156,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				angular.copy(response.data.enrollment_fees, scope.benrollment_fees);
 				scope.sections_d = scope.enrollment.grade.sections;
 				scope.details.discount = response.data.details.discount;
-				details(scope);					
+				details(scope);			
 
 			}, function myError(response) {
 				 
@@ -174,6 +174,30 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 		};
 
+		self.enroll = function(scope) {
+			
+			scope.enrollment = {};
+			scope.enrollment.id = 0;
+			scope.enrollment_fees = [];
+			scope.benrollment_fees = [];
+			scope.details = {
+				sub_total: 0,
+				sub_total_str: 0,
+				discount: 0,
+				total: 0,
+				total_str: 0
+			};			
+			
+			var onOk = function() {
+				
+				self.save(scope);
+				
+			};
+			
+			bootstrapModal.box2(scope,'Enroll','dialogs/enroll.html',onOk,'Submit');			
+			
+		};
+		
 		self.edit = function(scope) {
 			
 			scope.btns.edit.disabled = !scope.btns.edit.disabled;
