@@ -159,7 +159,7 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 				
 				angular.forEach(records, function(item,i) {
 					
-					obj[item.record_type].data.push({record_text: item.record_text});					
+					obj[item.record_type].data.push({record_subject: item.record_subject});					
 					
 				});
 				
@@ -209,7 +209,7 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-modul
 				angular.forEach(item.data, function(value,k) {
 
 					doc.setFontType('normal');
-					doc.text(75, r+=15, value.record_text);
+					doc.text(75, r+=15, value.record_subject);
 
 				});
 				
