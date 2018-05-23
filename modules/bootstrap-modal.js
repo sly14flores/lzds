@@ -71,13 +71,13 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 			title: title,
 			message: 'Loading...',
 			buttons: {
-				cancel: {
-					label: 'Close',
-					className: 'btn-danger'
-				},
 				confirm: {
 					label: okLabel,
 					className: 'btn-success'
+				},				
+				cancel: {
+					label: 'Close',
+					className: 'btn-danger'
 				}				
 			},
 			callback: function (result) {

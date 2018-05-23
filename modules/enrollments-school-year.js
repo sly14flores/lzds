@@ -13,6 +13,12 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 			scope.filter = {};
 			
+			scope.filter_students = {};
+			scope.filtered_students = [];
+
+			// cached current school year
+			scope.current_sy = {};
+			
 			// School Years			
 			
 			schoolYear.get(scope);			
@@ -23,6 +29,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			}).then(function mySucces(response) {
 
 				scope.filter.school_year = response.data;
+				scope.current_sy = angular.copy(response.data);
 				
 			}, function myError(response) {
 				 
@@ -62,7 +69,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			var controls = scope.formHolder.enrollment.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
-				
+
 				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
 									
 			});
@@ -92,6 +99,24 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		self.filter = function(scope) {
 			
 			list(scope);
+			
+		};
+		
+		self.filterStudents = function(scope) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/enroll-filter-students.php',
+			  data: scope.filter_students
+			}).then(function mySucces(response) {
+
+				scope.filtered_students = angular.copy(response.data);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
 			
 		};
 		
@@ -165,8 +190,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			});			
 			
 			var onOk = function() {
-				
-				self.save(scope);
+
+				return self.save(scope);
 				
 			};
 			
@@ -186,18 +211,20 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				discount: 0,
 				total: 0,
 				total_str: 0
-			};			
-			
+			};
+
+			scope.enrollment.enrollment_school_year = angular.copy(scope.current_sy);
+
 			var onOk = function() {
 				
-				self.save(scope);
+				return self.save(scope);
 				
 			};
 			
 			bootstrapModal.box2(scope,'Enroll','dialogs/enroll.html',onOk,'Submit');			
 			
 		};
-		
+
 		self.edit = function(scope) {
 			
 			scope.btns.edit.disabled = !scope.btns.edit.disabled;
@@ -205,19 +232,19 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		};
 
 		self.levelSelectedD = function(scope,level) {
-			
+
 			if (level == undefined) return;
 			
 			scope.sections_d = [];			
 			
-			scope.sections_d.push({id: 0, description: "All"});
+			scope.sections_d.push({id: 0, description: "-"});
 			
 			angular.forEach(level.sections,function(item,i) {
 
 				scope.sections_d.push(item);
 
 			});
-			
+
 		};
 
 		self.downloadFees = function(scope,level) {
@@ -262,10 +289,12 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		};		
 
 		self.save = function(scope) {
-			
+
+			if (scope.btns.edit.disabled) return false;
+		
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Some fields are required.');
-				return;
+				pnotify.show('danger','Notification','Some fields are required.');				
+				return false;			
 			}	
 			
 			$http({
@@ -285,6 +314,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			  // error
 				
 			});				
+			
+			return true;
 			
 		};		
 		
