@@ -70,7 +70,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 			angular.forEach(controls,function(elem,i) {
 
-				if (elem.$$attr.$attr.required) elem.$touched = elem.$invalid;
+				if (elem.$$attr.$attr.required) scope.$apply(function() { elem.$touched = elem.$invalid; });
 									
 			});
 
@@ -199,10 +199,28 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 		};
 
-		self.enroll = function(scope) {
+		self.enroll = function(scope) {			
+			
+			scope.enroll_school_years = [];
+			scope.enroll_school_years.push({id:0, school_year:"All"});
+						
+			angular.forEach(scope.school_years, function(item,i) {
+				
+				if (item.id != scope.current_sy.id) scope.enroll_school_years.push(item);
+				
+			});
+			
+			scope.filter_students.school_year = {id:0, school_year:"All"};
+			
+			scope.views.student = '';
+			scope.views.recent_sy = '';
+			scope.views.recent_level = '';			
+			
+			scope.filtered_students = [];
 			
 			scope.enrollment = {};
 			scope.enrollment.id = 0;
+			scope.enrollment.student_id = 0;
 			scope.enrollment_fees = [];
 			scope.benrollment_fees = [];
 			scope.details = {
@@ -217,14 +235,58 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 			var onOk = function() {
 				
-				return self.save(scope);
+				return enroll(scope);
 				
 			};
 			
 			bootstrapModal.box2(scope,'Enroll','dialogs/enroll.html',onOk,'Submit');			
 			
 		};
-
+		
+		function enroll(scope) {
+			
+			if (scope.enrollment.student_id == 0) {
+				pnotify.show('danger','Notification','No student selected to enroll.');
+				return false;				
+			};
+			
+			if (validate(scope)) {
+				pnotify.show('danger','Notification','Some fields are required.');
+				return false;			
+			}	
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/enrollment-save.php',
+			  data: {student_enrollment: scope.enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
+			}).then(function mySucces(response) {
+				
+				if (scope.enrollment.id == 0) {
+					pnotify.show('success','Notification','Student successfully enrolled.');
+				} else {
+					pnotify.show('success','Notification','Student enrollment info successfully updated.');				
+				}
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});				
+			
+			return true;			
+			
+		};
+		
+		self.studentSelected = function(scope,student) {
+			
+			scope.views.student = student.fullname;
+			scope.views.recent_sy = student.recent_sy;
+			scope.views.recent_level = student.recent_level;
+			
+			scope.enrollment.student_id = student.id;
+			
+		};
+		
 		self.edit = function(scope) {
 			
 			scope.btns.edit.disabled = !scope.btns.edit.disabled;
@@ -247,9 +309,9 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 		};
 
-		self.downloadFees = function(scope,level) {
+		self.downloadFees = function(scope,level,enroll) {
 			
-			if (scope.btns.edit.disabled) return;
+			if (scope.btns.edit.disabled && !enroll) return;			
 			
 			scope.sections_d = level.sections;						
 			
@@ -293,7 +355,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			if (scope.btns.edit.disabled) return false;
 		
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Some fields are required.');				
+				pnotify.show('danger','Notification','Some fields are required.');
 				return false;			
 			}	
 			
