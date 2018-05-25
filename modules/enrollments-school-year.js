@@ -123,13 +123,15 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		function list(scope) {
 
 			blockUI.show("Fetching students list please wait...");
-			
+
+			if (scope.$id > 2) scope = scope.$parent;
+
 			scope.currentPage = scope.views.currentPage;
 			scope.pageSize = 15;
 			scope.maxSize = 5;
 
 			scope.views.panel_title = 'Enrollees for School Year: '+scope.filter.school_year.school_year;
-			
+
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enrollees.php',
@@ -152,6 +154,20 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);
 			});			
 		
+		};
+		
+		function watchDetails(scope) {
+		
+			scope.$watch(function(scope) {
+				
+				return scope.details.discount;
+
+			},function(newValue, oldValue) {
+
+				details(scope);
+
+			});
+
 		};
 		
 		self.view = function(scope,enrollee) {			
@@ -183,6 +199,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				scope.details.discount = response.data.details.discount;
 				details(scope);			
 
+				watchDetails(scope);
+				
 			}, function myError(response) {
 				 
 			  // error
@@ -199,11 +217,11 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 		};
 
-		self.enroll = function(scope) {			
-			
+		self.enroll = function(scope) {
+
 			scope.enroll_school_years = [];
 			scope.enroll_school_years.push({id:0, school_year:"All"});
-						
+
 			angular.forEach(scope.school_years, function(item,i) {
 				
 				if (item.id != scope.current_sy.id) scope.enroll_school_years.push(item);
@@ -232,15 +250,17 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			};
 
 			scope.enrollment.enrollment_school_year = angular.copy(scope.current_sy);
+			
+			watchDetails(scope);			
 
 			var onOk = function() {
-				
+
 				return enroll(scope);
-				
+
 			};
-			
+
 			bootstrapModal.box2(scope,'Enroll','dialogs/enroll.html',onOk,'Submit');			
-			
+
 		};
 		
 		function enroll(scope) {
@@ -260,12 +280,11 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			  url: 'handlers/enrollment-save.php',
 			  data: {student_enrollment: scope.enrollment, enrollment_fees: scope.enrollment_fees, details: scope.details}
 			}).then(function mySucces(response) {
+
+				pnotify.show('success','Notification','Student successfully enrolled.');
+				list(scope);
 				
-				if (scope.enrollment.id == 0) {
-					pnotify.show('success','Notification','Student successfully enrolled.');
-				} else {
-					pnotify.show('success','Notification','Student enrollment info successfully updated.');				
-				}
+				printEnroll(response.data);
 				
 			}, function myError(response) {
 				 
@@ -286,7 +305,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			scope.enrollment.student_id = student.id;
 			
 		};
-		
+
 		self.edit = function(scope) {
 			
 			scope.btns.edit.disabled = !scope.btns.edit.disabled;
@@ -313,6 +332,20 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 			if (scope.btns.edit.disabled && !enroll) return;			
 			
+			if (enroll) {
+				
+				if (scope.enrollment.student_id == 0) {
+					pnotify.show('danger','Notification','No student selected to enroll.');
+					return;				
+				};				
+				
+			};
+			
+			if (level === undefined) {				
+				pnotify.show('danger','Notification','No level selected.');
+				return;
+			};
+			
 			scope.sections_d = level.sections;						
 			
 			fees(scope);
@@ -321,11 +354,11 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		function fees(scope) {
 
-			if (scope.enrollment.enrollment_school_year == undefined) {
+			/* if (scope.enrollment.enrollment_school_year == undefined) {
 				scope.formHolder.enrollment.enrollment_school_year.$touched = true;
 				return;
-			};							
-
+			}; */
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enrollment-fees.php',
@@ -381,6 +414,30 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			
 		};		
 		
+		self.delete = function(scope,row) {
+			
+			var onOk = function() {						
+
+				$http({
+				  method: 'POST',
+				  url: 'handlers/enrollment-delete.php',
+				  data: {id: [row.id]}
+				}).then(function mySucces(response) {
+
+					list(scope);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+
+			};
+
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});			
+			
+		};		
+		
 		function details(scope) {
 
 			scope.details.sub_total = 0;
@@ -398,7 +455,13 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 			printPost.show('reports/enrollment.php',{filter:{id: enrollment.id}});
 			
-		};			
+		};
+		
+		function printEnroll(id) {
+
+			printPost.show('reports/enrollment.php',{filter:{id: id}});		
+		
+		};
 		
 		self.total = function(scope) {
 			if (isNaN(scope.details.discount)) return;
