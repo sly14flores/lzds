@@ -237,9 +237,10 @@ require_once 'authentication.php';
                     <form name="formHolder.staff" id="formHolder.staff">
 					  <div class="form-group">
 						<label>By :</label>
-						<select class="form-control" ng-model="studentDtr.by">
+						<select class="form-control" ng-model="studentDtr.by" ng-change="form.byChange(this)">
+							<option value="Individual_Student">Individual Student</option>						
 							<option value="Section">Section</option>						
-							<option value="Student">Student</option>							
+							<option value="SF2">SF2</option>						
 						</select>
 					  </div>
 					  <div class="form-group">
@@ -252,24 +253,30 @@ require_once 'authentication.php';
 					  </div>
 					  <div class="form-group">						  
 						<label>School Year :</label>
-						<select class="form-control" ng-model="studentDtr.sy" ng-options="sy as sy.school_year for sy in school_years track by sy.id" ng-change="form.studentsSuggest(this)"></select>
+						<select class="form-control" ng-model="studentDtr.sy" ng-options="sy.school_year for sy in school_years track by sy.id" ng-change="form.studentsSuggest(this)"></select>
 					  </div>					  
-					  <div ng-show="studentDtr.by == 'Section'">
+					  <div ng-show="studentDtr.by == 'SF2' || studentDtr.by == 'Section'">
 						  <div class="form-group">					  
 							<label>Grade :</label>
-							<select class="form-control" ng-model="studentDtr.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="sections = studentDtr.grade.sections" ng-required="studentDtr.by == 'Section'"></select>
+							<select class="form-control" ng-model="studentDtr.grade" ng-options="level.description for level in levels track by level.id" ng-change="sections = studentDtr.grade.sections" ng-required="studentDtr.by == 'SF2' || studentDtr.by == 'Section'" ng-change="form.studentsSelect(this)"></select>
 						  </div>
 						  <div class="form-group">						  
 							<label>Section :</label>
-							<select class="form-control" ng-model="studentDtr.section" ng-options="section as section.description for section in sections track by section.id" ng-required="studentDtr.by == 'Section'"></select>
+							<select class="form-control" ng-model="studentDtr.section" ng-options="section.description for section in sections track by section.id" ng-required="studentDtr.by == 'SF2' || studentDtr.by == 'Section'" ng-change="form.studentsSelect(this)"></select>
 						  </div>
 					  </div>
-					  <div ng-show="studentDtr.by == 'Student'">
+					  <div ng-show="studentDtr.by == 'Individual_Student'">
 						<div class="form-group">						
 							<label>Student :</label>
-							<input type="text" class="form-control" ng-model="studentDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_students | filter:{fullname:$viewValue}" typeahead-on-select="form.studentSelect(this, $item, $model, $label, $event)" ng-required="studentDtr.by == 'Student'">
+							<input type="text" class="form-control" ng-model="studentDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_students | filter:{fullname:$viewValue}" typeahead-on-select="form.studentSelect(this, $item, $model, $label, $event)" ng-required="studentDtr.by == 'Individual_Student'">
 						</div>
 					  </div>
+					  <div ng-show="studentDtr.by == 'Section'">
+						<div class="form-group">						
+							<label>Select Student :</label>
+							<select class="form-control" ng-model="studentDtr.select_student" ng-options="ss.fullname for ss in select_students track by ss.id" ng-required="studentDtr.by == 'Section'" ng-change="form.sectionStudentSelect(this)"></select>
+						</div>
+					  </div>					  
                       <br/>
                       <span class="btn btn-primary pull-right" ng-click="form.dtr(this,false)">Go!</span>
                     </form>

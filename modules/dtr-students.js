@@ -47,10 +47,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			var d = new Date();
 
 			scope.studentDtr = {
-				by: "Student",
+				by: "Individual_Student",
 				id: 0,
 				rfid: '',
 				fullname: '',
+				select_student: '',
 				sgrade: '',
 				ssection: '',
 				grade: {id:0,description:""},
@@ -60,6 +61,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				year: d.getFullYear(),
 				option: false
 			};			
+			
+			scope.select_students = [];
 			
 			$timeout(function() {
 				$http({
@@ -117,6 +120,73 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 		};		
 		
+		self.byChange = function(scope) {
+			
+			var d = new Date();
+			
+			scope.studentDtr.id = 0;
+			scope.studentDtr.rfid = '';
+			scope.studentDtr.fullname = ''
+			scope.studentDtr.select_student = ''
+			scope.studentDtr.sgrade = '';
+			scope.studentDtr.ssection = '';
+			scope.studentDtr.grade = {id:0,description:""};
+			scope.studentDtr.section = {id:0,description:""};
+			// scope.studentDtr.sy = {id:0,school_year:""};
+			scope.studentDtr.month = scope.months[d.getMonth()];
+			scope.studentDtr.year = d.getFullYear();
+			scope.studentDtr.option = false;
+			
+			switch (scope.studentDtr.by) {
+				
+				case "Section":								
+
+					studentsSelect(scope);
+				
+				break;
+				
+			};
+			
+		};
+		
+		function studentsSelect(scope) {
+			
+			scope.select_students = [];
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/dtr-students-select.php',
+			  data: {sy: scope.studentDtr.sy, level: scope.studentDtr.grade, section: scope.studentDtr.section}
+			}).then(function mySucces(response) {					
+				
+				scope.select_students = angular.copy(response.data);
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
+			
+		};
+		
+		self.studentsSelect = function(scope) {
+
+			if (scope.studentDtr.by == 'Section') studentsSelect(scope);
+					
+		};
+		
+		self.sectionStudentSelect = function(scope) {
+			
+			if (scope.studentDtr.select_student === undefined) return;
+			
+			scope.studentDtr.fullname = scope.studentDtr.select_student['fullname'];
+			scope.studentDtr.sgrade = scope.studentDtr.select_student['grade'];
+			scope.studentDtr.ssection = scope.studentDtr.select_student['section'];
+			scope.studentDtr.id = scope.studentDtr.select_student['id'];
+			scope.studentDtr.rfid = scope.studentDtr.select_student['rfid'];			
+			
+		};
+		
 		self.studentsSuggest = function(scope) {
 			
 			scope.studentDtr.fullname = '';
@@ -128,6 +198,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.suggest_students);
+				if (scope.studentDtr.by == 'Section') studentsSelect(scope);
 				
 			}, function myError(response) {
 				 
@@ -141,7 +212,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			switch (scope.studentDtr.by) {
 				
-				case 'Student':
+				case 'Individual_Student':
 				
 					if (scope.studentDtr.id == 0) {
 						pnotify.show('danger','Notification','Please select student');
@@ -153,48 +224,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 						return;
 					};				
 				
-					var onOk = function() {
-					
-						scope.studentDtr.option = opt;
-					
-						scope.views.panel_title = scope.studentDtr.fullname+': '+scope.studentDtr.sgrade+' '+scope.studentDtr.ssection+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
-					
-						scope.dtr.student = [];			
-					
-						$http({
-						  method: 'POST',
-						  url: 'handlers/dtr-student.php',
-						  data: scope.studentDtr
-						}).then(function mySucces(response) {					
-							
-							scope.dtr.student = angular.copy(response.data);
-							
-						}, function myError(response) {
-							 
-						  // error
-							
-						});
-						
-						$('#x_content').html('Loading...');
-						$('#x_content').load('lists/dtr-student.html',function() {
-							$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
-						});				
-
-					};
-					
-					if (!opt) {
-						
-						onOk();
-						
-					} else {
-						
-						bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
-						
-					}				
+					individual(scope);
 				
 				break;
 				
-				case 'Section':
+				case 'SF2':
 						
 					if (scope.studentDtr.grade.id == 0) {
 						pnotify.show('danger','Notification','Please select grade');
@@ -337,8 +371,67 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				
 				break;
 				
+				case 'Section':
+				
+					if (scope.studentDtr.id == 0) {
+						pnotify.show('danger','Notification','Please select student');
+						return;
+					};
+
+					if (scope.studentDtr.ssection == '') {
+						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
+						return;
+					};				
+				
+					individual(scope);
+				
+				break;
+				
 			};
 
+			function individual(scope) {
+				
+				var onOk = function() {
+				
+					scope.studentDtr.option = opt;
+				
+					scope.views.panel_title = scope.studentDtr.fullname+': '+scope.studentDtr.sgrade+' '+scope.studentDtr.ssection+' ('+scope.studentDtr.month.description+' '+scope.studentDtr.year+')';
+				
+					scope.dtr.student = [];			
+				
+					$http({
+					  method: 'POST',
+					  url: 'handlers/dtr-student.php',
+					  data: scope.studentDtr
+					}).then(function mySucces(response) {					
+						
+						scope.dtr.student = angular.copy(response.data);
+						
+					}, function myError(response) {
+						 
+					  // error
+						
+					});
+					
+					$('#x_content').html('Loading...');
+					$('#x_content').load('lists/dtr-student.html',function() {
+						$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+					});				
+
+				};
+				
+				if (!opt) {
+					
+					onOk();
+					
+				} else {
+					
+					bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to re-analyze dtr?',onOk,function() {});				
+					
+				}				
+				
+			};
+			
 		};
 		
 		self.download = function(scope) {
