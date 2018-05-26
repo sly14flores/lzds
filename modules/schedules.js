@@ -116,8 +116,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			  // error
 				
 			});			
-			
-			
+
 			scope.btns = {
 				ok: {
 					disabled: false,					
@@ -161,7 +160,9 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 		};		
 		
-		self.schedule = function(scope,row) { // form			
+		self.schedule = function(scope,row) { // form						
+			
+			if (scope.$id > 2) scope = scope.$parent;			
 			
 			scope.views.list = true;			
 			
@@ -175,8 +176,6 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			scope.schedule.for_student = "0";
 			
 			if (row != null) {
-
-				if (scope.$id > 2) scope = scope.$parent;
 			
 				$http({
 				  method: 'POST',
@@ -202,8 +201,6 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 					
 					angular.copy(response.data['schedule_details'], scope.schedule_details);
 					
-					if (scope.$id > 2) scope = scope.$parent;
-					
 					
 				}, function myError(response) {
 					 
@@ -222,6 +219,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		};		
 		
 		self.list = function(scope) {			
+			
+			if (scope.$id > 2) scope = scope.$parent;				
 			
 			scope.views.list = false;		
 		
@@ -364,9 +363,9 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		
 		self.delete = function(scope,row) {
 			
-			var onOk = function() {
-				
-				if (scope.$id > 2) scope = scope.$parent;			
+			if (scope.$id > 2) scope = scope.$parent;			
+			
+			var onOk = function() {		
 				
 				$http({
 				  method: 'POST',
