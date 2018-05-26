@@ -11,6 +11,8 @@
 		<th class="column-title">Tardiness </th>
 		<!-- <th class="column-title">Undertime </th> -->
 		<th class="column-title">Remarks </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span>
+		</th>		
 	  </tr>
 	</thead>
 	<tbody>
@@ -24,6 +26,9 @@
 		<td class="">{{row.tardiness}}</td>
 		<!-- <td class="">{{row.undertime}}</td> -->
 		<td class="">{{row.remarks}}</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="form.logs(this,row)"><i class="fa fa-search" style="margin-right: 10px;"></i></a>
+		</td>
 	  </tr>
 	</tbody><tfoot>
 	</tfoot>	

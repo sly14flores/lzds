@@ -29,10 +29,10 @@ foreach ($_Dtrs as $key => $dtr) {
 	
 	$_Dtrs[$key]['date'] = date("F j",strtotime($dtr['ddate']));
 	$_Dtrs[$key]['day'] = date("D",strtotime($dtr['ddate']));
-	$_Dtrs[$key]['morning_in'] = (date("H:i:s",strtotime($dtr['morning_in']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['morning_in']));
-	$_Dtrs[$key]['morning_out'] = (date("H:i:s",strtotime($dtr['morning_out']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['morning_out']));
-	$_Dtrs[$key]['afternoon_in'] = (date("H:i:s",strtotime($dtr['afternoon_in']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['afternoon_in']));
-	$_Dtrs[$key]['afternoon_out'] = (date("H:i:s",strtotime($dtr['afternoon_out']))=="00:00:00")?"-":date("h:i:s A",strtotime($dtr['afternoon_out']));
+	$_Dtrs[$key]['morning_in'] = ((date("H:i:s",strtotime($dtr['morning_in']))=="00:00:00")||($dtr['morning_in']==NULL))?"-":date("h:i:s A",strtotime($dtr['morning_in']));
+	$_Dtrs[$key]['morning_out'] = ((date("H:i:s",strtotime($dtr['morning_out']))=="00:00:00")||($dtr['morning_out']==NULL))?"-":date("h:i:s A",strtotime($dtr['morning_out']));
+	$_Dtrs[$key]['afternoon_in'] = ((date("H:i:s",strtotime($dtr['afternoon_in']))=="00:00:00")||($dtr['afternoon_in']==NULL))?"-":date("h:i:s A",strtotime($dtr['afternoon_in']));
+	$_Dtrs[$key]['afternoon_out'] = ((date("H:i:s",strtotime($dtr['afternoon_out']))=="00:00:00")||($dtr['afternoon_out']==NULL))?"-":date("h:i:s A",strtotime($dtr['afternoon_out']));
 	$_Dtrs[$key]['tardiness'] = ($dtr['tardiness'] =="00:00:00")?"-":$dtr['tardiness'];
 	
 	$_Dtrs[$key]['remarks'] = "";

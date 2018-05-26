@@ -133,10 +133,10 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			scope.studentDtr.grade = {id:0,description:""};
 			scope.studentDtr.section = {id:0,description:""};
 			// scope.studentDtr.sy = {id:0,school_year:""};
-			scope.studentDtr.month = scope.months[d.getMonth()];
-			scope.studentDtr.year = d.getFullYear();
+			// scope.studentDtr.month = scope.months[d.getMonth()];
+			// scope.studentDtr.year = d.getFullYear();
 			scope.studentDtr.option = false;
-			
+
 			switch (scope.studentDtr.by) {
 				
 				case "Section":								
@@ -216,6 +216,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};
 		
 		self.dtr = function(scope,opt) {				
+			
+			if (scope.$id > 2) scope = scope.$parent;
 			
 			switch (scope.studentDtr.by) {
 				
@@ -510,7 +512,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 
 		};
 
-		self.logs = function(scope,row) {			
+		self.logs = function(scope,row) {	
 			
 			scope.backlogs = [];			
 			
@@ -557,7 +559,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			$http({
 			  method: 'POST',
 			  url: 'handlers/dtr-day-logs.php',
-			  data: scope.dtr_day
+			  data: {table: "dtr_students", day: scope.dtr_day}
 			}).then(function mySucces(response) {
 				
 				self.dtr(scope,false);
@@ -575,6 +577,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			$('#x_content').html('');			
 			
 		};
+		
+		
 		
 	};
 	

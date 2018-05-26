@@ -257,7 +257,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			$http({
 			  method: 'POST',
 			  url: 'handlers/dtr-day-logs.php',
-			  data: scope.dtr_day
+			  data: {table: "dtr", day: scope.dtr_day}
 			}).then(function mySucces(response) {
 				
 				self.dtr(scope,false);
