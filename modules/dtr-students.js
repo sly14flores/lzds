@@ -151,6 +151,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		
 		function studentsSelect(scope) {
 			
+			if (scope.studentDtr.grade !== undefined) scope.sections = scope.studentDtr.grade.sections;
+			
 			scope.select_students = [];
 			
 			$http({
@@ -189,22 +191,27 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		
 		self.studentsSuggest = function(scope) {
 			
-			scope.studentDtr.fullname = '';
+			scope.studentDtr.fullname = '';			
 			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/students-suggest-dtr.php',
-			  data: {sy: scope.studentDtr.sy.id}
-			}).then(function mySucces(response) {
+			if (scope.studentDtr.by == 'Individual_Student') {
 				
-				angular.copy(response.data, scope.suggest_students);
-				if (scope.studentDtr.by == 'Section') studentsSelect(scope);
+				$http({
+				  method: 'POST',
+				  url: 'handlers/students-suggest-dtr.php',
+				  data: {sy: scope.studentDtr.sy.id}
+				}).then(function mySucces(response) {
+					
+					angular.copy(response.data, scope.suggest_students);
+					
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
 				
-			}, function myError(response) {
-				 
-			  // error
-				
-			});			
+			};
+			
+			if (scope.studentDtr.by == 'Section') studentsSelect(scope);			
 			
 		};
 		
