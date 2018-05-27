@@ -16,6 +16,9 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 			scope.views.record_panel_title = '';
 			
+			schoolYear.get(scope);			
+			schoolYear.current(scope);			
+			
 		};
 		
 		function validate(scope) {
@@ -32,8 +35,8 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 		};		
 		
-		self.list = function(scope) {
-
+		self.list = function(scope,opt) {
+		
 			scope.views.records.list = false;			
 			
 			scope.data.record = {};
@@ -50,7 +53,8 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.data.records);
-				scope.pagination.records.filterData = scope.data.records;			
+				scope.pagination.records.filterData = scope.data.records;
+				$timeout(function() { scope.$apply(); }, 500);
 				
 			}, function myError(response) {
 				 
@@ -58,21 +62,24 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				
 			});		
 			
-			$('#x_content_records').html('Loading...');
-			$('#x_content_records').load('lists/student-records.html',function() {
-				$timeout(function() { $compile($('#x_content_records')[0])(scope); },100);				
-			});				
+			if (opt) {
+				$('#x_content_records').html('Loading...');
+				$('#x_content_records').load('lists/student-records.html',function() {				
+					$compile($('#x_content_records')[0])(scope);
+				});
+			};
 			
 		};
 		
 		self.record = function(scope,record) {
-		
+
 			var title = 'Add Record';
-		
+
 			if (record == null) {
 				scope.data.record = {};
 				scope.data.record.id = 0;
 				scope.data.record.student_id = scope.student_id;
+				scope.data.record.record_sy = scope.current_sy;
 			} else {
 				scope.data.record = angular.copy(record);
 				title = 'Edit Record Info';
@@ -84,9 +91,7 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			
 		};
 
-		self.save = function(scope) {
-			
-			if (scope.$id > 2) scope = scope.$parent;				
+		self.save = function(scope) {			
 			
 			if (validate(scope)) return false;
 			
@@ -95,8 +100,8 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			  url: 'handlers/student-record-save.php',
 			  data: scope.data.record
 			}).then(function mySucces(response) {
-				
-				self.list(scope);
+
+				self.list(scope,false);
 				
 			}, function myError(response) {
 				 
@@ -110,9 +115,7 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.delete = function(scope,row) {
 			
-			var onOk = function() {
-				
-				if (scope.$id > 2) scope = scope.$parent;			
+			var onOk = function() {		
 				
 				$http({
 				  method: 'POST',
@@ -120,7 +123,7 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
-					self.list(scope);
+					self.list(scope,false);
 					
 				}, function myError(response) {
 					 

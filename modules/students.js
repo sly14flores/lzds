@@ -108,7 +108,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 					$timeout(function() {
 						scope.enrollment.list(scope,row);
-						scope.records.list(scope);
+						scope.records.list(scope,true);
 					},500);
 
 					blockUI.hide();

@@ -19,7 +19,7 @@
 	</thead>
 	<tbody>
 	  <tr class="even pointer" ng-repeat="r in pagination.records.filterData = (data.records | filter: views.records.search) | pagination: pagination.records.currentPage:pagination.records.pageSize">
-		<td class="">{{r.record_sy}}</td>
+		<td class="">{{r.record_sy.school_year}}</td>
 		<td class="">{{r.record_description}}</td>
 		<td class="">{{r.record_subject}}</td>
 		<td class="">{{r.record_text}}</td>

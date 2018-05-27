@@ -80,7 +80,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};		
 		
 		self.staff = function(scope,row) { // form
-			console.log(row);
+
 			scope.leaves.data(scope);
 			scope.tos.data(scope);
 			scope.loans.data(scope);

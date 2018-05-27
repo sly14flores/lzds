@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_sy.$touched && formHolder.record.record_sy.$invalid}">
 	<label>School Year</label>
-	<select class="form-control" name="record_sy" ng-model="data.record.record_sy" ng-options="t for t in record_sys" required></select>
+	<select class="form-control" name="record_sy" ng-model="data.record.record_sy" ng-options="sy.school_year for sy in school_years track by sy.id" required></select>
 	<span class="help-block" ng-show="formHolder.record.record_sy.$touched && formHolder.record.record_sy.$invalid">School year is required</span>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_description.$touched && formHolder.record.record_description.$invalid}">

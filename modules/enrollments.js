@@ -1,5 +1,5 @@
 angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost) {
-	
+
 	function enrollment() {
 		
 		var self = this;

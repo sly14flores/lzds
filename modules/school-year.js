@@ -20,7 +20,24 @@ angular.module('school-year',[]).factory('schoolYear',function($http) {
 
 			});
 			
-		}
+		};
+		
+		self.current = function(scope) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.current_sy = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});
+			
+		};
 		
 	};
 	
