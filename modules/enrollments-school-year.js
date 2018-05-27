@@ -104,6 +104,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		self.filterStudents = function(scope) {
 			
+			scope.views.search_student_ready = 'Fetching students infos please wait...';
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enroll-filter-students.php',
@@ -111,10 +113,11 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			}).then(function mySucces(response) {
 
 				scope.filtered_students = angular.copy(response.data);
+				scope.views.search_student_ready = 'Click a student from the results to enroll';
 				
 			}, function myError(response) {
 				 
-			  // error
+				scope.views.search_student_ready = 'Something went wrong students infos were not fetched';
 				
 			});				
 			
@@ -219,6 +222,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 		self.enroll = function(scope) {
 
+			scope.views.search_student_ready = '';
+		
 			scope.enroll_school_years = [];
 			scope.enroll_school_years.push({id:0, school_year:"All"});
 
@@ -275,6 +280,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				return false;			
 			}	
 			
+			blockUI.show("Processing please wait...");
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enrollment-save.php',
@@ -284,11 +291,13 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				pnotify.show('success','Notification','Student successfully enrolled.');
 				list(scope);
 				
+				blockUI.hide();
+				
 				printEnroll(response.data);
 				
 			}, function myError(response) {
 				 
-			  // error
+			    blockUI.hide();			  
 				
 			});				
 			
@@ -392,6 +401,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				return false;			
 			}	
 			
+			blockUI.show("Processing please wait...");			
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enrollment-save.php',
@@ -404,9 +415,11 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 					pnotify.show('success','Notification','Student enrollment info successfully updated.');				
 				}
 				
+				blockUI.hide();
+				
 			}, function myError(response) {
 				 
-			  // error
+				blockUI.hide();
 				
 			});				
 			

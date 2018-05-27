@@ -1,12 +1,10 @@
-angular.module('loans-module',['ui.bootstrap','bootstrap-modal','x-panel-module']).factory('loans',function($http,$timeout,$compile,bootstrapModal,xPanel) {
+angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans',function($http,$timeout,$compile,bootstrapModal) {
 	
 	function loans() {
 		
 		var self = this;
 		
 		self.data = function(scope) {
-
-			xPanel.start('collapse-loans');
 			
 			scope.views.loans = {};			
 	

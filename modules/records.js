@@ -1,12 +1,10 @@
-angular.module('records-module',['ui.bootstrap','bootstrap-modal','x-panel-module']).factory('records',function($http,$timeout,$compile,bootstrapModal,xPanel) {
+angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('records',function($http,$timeout,$compile,bootstrapModal) {
 	
 	function records() {
 		
 		var self = this;
 		
 		self.data = function(scope) {
-
-			xPanel.start('collapse-records');
 			
 			scope.views.records = {};			
 	

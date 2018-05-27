@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel) {
 	
 	function form() {
 		
@@ -114,6 +114,11 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 					
 					angular.copy(response.data, scope.staff);
 					if (scope.staff.birthday != null) scope.staff.birthday = new Date(scope.staff.birthday);
+					
+					xPanel.start('collapse-leaves');
+					xPanel.start('collapse-tos');					
+					xPanel.start('collapse-loans');					
+					xPanel.start('collapse-records');					
 					
 				}, function myError(response) {
 					 

@@ -1,12 +1,10 @@
-angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal','x-panel-module']).factory('tos',function($http,$timeout,$compile,bootstrapModal,xPanel) {
+angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal']).factory('tos',function($http,$timeout,$compile,bootstrapModal) {
 	
 	function tos() {
 		
 		var self = this;
 		
 		self.data = function(scope) {
-
-			xPanel.start('collapse-tos');
 			
 			scope.views.tos = {};			
 	
