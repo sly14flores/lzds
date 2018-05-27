@@ -10,16 +10,17 @@
   <table class="table table-striped jambo_table bulk_action">
 	<thead>
 	  <tr class="headings">
-		<th class="column-title">Type </th>
+		<th class="column-title">School Year </th>
+		<th class="column-title">Description </th>
 		<th class="column-title">Subject </th>
 		<th class="column-title">Content </th>
-		<th class="column-title no-link last"><span class="nobr">Action</span>
-		</th>
+		<th class="column-title no-link last"><span class="nobr">Action</span></th>
 	  </tr>
 	</thead>
 	<tbody>
 	  <tr class="even pointer" ng-repeat="r in pagination.records.filterData = (data.records | filter: views.records.search) | pagination: pagination.records.currentPage:pagination.records.pageSize">
-		<td class="">{{r.record_type}}</td>
+		<td class="">{{r.record_sy}}</td>
+		<td class="">{{r.record_description}}</td>
 		<td class="">{{r.record_subject}}</td>
 		<td class="">{{r.record_text}}</td>
 		<td class="last list-action">
@@ -30,10 +31,15 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="4" style="text-align: center;">
+			<td colspan="5" style="text-align: center;">
 				<ul uib-pagination boundary-links="true" total-items="pagination.loans.filterData.length" max-size="pagination.loans.maxSize" items-per-page="pagination.loans.pageSize" ng-model="pagination.loans.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 			</td>
 		</tr>
 	</tfoot>	
-  </table>
+  </table> 
 </div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
+	</div>
+</div> 

@@ -30,6 +30,9 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				}
 			};
 			
+			scope.data = {};
+			scope.pagination = {};			
+			
 		};
 		
 		function validate(scope) {
@@ -97,9 +100,16 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 					angular.copy(response.data['student'], scope.student);
 					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
 					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
-					xPanel.start('collapse-enrollments');
 
-					$timeout(function() { scope.enrollment.list(scope,row); },500);					
+					scope.student_id = row.id;
+
+					xPanel.start('collapse-enrollments');
+					xPanel.start('collapse-records');
+
+					$timeout(function() {
+						scope.enrollment.list(scope,row);
+						scope.records.list(scope);
+					},500);
 
 					blockUI.hide();
 

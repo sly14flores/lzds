@@ -1,6 +1,6 @@
-var app = angular.module('students',['account-module','enrollments-module','toggle-fullscreen','students-module']);
+var app = angular.module('students',['account-module','enrollments-module','records-module','toggle-fullscreen','students-module']);
 
-app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
+app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records) {
 	
 	$scope.views = {};
 
@@ -8,6 +8,7 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 	
 	form.data($scope); // initialize data
 	enrollment.data($scope); // initialize data	
+	records.data($scope); // initialize data	
 	
 	$scope.views.title = 'Students';
 	$scope.views.panel_title = 'Students List';
@@ -18,6 +19,7 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment) {
 
 	$scope.form = form;
 	$scope.enrollment = enrollment;	
+	$scope.records = records;	
 
 });
 

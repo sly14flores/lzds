@@ -32,6 +32,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				}
 			};			
 			
+			scope.views.enrollment_panel_title = '';
+			
 		};
 		
 		function validate(scope) {
@@ -143,6 +145,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		self.list = function(scope,row) {		
 
 			if (scope.$id > 2) scope = scope.$parent;									
+			
+			scope.views.enrollment_panel_title = '';			
 			
 			if (row != null) {
 				scope.student_enrollment.student_id = row.id;

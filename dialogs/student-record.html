@@ -1,0 +1,24 @@
+<form name="formHolder.record" id="formHolder.record" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_sy.$touched && formHolder.record.record_sy.$invalid}">
+	<label>School Year</label>
+	<select class="form-control" name="record_sy" ng-model="data.record.record_sy" ng-options="t for t in record_sys" required></select>
+	<span class="help-block" ng-show="formHolder.record.record_sy.$touched && formHolder.record.record_sy.$invalid">School year is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_description.$touched && formHolder.record.record_description.$invalid}">
+	<label>Description</label>
+	<input type="text" class="form-control" name="record_description" ng-model="data.record.record_description" required>
+	<span class="help-block" ng-show="formHolder.record.record_description.$touched && formHolder.record.record_description.$invalid">Description is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_subject.$touched && formHolder.record.record_subject.$invalid}">
+	<label>Subject</label>
+	<input type="text" class="form-control" name="record_subject" ng-model="data.record.record_subject" required>
+	<span class="help-block" ng-show="formHolder.record.record_subject.$touched && formHolder.record.record_subject.$invalid">Subject is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.record.record_text.$touched && formHolder.record.record_text.$invalid}">
+	<label>Content</label>
+	<textarea style="height: 150px;" class="form-control" name="record_text" ng-model="data.record.record_text" required></textarea>
+	<span class="help-block" ng-show="formHolder.record.record_text.$touched && formHolder.record.record_text.$invalid">Content is required</span>
+  </div> 
+</div>
+</form>
