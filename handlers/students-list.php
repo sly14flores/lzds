@@ -13,6 +13,13 @@ if ( (isset($_POST['q'])) && ($_POST['q'] != "") ) $sql .= " WHERE id = ".$_POST
 
 $students = $con->getData($sql);
 
+foreach ($students as $i => $student) {
+	
+	// $students[$i]['fullname'] = utf8_decode($student['fullname']);
+	// $students[$i]['fullname'] = iconv('UTF-8', 'ISO-8859-1', $student['fullname']);
+	
+};
+
 echo json_encode($students);
 
 ?>

@@ -50,6 +50,8 @@ foreach($enrollments as $key => $enrollment) {
 	
 	unset($enrollments[$key]['id']);
 	
+	$enrollments[$key]['fullname'] = iconv('UTF-8', 'ISO-8859-1', $enrollment['fullname']);
+	
 };
 
 class PDF extends FPDF {
