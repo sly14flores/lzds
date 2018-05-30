@@ -3,6 +3,7 @@
 	<li role="presentation" class="active"><a href="#basic_profile" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Basic Profile</a></li>
 	<li role="presentation" class=""><a href="#enrollments" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Enrollments</a></li>
 	<li role="presentation" class=""><a href="#records" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Records</a></li>
+	<li role="presentation" class=""><a href="#excuse-letters" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Excuse Letters</a></li>
   </ul>
   <div id="myTabContent" class="tab-content">
 	<div role="tabpanel" class="tab-pane fade active in" id="basic_profile" aria-labelledby="home-tab">
@@ -231,7 +232,7 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
 				<ul class="dropdown-menu" role="menu">
 				  <li><a href="javascript:;" ng-click="records.record(this,null)">Add Record</a></li>
-				  <li><a href="javascript:;" ng-click="records.list(this,null)">Records List</a></li>
+				  <li><a href="javascript:;" ng-click="records.list(this,true)">Records List</a></li>
 				</ul>
 			  </li>
 			  <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
@@ -239,6 +240,27 @@
 			<div class="clearfix"></div>
 		  </div>
 			<div id="x_content_records" class="x_content"></div>
+		</div>	
+	</div>
+	<div role="tabpanel" class="tab-pane fade" id="excuse-letters" aria-labelledby="profile-tab">
+		<div class="x_panel">
+		  <div class="x_title">
+            <h2>{{views.excuse_letter_panel_title}}</h2>		  
+			<ul class="nav navbar-right panel_toolbox">
+			  <li><a class="collapse-excuse-letters"><i class="fa fa-chevron-up"></i></a>
+			  </li>
+			  <li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
+				<ul class="dropdown-menu" role="menu">
+				  <li><a href="javascript:;" ng-click="letters.letter(this,null)">Add Excuse Letter</a></li>
+				  <li><a href="javascript:;" ng-click="letters.list(this,true)">Excuse Letters List</a></li>
+				</ul>
+			  </li>
+			  <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
+			</ul>
+			<div class="clearfix"></div>
+		  </div>
+			<div id="x_content_excuse_letters" class="x_content"></div>
 		</div>	
 	</div>
   </div>

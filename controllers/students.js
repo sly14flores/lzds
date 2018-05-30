@@ -1,14 +1,16 @@
-var app = angular.module('students',['account-module','enrollments-module','records-module','toggle-fullscreen','students-module']);
+var app = angular.module('students',['account-module','toggle-fullscreen','enrollments-module','records-module','students-module','excuse-letters-module']);
 
-app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records) {
+app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records,letters) {
 	
 	$scope.views = {};
 
 	$scope.views.currentPage = 1;
 	
-	form.data($scope); // initialize data
-	enrollment.data($scope); // initialize data	
-	records.data($scope); // initialize data	
+	// initialize data	
+	form.data($scope);
+	enrollment.data($scope);
+	records.data($scope);
+	letters.data($scope);
 	
 	$scope.views.title = 'Students';
 	$scope.views.panel_title = 'Students List';
@@ -19,7 +21,8 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records
 
 	$scope.form = form;
 	$scope.enrollment = enrollment;	
-	$scope.records = records;	
+	$scope.records = records;
+	$scope.letters = letters;
 
 });
 

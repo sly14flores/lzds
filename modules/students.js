@@ -105,17 +105,19 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 					xPanel.start('collapse-enrollments');
 					xPanel.start('collapse-records');
+					xPanel.start('collapse-excuse-letters');
 
 					$timeout(function() {
 						scope.enrollment.list(scope,row);
 						scope.records.list(scope,true);
+						scope.letters.list(scope,true);
 					},500);
 
 					blockUI.hide();
 
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
 				
