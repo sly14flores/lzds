@@ -10,6 +10,8 @@ require('../db.php');
 $con = new pdo_db();
 
 $enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date FROM enrollments WHERE id = ".$filter['id']);
+$enrollment[0]['fullname'] = iconv('UTF-8', 'ISO-8859-1', $enrollment[0]['fullname']);
+
 $_fees = $con->getData("SELECT (SELECT fees.description FROM fees WHERE fees.id = (SELECT fee_items.fee_id FROM fee_items WHERE fee_items.id = students_fees.fee_item_id)) description, students_fees.amount amount FROM students_fees WHERE students_fees.enrollment_id = ".$filter['id']);
 $fees = [];
 $sub_total = 0;
