@@ -1,0 +1,49 @@
+<form name="formHolder.letter" id="formHolder.letter" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.letter.letter_sy.$touched && formHolder.letter.letter_sy.$invalid}">
+	<label>School Year</label>
+	<select class="form-control" name="letter_sy" ng-model="data.letter.letter_sy" ng-options="sy.school_year for sy in school_years track by sy.id" required></select>
+	<span class="help-block" ng-show="formHolder.letter.letter_sy.$touched && formHolder.letter.letter_sy.$invalid">School year is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.letter.letter_reason.$touched && formHolder.letter.letter_reason.$invalid}">
+	<label>Reason</label>
+	<input type="text" class="form-control" name="letter_reason" ng-model="data.letter.letter_reason" required>
+	<span class="help-block" ng-show="formHolder.letter.letter_reason.$touched && formHolder.letter.letter_reason.$invalid">Reason is required</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.letter.letter_content.$touched && formHolder.letter.letter_content.$invalid}">
+	<label>Content</label>
+	<input type="text" class="form-control" name="letter_content" ng-model="data.letter.letter_content" required>
+	<span class="help-block" ng-show="formHolder.letter.letter_content.$touched && formHolder.letter.letter_content.$invalid">Content is required</span>
+  </div>
+</div>
+<h3>Dates</h3>
+<button type="button" class="btn btn-primary" ng-click="letters.dates.add(this)">Add</button>
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>Date</th>
+		<th>Wholeday/Halfday</th>
+		<th></th>
+	</tr>
+</thead>
+<tbody>
+	<tr ng-repeat="d in data.letter.dates.data">
+		<td class="form-group" ng-class="{'has-error': formHolder.letter.excuse_letter_date{{$index}}['$touched'] && formHolder.letter.excuse_letter_date{{$index}}['$invalid']}" style="width: 150px;">
+			<input type="date" class="form-control" name="excuse_letter_date{{$index}}" ng-model="d.excuse_letter_date" ng-disabled="d.disabled" required>
+			<span class="help-block" ng-show="formHolder.letter.excuse_letter_date{{$index}}['$touched'] && formHolder.letter.excuse_letter_date{{$index}}['$invalid']">Date is required</span>
+		</td>
+		<td clas="form-group" ng-class="{'has-error': formHolder.letter.wholeday{{$index}}['$touched'] && formHolder.letter.wholeday{{$index}}['$invalid']}">
+			<select class="form-control" name="wholeday" ng-model="d.wholeday" ng-disabled="d.disabled" required>
+				<option value="Wholeday">Wholeday</option>
+				<option value="AM">AM</option>
+				<option value="PM">PM</option>
+			</select>
+			<span class="help-block" ng-show="formHolder.letter.wholeday{{$index}}['$touched'] && formHolder.letter.wholeday{{$index}}['$invalid']">This field is required</span>			
+		</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="letters.dates.del(this,d)"><i class="fa fa-close"></i></a>
+		</td>
+	</tr>
+</tbody>
+</table>
+</form>

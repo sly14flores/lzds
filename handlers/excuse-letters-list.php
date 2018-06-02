@@ -6,12 +6,20 @@ require_once '../db.php';
 
 $con = new pdo_db("excuse_letters");
 
-$letters = $con->getObj(array("student_id"=>$_POST['id']),array("id","student_id",array("letter_sy"=>array("school_years"=>["id","school_year"])),"letter_date_from","letter_date_to","letter_reason","letter_content"));
+$letters = $con->getObj(array("student_id"=>$_POST['id']),array("id","student_id",array("letter_sy"=>array("school_years"=>["id","school_year"])),"letter_reason","letter_content"));
+	
+$con->table = "excuse_letters_dates";
 
 foreach ($letters as $i => $letter) {
 	
-	$letters[$i]['letter_date_from'] = date("F j, Y",strtotime($letter['letter_date_from']));
-	$letters[$i]['letter_date_to'] = date("F j, Y",strtotime($letter['letter_date_to']));
+	$letters[$i]['dates']['data'] = $con->get(array("excuse_letter_id"=>$letter['id']),["id","excuse_letter_date","wholeday"]);
+	$letters[$i]['dates']['dels'] = [];
+	
+	foreach ($letters[$i]['dates']['data'] as $key => $date) {
+		
+		$letters[$i]['dates']['data'][$key]['disabled'] = true;
+		
+	}
 	
 };
 

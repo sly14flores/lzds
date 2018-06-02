@@ -1,13 +1,46 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.4.1
+-- http://www.phpmyadmin.net
 --
--- Table structure for table `staffs_records`
+-- Host: localhost
+-- Generation Time: Jun 03, 2018 at 12:33 AM
+-- Server version: 5.7.11
+-- PHP Version: 7.0.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `lzdssystem`
 --
 
-CREATE TABLE `staffs_records` (
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `excuse_letters`
+--
+
+CREATE TABLE `excuse_letters` (
   `id` int(11) NOT NULL,
-  `staff_id` int(11) DEFAULT NULL,
-  `record_type` varchar(1000) DEFAULT NULL,
-  `record_subject` varchar(1000) DEFAULT NULL,
-  `record_text` longtext,
+  `student_id` int(11) DEFAULT NULL,
+  `letter_sy` int(11) DEFAULT NULL,
+  `letter_reason` varchar(1000) DEFAULT NULL,
+  `letter_content` longtext,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `excuse_letters_dates`
+--
+
+CREATE TABLE `excuse_letters_dates` (
+  `id` int(11) NOT NULL,
+  `excuse_letter_id` int(11) DEFAULT NULL,
+  `excuse_letter_date` date DEFAULT NULL,
+  `wholeday` varchar(20) DEFAULT NULL,
   `system_log` datetime DEFAULT NULL,
   `update_log` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -17,27 +50,40 @@ CREATE TABLE `staffs_records` (
 --
 
 --
--- Indexes for table `staffs_records`
+-- Indexes for table `excuse_letters`
 --
-ALTER TABLE `staffs_records`
+ALTER TABLE `excuse_letters`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `staff_id` (`staff_id`);
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `letter_sy` (`letter_sy`);
+
+--
+-- Indexes for table `excuse_letters_dates`
+--
+ALTER TABLE `excuse_letters_dates`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `excuse_letter_id` (`excuse_letter_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `staffs_records`
+-- AUTO_INCREMENT for table `excuse_letters`
 --
-ALTER TABLE `staffs_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `excuse_letters`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `excuse_letters_dates`
+--
+ALTER TABLE `excuse_letters_dates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `staffs_records`
+-- Constraints for table `excuse_letters_dates`
 --
-ALTER TABLE `staffs_records`
-  ADD CONSTRAINT `staffs_records_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staffs_records` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `excuse_letters_dates`
+  ADD CONSTRAINT `excuse_letters_dates_ibfk_1` FOREIGN KEY (`excuse_letter_id`) REFERENCES `excuse_letters` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

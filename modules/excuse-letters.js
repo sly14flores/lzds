@@ -10,6 +10,10 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 	
 			scope.data.letter = {};
 			scope.data.letter.id = 0;
+			scope.data.letter.dates = {};			
+			scope.data.letter.dates.data = [];
+			scope.data.letter.dates.dels = [];
+
 			scope.data.letters = [];
 	
 			scope.pagination.letters = {};
@@ -77,11 +81,17 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 
 			if (letter == null) {
 				scope.data.letter = {};
-				scope.data.letter.id = 0;
+				scope.data.letter.id = 0;				
 				scope.data.letter.student_id = scope.student_id;
-				scope.data.letter.record_sy = scope.current_sy;
+				scope.data.letter.letter_sy = scope.current_sy;
+				scope.data.letter.dates = {};			
+				scope.data.letter.dates.data = [];
+				scope.data.letter.dates.dels = [];				
 			} else {
 				scope.data.letter = angular.copy(letter);
+				angular.forEach(scope.data.letter.dates.data,function(item,i) {
+					scope.data.letter.dates.data[i].excuse_letter_date = new Date(item.excuse_letter_date);
+				});
 				title = 'Edit Excuse Letter Info';
 			};
 
@@ -91,6 +101,46 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 			
 		};
 
+		self.dates = {
+			
+			add: function(scope) {
+				
+				scope.data.letter.dates.data.push({id:0, excuse_letter_date: new Date(), wholeday: "Wholeday", disabled: false});				
+				
+			},
+			
+			edit: function(scope,date) {
+
+				var index = scope.data.letter.dates.data.indexOf(date);
+				scope.data.letter.dates.data[index].disabled = !scope.data.letter.dates.data[index].disabled;
+				
+			},
+			
+			del: function(scope,date) {							
+				
+				if (date.id > 0) {
+					scope.data.letter.dates.dels.push(date.id);
+				}			
+
+				var dates = scope.data.letter.dates.data;
+				var index = scope.data.letter.dates.data.indexOf(date);
+				scope.data.letter.dates.data = [];		
+				
+				angular.forEach(dates, function(d,i) {
+					
+					if (index != i) {
+						
+						delete d['$$hashKey'];
+						scope.data.letter.dates.data.push(d);
+						
+					};
+					
+				});					
+				
+			}
+			
+		};
+		
 		self.save = function(scope) {			
 			
 			if (validate(scope)) return false;
