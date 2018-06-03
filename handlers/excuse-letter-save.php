@@ -9,6 +9,8 @@ $tables = array("excuse_letters","excuse_letters_dates");
 $dels = $_POST['dates']['dels'];
 $excuse_letters_dates = $_POST['dates']['data'];
 unset($_POST['dates']);
+unset($_POST['letter_date_from']);
+unset($_POST['letter_date_to']);
 $excuse_letters = $_POST;
 
 $con = new pdo_db($tables[0]);
