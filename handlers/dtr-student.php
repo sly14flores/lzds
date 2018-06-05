@@ -19,10 +19,12 @@ if ($_POST['option']) {
 		$delete = $con->query($sql);
 	}
 	$sql = "SELECT * FROM dtr_students WHERE rfid = '".$_POST['rfid']."' AND ddate LIKE '$month-%'";
-	$_Dtrs = $con->getData($sql);	
+	$_Dtrs = $con->getData($sql);
 }
 
 if (count($_Dtrs) == 0) generateDtr($con,$analyze);
+$dtrs = $con->getData($sql);
+analyzeTardinessAbsent($con,$analyze,$dtrs);
 $_Dtrs = $con->getData($sql);
 
 foreach ($_Dtrs as $key => $dtr) {
@@ -46,17 +48,15 @@ foreach ($_Dtrs as $key => $dtr) {
 		$_Dtrs[$key]['remarks'] .= "Travel Order: ".$to['to_description']. ", ".$to['to_wholeday'];
 	}		
 	if ($_Dtrs[$key]['absent']) $_Dtrs[$key]['remarks'] = "Absent";	
-	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";	
-}
+	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";
+
+};
 
 header("Content-type: application/json");
 echo json_encode($_Dtrs);
 
 function generateDtr($con,$analyze) {
-	
-	$schedule_id = $analyze->schedule_id;
-	$exempted = ($schedule_id<0)?true:false;
-	
+
 	$start = $_POST['year']."-".$_POST['month']['month']."-01";
 	$end = date("Y-m-t",strtotime($start));
 
@@ -79,7 +79,12 @@ function generateDtr($con,$analyze) {
 			$allotment = $analyze->allot($day,$log['time_log']);
 			$prop = array_keys($allotment);
 			$analyzed[$prop[0]] = $allotment[$prop[0]];
-		};		
+		};
+		# overwrite if manual logs exist
+		$manual_logs = $con->getData("SELECT * FROM students_manual_logs WHERE student_id = ".$_POST['id']." AND time_log LIKE '$day%'");
+		foreach ($manual_logs as $manual_log) {
+			$analyzed[$manual_log['allotment']] = $manual_log['time_log'];
+		};
 		
 		$dtr = array(
 			"rfid"=>$_POST['rfid'],
@@ -90,46 +95,59 @@ function generateDtr($con,$analyze) {
 			"afternoon_out"=>$analyzed['afternoon_out'],
 			"tardiness"=>"00:00:00",
 			"system_log"=>"CURRENT_TIMESTAMP"
-		);
-		
-		# tardiness
-		$schedules = $analyze->schedules;
-		$morning_in = "$day ".$schedules[date("D",strtotime($day))]['morning_in'];
-		
-		# if has classes and late
-		if ( is_working_day($day) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
-			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
-			if (!$exempted) $dtr['tardiness'] = gmdate('H:i:s',$tardiness);
-		}
-		
-		# if absent
-		if (is_absent($dtr,$day)) {
-			if (!$exempted) {
-				$dtr['tardiness'] = "00:00:00";			
-				$dtr['absent'] = 1;
-			}
-		};		
-		
-		# if halfday
-		if (is_halfday_am($dtr,$day)) {
-			if (!$exempted) {
-				$dtr['tardiness'] = "00:00:00";
-				$dtr['is_halfday'] = 1;
-			}
-		};
-		
-		if (is_halfday_pm($dtr,$day)) {
-			if (!$exempted) {
-				$dtr['is_halfday'] = 1;
-			}
-		};
+		);		
 
 		$log = $con->insertData($dtr);
 		
 		$day = date("Y-m-d",strtotime("+1 Day",strtotime($day)));
 		
-	}
+	};
 
+};
+
+function analyzeTardinessAbsent($con,$analyze,$dtrs) {
+
+	$schedule_id = $analyze->schedule_id;
+	$exempted = ($schedule_id<0)?true:false;
+
+	foreach ($dtrs as $i => $dtr) {
+	
+		# tardiness
+		$schedules = $analyze->schedules;
+		$morning_in = $dtr['ddate']." ".$schedules[date("D",strtotime($dtr['ddate']))]['morning_in'];
+		
+		# if has classes and late
+		if ( is_working_day($dtr['ddate']) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
+			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
+			if (!$exempted) $dtrs[$i]['tardiness'] = gmdate('H:i:s',$tardiness);
+		}
+		
+		# if absent
+		if (is_absent($dtr,$dtr['ddate'])) {
+			if (!$exempted) {
+				$dtrs[$i]['tardiness'] = "00:00:00";			
+				$dtrs[$i]['absent'] = 1;
+			}
+		};
+		
+		# if halfday
+		if (is_halfday_am($dtr,$dtr['ddate'])) {
+			if (!$exempted) {
+				$dtrs[$i]['tardiness'] = "00:00:00";
+				$dtrs[$i]['is_halfday'] = 1;
+			}
+		};
+		
+		if (is_halfday_pm($dtr,$dtr['ddate'])) {
+			if (!$exempted) {
+				$dtrs[$i]['is_halfday'] = 1;
+			}
+		};
+		
+		$update = $con->updateData($dtrs[$i],'id');
+		
+	};
+	
 };
 
 ?>

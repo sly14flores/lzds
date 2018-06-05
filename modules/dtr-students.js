@@ -513,7 +513,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};
 
 		self.logs = function(scope,row) {	
-			
+
 			scope.backlogs = [];			
 			
 			scope.dtr_day = angular.copy(row);			
@@ -523,18 +523,15 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			scope.dtr_day.afternoon_out = new Date(row.ddate+" "+row.afternoon_out);						
 			
 			scope.dtr_day.disabled = {};
-			scope.dtr_day.disabled.morning_in = row.morning_in == '-'?false:true;
-			scope.dtr_day.disabled.morning_out = row.morning_out == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_in = row.afternoon_in == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_out = row.afternoon_out == '-'?false:true;
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/backlogs.php',
-			  data: {rfid: row.rfid, date: row.ddate}
+			  data: {id: scope.studentDtr.id, rfid: row.rfid, date: row.ddate}
 			}).then(function mySucces(response) {
 				
-				scope.backlogs = angular.copy(response.data);
+				scope.backlogs = angular.copy(response.data.backlogs);
+				scope.dtr_day.disabled = angular.copy(response.data.disabled);
 				
 			}, function myError(response) {				 
 				

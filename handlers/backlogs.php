@@ -15,7 +15,19 @@ foreach ($backlogs as $key => $backlog) {
 	
 }
 
+$disabled = array(
+	"morning_in"=>true,
+	"morning_out"=>true,
+	"afternoon_in"=>true,
+	"afternoon_out"=>true,
+);
+
+$manual_logs = $con->getData("SELECT * FROM students_manual_logs WHERE student_id = ".$_POST['id']." AND time_log LIKE '".$_POST['date']."%'");
+foreach ($manual_logs as $manual_log) {
+	$disabled[$manual_log['allotment']] = false;
+};
+
 header("Content-type: application/json");
-echo json_encode($backlogs);
+echo json_encode(array("backlogs"=>$backlogs,"disabled"=>$disabled));
 
 ?>
