@@ -221,34 +221,46 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			scope.dtr_day.afternoon_out = new Date(row.ddate+" "+row.afternoon_out);						
 			
 			scope.dtr_day.disabled = {};
-			scope.dtr_day.disabled.morning_in = row.morning_in == '-'?false:true;
-			scope.dtr_day.disabled.morning_out = row.morning_out == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_in = row.afternoon_in == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_out = row.afternoon_out == '-'?false:true;
+			scope.dtr_day.manual = {};
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/backlogs.php',
-			  data: {rfid: row.rfid, date: row.ddate}
+			  data: {dtr: 'dtr', manual: 'staffs_manual_logs', id: scope.staffDtr.id, rfid: row.rfid, date: row.ddate, dtr_id: row.id}
 			}).then(function mySucces(response) {
-				
-				scope.backlogs = angular.copy(response.data);
-				
-			}, function myError(response) {				 
-				
-			});				
+
+				scope.backlogs = angular.copy(response.data.backlogs);
+				scope.dtr_day.disabled = angular.copy(response.data.disabled);
+				scope.dtr_day.manual = angular.copy(response.data.manual);
+
+			}, function myError(response) {
+
+			});
 			
 			var content = 'dialogs/log.html';			
 
-			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);						
+			bootstrapModal.box2(scope,row.day+' - '+row.date,content,self.dtrLogs,'Save');						
 			
 		};
+		
+		self.manualLogCheck = function(scope,log) {
+			
+			scope.dtr_day.disabled[log] = !scope.dtr_day.disabled[log];
+			
+			if (scope.dtr_day.disabled[log]) {
+
+				scope.dtr_day.manual[log].save = true;
+				
+			};
+			
+		};		
 		
 		self.allot = function(scope,bl) {
 			
 			if (scope.dtr_allotment == "") return;
 			
 			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log);
+			scope.dtr_day.manual[scope.dtr_allotment].save = false;			
 			
 		};
 		
@@ -257,7 +269,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			$http({
 			  method: 'POST',
 			  url: 'handlers/dtr-day-logs.php',
-			  data: {table: "dtr", day: scope.dtr_day}
+			  data: {dtr: "dtr", manual: "staffs_manual_logs", staff_id: scope.staffDtr.id, day: scope.dtr_day}
 			}).then(function mySucces(response) {
 				
 				self.dtr(scope,false);

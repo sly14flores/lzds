@@ -83,7 +83,7 @@ function generateDtr($con,$analyze) {
 		# overwrite if manual logs exist
 		$manual_logs = $con->getData("SELECT * FROM students_manual_logs WHERE student_id = ".$_POST['id']." AND time_log LIKE '$day%'");
 		foreach ($manual_logs as $manual_log) {
-			$analyzed[$manual_log['allotment']] = $manual_log['time_log'];
+			if (date("H:i:s",strtotime($analyzed[$manual_log['allotment']])) == "00:00:00") $analyzed[$manual_log['allotment']] = $manual_log['time_log'];
 		};
 		
 		$dtr = array(
@@ -112,11 +112,15 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 
 	foreach ($dtrs as $i => $dtr) {
 	
+		$dtrs[$i]['tardiness'] = "00:00:00";
+		$dtrs[$i]['absent'] = 0;
+		$dtrs[$i]['is_halfday'] = 0;
+	
 		# tardiness
 		$schedules = $analyze->schedules;
 		$morning_in = $dtr['ddate']." ".$schedules[date("D",strtotime($dtr['ddate']))]['morning_in'];
 		
-		# if has classes and late
+		# if has classes and late	
 		if ( is_working_day($dtr['ddate']) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
 			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
 			if (!$exempted) $dtrs[$i]['tardiness'] = gmdate('H:i:s',$tardiness);

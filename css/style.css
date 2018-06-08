@@ -7,5 +7,5 @@
 }
 
 .tools-editor i {
-	cursor: pointer;
+	cursor: pointer!important;
 }
