@@ -1,4 +1,4 @@
-angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI) {
 	
 	function form() {
 		
@@ -78,6 +78,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 		
 		self.clone = function(scope,row) {
 			
+			blockUI.show();			
+			
 			scope.views.list = true;			
 			
 			scope.views.panel_title = 'Clone Fee';
@@ -101,9 +103,11 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 				angular.copy(response.data['fee'], scope.fee);
 				angular.copy(response.data['fee_items'], scope.fee_items);
 				
+				blockUI.hide();				
+				
 			}, function myError(response) {
 				 
-			  // error
+				blockUI.hide();
 				
 			});				
 
@@ -121,6 +125,19 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 			});
 			
 			schoolYear.get(scope);
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			}).then(function mySucces(response) {
+
+				scope.fee.school_year = response.data;
+				
+			}, function myError(response) {
+				 
+			  // error
+				
+			});			
 			
 		};
 		
@@ -141,6 +158,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 		};		
 		
 		self.fee = function(scope,row) { // form
+			
+			blockUI.show();
 			
 			scope.views.list = true;			
 			
@@ -164,9 +183,11 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 					angular.copy(response.data['fee'], scope.fee);
 					angular.copy(response.data['fee_items'], scope.fee_items);
 					
+					blockUI.hide();
+					
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
 				
@@ -196,7 +217,9 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 		};		
 		
 		self.list = function(scope,view) {		
-
+		
+			blockUI.show();
+					
 			scope.views.list = false;		
 		
 			scope.fee = {};
@@ -218,11 +241,13 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.fees);
-				scope.filterData = scope.fees;	
+				scope.filterData = scope.fees;
+				
+				blockUI.hide();				
 				
 			}, function myError(response) {
 				 
-			  // error
+				blockUI.hide();
 				
 			});	
 			
@@ -237,6 +262,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 			
 			if (validate(scope)) return;
 			
+			blockUI.show();
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/fee-save.php',
@@ -246,9 +273,11 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap']).
 				self.list(scope,'fee');
 				scope.fee_items_del = [];
 				
+				blockUI.hide();				
+				
 			}, function myError(response) {
 				 
-			  // error
+				blockUI.hide();
 				
 			});		
 		
