@@ -1,4 +1,4 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,blockUI) {
 	
 	function form() {
 		
@@ -102,7 +102,9 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			};
 			
 			var onOk = function() {
-			
+				
+				blockUI.show('Analyzing dtr please wait...');
+				
 				scope.staffDtr.option = opt;
 			
 				scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
@@ -116,10 +118,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 				}).then(function mySucces(response) {					
 					
 					scope.dtr = angular.copy(response.data);
+					blockUI.hide();
 					
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
 				
