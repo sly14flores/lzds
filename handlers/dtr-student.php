@@ -118,11 +118,17 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 	
 		# tardiness
 		$schedules = $analyze->schedules;
+		$dtr_morning_in = $dtr['morning_in'];		
 		$morning_in = $dtr['ddate']." ".$schedules[date("D",strtotime($dtr['ddate']))]['morning_in'];
+
+		if ($schedules[date("D",strtotime($dtr['ddate']))]['duration'] == "PM") {
+			$dtr_morning_in =$dtr['afternoon_in'];
+			$morning_in = $dtr['ddate']." ".$schedules[date("D",strtotime($dtr['ddate']))]['afternoon_in'];			
+		};
 		
-		# if has classes and late	
-		if ( is_working_day($dtr['ddate']) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
-			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
+		# if has classes and late
+		if ( is_working_day($dtr['ddate']) && (strtotime($dtr_morning_in) > strtotime($morning_in)) ) {
+			$tardiness = strtotime($dtr_morning_in)-strtotime($morning_in);
 			if (!$exempted) $dtrs[$i]['tardiness'] = gmdate('H:i:s',$tardiness);
 		}
 		
@@ -135,14 +141,14 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 		};
 		
 		# if halfday
-		if (is_halfday_am($dtr,$dtr['ddate'])) {
+		if ( (is_halfday_am($dtr,$dtr['ddate'])) && ($schedules[date("D",strtotime($dtr['ddate']))]['duration']=="Wholeday") ) {
 			if (!$exempted) {
 				$dtrs[$i]['tardiness'] = "00:00:00";
 				$dtrs[$i]['is_halfday'] = 1;
 			}
 		};
 		
-		if (is_halfday_pm($dtr,$dtr['ddate'])) {
+		if ( (is_halfday_pm($dtr,$dtr['ddate'])) && ($schedules[date("D",strtotime($dtr['ddate']))]['duration']=="Wholeday") ) {
 			if (!$exempted) {
 				$dtrs[$i]['is_halfday'] = 1;
 			}

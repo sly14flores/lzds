@@ -258,7 +258,7 @@ require_once 'authentication.php';
 					  <div ng-show="studentDtr.by == 'SF2' || studentDtr.by == 'Section'">
 						  <div class="form-group">					  
 							<label>Grade :</label>
-							<select class="form-control" ng-model="studentDtr.grade" ng-options="level.description for level in levels track by level.id" ng-change="form.studentsSelect(this)" ng-required="studentDtr.by == 'SF2' || studentDtr.by == 'Section'" ng-change="form.studentsSelect(this)"></select>
+							<select class="form-control" ng-model="studentDtr.grade" ng-options="level.description for level in levels track by level.id" ng-change="form.studentsSelect(this)" ng-required="studentDtr.by == 'SF2' || studentDtr.by == 'Section'"></select>
 						  </div>
 						  <div class="form-group">						  
 							<label>Section :</label>

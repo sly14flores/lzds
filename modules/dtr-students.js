@@ -143,14 +143,14 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 
 					studentsSelect(scope);
 				
-				break;
+				break;				
 				
 			};
 			
 		};
 		
 		function studentsSelect(scope) {
-			
+
 			if (scope.studentDtr.grade !== undefined) scope.sections = scope.studentDtr.grade.sections;
 			
 			scope.select_students = [];
@@ -174,9 +174,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		self.studentsSelect = function(scope) {
 
 			if (scope.studentDtr.by == 'Section') studentsSelect(scope);
-					
+
+			if (scope.studentDtr.by == 'SF2') if (scope.studentDtr.grade !== undefined) scope.sections = scope.studentDtr.grade.sections;
+
 		};
-		
+
 		self.sectionStudentSelect = function(scope) {
 			
 			if (scope.studentDtr.select_student === undefined) return;
