@@ -8,6 +8,21 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			
 			scope.formHolder = {};
 			
+			scope.months = [
+				{id: "01", description: "January"},
+				{id: "02", description: "February"},
+				{id: "03", description: "March"},
+				{id: "04", description: "April"},
+				{id: "05", description: "May"},
+				{id: "06", description: "June"},
+				{id: "07", description: "July"},
+				{id: "08", description: "August"},
+				{id: "09", description: "September"},
+				{id: "10", description: "October"},
+				{id: "11", description: "November"},
+				{id: "12", description: "December"}
+			];
+			
 			scope.report = {};
 			scope.report.summary = {
 				school_year: {id: 0, school_year: "-"},
@@ -105,10 +120,12 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				return;				
 			};
 
+			if (validate(scope,'summary')) return;
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/report-summary.php',
-			  data: {school_year: scope.report.summary.school_year.id}
+			  data: scope.report.summary
 			}).then(function mySucces(response) {
 
 				print(scope,response.data);
@@ -242,6 +259,21 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));				
+			
+		};
+		
+		self.reset = function(scope) {
+			
+			var controls = scope.formHolder.summary.$$controls;
+			
+			angular.forEach(controls,function(elem,i) {
+				
+				if (elem.$$attr.$attr.required) {
+					elem.$touched = false;
+					elem.$invalid = false;
+				};
+									
+			});
 			
 		};
 		

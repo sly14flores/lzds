@@ -6,6 +6,54 @@ require_once '../db.php';
 
 $con = new pdo_db();
 
+$and = array();
+
+switch ($_POST['coverage']) {
+
+	case "Daily":
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date = '".date("Y-m-d",strtotime($_POST['date']))."'",
+			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']." AND payments.payment_date = '".date("Y-m-d",strtotime($_POST['date']))."'"
+		);
+
+	break;
+	
+	case "Weekly":
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND (enrollment_date >= '".date("Y-m-d",strtotime($_POST['week_from']))."' AND enrollment_date <= '".date("Y-m-d",strtotime($_POST['week_to']))."')",
+			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']." AND (payments.payment_date >= '".date("Y-m-d",strtotime($_POST['week_from']))."' AND payments.payment_date <= '".date("Y-m-d",strtotime($_POST['week_to']))."')"
+		);
+
+	break;
+	
+	case "Monthly":
+
+		$ym = $_POST['year']."-".$_POST['month']['id'];
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date LIKE '$ym%'",
+			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']." AND payments.payment_date LIKE '$ym%'"
+		);
+
+	break;
+	
+	case "Annually":
+		
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id'],
+			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']
+		);
+		
+	break;
+
+};
+
 $summary = array(
 	"levels"=>[],
 	"overall"=>[array(
@@ -37,14 +85,28 @@ foreach ($summary['levels'] as $i => $sl) {
 	$total_collections = 0;
 	$total_balance = 0;
 
-	$q_total_students = $con->getData("SELECT count(*) total_students FROM enrollments WHERE grade = ".$sl['id']." AND enrollment_school_year = ".$_POST['school_year']);	
-	$total_students = (count($q_total_students))?$q_total_students[0]['total_students']:0;
+	$enrollments = $con->getData("SELECT id FROM enrollments WHERE grade = ".$sl['id'].$and['enrollments']);
+	$total_students = count($enrollments);
+
+	if (count($enrollments)) {
+
+		$students = [];
+		
+		foreach ($enrollments as $enrollment) {
+			
+			$students[] = $enrollment['id'];
+			
+		};
 	
-	$q_tuition_fees = $con->getData("SELECT SUM(students_fees.amount) tuition_fees FROM students_fees LEFT JOIN fee_items ON students_fees.fee_item_id = fee_items.id LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fee_items.level = ".$sl['id']." AND fees.school_year = ".$_POST['school_year']);
-	$tuition_fees = (count($q_tuition_fees))?$q_tuition_fees[0]['tuition_fees']:0;
+		$ids = implode(",",$students);		
 	
-	$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE enrollments.grade = ".$sl['id']." AND enrollments.enrollment_school_year = ".$_POST['school_year']);
-	$total_collections = (count($q_total_collections))?$q_total_collections[0]['total_collections']:0;
+		$q_tuition_fees = $con->getData("SELECT SUM(students_fees.amount) tuition_fees FROM students_fees LEFT JOIN fee_items ON students_fees.fee_item_id = fee_items.id LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE students_fees.enrollment_id IN ($ids)".$and['tuition_fees']);
+		$tuition_fees = (count($q_tuition_fees))?$q_tuition_fees[0]['tuition_fees']:0;
+		
+		$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE payments.enrollment_id IN ($ids)".$and['total_collections']);
+		$total_collections = (count($q_total_collections))?$q_total_collections[0]['total_collections']:0;
+		
+	};
 	
 	$total_balance = $tuition_fees - $total_collections;
 	
