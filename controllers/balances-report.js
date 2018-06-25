@@ -1,12 +1,12 @@
-var app = angular.module('paymentsReport',['account-module','toggle-fullscreen','ui.bootstrap','payments-report-module']);
+var app = angular.module('balancesReport',['account-module','toggle-fullscreen','ui.bootstrap','balances-report-module']);
 
-app.controller('paymentsReportCtrl',function($scope,fullscreen,form) {
+app.controller('balancesReportCtrl',function($scope,fullscreen,form) {
 	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	
 	
-	$scope.views.title = 'Payments Report';
+	$scope.views.title = 'Balances Report';
 	
 	$scope.fullscreen = fullscreen;	
 

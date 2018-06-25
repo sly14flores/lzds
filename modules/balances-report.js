@@ -1,4 +1,4 @@
-angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,printPost) {
+angular.module('balances-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,printPost) {
 	
 	function form() {
 		
