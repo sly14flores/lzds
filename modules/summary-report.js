@@ -138,6 +138,50 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 		
 		function print(scope,data) {
 			
+			var coverage = scope.report.summary.coverage;
+			var coverage_details = '';
+			
+			var d = new Date();
+			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];			
+			
+			switch (scope.report.summary.coverage) {
+				
+				case 'Daily':
+
+					var date = scope.report.summary.date;
+					coverage_details = '('+months[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear()+')';
+
+				break;
+
+				case 'Weekly':
+
+					var dateFrom = scope.report.summary.week_from;
+					var dateTo = scope.report.summary.week_to;
+
+					coverage_details = '('+months[dateFrom.getMonth()]+' '+dateFrom.getDate()+', '+dateFrom.getFullYear()+' to '+months[dateTo.getMonth()]+' '+dateTo.getDate()+', '+dateTo.getFullYear()+')';
+
+				break;
+
+				case 'Monthly':
+				
+					coverage_details = '('+scope.report.summary.month.description+', '+scope.report.summary.year+')';
+				
+				break;
+
+				case 'Annually':									
+				
+					coverage_details = '('+scope.report.summary.year+')';
+				
+				break;
+
+				case 'SY':
+					
+					coverage = 'School Year';
+					
+				break;
+				
+			};			
+			
 			var doc = new jsPDF({
 				orientation: 'portrait',
 				unit: 'pt',
@@ -158,11 +202,13 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			
 			doc.setFontSize(12);
 			doc.setFontType('bold');
-			doc.myText("SUMMARY",{align: "center"},0,185);
+			doc.myText("SUMMARY",{align: "center"},0,182);
 			
 			doc.setFontSize(10);
-			doc.setFontType('normal');			
-			doc.myText("SY: "+scope.report.summary.school_year.school_year,{align: "center"},0,210);			
+			doc.setFontType('normal');
+			doc.text(50, 213, 'Coverage: '+coverage);
+			doc.text(160, 213, coverage_details);
+			doc.text(495, 213, "SY: "+scope.report.summary.school_year.school_year);
 			
 			doc.setFontSize(12);
 			doc.setFontType('bold');			
@@ -250,9 +296,7 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					fillColor: [255, 255, 255]
 				}
 			});	
-			
-			var d = new Date();
-			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];			
+
 			doc.setFontSize(9);
 			doc.setFontType('italic');
 			doc.myText('Generated on: '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds(),{align: "center"},0,730);

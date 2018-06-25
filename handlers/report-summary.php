@@ -43,13 +43,25 @@ switch ($_POST['coverage']) {
 	break;
 	
 	case "Annually":
+
+		$y = $_POST['year'];
+	
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date LIKE '$y%'",
+			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']." AND payments.payment_date LIKE '$y%'"
+		);
 		
+	break;
+	
+	case "SY":
+	
 		$and = array(
 			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id'],
 			"tuition_fees"=>" AND fees.school_year = ".$_POST['school_year']['id'],
 			"total_collections"=>" AND enrollments.enrollment_school_year = ".$_POST['school_year']['id']
-		);
-		
+		);	
+	
 	break;
 
 };
