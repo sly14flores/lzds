@@ -1,0 +1,47 @@
+<form name="formHolder.group" id="formHolder.group" novalidate>
+<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+<div class="clearfix"></div>
+<h4><strong>Group Info</strong></h4>
+<div class="ln_solid"></div>
+<div class="row">
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.group.group_name.$touched && formHolder.group.group_name.$invalid}">
+	<label>Group Name</label>
+	<input type="text" placeholder="" class="form-control" name="group_name" ng-model="group.group_name" ng-disabled="btns.ok.disabled" required>
+	<span class="help-block" ng-show="formHolder.group.group_name.$touched && formHolder.group.group_name.$invalid">Group name is required</span>
+  </div>
+  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.group.group_description.$touched && formHolder.group.group_description.$invalid}">
+	<label>Group Description</label>
+	<input type="text" placeholder="" class="form-control" name="group_description" ng-model="group.group_description" ng-disabled="btns.ok.disabled" required>
+	<span class="help-block" ng-show="formHolder.group.group_description.$touched && formHolder.group.group_description.$invalid">Group description is required</span>
+  </div> 
+</div>
+<div class="ln_solid"></div>
+<h4><strong>Privileges</strong></h4>
+<div class="row">
+  <div class="col-lg-12">
+	<div class="accordion" id="accordion1" role="tablist" aria-multiselectable="true" style="margin-top: 10px;">  
+		<div class="panel" ng-repeat="p in privileges">
+			<a class="panel-heading" role="tab" id="heading{{$index}}" data-toggle="collapse" data-parent="#accordion1" href="#collapse{{$index}}" aria-expanded="true" aria-controls="collapse{{$index}}">
+			  <h4 class="panel-title">{{p.description}}</h4>
+			</a>
+			<div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index}}" aria-expanded="true" style="">
+			  <div class="panel-body">
+				  <span ng-repeat="pp in p.privileges" style="margin-left: 10px;">
+					<label>
+					  <input type="checkbox" class="js-switch" ng-model="pp.value" ng-disabled="btns.ok.disabled"> &nbsp;{{pp.description}}
+					</label>
+				  </span>
+			  </div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="ln_solid"></div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
+	  <button type="button" class="btn btn-success" ng-click="form.save(this)" ng-disabled="btns.ok.disabled">{{btns.ok.label}}</button>
+	</div>
+</div>
+</form>

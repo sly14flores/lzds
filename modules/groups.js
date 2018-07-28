@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel) {
+angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','x-panel-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,xPanel,blockUI) {
 	
 	function form() {
 		
@@ -10,11 +10,11 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 			scope.views.list = false;			
 			
-			scope.staff = {};
-			scope.staff.id = 0;
+			scope.group = {};
+			scope.group.id = 0;
+			scope.privileges = [];
 
-			scope.staffs = [];
-			scope.suggest_staffs = [];
+			scope.groups = [];
 			
 			scope.btns = {
 				ok: {
@@ -27,44 +27,11 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				}
 			};
 			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/schedules-list.php'			 
-			}).then(function mySucces(response) {
-				
-				scope.schedules = response.data;
-				
-			}, function myError(response) {
-			
-			  // error
-			
-			});	
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/groups-list.php'			 
-			}).then(function mySucces(response) {
-				
-				scope.groups = response.data;
-				
-			}, function myError(response) {
-			
-			  // error
-			
-			});			
-			
-			scope.staff_id = 0;
-			
-			scope.data = {};
-			scope.pagination = {};
-			
-			jspdf.init();			
-			
 		};
 		
 		function validate(scope) {
 			
-			var controls = scope.formHolder.staff.$$controls;
+			var controls = scope.formHolder.group.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
 				
@@ -72,19 +39,19 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 									
 			});
 
-			return scope.formHolder.staff.$invalid;
+			return scope.formHolder.group.$invalid;
 			
 		};
 		
 		function mode(scope,row) {
 			
 			if (row != null) {
-				scope.views.panel_title = 'Staff Info';			
+				scope.views.panel_title = 'Group Info';			
 				scope.btns.ok.disabled = true;
 				scope.btns.ok.label = 'Update';
 				scope.btns.cancel.label = 'Close';			
 			} else {
-				scope.views.panel_title = 'Add Staff';
+				scope.views.panel_title = 'Add Group';
 				scope.btns.ok.disabled = false;	
 				scope.btns.ok.label = 'Save';
 				scope.btns.cancel.label = 'Cancel';
@@ -92,27 +59,16 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 		};		
 		
-		self.staff = function(scope,row) { // form
-
-			scope.leaves.data(scope);
-			scope.tos.data(scope);
-			scope.loans.data(scope);
-			scope.records.data(scope);
+		self.group = function(scope,row) { // form
 			
-			$timeout(function() {
-				scope.staff_id = (row==null)?0:row.id;
-				scope.leaves.list(scope);
-				scope.tos.list(scope);
-				scope.loans.list(scope);
-				scope.records.list(scope);
-			},1000);
+			blockUI.show();			
 			
 			scope.views.list = true;		
 			
 			mode(scope,row);			
 			
 			$('#x_content').html('Loading...');
-			$('#x_content').load('forms/staff.html',function() {		
+			$('#x_content').load('forms/group.html',function() {		
 				$timeout(function() {$compile($('#x_content')[0])(scope); },100);
 				$timeout(function() { initSwitch(); },500);
 			});
@@ -123,24 +79,27 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/staff-edit.php',
+				  url: 'handlers/group-edit.php',
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
 					
-					angular.copy(response.data, scope.staff);
-					if (scope.staff.birthday != null) scope.staff.birthday = new Date(scope.staff.birthday);
+					angular.copy(response.data, scope.group);
+					privileges(scope,row.id);
 					
-					xPanel.start('collapse-leaves');
-					xPanel.start('collapse-tos');					
-					xPanel.start('collapse-loans');					
-					xPanel.start('collapse-records');
+					blockUI.hide();
 					
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
-				});					
-			};			
+				});
+				
+			} else {
+
+				privileges(scope,0);
+				blockUI.hide();				
+			
+			};
 			
 		};
 		
@@ -150,48 +109,40 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 		};		
 		
-		self.list = function(scope) {		
+		self.list = function(scope) {
+			
+			blockUI.show();
 			
 			scope.views.list = false;			
 			
-			scope.staff = {};
-			scope.staff.id = 0;		
+			scope.group = {};
+			scope.group.id = 0;
+			scope.privileges = [];			
 		
 			scope.currentPage = 1;
 			scope.pageSize = 15;
 			scope.maxSize = 5;				
 		
-			scope.views.panel_title = 'Staffs List';		
+			scope.views.panel_title = 'Groups List';		
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staffs-list.php'
+			  url: 'handlers/groups-privileges-list.php'
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.staffs);
-				scope.filterData = scope.staffs;			
+				angular.copy(response.data, scope.groups);
+				scope.filterData = scope.groups;
+
+				blockUI.hide();				
 				
 			}, function myError(response) {
 				 
-			  // error
-				
-			});
-			
-			$http({
-			  method: 'POST',
-			  url: 'handlers/staffs-suggest.php'
-			}).then(function mySucces(response) {
-				
-				angular.copy(response.data, scope.suggest_staffs);
-				
-			}, function myError(response) {
-				 
-			  // error
+				blockUI.hide();
 				
 			});			
 			
 			$('#x_content').html('Loading...');
-			$('#x_content').load('lists/staffs.html',function() {
+			$('#x_content').load('lists/groups.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
 			});	
 
@@ -206,8 +157,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/staff-save.php',
-			  data: scope.staff
+			  url: 'handlers/group-save.php',
+			  data: {group: scope.group, privileges: scope.privileges}
 			}).then(function mySucces(response) {
 				
 				self.list(scope);
@@ -228,7 +179,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				
 				$http({
 				  method: 'POST',
-				  url: 'handlers/staff-delete.php',
+				  url: 'handlers/group-delete.php',
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
@@ -242,7 +193,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
+			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this group?',onOk,function() {});						
 
 		};
 
@@ -255,6 +206,24 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 				});
 			});
 
+		};
+		
+		function privileges(scope,id) {
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/privileges.php',
+			  data: {id: id}
+			}).then(function mySuccess(response) {
+				
+				scope.privileges = angular.copy(response.data);
+				
+			}, function myError(response) {
+				
+				//
+				
+			});				
+			
 		};
 		
 	};

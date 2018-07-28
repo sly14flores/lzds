@@ -24,6 +24,8 @@ require_once 'authentication.php';
     <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
     <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
     <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
 	
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
@@ -60,6 +62,11 @@ require_once 'authentication.php';
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
+				  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="index.html">Dashboard</a></li>	
+					</ul>
+				  </li>
                   <li class="active"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="students.html">Students</a></li>
@@ -277,7 +284,9 @@ require_once 'authentication.php';
     <!-- PNotify -->
     <script src="vendors/pnotify/dist/pnotify.js"></script>
     <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script> 	
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>	
     
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>

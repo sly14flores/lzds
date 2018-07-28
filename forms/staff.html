@@ -224,6 +224,19 @@
 		<hr>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			  <div class="">
+				<label>
+				  <input type="checkbox" class="js-switch" ng-model="staff.is_active" ng-disabled="btns.ok.disabled"> &nbsp;{{(staff.is_active===true)?'Active':'Inactive'}}
+				</label>
+			  </div>
+		  </div>
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-show="staff.is_active">
+			<label>Group</label>
+			<select class="form-control" name="staff_account_group" ng-model="staff.staff_account_group" ng-options="group.group_name for group in groups track by group.id" ng-disabled="btns.ok.disabled" ng-required="staff.is_active"></select>		  
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
 			<label>Username</label>
 			<input type="text" placeholder="" class="form-control" name="username" ng-model="staff.username" ng-disabled="btns.ok.disabled">
 		  </div>

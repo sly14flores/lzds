@@ -1,1 +1,19 @@
-ALTER TABLE `schedules_details` ADD `duration` VARCHAR(20) NULL AFTER `schedule_day`;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL,
+  `group_name` varchar(50) DEFAULT NULL,
+  `group_description` varchar(50) DEFAULT NULL,
+  `privileges` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;

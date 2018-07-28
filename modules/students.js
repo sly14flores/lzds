@@ -241,6 +241,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 		self.addParent = function(scope) {
 			
+			if (scope.btns.ok.disabled) return;			
+			
 			scope.parents_guardians.push({
 				id: 0,
 				student_id: 0,
@@ -258,6 +260,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		self.delParent = function(scope,row) {
 
 			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (scope.btns.ok.disabled) return;
 			
 			if (row.id > 0) {
 				scope.parents_guardians_dels.push(row.id);

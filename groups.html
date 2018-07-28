@@ -20,13 +20,19 @@ require_once 'authentication.php';
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
-
+    <!-- PNotify -->
+    <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+	
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="cashier" ng-controller="cashierCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="groups" ng-controller="groupsCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -73,9 +79,9 @@ require_once 'authentication.php';
                       <li><a href="enrollment-online.html">Online</a></li>
                     </ul>
                   </li>					  
-                  <li class="active"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  <li><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li class="active"><a href="cashier.html">Cashier</a></li>
+                      <li><a href="cashier.html">Cashier</a></li>
                       <li><a href="dtr.html">DTR (Staffs)</a></li>
                       <li><a href="dtr-students.html">DTR (Students)</a></li>					  
                       <li><a href="payroll.html">Payroll</a></li>					  
@@ -84,16 +90,16 @@ require_once 'authentication.php';
                   <li><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
                       <li><a href="balances_report.html">Balances</a></li>
-                      <li><a href="summary_report.html">Summary</a></li>
+                      <li><a href="summary_report.html">Summary</a></li>					  
                     </ul>				  
                   </li>				  
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li class="active"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="levels.html">Grade Levels</a></li>					
                       <li><a href="school-fees.html">School Fees</a></li>					
                       <li><a href="schedules.html">Schedules</a></li>
                       <li><a href="holidays.html">Holidays</a></li>						  
-                      <li><a href="groups.html">Groups</a></li>
+                      <li class="active"><a href="groups.html">Groups</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -218,14 +224,6 @@ require_once 'authentication.php';
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <select class="form-control" ng-model="filter.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id" ng-disabled="views.list">
-						<option value="0">SY</option>
-					</select>
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" ng-click="form.list(this)">Go!</button>
-                    </span>
-                  </div>				
-                  <div class="input-group">
                     <input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button" ng-click="form.list(this)">&nbsp;</button>
@@ -248,8 +246,8 @@ require_once 'authentication.php';
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="javascript:;" ng-click="form.list(this)">Payments List</a></li>
-                          <li ng-show="enrollment_info.id != undefined"><a href="javascript:;" ng-click="form.soa(this)">Generate SOA Email</a></li>
+                          <li><a href="javascript:;" ng-click="form.group(this,null)">Add New Group</a></li>
+                          <li><a href="javascript:;" ng-click="form.list(this)">Groups List</a></li>
                         </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
@@ -283,23 +281,34 @@ require_once 'authentication.php';
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- PNotify -->
+    <script src="vendors/pnotify/dist/pnotify.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>	
     
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>	
+	
+    <script src="vendors/jspdf/jspdf.min.js"></script>
+    <script src="vendors/jspdf/jspdf.plugin.autotable.js"></script>	
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
-
+	
 	<script src="modules/bootstrap-modal.js"></script>
+	<script src="modules/x-panel.js"></script>	
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
-	<script src="modules/school-year.js"></script>
-	<script src="modules/window-open-post.js"></script>	
-	<script src="modules/cashier.js"></script>
+	<script src="modules/blockui.js"></script>
+	<script src="modules/pnotify.js"></script>
+	<script src="modules/groups.js"></script>
 	
-	<script src="controllers/cashier.js"></script>
+	<script src="controllers/groups.js"></script>
 
   </body>
 </html>

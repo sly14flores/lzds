@@ -191,6 +191,10 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','b
 					
 				});
 				
+			} else {
+				
+				blockUI.hide();
+				
 			};
 
 			$http({
