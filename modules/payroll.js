@@ -173,12 +173,12 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.individual = function(scope,reprocess) {
 
 			if (scope.payroll.individual.id == 0) {
-				pnotify.show('alert','Notification','No staff selected');				
+				pnotify.show('error','Notification','No staff selected');				
 				return;
 			};
 			
 			if ((scope.payroll.individual.employment_status == 'EOC') || (scope.payroll.individual.employment_status == 'Resigned')) {
-				pnotify.show('alert','Notification','Staff employment status is '+scope.payroll.individual.employment_status);
+				pnotify.show('info','Notification','Staff employment status is '+scope.payroll.individual.employment_status);
 				return;
 			};
 			

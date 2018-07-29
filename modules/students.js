@@ -1,4 +1,4 @@
-angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI) {
+angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,access) {
 	
 	function form() {
 		
@@ -66,6 +66,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		self.student = function(scope,row) { // form			
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.add_student)) return;
 			
 			scope.views.currentPage = scope.currentPage;			
 			
@@ -184,7 +186,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		self.save = function(scope) {			
 			
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Some fields are required.');
+				pnotify.show('error','Notification','Some fields are required.');
 				return;
 			}						
 			

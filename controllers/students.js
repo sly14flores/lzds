@@ -2,6 +2,13 @@ var app = angular.module('students',['account-module','toggle-fullscreen','enrol
 
 app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records,letters) {
 	
+	$scope.module = {
+		id: 'students',
+		privileges: {
+			add_student: 2
+		}
+	};	
+	
 	$scope.views = {};
 
 	$scope.views.currentPage = 1;

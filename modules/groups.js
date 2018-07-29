@@ -69,8 +69,8 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/group.html',function() {		
-				$timeout(function() {$compile($('#x_content')[0])(scope); },100);
-				$timeout(function() { initSwitch(); },500);
+				$compile($('#x_content')[0])(scope);
+				$timeout(function() { initSwitch(); },1000);
 			});
 						
 			if (row != null) {
@@ -151,7 +151,7 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		self.save = function(scope) {		
 			
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Please full up required fields');
+				pnotify.show('error','Notification','Please full up required fields');
 				return;
 			};
 			

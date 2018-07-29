@@ -119,12 +119,12 @@ angular.module('balances-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 		self.balances = function(scope) {
 			
 			if (scope.report.balances.school_year.id == 0) {
-				pnotify.show('danger','Notification','Please select school year.');
+				pnotify.show('error','Notification','Please select school year.');
 				return;				
 			};
 			
 			if (scope.report.balances.level.id == 0) {
-				pnotify.show('danger','Notification','Please select level.');
+				pnotify.show('error','Notification','Please select level.');
 				return;				
 			};			
 			

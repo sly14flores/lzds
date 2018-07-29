@@ -92,12 +92,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		self.dtr = function(scope,opt) {
 			
 			if (scope.staffDtr.id == 0) {
-				pnotify.show('danger','Notification','Please select staff');
+				pnotify.show('error','Notification','Please select staff');
 				return;
 			};
 
 			if (scope.staffDtr.schedule_id == 0) {
-				pnotify.show('danger','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
+				pnotify.show('error','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
 				return;
 			};
 			

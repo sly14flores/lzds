@@ -13,7 +13,6 @@ angular.module('pnotify-module',[]).factory('pnotify',function() {
 			  nonblock: {
 				  nonblock: true
 			  },
-			  addclass: 'dark',
 			  styling: 'bootstrap3',
 			  hide: true
 			});

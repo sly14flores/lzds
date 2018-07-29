@@ -20,6 +20,10 @@ require_once 'authentication.php';
     <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
@@ -56,15 +60,15 @@ require_once 'authentication.php';
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-				  <li class="active"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+				  <li class="active" ng-show="accountProfile.profile.pages_access.dashboard.value"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li class="active"><a href="index.html">Dashboard</a></li>	
+                      <li class="active" ng-show="accountProfile.profile.pages_access.dashboard.value"><a href="index.html">Dashboard</a></li>	
 					</ul>
 				  </li>			
-                  <li><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.students.value && accountProfile.profile.pages_access.staffs.value"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="students.html">Students</a></li>					
-                      <li><a href="staffs.html">Staffs</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.students.value"><a href="students.html">Students</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.staffs.value"><a href="staffs.html">Staffs</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
@@ -279,6 +283,10 @@ require_once 'authentication.php';
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- PNotify -->
+    <script src="vendors/pnotify/dist/pnotify.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>
@@ -289,8 +297,11 @@ require_once 'authentication.php';
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>
 	
 	<script src="modules/bootstrap-modal.js"></script>
+	<script src="modules/module-access.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
+	<script src="modules/pnotify.js"></script>
+	<script src="modules/dashboard.js"></script>
 	
 	<script src="controllers/dashboard.js"></script>
 

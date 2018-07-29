@@ -200,7 +200,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		self.save = function(scope) {		
 			
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Please full up required fields');
+				pnotify.show('error','Notification','Please full up required fields');
 				return;
 			};
 			

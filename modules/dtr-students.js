@@ -226,12 +226,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				case 'Individual_Student':
 				
 					if (scope.studentDtr.id == 0) {
-						pnotify.show('danger','Notification','Please select student');
+						pnotify.show('error','Notification','Please select student');
 						return;
 					};
 
 					if (scope.studentDtr.ssection == '') {
-						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
+						pnotify.show('error','Notification','Student has no defined section, please set it first in the student current enrollment');
 						return;
 					};				
 				
@@ -242,12 +242,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				case 'SF2':
 						
 					if (scope.studentDtr.grade.id == 0) {
-						pnotify.show('danger','Notification','Please select grade');
+						pnotify.show('error','Notification','Please select grade');
 						return;
 					};
 
 					if (scope.studentDtr.section.id == 0) {
-						pnotify.show('danger','Notification','Please select section');
+						pnotify.show('error','Notification','Please select section');
 						return;
 					};
 
@@ -385,12 +385,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				case 'Section':
 				
 					if (scope.studentDtr.id == 0) {
-						pnotify.show('danger','Notification','Please select student');
+						pnotify.show('error','Notification','Please select student');
 						return;
 					};
 
 					if (scope.studentDtr.ssection == '') {
-						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
+						pnotify.show('error','Notification','Student has no defined section, please set it first in the student current enrollment');
 						return;
 					};				
 				

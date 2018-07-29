@@ -116,7 +116,7 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 		self.summary = function(scope) {
 			
 			if (scope.report.summary.school_year.id == 0) {
-				pnotify.show('danger','Notification','Please select school year.');
+				pnotify.show('error','Notification','Please select school year.');
 				return;				
 			};
 

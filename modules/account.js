@@ -1,29 +1,29 @@
 angular.module('account-module', ['bootstrap-modal']).directive('dropDown', function() {
-	// template: '<li><a href="javascript:;"> Profile</a></li><li><a href="javascript:;">Help</a></li><li><a href="javascript:;" logout-account><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>'	
+
 	return {
 		restrict: 'A',
 		template: '<li><a href="javascript:;" logout-account><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>'
 	};
-	
+
 }).directive('accountProfile',function($http) {
 	
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
-			
+
 			$http({
 			  method: 'POST',
 			  url: 'handlers/account-profile.php',
 			  headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).then(function mySucces(response) {
-				
+
 				scope.accountProfile = response.data;
-				
+
 			},
 			function myError(response) {
 
-			});			
-			
+			});
+
 		}
 	};
 		

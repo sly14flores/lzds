@@ -87,15 +87,29 @@ class privileges {
 		
 		foreach ($system_module_privileges as $key => $smp) {
 			
-			if ($smp['id'] > 1) continue;
+			if ($smp['id'] == 1) $access = $this->groupPagesAccess($group_module_privileges,$smp);
+
+		};
+
+		return $access;
+
+	}
+	
+	private function getDeleteAccess($system_module_privileges,$group_module_privileges) {
+		
+		$delete = [];
+		
+		foreach ($system_module_privileges as $key => $smp) {
 			
-			$access = $this->groupPagesAccess($group_module_privileges,$smp);
+			if (!preg_match("/delete/",$smp['id'])) continue;
+			
+			$delete[$smp['id']] = $this->groupPagesAccess($group_module_privileges,$smp);
 
 		};
 		
-		return $access;
+		return $delete;
 		
-	}
+	}	
 	
 	private function groupPagesAccess($group_privileges,$page_access) {
 		
@@ -122,22 +136,23 @@ class privileges {
 		$this->page_privileges = [];
 
 		foreach ($this->system_privileges as $key => $system_module) {
-			
-			$system_module['value'] = $this->getPagesAccess($system_module['privileges'],$this->getModule($system_module));							
-			
+
+			$system_module['value'] = $this->getPagesAccess($system_module['privileges'],$this->getModule($system_module));
+			$system_module['delete'] = $this->getDeleteAccess($system_module['privileges'],$this->getModule($system_module));
+
 			unset($system_module['privileges']);
-			
+
 			$this->page_privileges[] = $system_module;			
-			
+
 		};
 
 		$page_privileges = [];
 		foreach ($this->page_privileges as $p => $pp) {
 
 			if ($p == 0) {
-				$page_privileges = array($pp['id']=>array("value"=>$pp['value']));
+				$page_privileges = array($pp['id']=>array("value"=>$pp['value'],"delete"=>$pp['delete']));
 			} else {
-				$page_privileges[$pp['id']] = array("value"=>$pp['value']);
+				$page_privileges[$pp['id']] = array("value"=>$pp['value'],"delete"=>$pp['delete']);
 			};
 
 		};

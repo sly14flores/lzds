@@ -69,13 +69,13 @@ require_once 'authentication.php';
                 <ul class="nav side-menu">
 				  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>	
+                      <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a href="index.html">Dashboard</a></li>	
 					</ul>
 				  </li>	
                   <li class="active"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li class="active"><a href="students.html">Students</a></li>
-                      <li><a href="staffs.html">Staffs</a></li>					  
+                      <li class="active" ng-show="accountProfile.profile.pages_access.students.value"><a href="students.html">Students</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.staffs.value"><a href="staffs.html">Staffs</a></li>					  
                     </ul>
                   </li>
                   <li><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
@@ -300,6 +300,7 @@ require_once 'authentication.php';
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
 	<script src="modules/bootstrap-modal.js"></script>
+	<script src="modules/module-access.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
 	<script src="modules/blockui.js"></script>	
