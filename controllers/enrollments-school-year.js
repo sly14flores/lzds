@@ -2,6 +2,13 @@ var app = angular.module('enrollmentsSchoolYear',['account-module','toggle-fulls
 
 app.controller('enrollmentsSchoolYearCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'school_year',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.form = form;
 
 	$scope.form.data($scope);

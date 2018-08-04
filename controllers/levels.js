@@ -2,6 +2,13 @@ var app = angular.module('levels',['account-module','toggle-fullscreen','levels-
 
 app.controller('levelsCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'levels',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};
 	
 	$scope.formHolder = {};

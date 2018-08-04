@@ -2,6 +2,13 @@ var app = angular.module('staffs',['ui.bootstrap','account-module','toggle-fulls
 
 app.controller('staffsCtrl',function($scope,fullscreen,form,leaves,tos,loans,records) {
 	
+	$scope.module = {
+		id: 'staffs',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	

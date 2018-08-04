@@ -2,6 +2,13 @@ var app = angular.module('dtr',['account-module','toggle-fullscreen','dtr-module
 
 app.controller('dtrCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'dtr_staffs',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	

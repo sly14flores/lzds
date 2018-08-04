@@ -56,46 +56,48 @@ require_once 'authentication.php';
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-				  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+				<!-- menu -->
+				  <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>	
+                      <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a href="index.html">Dashboard</a></li>	
 					</ul>
-				  </li>
-                  <li><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+				  </li>			
+                  <li ng-show="accountProfile.profile.pages_access.students.value || accountProfile.profile.pages_access.staffs.value"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="students.html">Students</a></li>
-                      <li><a href="staffs.html">Staffs</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.students.value"><a href="students.html">Students</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.staffs.value"><a href="staffs.html">Staffs</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.school_year.value"><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="school-year.html">School Year</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.school_year.value"><a href="school-year.html">School Year</a></li>					
                       <li><a href="enrollment-online.html">Online</a></li>
                     </ul>
-                  </li>					  
-                  <li class="active"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  </li>				  
+                  <li class="active" ng-show="accountProfile.profile.pages_access.cashier.value || accountProfile.profile.pages_access.dtr_staffs.value || accountProfile.profile.pages_access.dtr_students.value || accountProfile.profile.pages_access.payroll.value"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li class="active"><a href="cashier.html">Cashier</a></li>
-                      <li><a href="dtr.html">DTR (Staffs)</a></li>
-                      <li><a href="dtr-students.html">DTR (Students)</a></li>					  
-                      <li><a href="payroll.html">Payroll</a></li>					  
-                    </ul>				  
+                      <li class="active" ng-show="accountProfile.profile.pages_access.cashier.value"><a href="cashier.html">Cashier</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_staffs.value"><a href="dtr.html">DTR (Staffs)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_students.value"><a href="dtr-students.html">DTR (Students)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.payroll.value"><a href="payroll.html">Payroll</a></li>
+                    </ul>				
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
+                  <li ng-show="accountProfile.profile.pages_access.balances_reports.value || accountProfile.profile.pages_access.summary_reports.value"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li><a href="balances_report.html">Balances</a></li>
-                      <li><a href="summary_report.html">Summary</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.balances_reports.value"><a href="balances_report.html">Balances</a></li>				  
+                      <li ng-show="accountProfile.profile.pages_access.summary_reports.value"><a href="summary_report.html">Summary</a></li>			  
                     </ul>				  
                   </li>				  
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.levels.value || accountProfile.profile.pages_access.school_fees.value || accountProfile.profile.pages_access.schedules.value || accountProfile.profile.pages_access.holidays.value || accountProfile.profile.pages_access.groups.value"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="levels.html">Grade Levels</a></li>					
-                      <li><a href="school-fees.html">School Fees</a></li>					
-                      <li><a href="schedules.html">Schedules</a></li>
-                      <li><a href="holidays.html">Holidays</a></li>						  
-                      <li><a href="groups.html">Groups</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.levels.value"><a href="levels.html">Grade Levels</a></li>				
+                      <li ng-show="accountProfile.profile.pages_access.school_fees.value"><a href="school-fees.html">School Fees</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.schedules.value"><a href="schedules.html">Schedules</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.holidays.value"><a href="holidays.html">Holidays</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.groups.value"><a href="groups.html">Groups</a></li>
                     </ul>
                   </li>
+                <!-- menu -->
                 </ul>
               </div>
             </div>

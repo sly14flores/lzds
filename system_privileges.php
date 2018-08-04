@@ -72,7 +72,7 @@ define('system_privileges', array(
 	),
 	array(
 		"id"=>"summary_reports",
-		"description"=>"Balances Reports",
+		"description"=>"Summary Reports",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Summary Reports","value"=>false),
 		),

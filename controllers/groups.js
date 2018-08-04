@@ -2,6 +2,13 @@ var app = angular.module('groups',['ui.bootstrap','account-module','toggle-fulls
 
 app.controller('groupsCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'groups',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	

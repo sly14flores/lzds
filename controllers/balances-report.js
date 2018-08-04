@@ -2,6 +2,13 @@ var app = angular.module('balancesReport',['account-module','toggle-fullscreen',
 
 app.controller('balancesReportCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'balances_reports',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	

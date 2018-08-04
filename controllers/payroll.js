@@ -2,6 +2,13 @@ var app = angular.module('payroll',['account-module','toggle-fullscreen','ui.boo
 
 app.controller('payrollCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'payroll',
+		privileges: {
+
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	
