@@ -26,9 +26,9 @@
 			</a>
 			<div id="collapse{{$index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$index}}" aria-expanded="true" style="">
 			  <div class="panel-body">
-				  <span ng-repeat="pp in p.privileges" style="margin-left: 10px;">
+				  <span ng-repeat="pp in p.privileges" style="margin-left: 20px;">
 					<label>
-					  <p style="margin-top: 10px;"><input type="checkbox" class="js-switch"ng-model="pp.value" ng-disabled="btns.ok.disabled"> &nbsp;{{pp.description}}</p>
+					  <p style="margin-top: 10px;"><input type="checkbox" class="js-switch"ng-model="pp.value" ng-disabled="btns.ok.disabled">&nbsp;{{pp.description}}</p>
 					</label>
 				  </span>
 			  </div>

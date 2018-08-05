@@ -5,7 +5,10 @@ app.controller('groupsCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'groups',
 		privileges: {
-
+			add_group: 2,
+			view_group: 3,
+			edit_group: 4,
+			delete_group: "delete_group",
 		}
 	};	
 	

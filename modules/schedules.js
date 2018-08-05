@@ -1,4 +1,4 @@
-angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI) {
+angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI,access) {
 	
 	function form() {
 		
@@ -169,6 +169,12 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		
 		self.schedule = function(scope,row) { // form						
 			
+			if (row == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_schedule)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_schedule)) return;				
+			};
+			
 			if (scope.$id > 2) scope = scope.$parent;			
 			
 			blockUI.show();
@@ -225,6 +231,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_schedule)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -386,6 +394,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		self.delete = function(scope,row) {
 			
 			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_schedule)) return;
 			
 			var onOk = function() {		
 				

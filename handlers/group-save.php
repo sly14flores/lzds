@@ -22,10 +22,14 @@ if (isset($_POST['privileges'])) {
 if ($_POST['group']['id']) {
 	$_POST['group']['update_log'] = "CURRENT_TIMESTAMP";
 	$group = $con->updateData($_POST['group'],'id');
+	$id = $_POST['group']['id'];
 } else {
 	unset($_POST['group']['id']);
 	$_POST['group']['system_log'] = "CURRENT_TIMESTAMP";	
 	$group = $con->insertData($_POST['group']);
+	$id = $con->insertId;
 }
+
+echo $id;
 
 ?>

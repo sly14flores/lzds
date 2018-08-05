@@ -1,4 +1,4 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,blockUI) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,blockUI,access) {
 	
 	function form() {
 		
@@ -220,6 +220,10 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		self.dtr = function(scope,opt) {				
 			
 			if (scope.$id > 2) scope = scope.$parent;
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_dtr)) return;
+			
+			if (opt) if (!access.has(scope,scope.module.id,scope.module.privileges.re_analyze_dtr)) return;
 			
 			switch (scope.studentDtr.by) {
 				
@@ -450,6 +454,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		
 		self.download = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.import_dtr)) return;			
+			
 			if (validate(scope,'downloadDtr')) return;
 
 			scope.downloadProgress = 0;
@@ -519,6 +525,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 
 		self.logs = function(scope,row) {	
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_logs)) return;
+		
 			scope.backlogs = [];			
 			
 			scope.dtr_day = angular.copy(row);			
@@ -572,6 +580,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};
 		
 		self.dtrLogs = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.manage_logs)) return false;			
 			
 			$http({
 			  method: 'POST',

@@ -5,7 +5,11 @@ app.controller('payrollCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'payroll',
 		privileges: {
-
+			generate_individual_payroll: 2,
+			reproces_individual_payroll: 3,
+			update_payroll_info: 4,
+			print_individual_payroll: 5,
+			print_payroll_sheet: 6,
 		}
 	};	
 	

@@ -5,7 +5,11 @@ app.controller('enrollmentsSchoolYearCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'school_year',
 		privileges: {
-
+			student_enrollment: 2,
+			view_enrollment: 3,
+			edit_enrollment: 4,
+			print_enrollment: 5,
+			delete_enrollment: "delete_enrollment",
 		}
 	};	
 	

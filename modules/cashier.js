@@ -1,4 +1,4 @@
-angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost) {
+angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,access) {
 	
 	function form() {
 		
@@ -126,6 +126,8 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.payment = function(scope,row) { // form
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.enrollment_payments)) return;
+			
 			scope.views.list = true;
 			
 			mode(scope);		
@@ -184,12 +186,13 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		self.edit = function(scope,payment) {
 
 			if (payment == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_payment)) return;
 				scope.payment.id = 0;
 				delete scope.payment.description;
 				delete scope.payment.payment_month;
 				delete scope.payment.amount;
 				delete scope.payment.official_receipt;
-			} else {				
+			} else {
 				scope.payment = angular.copy(payment);
 			};
 			
@@ -237,7 +240,11 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 
 		self.save = function(scope) {
-
+			
+			if (scope.payment.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_payment)) return false;				
+			};
+		
 			if (validate(scope)) return false;
 			
 			$http({
@@ -260,6 +267,8 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_payment)) return;			
 			
 			var onOk = function() {
 				
@@ -288,12 +297,14 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 		self.print = function(scope) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.print_payment)) return;
 			printPost.show('reports/payment.php',{filter:{id: scope.enrollment_info.id}});
 			
 		};
 
 		self.soa = function(scope) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_soa)) return;		
 			printPost.show('reports/soa.php',{filter:{id: scope.enrollment_info.id}});		
 		
 		};

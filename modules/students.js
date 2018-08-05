@@ -67,7 +67,11 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.student = function(scope,row) { // form			
 			
-			if (!access.has(scope,scope.module.id,scope.module.privileges.add_student)) return;
+			if (row != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_student)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_student)) return;
+			};
 			
 			scope.views.currentPage = scope.currentPage;			
 			
@@ -128,6 +132,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_student)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -215,6 +221,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.delete = function(scope,row) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;
+			
 			scope.views.currentPage = scope.currentPage;			
 			
 			var onOk = function() {
@@ -261,6 +269,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.delParent = function(scope,row) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;		
+		
 			if (scope.$id > 2) scope = scope.$parent;			
 			
 			if (scope.btns.ok.disabled) return;

@@ -27,7 +27,7 @@
 		<td class="">{{el.letter_content}}</td>
 		<td class="last list-action">
 			<a href="javascript:;" ng-click="letters.letter(this,el)"><i class="fa fa-edit" style="margin-right: 10px;"></i></a>
-			<a href="javascript:;" ng-click="letters.delete(this,el)"><i class="fa fa-close"></i></a>
+			<a href="javascript:;" ng-click="letters.delete(this,el)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_excuse_letter"><i class="fa fa-close"></i></a>
 		</td>
 	  </tr>
 	</tbody>

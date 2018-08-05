@@ -1,4 +1,4 @@
-angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui','pnotify-module','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI,pnotify,jspdf) {
+angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','block-ui','pnotify-module','jspdf-module','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,blockUI,pnotify,jspdf,access) {
 	
 	function form() {
 		
@@ -100,7 +100,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					
 				});
 				
-			},200);
+			},1000);
 
 			$timeout(function() {			
 			
@@ -118,7 +118,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					
 				});
 
-			}, 300);
+			}, 1500);
 			
 		};		
 		
@@ -172,6 +172,10 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.individual = function(scope,reprocess) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_individual_payroll)) return;		
+		
+			if (reprocess) if (!access.has(scope,scope.module.id,scope.module.privileges.reproces_individual_payroll)) return;
+		
 			if (scope.payroll.individual.id == 0) {
 				pnotify.show('error','Notification','No staff selected');				
 				return;
@@ -230,6 +234,8 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.edit = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.update_payroll_info)) return;			
+			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;			
 			
 		};
@@ -267,6 +273,8 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 		
 		self.print = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.print_individual_payroll)) return;
 			
 			var period = {
 				first: '15th',
@@ -459,6 +467,8 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 		
 		self.printAll = function(scope) {			
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.print_payroll_sheet)) return;
 			
 			$http({
 			  method: 'POST',

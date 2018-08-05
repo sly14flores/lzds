@@ -1,4 +1,4 @@
-angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,jspdf) {
+angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','jspdf-module','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,jspdf,access) {
 	
 	function form() {
 		
@@ -114,6 +114,8 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 		};						
 
 		self.summary = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_report)) return;
 			
 			if (scope.report.summary.school_year.id == 0) {
 				pnotify.show('error','Notification','Please select school year.');

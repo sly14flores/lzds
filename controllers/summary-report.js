@@ -5,7 +5,7 @@ app.controller('summaryReportCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'summary_reports',
 		privileges: {
-
+			generate_report: 2,
 		}
 	};	
 	

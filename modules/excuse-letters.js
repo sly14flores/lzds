@@ -1,4 +1,4 @@
-angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post']).factory('letters', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost) {
+angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post','module-access']).factory('letters', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost,access) {
 	
 	function letters() {
 		
@@ -76,10 +76,11 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 		};
 		
 		self.letter = function(scope,letter) {
-
+		
 			var title = 'Add Excuse Letter';
 
 			if (letter == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_excuse_letter)) return;
 				scope.data.letter = {};
 				scope.data.letter.id = 0;				
 				scope.data.letter.student_id = scope.student_id;
@@ -88,6 +89,7 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 				scope.data.letter.dates.data = [];
 				scope.data.letter.dates.dels = [];				
 			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_excuse_letter)) return;
 				scope.data.letter = angular.copy(letter);
 				angular.forEach(scope.data.letter.dates.data,function(item,i) {
 					scope.data.letter.dates.data[i].excuse_letter_date = new Date(item.excuse_letter_date);
@@ -143,6 +145,10 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 		
 		self.save = function(scope) {			
 			
+			if (scope.data.letter.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_excuse_letter)) return false;
+			};
+			
 			if (validate(scope)) return false;
 			
 			$http({
@@ -164,6 +170,8 @@ angular.module('excuse-letters-module', ['ui.bootstrap','bootstrap-modal','schoo
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_excuse_letter)) return;
 			
 			var onOk = function() {		
 				

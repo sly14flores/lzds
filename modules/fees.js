@@ -1,4 +1,4 @@
-angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI) {
+angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI,access) {
 	
 	function form() {
 		
@@ -77,6 +77,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','b
 		};
 		
 		self.clone = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.clone_fee)) return;			
 			
 			blockUI.show();			
 			
@@ -159,6 +161,12 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','b
 		
 		self.fee = function(scope,row) { // form
 			
+			if (row == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_fee)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_fee)) return;				
+			};
+			
 			blockUI.show();
 			
 			scope.views.list = true;			
@@ -215,6 +223,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','b
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_fee)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -288,6 +298,8 @@ angular.module('fees-module', ['bootstrap-modal','school-year','ui.bootstrap','b
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_fee)) return;
 			
 			var onOk = function() {
 				

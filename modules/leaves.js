@@ -1,4 +1,4 @@
-angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module']).factory('leaves',function($http,$timeout,$compile,bootstrapModal,xPanel) {
+angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module','module-access']).factory('leaves',function($http,$timeout,$compile,bootstrapModal,xPanel,access) {
 	
 	function leaves() {
 		
@@ -70,10 +70,12 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 		self.leave = function(scope,leave) {
 
 			if (leave == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_leave)) return;				
 				scope.data.leave = {};
 				scope.data.leave.id = 0;
 				scope.data.leave.staff_id = scope.staff_id;
 			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_leave)) return;
 				scope.data.leave = angular.copy(leave);
 				scope.data.leave.leave_date = new Date(leave.leave_date);
 			};
@@ -85,8 +87,12 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 		};
 
 		self.save = function(scope) {
+
+			if (scope.$id > 2) scope = scope.$parent;		
 			
-			if (scope.$id > 2) scope = scope.$parent;				
+			if (scope.data.leave.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_leave)) return false;				
+			};				
 			
 			if (validate(scope)) return false;
 			
@@ -109,6 +115,8 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_leave)) return;			
 			
 			var onOk = function() {
 				

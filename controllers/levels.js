@@ -5,7 +5,10 @@ app.controller('levelsCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'levels',
 		privileges: {
-
+			add_level: 2,
+			view_level: 3,
+			update_level: 4,
+			delete_level: "delete_level",
 		}
 	};	
 	

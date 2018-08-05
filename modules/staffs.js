@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel,access) {
 	
 	function form() {
 		
@@ -94,6 +94,12 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		
 		self.staff = function(scope,row) { // form
 
+			if (row != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_staff)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_staff)) return;
+			};		
+		
 			scope.leaves.data(scope);
 			scope.tos.data(scope);
 			scope.loans.data(scope);
@@ -145,6 +151,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_staff)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -221,6 +229,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_staff)) return;			
 			
 			var onOk = function() {
 				

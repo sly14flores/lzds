@@ -1,4 +1,4 @@
-angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('levels-module', ['ui.bootstrap','bootstrap-modal','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,access) {
 	
 	function form() {
 		
@@ -81,13 +81,15 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		};
 		
 		self.level = function(scope,level) {
-
+		
 			if (level == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_level)) return;
 				scope.level = {};
 				scope.level.id = 0;
 				scope.level.sections = [];
 				scope.level.dels = [];				
 			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_level)) return;
 				scope.level = angular.copy(level);
 				scope.level.dels = [];
 			};
@@ -100,6 +102,10 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 
 		self.save = function(scope) {					
 
+			if (scope.level.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_level)) return false;
+			};
+		
 			if (validate(scope)) return false;
 			
 			$http({
@@ -121,6 +127,8 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal']).factory('for
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_level)) return false;
 			
 			var onOk = function() {					
 				

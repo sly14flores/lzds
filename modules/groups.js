@@ -1,4 +1,4 @@
-angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','x-panel-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,xPanel,blockUI) {
+angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','x-panel-module','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,xPanel,blockUI,access) {
 	
 	function form() {
 		
@@ -61,6 +61,12 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		
 		self.group = function(scope,row) { // form
 			
+			if (row == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_group)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_group)) return;				
+			};
+			
 			blockUI.show();			
 			
 			scope.views.list = true;		
@@ -104,6 +110,8 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_group)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -161,7 +169,12 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			  data: {group: scope.group, privileges: scope.privileges}
 			}).then(function mySucces(response) {
 				
-				self.list(scope);
+				if (scope.group.id > 0) {
+					pnotify.show('success','Notification','Group info successfully updated');
+				} else {
+					pnotify.show('success','Notification','New group successfully added');
+					mode(scope,{id: response.data});
+				}
 				
 			}, function myError(response) {
 				 
@@ -172,6 +185,8 @@ angular.module('groups-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_group)) return;			
 			
 			var onOk = function() {
 				

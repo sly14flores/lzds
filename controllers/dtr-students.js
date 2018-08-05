@@ -5,7 +5,11 @@ app.controller('dtrCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'dtr_students',
 		privileges: {
-
+			import_dtr: 2,
+			view_dtr: 3,
+			re_analyze_dtr: 4,
+			view_logs: 5,
+			manage_logs: 6,
 		}
 	};	
 	
