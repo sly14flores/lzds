@@ -73,6 +73,13 @@ define('system_privileges', array(
 		),
 	),
 	array(
+		"id"=>"ids",
+		"description"=>"Manage IDs",
+		"privileges"=>array( # id=1 must be always page access
+			array("id"=>1,"description"=>"Show Manage IDs","value"=>false),
+		),
+	),
+	array(
 		"id"=>"cashier",
 		"description"=>"Cashier",
 		"privileges"=>array( # id=1 must be always page access

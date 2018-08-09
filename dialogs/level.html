@@ -5,6 +5,11 @@
 	<input type="text" class="form-control" name="description" ng-model="level.description" required>
 	<span class="help-block" ng-show="formHolder.level.description.$touched && formHolder.level.description.$invalid">Description is required</span>	
   </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.level.base_id.$touched && formHolder.level.base_id.$invalid}">
+	<label>Base ID</label>
+	<input type="text" class="form-control" name="base_id" ng-model="level.base_id" required>
+	<span class="help-block" ng-show="formHolder.level.base_id.$touched && formHolder.level.base_id.$invalid">Base ID is required</span>	
+  </div>
 </div>
 <h3>Sections</h3>
 <button type="button" class="btn btn-primary" ng-click="form.addSection(this)">Add</button>

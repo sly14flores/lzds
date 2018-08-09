@@ -8,7 +8,7 @@ session_start();
 
 $con = new pdo_db();
 
-$levels = $con->getData("SELECT id, description FROM grade_levels");
+$levels = $con->getData("SELECT id, description, base_id FROM grade_levels");
 
 foreach ($levels as $key => $level) {
 	

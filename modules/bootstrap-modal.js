@@ -36,14 +36,16 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 	
 	};
 	
-	this.box = function(scope,title,content,onOk) {
-
+	this.box = function(scope,title,content,onOk,okBtn = null) {
+	
+		if (okBtn == null) okBtn = "Save";
+	
 		var dialog = bootbox.confirm({
 			title: title,
 			message: 'Loading content...',
 			buttons: {
 				confirm: {
-					label: 'Save',
+					label: okBtn,
 					className: 'btn-success'
 				},				
 				cancel: {
