@@ -29,14 +29,15 @@ foreach ($_POST as $i => $filter) {
 
 };
 
-$sql = "SELECT enrollments.id, students.lrn, enrollments.school_id, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, DATE_FORMAT(students.date_of_birth,'%M %e, %Y') birthdate, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, students.home_address, students.contact_no FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename";
+$sql = "SELECT enrollments.id, students.lrn, enrollments.school_id, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, students.date_of_birth birthdate, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, students.home_address, students.contact_no FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename";
 
 $enrollees = $con->getData($sql);
 
 foreach ($enrollees as $i => $enrollee) {
 	
-	$remarks = (($enrollee['school_id']=="")||($enrollee['school_id']==null))?"":"Ok";
+	$enrollees[$i]['birthdate'] = date("M j, Y",strtotime($enrollee['birthdate']));
 	
+	$remarks = (($enrollee['school_id']=="")||($enrollee['school_id']==null))?"":"Ok";	
 	$enrollees[$i]['remarks'] = $remarks;
 	
 };

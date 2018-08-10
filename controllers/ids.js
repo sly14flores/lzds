@@ -5,11 +5,8 @@ app.controller('idsCtrl',function($scope,fullscreen,form) {
 	$scope.module = {
 		id: 'ids',
 		privileges: {
-			student_enrollment: 2,
-			view_enrollment: 3,
-			edit_enrollment: 4,
-			print_enrollment: 5,
-			delete_enrollment: "delete_enrollment",
+			generate_ids: 2,
+			print_ids: 3,
 		}
 	};	
 	

@@ -77,6 +77,8 @@ define('system_privileges', array(
 		"description"=>"Manage IDs",
 		"privileges"=>array( # id=1 must be always page access
 			array("id"=>1,"description"=>"Show Manage IDs","value"=>false),
+			array("id"=>2,"description"=>"Generate IDs","value"=>false),
+			array("id"=>3,"description"=>"Print IDs List","value"=>false),
 		),
 	),
 	array(
