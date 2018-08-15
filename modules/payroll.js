@@ -605,24 +605,24 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				}
 				
 				// Totals
-				doc.setFontSize(10);
+				doc.setFontSize(8.5);
 				doc.setFontType('normal');
 				doc.text(190, 480, 'TOTALS:');
 
 				doc.setLineWidth(1);
-				doc.line(290, 485, 835, 485);
-				doc.text(298, 480, all.total.basic_pay); // Basic Pay		
-				doc.text(343, 480, all.total.cola); // COLA
-				doc.text(388, 480, all.total.gross_pay); // Gross Pay
-				doc.text(433, 480, all.total.sss); // SSS
-				doc.text(478, 480, all.total.hdmf); // HDMF
-				doc.text(523, 480, all.total.phic); // PHIC
-				doc.text(568, 480, all.total.tax); // Tax
-				doc.text(613, 480, all.total.salary_loan); // Salary Loan
-				doc.text(659, 480, all.total.other_loans); // Other Loans
-				doc.text(705, 480, all.total.total_deductions); // Total Deductions
-				doc.text(753, 480, all.total.incentive); // Incentive
-				doc.text(798, 480, all.total.net_pay); // Net Pay
+				doc.line(282, 485, 830, 485);
+				doc.text(287, 480, all.total.basic_pay); // Basic Pay		
+				doc.text(335, 480, all.total.cola); // COLA
+				doc.text(380, 480, all.total.gross_pay); // Gross Pay
+				doc.text(428, 480, all.total.sss); // SSS
+				doc.text(472, 480, all.total.hdmf); // HDMF
+				doc.text(516, 480, all.total.phic); // PHIC
+				doc.text(565, 480, all.total.tax); // Tax
+				doc.text(610, 480, all.total.salary_loan); // Salary Loan
+				doc.text(652, 480, all.total.other_loans); // Other Loans
+				doc.text(695, 480, all.total.total_deductions); // Total Deductions
+				doc.text(747, 480, all.total.incentive); // Incentive
+				doc.text(787, 480, all.total.net_pay); // Net Pay
 				
 				// Signatories
 				doc.setFontSize(10);
