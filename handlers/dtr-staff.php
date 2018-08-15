@@ -46,9 +46,14 @@ foreach ($_Dtrs as $key => $dtr) {
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
 	foreach ($tos as $to) {
 		$_Dtrs[$key]['remarks'] .= "Travel Order: ".$to['to_description']. ", ".$to['to_wholeday'];
-	}		
+	}
+	if (is_holiday($dtr['ddate'])) {
+		$holiday = $con->getData("SELECT holiday_description FROM holidays WHERE holiday_date = '".$dtr['ddate']."'");	
+		$_Dtrs[$key]['remarks'] = (count($holiday))?$holiday[0]['holiday_description']:"Holiday";
+	};
 	if ($_Dtrs[$key]['absent']) $_Dtrs[$key]['remarks'] = "Absent";	
-	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";	
+	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";
+
 }
 
 header("Content-type: application/json");
@@ -123,7 +128,13 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 		if ( is_working_day($dtr['ddate']) && (strtotime($dtr['morning_in']) > strtotime($morning_in)) ) {
 			$tardiness = strtotime($dtr['morning_in'])-strtotime($morning_in);
 			if (!$exempted) $dtrs[$i]['tardiness'] = gmdate('H:i:s',$tardiness);
-		}		
+		};		
+		
+		# if holiday
+		if (is_holiday($dtr['ddate'])) {
+			$dtrs[$i]['tardiness'] = "00:00:00";			
+			$dtrs[$i]['absent'] = 0;			
+		};
 		
 		# if on leave or travel
 		if (is_onleave_travel_am($con,$dtr['ddate'])) if (!$exempted) $dtrs[$i]['tardiness'] = "00:00:00";		
@@ -133,7 +144,7 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 			if (!$exempted) {
 				$dtrs[$i]['tardiness'] = "00:00:00";			
 				$dtrs[$i]['absent'] = 1;
-			}
+			};
 		};
 		
 		# if halfday
@@ -141,13 +152,13 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 			if (!$exempted) {
 				$dtrs[$i]['tardiness'] = "00:00:00";
 				$dtrs[$i]['is_halfday'] = 1;
-			}
+			};
 		};
 
 		if (is_halfday_pm($dtr,$dtr['ddate']) && !is_onleave_travel_pm($con,$dtr['ddate'])) {
 			if (!$exempted) {
 				$dtrs[$i]['is_halfday'] = 1;
-			}
+			};
 		};
 		
 		$update = $con->updateData($dtrs[$i],'id');		

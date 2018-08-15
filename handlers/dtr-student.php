@@ -41,12 +41,16 @@ foreach ($_Dtrs as $key => $dtr) {
 	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
 	foreach ($leaves as $leave) {
 		$_Dtrs[$key]['remarks'] .= "Leave: ".$leave['leave_description']. ", ".$leave['leave_wholeday'];
-	}
+	};
 	if ($_Dtrs[$key]['remarks'] != "") $_Dtrs[$key]['remarks'] .= "; ";
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
 	foreach ($tos as $to) {
 		$_Dtrs[$key]['remarks'] .= "Travel Order: ".$to['to_description']. ", ".$to['to_wholeday'];
-	}		
+	};
+	if (is_holiday($dtr['ddate'])) {
+		$holiday = $con->getData("SELECT holiday_description FROM holidays WHERE holiday_date = '".$dtr['ddate']."'");	
+		$_Dtrs[$key]['remarks'] = (count($holiday))?$holiday[0]['holiday_description']:"Holiday";
+	};
 	if ($_Dtrs[$key]['absent']) $_Dtrs[$key]['remarks'] = "Absent";	
 	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";
 
@@ -131,6 +135,12 @@ function analyzeTardinessAbsent($con,$analyze,$dtrs) {
 			$tardiness = strtotime($dtr_morning_in)-strtotime($morning_in);
 			if (!$exempted) $dtrs[$i]['tardiness'] = gmdate('H:i:s',$tardiness);
 		}
+		
+		# if holiday
+		if (is_holiday($dtr['ddate'])) {
+			$dtrs[$i]['tardiness'] = "00:00:00";			
+			$dtrs[$i]['absent'] = 0;			
+		};		
 		
 		# if absent
 		if (is_absent($dtr,$dtr['ddate'])) {
