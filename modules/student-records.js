@@ -73,7 +73,7 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.record = function(scope,record) {
 
-			if (row != null) {
+			if (record != null) {
 				if (!access.has(scope,scope.module.id,scope.module.privileges.view_record)) return;
 			} else {
 				if (!access.has(scope,scope.module.id,scope.module.privileges.add_record)) return;
