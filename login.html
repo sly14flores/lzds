@@ -43,15 +43,15 @@
 			<h3>School System</h3>			
 		  </div>
           <section class="login_content">
-            <form ng-submit="login(this)">
+            <form name="formHolder.login" ng-submit="login(this)" autocomplete="off" novalidate>
               <h1>Login</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" ng-model="account.username" autofocus>
+                <input type="text" class="form-control" placeholder="Username" name="username" ng-model="account.username" required autofocus>
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" ng-model="account.password">
+                <input type="password" class="form-control" placeholder="Password" name="password" ng-model="account.password" required>
               </div>
-			  <div class="alert alert-danger" role="alert" ng-show="views.incorrect">Invalid username or password</div>			  
+			  <div class="alert alert-danger" role="alert" ng-show="views.incorrect">{{views.msg}}</div>
               <div>
 			    <button class="btn btn-default submit">Log in</button>
                 <a class="reset_pass" href="javascript:;">Forgot your password?</a>
@@ -60,9 +60,9 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Don't have an account?
+                <!-- <p class="change_link">Don't have an account?
                   <a href="javascript:;" class="to_register"> Request for one </a>
-                </p>
+                </p> -->
 
                 <div class="clearfix"></div>
                 <br />

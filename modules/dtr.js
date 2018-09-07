@@ -1,4 +1,4 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,blockUI,access) {
 	
 	function form() {
 		
@@ -91,18 +91,24 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 		
 		self.dtr = function(scope,opt) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_dtr)) return;			
+			
+			if (opt) if (!access.has(scope,scope.module.id,scope.module.privileges.re_analyze_dtr)) return;
+			
 			if (scope.staffDtr.id == 0) {
-				pnotify.show('danger','Notification','Please select staff');
+				pnotify.show('error','Notification','Please select staff');
 				return;
 			};
 
 			if (scope.staffDtr.schedule_id == 0) {
-				pnotify.show('danger','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
+				pnotify.show('error','Notification','Staff has no defined schedule, please set it first in staff info under DTR info');
 				return;
 			};
 			
 			var onOk = function() {
-			
+				
+				blockUI.show('Analyzing dtr please wait...');
+				
 				scope.staffDtr.option = opt;
 			
 				scope.views.panel_title = scope.staffDtr.fullname+' ('+scope.staffDtr.month.description+' '+scope.staffDtr.year+')';
@@ -116,10 +122,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 				}).then(function mySucces(response) {					
 					
 					scope.dtr = angular.copy(response.data);
+					blockUI.hide();
 					
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
 				
@@ -144,6 +151,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 		
 		self.download = function(scope) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.import_dtr)) return;		
+		
 			if (validate(scope,'downloadDtr')) return;
 
 			scope.downloadProgress = 0;
@@ -212,6 +221,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 		
 		self.logs = function(scope,row) {			
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_logs)) return;			
+			
 			scope.backlogs = [];			
 			
 			scope.dtr_day = angular.copy(row);			
@@ -221,43 +232,57 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module']
 			scope.dtr_day.afternoon_out = new Date(row.ddate+" "+row.afternoon_out);						
 			
 			scope.dtr_day.disabled = {};
-			scope.dtr_day.disabled.morning_in = row.morning_in == '-'?false:true;
-			scope.dtr_day.disabled.morning_out = row.morning_out == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_in = row.afternoon_in == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_out = row.afternoon_out == '-'?false:true;
+			scope.dtr_day.manual = {};
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/backlogs.php',
-			  data: {rfid: row.rfid, date: row.ddate}
+			  data: {dtr: 'dtr', manual: 'staffs_manual_logs', id: scope.staffDtr.id, rfid: row.rfid, date: row.ddate, dtr_id: row.id}
 			}).then(function mySucces(response) {
-				
-				scope.backlogs = angular.copy(response.data);
-				
-			}, function myError(response) {				 
-				
-			});				
+
+				scope.backlogs = angular.copy(response.data.backlogs);
+				scope.dtr_day.disabled = angular.copy(response.data.disabled);
+				scope.dtr_day.manual = angular.copy(response.data.manual);
+
+			}, function myError(response) {
+
+			});
 			
 			var content = 'dialogs/log.html';			
 
-			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);						
+			bootstrapModal.box2(scope,row.day+' - '+row.date,content,self.dtrLogs,'Save');						
 			
 		};
+		
+		self.manualLogCheck = function(scope,log) {
+			
+			scope.dtr_day.disabled[log] = !scope.dtr_day.disabled[log];
+			
+			if (scope.dtr_day.disabled[log]) {
+
+				scope.dtr_day.manual[log].save = true;
+				
+			};
+			
+		};		
 		
 		self.allot = function(scope,bl) {
 			
 			if (scope.dtr_allotment == "") return;
 			
 			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log);
+			scope.dtr_day.manual[scope.dtr_allotment].save = false;			
 			
 		};
 		
 		self.dtrLogs = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.manage_logs)) return false;
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/dtr-day-logs.php',
-			  data: {table: "dtr", day: scope.dtr_day}
+			  data: {dtr: "dtr", manual: "staffs_manual_logs", staff_id: scope.staffDtr.id, day: scope.dtr_day}
 			}).then(function mySucces(response) {
 				
 				self.dtr(scope,false);

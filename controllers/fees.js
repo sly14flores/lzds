@@ -2,6 +2,17 @@ var app = angular.module('fees',['account-module','toggle-fullscreen','fees-modu
 
 app.controller('feesCtrl',function($scope,fullscreen,form) {	
 	
+	$scope.module = {
+		id: 'school_fees',
+		privileges: {
+			add_fee: 2,
+			view_fee: 3,
+			edit_fee: 4,
+			clone_fee: 5,
+			delete_fee: "delete_fee",
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	$scope.views.title = 'Fees';

@@ -1,4 +1,4 @@
-angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','jspdf-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,jspdf) {
+angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','jspdf-module','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,jspdf,access) {
 	
 	function form() {
 		
@@ -7,6 +7,21 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 		self.data = function(scope) { // initialize data
 			
 			scope.formHolder = {};
+			
+			scope.months = [
+				{id: "01", description: "January"},
+				{id: "02", description: "February"},
+				{id: "03", description: "March"},
+				{id: "04", description: "April"},
+				{id: "05", description: "May"},
+				{id: "06", description: "June"},
+				{id: "07", description: "July"},
+				{id: "08", description: "August"},
+				{id: "09", description: "September"},
+				{id: "10", description: "October"},
+				{id: "11", description: "November"},
+				{id: "12", description: "December"}
+			];
 			
 			scope.report = {};
 			scope.report.summary = {
@@ -100,15 +115,19 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 
 		self.summary = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_report)) return;
+			
 			if (scope.report.summary.school_year.id == 0) {
-				pnotify.show('danger','Notification','Please select school year.');
+				pnotify.show('error','Notification','Please select school year.');
 				return;				
 			};
 
+			if (validate(scope,'summary')) return;
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/report-summary.php',
-			  data: {school_year: scope.report.summary.school_year.id}
+			  data: scope.report.summary
 			}).then(function mySucces(response) {
 
 				print(scope,response.data);
@@ -120,6 +139,50 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 		};
 		
 		function print(scope,data) {
+			
+			var coverage = scope.report.summary.coverage;
+			var coverage_details = '';
+			
+			var d = new Date();
+			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];			
+			
+			switch (scope.report.summary.coverage) {
+				
+				case 'Daily':
+
+					var date = scope.report.summary.date;
+					coverage_details = '('+months[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear()+')';
+
+				break;
+
+				case 'Weekly':
+
+					var dateFrom = scope.report.summary.week_from;
+					var dateTo = scope.report.summary.week_to;
+
+					coverage_details = '('+months[dateFrom.getMonth()]+' '+dateFrom.getDate()+', '+dateFrom.getFullYear()+' to '+months[dateTo.getMonth()]+' '+dateTo.getDate()+', '+dateTo.getFullYear()+')';
+
+				break;
+
+				case 'Monthly':
+				
+					coverage_details = '('+scope.report.summary.month.description+', '+scope.report.summary.year+')';
+				
+				break;
+
+				case 'Annually':									
+				
+					coverage_details = '('+scope.report.summary.year+')';
+				
+				break;
+
+				case 'SY':
+					
+					coverage = 'School Year';
+					
+				break;
+				
+			};			
 			
 			var doc = new jsPDF({
 				orientation: 'portrait',
@@ -141,11 +204,13 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			
 			doc.setFontSize(12);
 			doc.setFontType('bold');
-			doc.myText("SUMMARY",{align: "center"},0,185);
+			doc.myText("SUMMARY",{align: "center"},0,182);
 			
 			doc.setFontSize(10);
-			doc.setFontType('normal');			
-			doc.myText("SY: "+scope.report.summary.school_year.school_year,{align: "center"},0,210);			
+			doc.setFontType('normal');
+			doc.text(50, 213, 'Coverage: '+coverage);
+			doc.text(160, 213, coverage_details);
+			doc.text(495, 213, "SY: "+scope.report.summary.school_year.school_year);
 			
 			doc.setFontSize(12);
 			doc.setFontType('bold');			
@@ -233,15 +298,28 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					fillColor: [255, 255, 255]
 				}
 			});	
-			
-			var d = new Date();
-			var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];			
+
 			doc.setFontSize(9);
 			doc.setFontType('italic');
 			doc.myText('Generated on: '+months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds(),{align: "center"},0,730);
 			
 			var blob = doc.output("blob");
 			window.open(URL.createObjectURL(blob));				
+			
+		};
+		
+		self.reset = function(scope) {
+			
+			var controls = scope.formHolder.summary.$$controls;
+			
+			angular.forEach(controls,function(elem,i) {
+				
+				if (elem.$$attr.$attr.required) {
+					elem.$touched = false;
+					elem.$invalid = false;
+				};
+									
+			});
 			
 		};
 		

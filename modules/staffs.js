@@ -1,4 +1,4 @@
-angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel) {
+angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','jspdf-module','x-panel-module','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,jspdf,xPanel,access) {
 	
 	function form() {
 		
@@ -39,6 +39,19 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			  // error
 			
 			});	
+			
+			$http({
+			  method: 'POST',
+			  url: 'handlers/groups-list.php'			 
+			}).then(function mySucces(response) {
+				
+				scope.groups = response.data;
+				
+			}, function myError(response) {
+			
+			  // error
+			
+			});			
 			
 			scope.staff_id = 0;
 			
@@ -81,6 +94,12 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		
 		self.staff = function(scope,row) { // form
 
+			if (row != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_staff)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_staff)) return;
+			};		
+		
 			scope.leaves.data(scope);
 			scope.tos.data(scope);
 			scope.loans.data(scope);
@@ -99,11 +118,13 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			mode(scope,row);			
 			
 			$('#x_content').html('Loading...');
-			$('#x_content').load('forms/staff.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);				
+			$('#x_content').load('forms/staff.html',function() {		
+				$timeout(function() {$compile($('#x_content')[0])(scope); },100);
+				$timeout(function() { initSwitch(); },500);
 			});
 						
 			if (row != null) {
+				
 				if (scope.$id > 2) scope = scope.$parent;
 				
 				$http({
@@ -118,7 +139,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 					xPanel.start('collapse-leaves');
 					xPanel.start('collapse-tos');					
 					xPanel.start('collapse-loans');					
-					xPanel.start('collapse-records');					
+					xPanel.start('collapse-records');
 					
 				}, function myError(response) {
 					 
@@ -130,6 +151,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_staff)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -185,7 +208,7 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		self.save = function(scope) {		
 			
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Please full up require fields');
+				pnotify.show('error','Notification','Please full up required fields');
 				return;
 			};
 			
@@ -206,6 +229,8 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_staff)) return;			
 			
 			var onOk = function() {
 				
@@ -229,7 +254,18 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 
 			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});						
 
-		};		
+		};
+
+		function initSwitch() {
+
+			var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+			elems.forEach(function (html) {
+				var switchery = new Switchery(html, {
+					color: '#26B99A'
+				});
+			});
+
+		};
 		
 	};
 	

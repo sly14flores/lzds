@@ -1,19 +1,19 @@
 <form name="formHolder.log" id="formHolder.log" novalidate>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
-		<label>Morning In</label>
+		<label>Morning In</label><span class="right tools-editor" ng-show="dtr_day.manual.morning_in.value"><i class="fa" ng-class="{'fa-edit': dtr_day.disabled.morning_in, 'fa-check': !dtr_day.disabled.morning_in}" ng-click="form.manualLogCheck(this,'morning_in')"></i></span>
 		<input type="time" class="form-control" ng-model="dtr_day.morning_in" ng-disabled="dtr_day.disabled.morning_in">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
-		<label>Morning Out</label>  
+		<label>Morning Out</label><span class="right tools-editor" ng-show="dtr_day.manual.morning_out.value"><i class="fa" ng-class="{'fa-edit': dtr_day.disabled.morning_out, 'fa-check': !dtr_day.disabled.morning_out}" ng-click="form.manualLogCheck(this,'morning_out')"></i></span>
 		<input type="time" class="form-control" ng-model="dtr_day.morning_out" ng-disabled="dtr_day.disabled.morning_out">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
-		<label>Afternoon In</label>  
+		<label>Afternoon In</label><span class="right tools-editor" ng-show="dtr_day.manual.afternoon_in.value"><i class="fa" ng-class="{'fa-edit': dtr_day.disabled.afternoon_in, 'fa-check': !dtr_day.disabled.afternoon_in}" ng-click="form.manualLogCheck(this,'afternoon_in')"></i></span>
 		<input type="time" class="form-control" ng-model="dtr_day.afternoon_in" ng-disabled="dtr_day.disabled.afternoon_in">
   </div>
   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 form-group">
-		<label>Afternoon Out</label>  
+		<label>Afternoon Out</label><span class="right tools-editor" ng-show="dtr_day.manual.afternoon_out.value"><i class="fa" ng-class="{'fa-edit': dtr_day.disabled.afternoon_out, 'fa-check': !dtr_day.disabled.afternoon_out}" ng-click="form.manualLogCheck(this,'afternoon_out')"></i></span>
 		<input type="time" class="form-control" ng-model="dtr_day.afternoon_out" ng-disabled="dtr_day.disabled.afternoon_out">
   </div>  
 </div>

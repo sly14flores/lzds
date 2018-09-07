@@ -1,4 +1,4 @@
-angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal']).factory('tos',function($http,$timeout,$compile,bootstrapModal) {
+angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal','module-access']).factory('tos',function($http,$timeout,$compile,bootstrapModal,access) {
 	
 	function tos() {
 		
@@ -66,12 +66,14 @@ angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal']).factor
 		};
 		
 		self.to = function(scope,to) {
-			console.log(1);
+
 			if (to == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_to)) return;
 				scope.data.to = {};
 				scope.data.to.id = 0;
 				scope.data.to.staff_id = scope.staff_id;
 			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_to)) return;
 				scope.data.to = angular.copy(to);
 				scope.data.to.to_date = new Date(to.to_date);
 			};
@@ -84,7 +86,11 @@ angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal']).factor
 
 		self.save = function(scope) {
 			
-			if (scope.$id > 2) scope = scope.$parent;				
+			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (scope.data.to.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_to)) return false;				
+			};		
 			
 			if (validate(scope)) return false;
 			
@@ -107,6 +113,8 @@ angular.module('travel-orders-module',['ui.bootstrap','bootstrap-modal']).factor
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_to)) return;
 			
 			var onOk = function() {
 				

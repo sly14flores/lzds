@@ -60,41 +60,49 @@ require_once 'authentication.php';
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+				<!-- menu -->
+				  <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="students.html">Students</a></li>
-                      <li><a href="staffs.html">Staffs</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a href="index.html">Dashboard</a></li>	
+					</ul>
+				  </li>			
+                  <li ng-show="accountProfile.profile.pages_access.students.value || accountProfile.profile.pages_access.staffs.value"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li ng-show="accountProfile.profile.pages_access.students.value"><a href="students.html">Students</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.staffs.value"><a href="staffs.html">Staffs</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.school_year.value"><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="school-year.html">School Year</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.school_year.value"><a href="school-year.html">School Year</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.ids.value"><a href="ids.html">Manage IDs</a></li>					  
                       <li><a href="enrollment-online.html">Online</a></li>
                     </ul>
-                  </li>					  
-                  <li><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  </li>				  
+                  <li ng-show="accountProfile.profile.pages_access.cashier.value || accountProfile.profile.pages_access.dtr_staffs.value || accountProfile.profile.pages_access.dtr_students.value || accountProfile.profile.pages_access.payroll.value"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li><a href="cashier.html">Cashier</a></li>
-                      <li><a href="dtr.html">DTR (Staffs)</a></li>
-                      <li><a href="dtr-students.html">DTR (Students)</a></li>					  
-                      <li><a href="payroll.html">Payroll</a></li>					  
-                    </ul>				  
+                      <li ng-show="accountProfile.profile.pages_access.cashier.value"><a href="cashier.html">Cashier</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_staffs.value"><a href="dtr.html">DTR (Staffs)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_students.value"><a href="dtr-students.html">DTR (Students)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.payroll.value"><a href="payroll.html">Payroll</a></li>
+                    </ul>				
                   </li>
-                  <li class="active"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
+                  <li class="active" ng-show="accountProfile.profile.pages_access.balances_reports.value || accountProfile.profile.pages_access.summary_reports.value"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li><a href="payments_report.html">Payments</a></li>
-                      <li class="active"><a href="summary_report.html">Summary</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.balances_reports.value"><a href="balances_report.html">Balances</a></li>				  
+                      <li class="active" ng-show="accountProfile.profile.pages_access.summary_reports.value"><a href="summary_report.html">Summary</a></li>			  
                     </ul>				  
                   </li>				  
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.levels.value || accountProfile.profile.pages_access.school_fees.value || accountProfile.profile.pages_access.schedules.value || accountProfile.profile.pages_access.holidays.value || accountProfile.profile.pages_access.groups.value"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="levels.html">Grade Levels</a></li>					
-                      <li><a href="school-fees.html">School Fees</a></li>					
-                      <li><a href="schedules.html">Schedules</a></li>
-                      <li><a href="holidays.html">Holidays</a></li>						  
-                      <li><a href="groups.html">Groups</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.levels.value"><a href="levels.html">Grade Levels</a></li>				
+                      <li ng-show="accountProfile.profile.pages_access.school_fees.value"><a href="school-fees.html">School Fees</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.schedules.value"><a href="schedules.html">Schedules</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.holidays.value"><a href="holidays.html">Holidays</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.groups.value"><a href="groups.html">Groups</a></li>
                     </ul>
                   </li>
+                <!-- menu -->
                 </ul>
               </div>
             </div>
@@ -230,11 +238,48 @@ require_once 'authentication.php';
                     <div class="clearfix"></div>
                   </div>
                   <div id="x_content" class="x_content">
-                    <form>
-					  <div class="form-group">
-						<label>School Year :</label>
-						<select class="form-control" ng-model="report.summary.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>
+                    <form name="formHolder.summary">
+					  <div class="form-group" ng-class="{'has-error': formHolder.summary.coverage.$touched && formHolder.summary.coverage.$invalid}">
+						<label>Coverage :</label>
+						<select class="form-control" name="coverage" ng-model="report.summary.coverage" ng-change="form.reset(this)" required>
+							<option value="Daily">Daily</option>
+							<option value="Weekly">Weekly</option>
+							<option value="Monthly">Monthly</option>
+							<option value="Annually">Annually</option>
+							<option value="SY">School Year</option>
+						</select>
+						<span class="help-block" ng-show="formHolder.summary.coverage.$touched && formHolder.summary.coverage.$invalid">Coverage is required</span>
 					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage=='Daily'" ng-class="{'has-error': formHolder.summary.date.$touched && formHolder.summary.date.$invalid}">
+						<label>Date :</label>
+						<input type="date" class="form-control" name="date" ng-model="report.summary.date" ng-required="report.summary.coverage=='Daily'">
+						<span class="help-block" ng-show="formHolder.summary.date.$touched && formHolder.summary.date.$invalid">Date is required</span>
+					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage=='Weekly'" ng-class="{'has-error': formHolder.summary.week_from.$touched && formHolder.summary.week_from.$invalid}">
+						<label>From :</label>
+						<input type="date" class="form-control" name="week_from" ng-model="report.summary.week_from" ng-required="report.summary.coverage=='Weekly'">
+						<span class="help-block" ng-show="formHolder.summary.week_from.$touched && formHolder.summary.week_from.$invalid">From is required</span>
+					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage=='Weekly'" ng-class="{'has-error': formHolder.summary.week_to.$touched && formHolder.summary.week_to.$invalid}">
+						<label>To :</label>
+						<input type="date" class="form-control" name="week_to" ng-model="report.summary.week_to" ng-required="report.summary.coverage=='Weekly'">
+						<span class="help-block" ng-show="formHolder.summary.week_to.$touched && formHolder.summary.week_to.$invalid">To is required</span>
+					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage=='Monthly'" ng-class="{'has-error': formHolder.summary.month.$touched && formHolder.summary.month.$invalid}">
+						<label>Month :</label>
+						<select class="form-control" name="month" ng-model="report.summary.month" ng-options="m.description for m in months track by m.id" ng-required="report.summary.coverage=='Monthly'"></select>
+						<span class="help-block" ng-show="formHolder.summary.month.$touched && formHolder.summary.month.$invalid">Month is required</span>						
+					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage=='Monthly' || report.summary.coverage=='Annually'" ng-class="{'has-error': formHolder.summary.year.$touched && formHolder.summary.year.$invalid}">
+						<label>Year :</label>
+						<input type="number" class="form-control" name="year" ng-model="report.summary.year" ng-required="report.summary.coverage=='Monthly' || report.summary.coverage=='Annually'">
+						<span class="help-block" ng-show="formHolder.summary.year.$touched && formHolder.summary.year.$invalid">Year is required</span>
+					  </div>
+					  <div class="form-group" ng-show="report.summary.coverage!=undefined" ng-class="{'has-error': formHolder.summary.school_year.$touched && formHolder.summary.school_year.$invalid}">
+						<label>School Year :</label>
+						<select class="form-control" name="school_year" ng-model="report.summary.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>
+						<span class="help-block" ng-show="formHolder.summary.school_year.$touched && formHolder.summary.school_year.$invalid">School year is required</span>						
+					  </div>					  
                       <span class="btn btn-primary pull-right" ng-click="form.summary(this)">Generate!</span>
                     </form>					
 				  </div>
@@ -281,7 +326,8 @@ require_once 'authentication.php';
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 	
 	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/x-panel.js"></script>	
+	<script src="modules/x-panel.js"></script>
+	<script src="modules/module-access.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
 	<script src="modules/school-year.js"></script>

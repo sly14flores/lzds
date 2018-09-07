@@ -1,0 +1,12 @@
+<form name="formHolder.ids" id="formHolder.ids" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.ids.method.$touched && formHolder.ids.method.$invalid}">
+	<label>Method</label>
+	<select class="form-control" name="method" ng-model="generate.method" required>
+		<option value="all">Generate for all students</option>
+		<option value="last">Continue from last generated ID</option>
+	</select>
+	<span class="help-block" ng-show="formHolder.ids.method.$touched && formHolder.ids.method.$invalid">Method is required</span>
+  </div>
+</div>
+</form>

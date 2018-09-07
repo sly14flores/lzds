@@ -36,14 +36,16 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 	
 	};
 	
-	this.box = function(scope,title,content,onOk) {
-
+	this.box = function(scope,title,content,onOk,okBtn = null) {
+	
+		if (okBtn == null) okBtn = "Save";
+	
 		var dialog = bootbox.confirm({
 			title: title,
 			message: 'Loading content...',
 			buttons: {
 				confirm: {
-					label: 'Save',
+					label: okBtn,
 					className: 'btn-success'
 				},				
 				cancel: {
@@ -59,8 +61,10 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 		});
 		
 		dialog.init(function() {
-			$timeout(function() { dialog.find('.bootbox-body').load(content) }, 500);
-			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 1000);
+			$timeout(function() { dialog.find('.bootbox-body').load(content, function() {
+				$compile($('.bootbox-body')[0])(scope);
+			}); }, 500);
+			// $timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 1000);
 		});
 	
 	};
@@ -88,9 +92,10 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 		});
 
 		dialog.init(function() {
-			dialog.find('.bootbox-body').load(content);
-			$('.modal-content').css({"width": "150%","left": "-25%"});			
-			$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 500);
+			dialog.find('.bootbox-body').load(content,function() {
+				$('.modal-content').css({"width": "150%","left": "-25%"});			
+				$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 500);				
+			});
 		});
 
 	};	

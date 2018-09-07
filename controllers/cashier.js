@@ -2,6 +2,18 @@ var app = angular.module('cashier',['account-module','toggle-fullscreen','cashie
 
 app.controller('cashierCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'cashier',
+		privileges: {
+			enrollment_payments: 2,
+			add_payment: 3,
+			update_payment: 4,
+			generate_soa: 5,
+			print_payment: 6,
+			delete_payment: "delete_payment",
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	form.data($scope); // initialize data	

@@ -63,6 +63,7 @@ class log_order_student {
 	}
 	
 	function allot($date,$log) {
+
 		$allotment = null;
 
 		$morning_cutoff = strtotime("$date ".$this->schedules[date("D",strtotime($date))]['morning_cutoff']);
@@ -70,12 +71,35 @@ class log_order_student {
 		$afternoon_cutoff = strtotime("$date ".$this->schedules[date("D",strtotime($date))]['afternoon_cutoff']);
 		$tlog = strtotime($log);
 
-		if ($tlog < $morning_cutoff) $allotment = array("morning_in"=>date("Y-m-d H:i:s",$tlog));
-		if ( ($tlog >= $morning_cutoff) && ($tlog < $lunch_cutoff) ) $allotment = array("morning_out"=>date("Y-m-d H:i:s",$tlog));
-		if ( ($tlog < $afternoon_cutoff) && ($tlog >= $lunch_cutoff) ) $allotment = array("afternoon_in"=>date("Y-m-d H:i:s",$tlog));
-		if ($tlog >= $afternoon_cutoff) $allotment = array("afternoon_out"=>date("Y-m-d H:i:s",$tlog));
-		
+		switch ($this->schedules[date("D",strtotime($date))]['duration']) {
+
+			case "Wholeday":
+
+				if ($tlog < $morning_cutoff) $allotment = array("morning_in"=>date("Y-m-d H:i:s",$tlog));
+				if ( ($tlog >= $morning_cutoff) && ($tlog < $lunch_cutoff) ) $allotment = array("morning_out"=>date("Y-m-d H:i:s",$tlog));
+				if ( ($tlog < $afternoon_cutoff) && ($tlog >= $lunch_cutoff) ) $allotment = array("afternoon_in"=>date("Y-m-d H:i:s",$tlog));
+				if ($tlog >= $afternoon_cutoff) $allotment = array("afternoon_out"=>date("Y-m-d H:i:s",$tlog));
+
+			break;
+
+			case "AM":
+
+				if ($tlog < $morning_cutoff) $allotment = array("morning_in"=>date("Y-m-d H:i:s",$tlog));
+				if ($tlog >= $morning_cutoff) $allotment = array("morning_out"=>date("Y-m-d H:i:s",$tlog));
+			
+			break;
+
+			case "PM":
+
+				if ($tlog < $afternoon_cutoff) $allotment = array("afternoon_in"=>date("Y-m-d H:i:s",$tlog));
+				if ($tlog >= $afternoon_cutoff) $allotment = array("afternoon_out"=>date("Y-m-d H:i:s",$tlog));			
+			
+			break;
+
+		}
+
 		return $allotment;
+
 	}
 }
 

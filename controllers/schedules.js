@@ -2,6 +2,16 @@ var app = angular.module('schedules',['account-module','toggle-fullscreen','sche
 
 app.controller('schedulesCtrl',function($scope,fullscreen,form) {	
 	
+	$scope.module = {
+		id: 'schedules',
+		privileges: {
+			add_schedule: 2,
+			view_schedule: 3,
+			edit_schedule: 4,
+			delete_schedule: "delete_schedule",
+		}
+	};	
+	
 	$scope.views = {};	
 	
 	$scope.views.title = 'Schedules';

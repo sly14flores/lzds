@@ -2,8 +2,9 @@ var app = angular.module('login',['login-module']);
 
 app.controller('loginCtrl',function($scope,loginService) {
 	
+	$scope.formHolder = {};
 	$scope.views = {};
-	$scope.account = {username: '', password: ''};
+	$scope.account = {};
 	
 	$scope.login = loginService.login;
 	

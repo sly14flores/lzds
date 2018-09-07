@@ -17,10 +17,18 @@ if ($staff[0]['schedule_id'] < 0) {
 	$staff[0]['schedule_id'] = (count($schedule))?$schedule[0]:array("id"=>0,"description"=>"");
 }
 
+if ($staff[0]['staff_account_group']!=null) {
+	$group = $con->getData("SELECT id, group_name FROM groups WHERE id = ".$staff[0]['staff_account_group']);
+	$staff[0]['staff_account_group'] = $group[0];
+} else {
+	unset($staff[0]['staff_account_group']);
+};
 
 if ($staff[0]['birthday'] == "0000-00-00") $staff[0]['birthday'] = null;
 if ($staff[0]['birthday'] != null) $staff[0]['birthday'] = date("m/d/Y",strtotime($staff[0]['birthday']));
-unset($staff[0]['staff_account_group']);
+
+$staff[0]['is_active'] = (($staff[0]['is_active']==null)||($staff[0]['is_active']==0))?false:true;
+
 unset($staff[0]['is_built_in']);
 unset($staff[0]['system_log']);
 unset($staff[0]['update_log']);

@@ -1,4 +1,4 @@
-angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear) {
+angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,blockUI,access) {
 	
 	function form() {
 		
@@ -143,14 +143,14 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 
 					studentsSelect(scope);
 				
-				break;
+				break;				
 				
 			};
 			
 		};
 		
 		function studentsSelect(scope) {
-			
+
 			if (scope.studentDtr.grade !== undefined) scope.sections = scope.studentDtr.grade.sections;
 			
 			scope.select_students = [];
@@ -174,9 +174,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		self.studentsSelect = function(scope) {
 
 			if (scope.studentDtr.by == 'Section') studentsSelect(scope);
-					
+
+			if (scope.studentDtr.by == 'SF2') if (scope.studentDtr.grade !== undefined) scope.sections = scope.studentDtr.grade.sections;
+
 		};
-		
+
 		self.sectionStudentSelect = function(scope) {
 			
 			if (scope.studentDtr.select_student === undefined) return;
@@ -219,17 +221,21 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			if (scope.$id > 2) scope = scope.$parent;
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_dtr)) return;
+			
+			if (opt) if (!access.has(scope,scope.module.id,scope.module.privileges.re_analyze_dtr)) return;
+			
 			switch (scope.studentDtr.by) {
 				
 				case 'Individual_Student':
 				
 					if (scope.studentDtr.id == 0) {
-						pnotify.show('danger','Notification','Please select student');
+						pnotify.show('error','Notification','Please select student');
 						return;
 					};
 
 					if (scope.studentDtr.ssection == '') {
-						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
+						pnotify.show('error','Notification','Student has no defined section, please set it first in the student current enrollment');
 						return;
 					};				
 				
@@ -240,12 +246,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				case 'SF2':
 						
 					if (scope.studentDtr.grade.id == 0) {
-						pnotify.show('danger','Notification','Please select grade');
+						pnotify.show('error','Notification','Please select grade');
 						return;
 					};
 
 					if (scope.studentDtr.section.id == 0) {
-						pnotify.show('danger','Notification','Please select section');
+						pnotify.show('error','Notification','Please select section');
 						return;
 					};
 
@@ -383,12 +389,12 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				case 'Section':
 				
 					if (scope.studentDtr.id == 0) {
-						pnotify.show('danger','Notification','Please select student');
+						pnotify.show('error','Notification','Please select student');
 						return;
 					};
 
 					if (scope.studentDtr.ssection == '') {
-						pnotify.show('danger','Notification','Student has no defined section, please set it first in the student current enrollment');
+						pnotify.show('error','Notification','Student has no defined section, please set it first in the student current enrollment');
 						return;
 					};				
 				
@@ -401,6 +407,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			function individual(scope) {
 				
 				var onOk = function() {
+				
+					blockUI.show('Analyzing dtr please wait...');				
 				
 					scope.studentDtr.option = opt;
 				
@@ -415,10 +423,11 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 					}).then(function mySucces(response) {					
 						
 						scope.dtr.student = angular.copy(response.data);
+						blockUI.hide();
 						
 					}, function myError(response) {
 						 
-					  // error
+						blockUI.hide();
 						
 					});
 					
@@ -444,6 +453,8 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};
 		
 		self.download = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.import_dtr)) return;			
 			
 			if (validate(scope,'downloadDtr')) return;
 
@@ -513,7 +524,9 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};
 
 		self.logs = function(scope,row) {	
-			
+
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_logs)) return;
+		
 			scope.backlogs = [];			
 			
 			scope.dtr_day = angular.copy(row);			
@@ -523,18 +536,17 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			scope.dtr_day.afternoon_out = new Date(row.ddate+" "+row.afternoon_out);						
 			
 			scope.dtr_day.disabled = {};
-			scope.dtr_day.disabled.morning_in = row.morning_in == '-'?false:true;
-			scope.dtr_day.disabled.morning_out = row.morning_out == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_in = row.afternoon_in == '-'?false:true;
-			scope.dtr_day.disabled.afternoon_out = row.afternoon_out == '-'?false:true;
+			scope.dtr_day.manual = {};
 			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/backlogs.php',
-			  data: {rfid: row.rfid, date: row.ddate}
+			  data: {dtr: 'dtr_students', manual: 'students_manual_logs', id: scope.studentDtr.id, rfid: row.rfid, date: row.ddate, dtr_id: row.id}
 			}).then(function mySucces(response) {
 				
-				scope.backlogs = angular.copy(response.data);
+				scope.backlogs = angular.copy(response.data.backlogs);
+				scope.dtr_day.disabled = angular.copy(response.data.disabled);
+				scope.dtr_day.manual = angular.copy(response.data.manual);
 				
 			}, function myError(response) {				 
 				
@@ -542,7 +554,19 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 			var content = 'dialogs/log.html';			
 
-			bootstrapModal.box(scope,row.day+' - '+row.date,content,self.dtrLogs);						
+			bootstrapModal.box2(scope,row.day+' - '+row.date,content,self.dtrLogs,'Save');						
+			
+		};
+		
+		self.manualLogCheck = function(scope,log) {
+			
+			scope.dtr_day.disabled[log] = !scope.dtr_day.disabled[log];
+			
+			if (scope.dtr_day.disabled[log]) {
+
+				scope.dtr_day.manual[log].save = true;
+				
+			};
 			
 		};
 		
@@ -551,15 +575,18 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			if (scope.dtr_allotment == "") return;
 			
 			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log);
+			scope.dtr_day.manual[scope.dtr_allotment].save = false;
 			
 		};
 		
 		self.dtrLogs = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.manage_logs)) return false;			
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/dtr-day-logs.php',
-			  data: {table: "dtr_students", day: scope.dtr_day}
+			  data: {dtr: "dtr_students", manual: "students_manual_logs", student_id: scope.studentDtr.id, day: scope.dtr_day}
 			}).then(function mySucces(response) {
 				
 				self.dtr(scope,false);

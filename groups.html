@@ -24,13 +24,15 @@ require_once 'authentication.php';
     <link href="vendors/pnotify/dist/pnotify.css" rel="stylesheet">
     <link href="vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
     <link href="vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
 	
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="paymentsReport" ng-controller="paymentsReportCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="groups" ng-controller="groupsCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -60,41 +62,49 @@ require_once 'authentication.php';
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+				<!-- menu -->
+				  <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="students.html">Students</a></li>
-                      <li><a href="staffs.html">Staffs</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.dashboard.value"><a href="index.html">Dashboard</a></li>	
+					</ul>
+				  </li>			
+                  <li ng-show="accountProfile.profile.pages_access.students.value || accountProfile.profile.pages_access.staffs.value"><a><i class="fa fa-group"></i> Profiles <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li ng-show="accountProfile.profile.pages_access.students.value"><a href="students.html">Students</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.staffs.value"><a href="staffs.html">Staffs</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
+                  <li ng-show="accountProfile.profile.pages_access.school_year.value"><a><i class="fa fa-book"></i> Enrollments <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="school-year.html">School Year</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.school_year.value"><a href="school-year.html">School Year</a></li>					
+                      <li ng-show="accountProfile.profile.pages_access.ids.value"><a href="ids.html">Manage IDs</a></li>					  
                       <li><a href="enrollment-online.html">Online</a></li>
                     </ul>
-                  </li>					  
-                  <li><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
+                  </li>				  
+                  <li ng-show="accountProfile.profile.pages_access.cashier.value || accountProfile.profile.pages_access.dtr_staffs.value || accountProfile.profile.pages_access.dtr_students.value || accountProfile.profile.pages_access.payroll.value"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li><a href="cashier.html">Cashier</a></li>
-                      <li><a href="dtr.html">DTR (Staffs)</a></li>
-                      <li><a href="dtr-students.html">DTR (Students)</a></li>					  
-                      <li><a href="payroll.html">Payroll</a></li>					  
-                    </ul>				  
+                      <li ng-show="accountProfile.profile.pages_access.cashier.value"><a href="cashier.html">Cashier</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_staffs.value"><a href="dtr.html">DTR (Staffs)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.dtr_students.value"><a href="dtr-students.html">DTR (Students)</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.payroll.value"><a href="payroll.html">Payroll</a></li>
+                    </ul>				
                   </li>
-                  <li class="active"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
+                  <li ng-show="accountProfile.profile.pages_access.balances_reports.value || accountProfile.profile.pages_access.summary_reports.value"><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
-                      <li class="active"><a href="payments_report.html">Payments</a></li>
-                      <li><a href="summary_report.html">Summary</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.balances_reports.value"><a href="balances_report.html">Balances</a></li>				  
+                      <li ng-show="accountProfile.profile.pages_access.summary_reports.value"><a href="summary_report.html">Summary</a></li>			  
                     </ul>				  
                   </li>				  
-                  <li><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
+                  <li class="active" ng-show="accountProfile.profile.pages_access.levels.value || accountProfile.profile.pages_access.school_fees.value || accountProfile.profile.pages_access.schedules.value || accountProfile.profile.pages_access.holidays.value || accountProfile.profile.pages_access.groups.value"><a><i class="fa fa-cogs"></i> Maintenance <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="levels.html">Grade Levels</a></li>					
-                      <li><a href="school-fees.html">School Fees</a></li>					
-                      <li><a href="schedules.html">Schedules</a></li>
-                      <li><a href="holidays.html">Holidays</a></li>						  
-                      <li><a href="groups.html">Groups</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.levels.value"><a href="levels.html">Grade Levels</a></li>				
+                      <li ng-show="accountProfile.profile.pages_access.school_fees.value"><a href="school-fees.html">School Fees</a></li>
+                      <li ng-show="accountProfile.profile.pages_access.schedules.value"><a href="schedules.html">Schedules</a></li>					  
+                      <li ng-show="accountProfile.profile.pages_access.holidays.value"><a href="holidays.html">Holidays</a></li>
+                      <li class="active" ng-show="accountProfile.profile.pages_access.groups.value"><a href="groups.html">Groups</a></li>
                     </ul>
                   </li>
+                <!-- menu -->
                 </ul>
               </div>
             </div>
@@ -213,36 +223,41 @@ require_once 'authentication.php';
               <div class="title_left">
                 <h3>{{views.title}}</h3>
               </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" ng-click="form.list(this)">&nbsp;</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="clearfix"></div>
-			<div style="margin-top: 20px;"></div>
+
             <div class="row">
-              <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Balances</h2>
+                    <h2>{{views.panel_title}}</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="javascript:;" ng-click="form.group(this,null)">Add New Group</a></li>
+                          <li><a href="javascript:;" ng-click="form.list(this)">Groups List</a></li>
+                        </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div id="x_content" class="x_content">
-                    <form>
-					  <div class="form-group">
-						<label>School Year :</label>
-						<select class="form-control" ng-model="report.balances.school_year" ng-options="sy as sy.school_year for sy in school_years_ track by sy.id"></select>
-					  </div>
-                      <label>Level :</label>
-                      <select class="form-control" ng-model="report.balances.level" ng-options="level as level.description for level in levels_ track by level.id" ng-change="form.levelSelected(this,report.balances.level)"></select>
-                      <label>Section :</label>
-                      <select class="form-control" ng-model="report.balances.section" ng-options="section as section.description for section in sections track by section.id"></select>
-                      <br/>
-                      <span class="btn btn-primary pull-right" ng-click="form.balances(this)">Generate!</span>
-                    </form>					
-				  </div>
+                  <div id="x_content" class="x_content"></div>
                 </div>
               </div>
             </div>
@@ -272,26 +287,32 @@ require_once 'authentication.php';
     <!-- PNotify -->
     <script src="vendors/pnotify/dist/pnotify.js"></script>
     <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script> 	
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>	
     
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
+    <script src="vendors/blockUI/jquery.blockUI.js"></script>	
+	
+    <script src="vendors/jspdf/jspdf.min.js"></script>
+    <script src="vendors/jspdf/jspdf.plugin.autotable.js"></script>	
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 	
 	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/x-panel.js"></script>	
+	<script src="modules/x-panel.js"></script>
+	<script src="modules/module-access.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
-	<script src="modules/school-year.js"></script>
-	<script src="modules/window-open-post.js"></script>	
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/payments-report.js"></script>
+	<script src="modules/blockui.js"></script>
+	<script src="modules/pnotify.js"></script>
+	<script src="modules/groups.js"></script>
 	
-	<script src="controllers/payments-report.js"></script>
+	<script src="controllers/groups.js"></script>
 
   </body>
 </html>

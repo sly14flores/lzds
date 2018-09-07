@@ -1,4 +1,4 @@
-angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('records',function($http,$timeout,$compile,bootstrapModal) {
+angular.module('records-module',['ui.bootstrap','bootstrap-modal','module-access']).factory('records',function($http,$timeout,$compile,bootstrapModal,access) {
 	
 	function records() {
 		
@@ -66,7 +66,13 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('rec
 		};
 		
 		self.record = function(scope,record) {
-
+		
+			if (record != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_record)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_record)) return;
+			};
+		
 			scope.record_types = ["Employment History","Employee Performance Development and Improvement","Employment Termination Records"];
 		
 			var title = 'Add Record';
@@ -88,7 +94,11 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('rec
 
 		self.save = function(scope) {
 			
-			if (scope.$id > 2) scope = scope.$parent;				
+			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (scope.data.record.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_record)) return false;				
+			};
 			
 			if (validate(scope)) return false;
 			
@@ -111,6 +121,8 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('rec
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_record)) return;			
 			
 			var onOk = function() {
 				
@@ -138,6 +150,8 @@ angular.module('records-module',['ui.bootstrap','bootstrap-modal']).factory('rec
 		
 		self.print = function(scope) {
 
+		if (!access.has(scope,scope.module.id,scope.module.privileges.print_record)) return;					
+		
 			function records(records) {
 				
 				var obj = {

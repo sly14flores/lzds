@@ -1,4 +1,4 @@
-angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost) {
+angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post','module-access']).factory('enrollment', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost,access) {
 
 	function enrollment() {
 		
@@ -67,6 +67,12 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		};		
 		
 		self.form = function(scope,row) {
+			
+			if (row != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_enrollment)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_enrollment)) return;
+			};
 			
 			scope.student_enrollment.id = 0;
 			scope.student_enrollment.student_id = scope.student.id;
@@ -137,6 +143,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		};		
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_enrollment)) return;
 			
 			scope.enrollmentBtns.ok.disabled = !scope.enrollmentBtns.ok.disabled;
 			
@@ -271,6 +279,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_enrollment)) return;			
 			
 			var onOk = function() {						
 

@@ -1,4 +1,4 @@
-angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post']).factory('records', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost) {
+angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year','pnotify-module','block-ui','window-open-post','module-access']).factory('records', function($http,$timeout,$compile,bootstrapModal,schoolYear,pnotify,blockUI,printPost,access) {
 	
 	function records() {
 		
@@ -37,7 +37,7 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.list = function(scope,opt) {
 		
-			scope.views.records.list = false;			
+			scope.views.records.list = false;	
 			
 			scope.data.record = {};
 			scope.data.record.id = 0;	
@@ -73,6 +73,12 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.record = function(scope,record) {
 
+			if (record != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_record)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_record)) return;
+			};
+		
 			var title = 'Add Record';
 
 			if (record == null) {
@@ -92,6 +98,10 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 
 		self.save = function(scope) {			
+			
+			if (scope.data.record.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_record)) return false;				
+			};
 			
 			if (validate(scope)) return false;
 			
@@ -114,6 +124,8 @@ angular.module('records-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_record)) return;
 			
 			var onOk = function() {		
 				

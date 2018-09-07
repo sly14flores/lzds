@@ -1,4 +1,4 @@
-angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstrap']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear) {
+angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstrap','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,blockUI,access) {
 	
 	function form() {
 		
@@ -8,7 +8,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 			scope.formHolder = {};
 			
-			scope.views.list = false;			
+			scope.views.list = false;
 			
 			scope.schedule = {};
 			scope.schedule.id = 0;
@@ -17,6 +17,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Monday",
+				  duration: "Wholeday",				  
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -29,6 +30,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Tuesday",
+				  duration: "Wholeday",				  
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -41,6 +43,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Wednesday",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -53,6 +56,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Thursday",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -65,6 +69,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Friday",
+				  duration: "Wholeday",				  
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -77,6 +82,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Saturday",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -89,6 +95,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Sunday",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -97,7 +104,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				  afternoon_cutoff: new Date("0"),
 				  afternoon_out: new Date("0"),
 				  disabled: false
-				},		
+				},
 			];			
 			
 			scope.schedules = [];
@@ -162,7 +169,15 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		
 		self.schedule = function(scope,row) { // form						
 			
+			if (row == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_schedule)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_schedule)) return;				
+			};
+			
 			if (scope.$id > 2) scope = scope.$parent;			
+			
+			blockUI.show();
 			
 			scope.views.list = true;			
 			
@@ -172,9 +187,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			$('#x_content').load('forms/schedule.html',function() {
 				$timeout(function() { $compile($('#x_content')[0])(scope); },500);				
 			});
-			
-			scope.schedule.for_student = "0";
-			
+
 			if (row != null) {
 			
 				$http({
@@ -201,18 +214,25 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 					
 					angular.copy(response.data['schedule_details'], scope.schedule_details);
 					
+					blockUI.hide();
 					
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
+				
+			} else {
+				
+				blockUI.hide();
 				
 			};
 			
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_schedule)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -221,6 +241,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 		self.list = function(scope) {			
 			
 			if (scope.$id > 2) scope = scope.$parent;				
+			
+			blockUI.show();
 			
 			scope.views.list = false;		
 		
@@ -231,6 +253,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Mon",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -243,6 +266,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Tue",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -255,6 +279,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Wed",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -267,6 +292,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Thu",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -279,6 +305,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Fri",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -291,6 +318,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Sat",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -303,6 +331,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 				{
 				  id: 0,
 				  schedule_day: "Sun",
+				  duration: "Wholeday",
 				  morning_in: new Date("0"),
 				  morning_cutoff: new Date("0"),
 				  morning_out: new Date("0"),
@@ -326,11 +355,12 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.schedules);
-				scope.filterData = scope.schedules;	
+				scope.filterData = scope.schedules;
+				blockUI.hide();
 				
 			}, function myError(response) {
 				 
-			  // error
+				blockUI.hide();
 				
 			});	
 			
@@ -365,6 +395,8 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 			
 			if (scope.$id > 2) scope = scope.$parent;			
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_schedule)) return;
+			
 			var onOk = function() {		
 				
 				$http({
@@ -397,6 +429,7 @@ angular.module('schedules-module', ['bootstrap-modal','school-year','ui.bootstra
 
 			var index = scope.schedule_details.indexOf(row);
 			
+			scope.schedule_details[index]['duration'] = scope.schedule_details[0]['duration'];
 			scope.schedule_details[index]['morning_in'] = scope.schedule_details[0]['morning_in'];
 			scope.schedule_details[index]['morning_cutoff'] = scope.schedule_details[0]['morning_cutoff'];
 			scope.schedule_details[index]['morning_out'] = scope.schedule_details[0]['morning_out'];

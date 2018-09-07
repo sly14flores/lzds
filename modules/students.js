@@ -1,4 +1,4 @@
-angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI) {
+angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,access) {
 	
 	function form() {
 		
@@ -67,6 +67,12 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.student = function(scope,row) { // form			
 			
+			if (row != null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_student)) return;
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_student)) return;
+			};
+			
 			scope.views.currentPage = scope.currentPage;			
 			
 			scope.views.list = true;				
@@ -105,17 +111,19 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 					xPanel.start('collapse-enrollments');
 					xPanel.start('collapse-records');
+					xPanel.start('collapse-excuse-letters');
 
 					$timeout(function() {
 						scope.enrollment.list(scope,row);
 						scope.records.list(scope,true);
+						scope.letters.list(scope,true);
 					},500);
 
 					blockUI.hide();
 
 				}, function myError(response) {
 					 
-				  // error
+					blockUI.hide();
 					
 				});
 				
@@ -124,6 +132,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_student)) return;
 			
 			scope.btns.ok.disabled = !scope.btns.ok.disabled;
 			
@@ -182,7 +192,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		self.save = function(scope) {			
 			
 			if (validate(scope)) {
-				pnotify.show('danger','Notification','Some fields are required.');
+				pnotify.show('error','Notification','Some fields are required.');
 				return;
 			}						
 			
@@ -210,6 +220,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;
 			
 			scope.views.currentPage = scope.currentPage;			
 			
@@ -239,6 +251,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 		self.addParent = function(scope) {
 			
+			if (scope.btns.ok.disabled) return;			
+			
 			scope.parents_guardians.push({
 				id: 0,
 				student_id: 0,
@@ -255,7 +269,11 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		self.delParent = function(scope,row) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;		
+		
 			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (scope.btns.ok.disabled) return;
 			
 			if (row.id > 0) {
 				scope.parents_guardians_dels.push(row.id);

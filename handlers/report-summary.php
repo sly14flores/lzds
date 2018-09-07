@@ -6,6 +6,61 @@ require_once '../db.php';
 
 $con = new pdo_db();
 
+$and = array();
+
+switch ($_POST['coverage']) {
+
+	case "Daily":
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date = '".date("Y-m-d",strtotime($_POST['date']))."'",
+			"total_collections"=>" AND payment_date = '".date("Y-m-d",strtotime($_POST['date']))."'"
+		);
+
+	break;
+	
+	case "Weekly":
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND (enrollment_date >= '".date("Y-m-d",strtotime($_POST['week_from']))."' AND enrollment_date <= '".date("Y-m-d",strtotime($_POST['week_to']))."')",
+			"total_collections"=>" AND (payment_date >= '".date("Y-m-d",strtotime($_POST['week_from']))."' AND payment_date <= '".date("Y-m-d",strtotime($_POST['week_to']))."')"
+		);
+
+	break;
+	
+	case "Monthly":
+
+		$ym = $_POST['year']."-".$_POST['month']['id'];
+
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date LIKE '$ym%'",
+			"total_collections"=>" AND payment_date LIKE '$ym%'"
+		);
+
+	break;
+	
+	case "Annually":
+
+		$y = $_POST['year'];
+	
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id']." AND enrollment_date LIKE '$y%'",
+			"total_collections"=>" AND payment_date LIKE '$y%'"
+		);
+		
+	break;
+	
+	case "SY":
+	
+		$and = array(
+			"enrollments"=>" AND enrollment_school_year = ".$_POST['school_year']['id'],
+			"total_collections"=>""
+		);	
+	
+	break;
+
+};
+
 $summary = array(
 	"levels"=>[],
 	"overall"=>[array(
@@ -34,20 +89,38 @@ foreach ($summary['levels'] as $i => $sl) {
 	
 	$total_students = 0;
 	$tuition_fees = 0;
+	$discounts = 0;
 	$total_collections = 0;
 	$total_balance = 0;
 
-	$q_total_students = $con->getData("SELECT count(*) total_students FROM enrollments WHERE grade = ".$sl['id']." AND enrollment_school_year = ".$_POST['school_year']);	
-	$total_students = (count($q_total_students))?$q_total_students[0]['total_students']:0;
+	$enrollments = $con->getData("SELECT id FROM enrollments WHERE grade = ".$sl['id'].$and['enrollments']);
+	$total_students = count($enrollments);
+
+	if (count($enrollments)) {
+
+		$students = [];
+		
+		foreach ($enrollments as $enrollment) {
+			
+			$students[] = $enrollment['id'];
+			
+		};
 	
-	$q_tuition_fees = $con->getData("SELECT SUM(students_fees.amount) tuition_fees FROM students_fees LEFT JOIN fee_items ON students_fees.fee_item_id = fee_items.id LEFT JOIN fees ON fee_items.fee_id = fees.id WHERE fee_items.level = ".$sl['id']." AND fees.school_year = ".$_POST['school_year']);
-	$tuition_fees = (count($q_tuition_fees))?$q_tuition_fees[0]['tuition_fees']:0;
-	
-	$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE enrollments.grade = ".$sl['id']." AND enrollments.enrollment_school_year = ".$_POST['school_year']);
-	$total_collections = (count($q_total_collections))?$q_total_collections[0]['total_collections']:0;
+		$ids = implode(",",$students);	
+
+		$q_discounts = $con->getData("SELECT SUM(amount) discounts FROM students_discounts WHERE enrollment_id IN ($ids)");
+		$discounts = (count($q_discounts))?$q_discounts[0]['discounts']:0;		
+
+		$q_tuition_fees = $con->getData("SELECT SUM(students_fees.amount) tuition_fees FROM students_fees WHERE enrollment_id IN ($ids)");
+		$tuition_fees = (count($q_tuition_fees))?($q_tuition_fees[0]['tuition_fees'])-$discounts:0;
+
+		$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments WHERE enrollment_id IN ($ids) ".$and['total_collections']);
+		$total_collections = (count($q_total_collections))?$q_total_collections[0]['total_collections']:0;
+		
+	};
 	
 	$total_balance = $tuition_fees - $total_collections;
-	
+
 	$overall_total_students += $total_students;
 	$overall_tuition_fees += $tuition_fees;
 	$overall_total_collections += $total_collections;

@@ -224,12 +224,28 @@
 		<hr>
 		<div class="row">
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
-			<label>Username</label>
-			<input type="text" placeholder="" class="form-control" name="username" ng-model="staff.username" ng-disabled="btns.ok.disabled">
+			  <div class="">
+				<label>
+				  <input type="checkbox" class="js-switch" ng-model="staff.is_active" ng-disabled="btns.ok.disabled"> &nbsp;{{(staff.is_active===true)?'Active':'Inactive'}}
+				</label>
+			  </div>
 		  </div>
-		  <div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.staff_account_group.$touched && formHolder.staff.staff_account_group.$invalid}" ng-show="staff.is_active">
+			<label>Group</label>
+			<select class="form-control" name="staff_account_group" ng-model="staff.staff_account_group" ng-options="group.group_name for group in groups track by group.id" ng-disabled="btns.ok.disabled" ng-required="staff.is_active"></select>
+			<span class="help-block" ng-show="formHolder.staff.lastname.$touched && formHolder.staff.lastname.$invalid">Group is required</span>
+		  </div>
+		</div>
+		<div class="row">
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.username.$touched && formHolder.staff.username.$invalid}">
+			<label>Username</label>
+			<input type="text" placeholder="" class="form-control" name="username" ng-model="staff.username" ng-disabled="btns.ok.disabled" ng-required="staff.is_active">
+			<span class="help-block" ng-show="formHolder.staff.username.$touched && formHolder.staff.username.$invalid">Username is required</span>
+		  </div>
+		  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.password.$touched && formHolder.staff.password.$invalid}">
 			<label>Password</label>
-			<input type="password" placeholder="" class="form-control" name="password" ng-model="staff.password" ng-disabled="btns.ok.disabled">
+			<input type="password" placeholder="" class="form-control" name="password" ng-model="staff.password" ng-disabled="btns.ok.disabled" ng-required="staff.is_active">
+			<span class="help-block" ng-show="formHolder.staff.password.$touched && formHolder.staff.password.$invalid">Password is required</span>
 		  </div>  
 		</div>
 		<div class="ln_solid"></div>

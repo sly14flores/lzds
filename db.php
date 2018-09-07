@@ -27,7 +27,7 @@ class pdo_db {
 		$db_name = "lzdssystem";
 		$dsn = "mysql:host=$server;dbname=$db_name;charset=utf8";
 		$username = "root";
-		$password = "root";
+		$password = "root"; 
 
 		$this->db = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		$this->table = $table;

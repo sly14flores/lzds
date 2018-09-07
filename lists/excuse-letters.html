@@ -1,0 +1,47 @@
+<div class="row">
+	<div class="col-md-3 col-md-offset-9 form-group has-feedback">
+		<div class="input-group">
+			<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="views.letters.search" placeholder="Search for...">
+			<span class="input-group-btn"></span>
+		</div>
+	</div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">School Year </th>
+		<th class="column-title">From </th>
+		<th class="column-title">To </th>
+		<th class="column-title">Reason </th>
+		<th class="column-title">Content </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span></th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer" ng-repeat="el in pagination.letters.filterData = (data.letters | filter: views.letters.search) | pagination: pagination.letters.currentPage:pagination.letters.pageSize">
+		<td class="">{{el.letter_sy.school_year}}</td>
+		<td class="">{{el.letter_date_from}}</td>
+		<td class="">{{el.letter_date_to}}</td>
+		<td class="">{{el.letter_reason}}</td>
+		<td class="">{{el.letter_content}}</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="letters.letter(this,el)"><i class="fa fa-edit" style="margin-right: 10px;"></i></a>
+			<a href="javascript:;" ng-click="letters.delete(this,el)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_excuse_letter"><i class="fa fa-close"></i></a>
+		</td>
+	  </tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="6" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="pagination.loans.filterData.length" max-size="pagination.loans.maxSize" items-per-page="pagination.loans.pageSize" ng-model="pagination.loans.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>	
+  </table> 
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
+	  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
+	</div>
+</div> 

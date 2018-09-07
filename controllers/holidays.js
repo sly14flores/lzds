@@ -2,6 +2,16 @@ var app = angular.module('holidays',['account-module','toggle-fullscreen','holid
 
 app.controller('holidaysCtrl',function($scope,fullscreen,form) {
 	
+	$scope.module = {
+		id: 'holidays',
+		privileges: {
+			add_holiday: 2,
+			view_holiday: 3,
+			update_holiday: 4,
+			delete_holiday: "delete_holiday",
+		}
+	};	
+	
 	$scope.views = {};
 	
 	$scope.formHolder = {};

@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-striped jambo_table bulk_action">
+	<thead>
+	  <tr class="headings">
+		<th class="column-title">Group Name </th>
+		<th class="column-title">Description </th>
+		<th class="column-title no-link last"><span class="nobr">Action</span>
+		</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr class="even pointer" ng-repeat="row in filterData = (groups | filter: views.search) | pagination: currentPage:pageSize">
+		<td class="">{{row.group_name}}</td>
+		<td class="">{{row.group_description}}</td>
+		<td class="last list-action">
+			<a href="javascript:;" ng-click="form.group(this,row)"><i class="fa fa-search" style="margin-right: 10px;"></i></a>
+			<a href="javascript:;" ng-click="form.delete(this,row)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_group"><i class="fa fa-close"></i></a>
+		</td>
+	  </tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>	
+  </table>
+</div>

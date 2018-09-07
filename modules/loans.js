@@ -1,4 +1,4 @@
-angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans',function($http,$timeout,$compile,bootstrapModal) {
+angular.module('loans-module',['ui.bootstrap','bootstrap-modal','module-access']).factory('loans',function($http,$timeout,$compile,bootstrapModal,access) {
 	
 	function loans() {
 		
@@ -68,10 +68,12 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans
 		self.loan = function(scope,loan) {
 
 			if (loan == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_loan)) return;
 				scope.data.loan = {};
 				scope.data.loan.id = 0;
 				scope.data.loan.staff_id = scope.staff_id;
-			} else {							
+			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_loan)) return;				
 				scope.data.loan = angular.copy(loan);
 				scope.data.loan.loan_date = new Date(loan.loan_date);
 				scope.data.loan.loan_effectivity = new Date(loan.loan_effectivity);
@@ -84,6 +86,8 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans
 		};
 		
 		self.payments = function(scope,ln) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_loan_payments)) return;			
 			
 			var content = 'dialogs/loan-payments.html';	
 
@@ -107,7 +111,11 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans
 		
 		self.save = function(scope) {
 			
-			if (scope.$id > 2) scope = scope.$parent;				
+			if (scope.$id > 2) scope = scope.$parent;			
+			
+			if (scope.data.loan.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_loan)) return false;				
+			};						
 			
 			if (validate(scope)) return false;
 			
@@ -130,6 +138,8 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal']).factory('loans
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_loan)) return;
 			
 			var onOk = function() {
 				

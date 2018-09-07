@@ -22,10 +22,10 @@ class pdo_db {
 	
 	function __construct($db_name,$table = "") {
 		
-		$server = "localhost";
+		$server = "192.168.0.30";
 		$dsn = "mysql:host=$server;dbname=$db_name;charset=utf8";
 		$username = "root";
-		$password = "root";
+		$password = "root"; 
 
 		$this->db = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		$this->table = $table;

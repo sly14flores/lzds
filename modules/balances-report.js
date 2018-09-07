@@ -1,4 +1,4 @@
-angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,printPost) {
+angular.module('balances-report-module', ['ui.bootstrap','bootstrap-modal','pnotify-module','school-year','window-open-post','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,pnotify,schoolYear,printPost,access) {
 	
 	function form() {
 		
@@ -118,13 +118,15 @@ angular.module('payments-report-module', ['ui.bootstrap','bootstrap-modal','pnot
 		
 		self.balances = function(scope) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_report)) return;
+			
 			if (scope.report.balances.school_year.id == 0) {
-				pnotify.show('danger','Notification','Please select school year.');
+				pnotify.show('error','Notification','Please select school year.');
 				return;				
 			};
 			
 			if (scope.report.balances.level.id == 0) {
-				pnotify.show('danger','Notification','Please select level.');
+				pnotify.show('error','Notification','Please select level.');
 				return;				
 			};			
 			

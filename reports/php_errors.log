@@ -1,0 +1,30 @@
+[25-Jun-2018 13:59:32 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php(311): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[25-Jun-2018 14:02:50 Asia/Manila] PHP Notice:  Undefined index: school_year in C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php on line 12
+[25-Jun-2018 14:02:50 Asia/Manila] PHP Stack trace:
+[25-Jun-2018 14:02:50 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[25-Jun-2018 14:02:50 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php(312): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271
+[25-Jun-2018 14:04:02 Asia/Manila] PHP Notice:  Undefined variable: grade in C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php on line 266
+[25-Jun-2018 14:04:02 Asia/Manila] PHP Stack trace:
+[25-Jun-2018 14:04:02 Asia/Manila] PHP   1. {main}() C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php:0
+[25-Jun-2018 14:04:02 Asia/Manila] PHP   2. FPDF->AddPage() C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php:311
+[25-Jun-2018 14:04:02 Asia/Manila] PHP   3. PDF->Header() C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:334
+[25-Jun-2018 14:04:02 Asia/Manila] PHP   4. {closure:C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php:246-269}() C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php:121
+[25-Jun-2018 14:04:02 Asia/Manila] PHP Fatal error:  Uncaught Exception: FPDF error: Some data has already been output, can't send PDF file in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php:271
+Stack trace:
+#0 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(1063): FPDF->Error('Some data has a...')
+#1 C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php(999): FPDF->_checkoutput()
+#2 C:\Users\sly\Desktop\UwAmp310\www\lzds\reports\balances.php(313): FPDF->Output()
+#3 {main}
+  thrown in C:\Users\sly\Desktop\UwAmp310\www\lzds\fpdf181\fpdf.php on line 271

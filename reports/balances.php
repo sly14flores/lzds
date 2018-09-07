@@ -9,6 +9,7 @@ require('../db.php');
 
 $con = new pdo_db();
 
+$sy = $params['school_year']['school_year'];
 $level = "";
 $section = "All";
 
@@ -244,7 +245,7 @@ $header = array(
 	},
 	function($p) {
 		echo null; # important in include
-		global $level, $section;
+		global $sy, $level, $section;
 		$p->SetFont('Arial','B',14);	
 		$p->SetXY(18,15);
 		$p->darkerText();
@@ -260,9 +261,11 @@ $header = array(
 		$p->Cell(0,5,"Tel. No.: (072) 607 4004",0,1,'L');
 		$p->darkerText();
 		$p->SetXY(18,38);
-		$p->Cell(0,5,"SY: $level",0,1,'L');
+		$p->Cell(0,5,"SY: $sy",0,1,'L');
 		$p->SetXY(18,43);
-		$p->Cell(0,5,"Grade: $section",0,1,'L');	
+		$p->Cell(0,5,"Level: $level",0,1,'L');
+		$p->SetX(18);
+		$p->Cell(0,5,"Section: $section",0,1,'L');	
 		
 	}
 );

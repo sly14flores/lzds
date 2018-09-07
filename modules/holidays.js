@@ -1,4 +1,4 @@
-angular.module('holidays-module', ['ui.bootstrap','bootstrap-modal']).factory('form', function($http,$timeout,$compile,bootstrapModal) {
+angular.module('holidays-module', ['ui.bootstrap','bootstrap-modal','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,access) {
 	
 	function form() {
 		
@@ -66,9 +66,11 @@ angular.module('holidays-module', ['ui.bootstrap','bootstrap-modal']).factory('f
 		self.holiday = function(scope,holiday) {
 
 			if (holiday == null) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_holiday)) return;
 				scope.holiday = {};
 				scope.holiday.id = 0;
 			} else {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.view_holiday)) return;
 				scope.holiday = angular.copy(holiday);
 				scope.holiday.holiday_date = new Date(holiday.holiday_date);
 			};
@@ -82,6 +84,10 @@ angular.module('holidays-module', ['ui.bootstrap','bootstrap-modal']).factory('f
 		self.save = function(scope) {					
 
 			if (validate(scope)) return false;
+			
+			if (scope.holiday.id > 0) {
+				if (!access.has(scope,scope.module.id,scope.module.privileges.update_holiday)) return false;
+			};
 			
 			$http({
 			  method: 'POST',
@@ -102,6 +108,8 @@ angular.module('holidays-module', ['ui.bootstrap','bootstrap-modal']).factory('f
 		};
 		
 		self.delete = function(scope,row) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_holiday)) return;
 			
 			var onOk = function() {					
 				

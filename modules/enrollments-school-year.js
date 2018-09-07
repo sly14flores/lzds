@@ -1,4 +1,4 @@
-angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','school-year','window-open-post']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,schoolYear,printPost) {
+angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','school-year','window-open-post','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,schoolYear,printPost,access) {
 	
 	function form() {
 		
@@ -175,6 +175,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		self.view = function(scope,enrollee) {			
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.view_enrollment)) return;			
+			
 			scope.btns.edit.disabled = true;
 			
 			scope.enrollment = {};
@@ -222,6 +224,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 		self.enroll = function(scope) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.student_enrollment)) return;
+		
 			scope.views.search_student_ready = '';
 		
 			scope.enroll_school_years = [];
@@ -316,6 +320,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		};
 
 		self.edit = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_enrollment)) return;
 			
 			scope.btns.edit.disabled = !scope.btns.edit.disabled;
 			
@@ -429,6 +435,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		self.delete = function(scope,row) {
 			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_enrollment)) return;			
+			
 			var onOk = function() {						
 
 				$http({
@@ -466,6 +474,8 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		self.print = function(scope,enrollment) {
 
+			if (!access.has(scope,scope.module.id,scope.module.privileges.print_enrollment)) return;
+		
 			printPost.show('reports/enrollment.php',{filter:{id: enrollment.id}});
 			
 		};
