@@ -1,0 +1,9 @@
+<div class="row">
+	<div class="col-lg-12" ng-bind-html="email.enrollment.email"></div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="alert alert-danger alert-dismissible fade in" role="alert" ng-show="email.enrollment.email_address == ''">No email address found.  Please update student profile.</div>
+		<button class="btn btn-success" ng-disabled="email.enrollment.button" ng-show="email.enrollment.email_address != ''" ng-click="form.sendEmail(this)">Send!</button><span>{{email.enrollment.status}}</span>
+	</div>
+</div>

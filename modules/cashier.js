@@ -1,4 +1,4 @@
-angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,access) {
+angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','module-access','ngSanitize']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,access) {
 	
 	function form() {
 		
@@ -24,6 +24,13 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.school_years_ = [];
 			
 			schoolYear.get(scope);
+			
+			scope.email = {};
+			scope.email.enrollment = {};
+			scope.email.enrollment.email = "";
+			scope.email.enrollment.email_address = "";
+			scope.email.enrollment.button = true;
+			scope.email.enrollment.status = "";
 			
 			$timeout(function() {
 				
@@ -304,9 +311,63 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 
 		self.soa = function(scope) {
 
-			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_soa)) return;		
+			if (!access.has(scope,scope.module.id,scope.module.privileges.generate_soa)) return;
 			printPost.show('reports/soa.php',{filter:{id: scope.enrollment_info.id}});		
 		
+		};
+		
+		self.email = function(scope) {
+			
+			// if (!access.has(scope,scope.module.id,scope.module.privileges.generate_soa)) return;			
+
+			scope.email.enrollment.status = ""
+			scope.email.enrollment.button = false;			
+			
+			bootstrapModal.box3(scope,'Email SOA for '+scope.enrollment_info.fullname,'dialogs/email.html');
+			
+			$http({
+				method: 'GET',
+				url: 'handlers/email.php',
+				params: {id: scope.enrollment_info.id}
+			}).then(function success(response) {
+				
+				scope.email.enrollment.email = response.data.content;
+				scope.email.enrollment.email_address = response.data.email_address;
+				scope.email.enrollment.button = false;
+				
+			}, function error(response) {
+				
+			});
+			
+		};
+		
+		self.sendEmail = function(scope) {
+			
+			scope.email.enrollment.status = "Sending email please wait..."
+			scope.email.enrollment.button = true;
+			
+			$http({
+				method: 'POST',
+				url: 'handlers/send-email.php',
+				data: {message: scope.email.enrollment.email, email_address: scope.email.enrollment.email_address}
+			}).then(function success(response) {
+				
+				scope.email.enrollment.button = false;				
+				
+				if (response.data.status) {
+				
+					scope.email.enrollment.status = scope.email.enrollment.status+'success!';
+					
+				} else {
+					
+					scope.email.enrollment.status = scope.email.enrollment.status+'failed!';
+					
+				};
+				
+			}, function error(response) {
+				
+			});			
+			
 		};
 
 	};

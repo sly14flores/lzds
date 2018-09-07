@@ -98,6 +98,28 @@ angular.module('bootstrap-modal',[]).service('bootstrapModal', function($compile
 			});
 		});
 
+	};
+	
+	this.box3 = function(scope,title,content) {
+
+		var dialog = bootbox.alert({
+			title: title,
+			message: 'Loading...',
+			buttons: {
+				ok: {
+					label: 'Close',
+					className: 'btn-danger'
+				}	
+			}
+		});
+
+		dialog.init(function() {
+			dialog.find('.bootbox-body').load(content,function() {
+				$('.modal-content').css({"width": "125%","left": "-12.5%"});			
+				$timeout(function() { $compile($('.bootbox-body')[0])(scope); }, 500);				
+			});
+		});
+
 	};	
 
 });

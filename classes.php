@@ -113,6 +113,38 @@ function addTwoTimes($time1 = "00:00:00", $time2 = "00:00:00") {
 
 	return date("H:i:s", strtotime($time1));
 		
-}
+};
+
+function parent_guardian($con,$student_id) {
+	
+	$pg = null;
+	
+	$pgs = $con->getData("SELECT * FROM parents_guardians WHERE student_id = $student_id");
+	// var_dump($pgs);
+	foreach ($pgs as $value) {
+		if ( ($value['first_name'] == "") && ($value['last_name'] == "") ) {
+			continue;
+		} else {
+			$pg = $value['first_name']." ".$value['last_name'];
+		}
+		if ($pg != null) break;
+	};
+
+	if ($pg == null) {
+		
+		foreach ($pgs as $value) {			
+			if ($value['full_name'] == "") {
+				continue;
+			} else {
+				$pg = $value['full_name'];
+			}
+			if ($pg != null) break;			
+		};		
+		
+	};
+	
+	return $pg;
+	
+};
 
 ?>
