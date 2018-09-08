@@ -1,4 +1,4 @@
-angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year','window-open-post','module-access','ngSanitize']).factory('form', function($http,$timeout,$compile,bootstrapModal,schoolYear,printPost,access) {
+angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-post','module-access','ngSanitize']).factory('form', function($http,$timeout,$compile,bootstrapModal,printPost,access) {
 	
 	function form() {
 		
@@ -19,11 +19,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.enrollment_info = {};
 			
 			scope.enrollments = [];		
-			scope.payments = [];		
-			
-			scope.school_years_ = [];
-			
-			schoolYear.get(scope);
+			scope.payments = [];
 			
 			scope.email = {};
 			scope.email.enrollment = {};
@@ -32,32 +28,44 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 			scope.email.enrollment.button = true;
 			scope.email.enrollment.status = "";
 			
-			$timeout(function() {
-				
-				scope.school_years_.push({id: 0, school_year: "SY"});
-				
-				angular.forEach(scope.school_years,function(item,i) {
-
-					scope.school_years_.push(item);
-					
-				});
-				
-			},1000);
+			scope.email.bulk = {};
+			scope.email.bulk.emails = [];
+			scope.email.bulk.button = true;
+			scope.email.bulk.status = "";
+			scope.email.bulk.progress = 0;
 			
 			$http({
 			  method: 'POST',
-			  url: 'handlers/current-sy.php'
+			  url: 'suggestions/cashier.php'
 			}).then(function mySucces(response) {
 
-				scope.filter = {
-					school_year: response.data
-				};
-				
+				scope.school_years = response.data.school_years;
+				scope.levels = response.data.levels;
+
 			}, function myError(response) {
 				 
 			  // error
 				
-			});
+			});			
+			
+			$timeout(function() {		
+			
+				$http({
+				  method: 'POST',
+				  url: 'handlers/current-sy.php'
+				}).then(function mySucces(response) {
+
+					scope.filter.school_year = response.data;
+
+				}, function myError(response) {
+					 
+				  // error
+					
+				});
+				
+				scope.filter.level = {"id":0, "description":"All"};
+			
+			},1000);			
 
 			scope.descriptions = [
 				{name:undefined, description:"-"},
@@ -318,7 +326,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 		
 		self.email = function(scope) {
 			
-			// if (!access.has(scope,scope.module.id,scope.module.privileges.generate_soa)) return;			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.send_email)) return;
 
 			scope.email.enrollment.status = ""
 			scope.email.enrollment.button = false;			
@@ -363,6 +371,85 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					scope.email.enrollment.status = scope.email.enrollment.status+'failed!';
 					
 				};
+				
+			}, function error(response) {
+				
+			});			
+			
+		};
+		
+		self.emailBulk = function(scope) {
+			
+			if (!access.has(scope,scope.module.id,scope.module.privileges.send_bulk_emails)) return;
+
+			scope.email.bulk.status = "Ready to send email";
+			scope.email.bulk.button = true;	
+			scope.email.bulk.progress = 0;
+			
+			var students = (scope.filter.level.id>0)?scope.filter.level.description:'all';
+			
+			bootstrapModal.box3(scope,'Send bulk emails for '+students+' students, school year: '+scope.filter.school_year.school_year,'dialogs/bulk-email.html');
+			
+			$http({
+				method: 'POST',
+				url: 'handlers/emails.php',
+				data: scope.filter,
+			}).then(function success(response) {
+				
+				scope.email.bulk.emails = response.data;
+				scope.email.bulk.button = false;
+				
+			}, function error(response) {
+				
+			});			
+			
+		};
+		
+		self.sendBulkEmail = function(scope,i) {
+			
+			scope.email.bulk.button = true;
+			
+			var c = i+1;			
+			scope.email.bulk.status = 'Sending ('+c+'/'+scope.email.bulk.emails.length+')...';
+			
+			$http({
+				method: 'POST',
+				url: 'handlers/send-email.php',
+				data: {message: scope.email.bulk.emails[i].content, email_address: scope.email.bulk.emails[i].email_address}
+			}).then(function success(response) {
+			
+				++i;
+				
+				$timeout(function() {
+		
+					if (response.data.status) {
+
+						scope.email.bulk.status+='succeed!';
+
+					} else {
+
+						scope.email.bulk.status+='failed!';
+
+					};
+		
+					scope.email.bulk.progress = Math.ceil(i*100/(scope.email.bulk.emails.length));		
+		
+					if (i < scope.email.bulk.emails.length) {
+						
+						self.sendBulkEmail(scope,i);
+						
+					} else {
+						
+						$timeout(function() {
+						
+							scope.email.bulk.status = 'Completed';
+							
+						}, 500);
+						
+					};
+	
+				}, 500);			
+
 				
 			}, function error(response) {
 				

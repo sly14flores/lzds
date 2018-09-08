@@ -10,11 +10,15 @@ app.controller('cashierCtrl',function($scope,fullscreen,form) {
 			update_payment: 4,
 			generate_soa: 5,
 			print_payment: 6,
+			send_email: 7,
+			send_bulk_emails: 8,
 			delete_payment: "delete_payment",
 		}
 	};	
 	
 	$scope.views = {};	
+	
+	$scope.filter = {};	
 	
 	form.data($scope); // initialize data	
 	

@@ -91,6 +91,8 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Update Payment Info","value"=>false),
 			array("id"=>5,"description"=>"Generate SOA","value"=>false),
 			array("id"=>6,"description"=>"Print Payments","value"=>false),
+			array("id"=>7,"description"=>"Send SOA email","value"=>false),
+			array("id"=>8,"description"=>"Send bulk SOA emails","value"=>false),
 			array("id"=>"delete_payment","description"=>"Delete Payment","value"=>false),
 		),
 	),

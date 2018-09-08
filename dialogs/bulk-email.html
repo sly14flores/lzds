@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-lg-12">
+		<button class="btn btn-success" ng-disabled="email.bulk.button" ng-click="form.sendBulkEmail(this,0)">Send!</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<p>{{email.bulk.status}}</p>
+		<div class="progress">
+			<div class="progress-bar progress-bar-info" data-transitiongoal="{{email.bulk.progress}}" aria-valuenow="{{email.bulk.progress}}" style="width: {{email.bulk.progress}}%;"></div>
+		</div>		
+	</div>
+</div>
