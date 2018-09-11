@@ -64,9 +64,11 @@ foreach ($payroll as $key => $p) {
 		if ($deduction['description_field'] == "hdmf_amount_".$period) $rows[$key]["hdmf_premium"] = $deduction['amount'];
 		if ($deduction['description_field'] == "phic_amount_".$period) $rows[$key]["phic_premium"] = $deduction['amount'];
 		if ($deduction['description_field'] == "tax_amount_".$period) $rows[$key]["tax"] = $deduction['amount'];
-		if ($deduction['description_field'] == "Salary") $rows[$key]["salary_loan"] += $deduction['amount'];
-		if ($deduction['description_field'] == "Others") $rows[$key]["other_loans"] += $deduction['amount'];
-		$deduction_total += $deduction['amount'];		
+		if ($deduction['description_field'] == "Salary") $rows[$key]["salary_loan"] += $deduction['amount']; # loan
+		if ($deduction['description_field'] == "Others") $rows[$key]["other_loans"] += $deduction['amount']; # other loan
+		if ($deduction['description_field'] == "tardiness") continue;
+		if ($deduction['description_field'] == "absences") continue;
+		$deduction_total += $deduction['amount'];	
 	}
 	
 	$rows[$key]["deduction"] = $deduction_total;
