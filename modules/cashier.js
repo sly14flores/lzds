@@ -382,7 +382,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			
 			if (!access.has(scope,scope.module.id,scope.module.privileges.send_bulk_emails)) return;
 
-			scope.email.bulk.status = "Ready to send email";
+			scope.email.bulk.status = "Preparing emails...";
 			scope.email.bulk.button = true;	
 			scope.email.bulk.progress = 0;
 			
@@ -397,6 +397,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			}).then(function success(response) {
 				
 				scope.email.bulk.emails = response.data;
+				scope.email.bulk.status = "Ready to send email";				
 				scope.email.bulk.button = false;
 				
 			}, function error(response) {
