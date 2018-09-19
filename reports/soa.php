@@ -25,7 +25,7 @@ foreach ($payments as $i => $_payment) {
 	
 };
 
-$balance = $sub_total-$total_payment;
+$balance = $total-$total_payment;
 
 class PDF extends FPDF {
 	function CheckPageBreak($h) {

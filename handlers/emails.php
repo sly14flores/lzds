@@ -37,7 +37,7 @@ foreach ($enrollments as $enrollment) {
 		
 	};
 
-	$balance = $sub_total-$total_payment;
+	$balance = $total-$total_payment;
 
 	$parent_guardian = parent_guardian($con,$enrollment['student_id']);;
 	$address = $enrollment['address'];

@@ -22,7 +22,7 @@ foreach ($payments as $i => $_payment) {
 	
 };
 
-$balance = $sub_total-$total_payment;
+$balance = $total-$total_payment;
 
 $parent_guardian = parent_guardian($con,$enrollment[0]['student_id']);;
 $address = $enrollment[0]['address'];
