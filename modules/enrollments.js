@@ -256,6 +256,8 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				return;
 			}	
 			
+			blockUI.show();
+			
 			$http({
 			  method: 'POST',
 			  url: 'handlers/enrollment-save.php',
@@ -270,9 +272,12 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				}
 				mode(scope,{});
 				
+				blockUI.hide();
+				
 			}, function myError(response) {
 				 
 			  // error
+				blockUI.hide();
 				
 			});				
 			
