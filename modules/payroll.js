@@ -546,7 +546,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					{title: "Other Loans", dataKey: "other_loans"},
 					{title: "Total Deduction", dataKey: "deduction"},
 					{title: "Incentive Pay", dataKey: "incentive"},
-					{title: "Ney Pay", dataKey: "net_pay"},
+					{title: "Net Pay", dataKey: "net_pay"},
 					{title: "Signature", dataKey: "signature"},
 				];
 				var rows = all.row;
