@@ -633,7 +633,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			
 		};
 		
-		function section(scope,data) {
+		function section(scope,attendance) {
 
 			var doc = new jsPDF({
 				orientation: 'landscape',
@@ -693,33 +693,23 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 				doc.text(str, data.settings.margin.left, doc.internal.pageSize.height - 10);
 			};			
 
-			var columns = [
-				// {title: "ID", dataKey: "id"},
-				// {title: "Last Name", dataKey: "lastname"},
-				// {title: "First Name", dataKey: "firstname"},
-				// {title: "MI", dataKey: "mi"},
-				// {title: "Tardiness", dataKey: "tardiness"},
-				// {title: "AWOL", dataKey: "awol"},
-			];
-			
-			var rows = [];
-			// var rows = reports.row;
-			
-			doc.autoTable(columns, rows, {			
+			var first_columns = attendance.first.headers;
+			var first_rows = attendance.first.students;
+
+			doc.autoTable(first_columns, first_rows, {			
 				// tableLineColor: [189, 195, 199],
 				// tableLineWidth: 0.75,
 				addPageContent: pageContent,				
 				margin: {top: 118, left: 30, right: 30, bottom: 140},
-				tableWidth: 875,
+				tableWidth: 'wrap',
 				showHeader: 'everyPage',		
-				columnStyles: {
-					// id: {columnWidth: 50},
-					// lastname: {columnWidth: 110},
-					// firstname: {columnWidth: 120},
-					// mi: {columnWidth: 60},
-					// tardiness: {columnWidth: 100},
-					// awol: {columnWidth: 100},
-				},
+				// columnStyles: {
+					// no: {columnWidth: 50},
+					// school_id: {columnWidth: 110},
+					// fullname: {columnWidth: 100},
+					// gender: {columnWidth: 60},
+				// },
+				columnStyles: attendance.first.columnStyles,
 				styles: {
 					lineColor: [75, 75, 75],
 					lineWidth: 0.50,
@@ -733,23 +723,69 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 					overflow: 'linebreak',
 				},
 				bodyStyles: {
-					halign: 'center',
+					halign: 'left',
 					fillColor: [255, 255, 255],
 					textColor: 50,
-					fontSize: 8.5
+					fontSize: 8.5,
+					overflow: 'linebreak',				
 				},
 				alternateRowStyles: {
 					fillColor: [255, 255, 255]
 				}
-			});		
+			});	
+			
+			doc.addPage();
+			
+			var second_columns = attendance.second.headers;
+			var second_rows = attendance.second.students;
+			
+			doc.autoTable(second_columns, second_rows, {	
+				// tableLineColor: [189, 195, 199],
+				// tableLineWidth: 0.75,
+				addPageContent: pageContent,				
+				margin: {top: 118, left: 30, right: 30, bottom: 140},
+				tableWidth: 'wrap',
+				showHeader: 'everyPage',		
+				// columnStyles: {
+					// no: {columnWidth: 50},
+					// school_id: {columnWidth: 110},
+					// fullname: {columnWidth: 100},
+					// gender: {columnWidth: 60},
+				// },
+				columnStyles: attendance.second.columnStyles,				
+				styles: {
+					lineColor: [75, 75, 75],
+					lineWidth: 0.50,
+					cellPadding: 3
+				},
+				headerStyles: {
+					halign: 'center',		
+					fillColor: [191, 191, 191],
+					textColor: 50,
+					fontSize: 8.5,
+					overflow: 'linebreak',
+				},
+				bodyStyles: {
+					halign: 'left',
+					fillColor: [255, 255, 255],
+					textColor: 50,
+					fontSize: 8.5,
+					overflow: 'linebreak',				
+				},
+				alternateRowStyles: {
+					fillColor: [255, 255, 255]
+				}
+			});			
 			
 			// Total page number plugin only available in jspdf v1.0+
 			if (typeof doc.putTotalPages === 'function') {
 				doc.putTotalPages(totalPagesExp);
 			}			
 			
-			var blob = doc.output("blob");
-			window.open(URL.createObjectURL(blob));			
+			// $timeout(function() {
+				var blob = doc.output("blob");
+				window.open(URL.createObjectURL(blob));
+			// }, 1000);
 			
 		};
 		
