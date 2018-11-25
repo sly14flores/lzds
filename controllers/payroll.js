@@ -10,6 +10,7 @@ app.controller('payrollCtrl',function($scope,fullscreen,form) {
 			update_payroll_info: 4,
 			print_individual_payroll: 5,
 			print_payroll_sheet: 6,
+			print_payroll_reports: 6,
 		}
 	};	
 	

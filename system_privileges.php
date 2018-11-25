@@ -130,6 +130,7 @@ define('system_privileges', array(
 			array("id"=>4,"description"=>"Update Payroll Info","value"=>false),
 			array("id"=>5,"description"=>"Print Individual Payroll","value"=>false),
 			array("id"=>6,"description"=>"Print Payroll Sheet","value"=>false),
+			array("id"=>7,"description"=>"Print Reports","value"=>false),
 		),
 	),
 	array(
