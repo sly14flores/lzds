@@ -279,12 +279,12 @@ require_once 'authentication.php';
 							<input type="text" class="form-control" ng-model="studentDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_students | filter:{fullname:$viewValue}" typeahead-on-select="form.studentSelect(this, $item, $model, $label, $event)" ng-required="studentDtr.by == 'Individual_Student'">
 						</div>
 					  </div>
-					  <div ng-show="studentDtr.by == 'Section'">
+					  <!-- <div ng-show="studentDtr.by == 'Section'">
 						<div class="form-group">						
 							<label>Select Student :</label>
 							<select class="form-control" ng-model="studentDtr.select_student" ng-options="ss.fullname for ss in select_students track by ss.id" ng-required="studentDtr.by == 'Section'" ng-change="form.sectionStudentSelect(this)"></select>
 						</div>
-					  </div>					  
+					  </div> -->					  
                       <br/>
                       <span class="btn btn-primary pull-right" ng-click="form.dtr(this,false)">Go!</span>
                     </form>
@@ -395,6 +395,9 @@ require_once 'authentication.php';
     <script src="vendors/bootbox/bootbox.min.js"></script>
     <script src="vendors/blockUI/jquery.blockUI.js"></script>	
 	
+    <script src="vendors/jspdf/jspdf.min.js"></script>	
+    <script src="vendors/jspdf/jspdf.plugin.autotable.js"></script>		
+	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
@@ -404,7 +407,8 @@ require_once 'authentication.php';
 	<script src="modules/fullscreen.js"></script>
 	<script src="modules/blockui.js"></script>		
 	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>	
+	<script src="modules/school-year.js"></script>
+	<script src="modules/jspdf.js"></script>	
 	<script src="modules/dtr-students.js"></script>
 	
 	<script src="controllers/dtr-students.js"></script>
