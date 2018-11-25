@@ -219,8 +219,9 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				{title: "Level", dataKey: "level"},
 				{title: "Total Students", dataKey: "total_students"},			
 				{title: "Tuition Fees", dataKey: "tuition_fees"},
+				{title: "Discounts", dataKey: "discounts"},
 				{title: "Total Collections", dataKey: "total_collections"},
-				{title: "Total Balance", dataKey: "total_balance"}
+				{title: "Total Balances", dataKey: "total_balance"}
 			];
 
 			doc.autoTable(levels, data.levels, {
@@ -229,9 +230,10 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				margin: {top: 220, left: 50},
 				tableWidth: 500,
 				columnStyles: {
-					level: {columnWidth: 100},
-					total_students: {columnWidth: 100},					
+					level: {columnWidth: 75},
+					total_students: {columnWidth: 55},					
 					tuition_fees: {columnWidth: 100},
+					discounts: {columnWidth: 85},
 					total_collections: {columnWidth: 100},
 					total_balance: {columnWidth: 100}
 				},
@@ -244,8 +246,9 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					halign: 'center',		
 					fillColor: [191, 191, 191],
 					textColor: 50,
-					fontSize: 10
-				},
+					fontSize: 10,
+					overflow: 'linebreak'
+				},			
 				bodyStyles: {
 					halign: 'left',
 					fillColor: [255, 255, 255],
@@ -261,19 +264,21 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				{title: "", dataKey: "level"},
 				{title: "Total Students", dataKey: "total_students"},			
 				{title: "Tuition Fees", dataKey: "tuition_fees"},
+				{title: "Discounts", dataKey: "discounts"},			
 				{title: "Total Collections", dataKey: "total_collections"},
-				{title: "Total Balance", dataKey: "total_balance"}
+				{title: "Total Balances", dataKey: "total_balance"}
 			];			
 			
  			doc.autoTable(overall, data.overall, {
 				// tableLineColor: [189, 195, 199],
 				// tableLineWidth: 0.75,
-				margin: {top: 560, left: 50},
+				margin: {top: 570, left: 50},
 				tableWidth: 500,
 				columnStyles: {
-					level: {columnWidth: 100},
-					total_students: {columnWidth: 100},					
+					level: {columnWidth: 75},
+					total_students: {columnWidth: 55},					
 					tuition_fees: {columnWidth: 100},
+					discounts: {columnWidth: 85},					
 					total_collections: {columnWidth: 100},
 					total_balance: {columnWidth: 100}
 				},
@@ -286,7 +291,8 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					halign: 'center',		
 					fillColor: [191, 191, 191],
 					textColor: 50,
-					fontSize: 10
+					fontSize: 10,
+					overflow: 'linebreak'					
 				},
 				bodyStyles: {
 					halign: 'left',
