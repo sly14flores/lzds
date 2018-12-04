@@ -655,14 +655,14 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				doc.setFontSize(10);
 				doc.setFontType('normal');
 				doc.text(85, 550, 'Approved by:');
-				doc.myText('Directress',{align: "center"},0,590,false,468);			
+				doc.myText('Director',{align: "center"},0,590,false,468);			
 				doc.text(545, 550, 'Prepared by:');
 				doc.myText('Administrative Officer',{align: "center"},0,590,true,468);
 
 				doc.setFontSize(12);
 				doc.setFontType('bold');
-				doc.myText('Normita Q. Tria',{align: "center"},0,570,false,468);
-				doc.myText('Frederick Q. Tria',{align: "center"},0,570,true,468);
+				doc.myText('Frederick Q. Tria',{align: "center"},0,570,false,468);
+				doc.myText('Clar Reneith M. Balimbin',{align: "center"},0,570,true,468);
 						
 				var blob = doc.output("blob");
 				window.open(URL.createObjectURL(blob));

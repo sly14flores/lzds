@@ -109,6 +109,19 @@ foreach ($rows as $key => $r) {
 	$totals["incentive"] += $r['incentive'];
 	$totals["net_pay"] += $r['net_pay'];
 	
+	$rows[$key]['basic_pay'] = number_format($r['basic_pay'],2);
+	$rows[$key]['cola'] = number_format($r['cola'],2);
+	$rows[$key]['gross_pay'] = number_format($r['gross_pay'],2);
+	$rows[$key]['sss'] = number_format($r['sss_premium'],2);
+	$rows[$key]['hdmf'] = number_format($r['hdmf_premium'],2);
+	$rows[$key]['phic'] = number_format($r['phic_premium'],2);
+	$rows[$key]['tax'] = number_format($r['tax'],2);
+	$rows[$key]['salary_loan'] = number_format($r['salary_loan'],2);
+	$rows[$key]['other_loans'] = number_format($r['other_loans'],2);
+	$rows[$key]['total_deductions'] = number_format($r['deduction'],2);
+	$rows[$key]['incentive'] = number_format($r['incentive'],2);
+	$rows[$key]['net_pay'] = number_format($r['net_pay'],2);
+	
 }
 
 foreach ($totals as $i => $t) {
