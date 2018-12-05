@@ -95,7 +95,8 @@ foreach ($summary['levels'] as $i => $sl) {
 	$total_collections = 0;
 	$total_balance = 0;
 
-	$enrollments = $con->getData("SELECT id FROM enrollments WHERE grade = ".$sl['id'].$and['enrollments']);
+	$sql = "SELECT id FROM enrollments WHERE grade = ".$sl['id'].$and['enrollments'];
+	$enrollments = $con->getData($sql);
 	$total_students = count($enrollments);
 
 	if (count($enrollments)) {
@@ -112,16 +113,16 @@ foreach ($summary['levels'] as $i => $sl) {
 
 		$q_tuition_fees = $con->getData("SELECT SUM(students_fees.amount) tuition_fees FROM students_fees WHERE enrollment_id IN ($ids)");
 		$tuition_fees = (count($q_tuition_fees))?$q_tuition_fees[0]['tuition_fees']:0;
-		
+
 		$q_discounts = $con->getData("SELECT SUM(amount) discounts FROM students_discounts WHERE enrollment_id IN ($ids)");
 		$discounts = (count($q_discounts))?$q_discounts[0]['discounts']:0;
 
 		$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments WHERE enrollment_id IN ($ids) ".$and['total_collections']);
-		$total_collections = (count($q_total_collections))?($q_total_collections[0]['total_collections'])-$discounts:0;
+		$total_collections = (count($q_total_collections))?($q_total_collections[0]['total_collections']):0;
 		
 	};
 
-	$total_balance = $tuition_fees - $total_collections;
+	$total_balance = $tuition_fees - $discounts - $total_collections;
 
 	$overall_total_students += $total_students;
 	$overall_tuition_fees += $tuition_fees;

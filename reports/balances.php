@@ -36,7 +36,8 @@ foreach($wheres as $i => $w) {
 
 $order = " ORDER BY students.gender DESC, lastname, firstname, middlename";
 
-$enrollments = $con->getData("SELECT enrollments.id, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, students.gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT students.contact_no FROM students WHERE students.id = enrollments.student_id) contact_no FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where.$order);
+$sql = "SELECT enrollments.id, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, students.gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT students.contact_no FROM students WHERE students.id = enrollments.student_id) contact_no FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where.$order;
+$enrollments = $con->getData($sql);
 
 $total = 0;
 foreach($enrollments as $key => $enrollment) {
