@@ -1,4 +1,4 @@
-angular.module('dashboard-module', ['module-access','school-year','pnotify-module']).factory('dashboard', function($compile,$http,$timeout,access,schoolYear,pnotify) {
+angular.module('dashboard-module', ['module-access','school-year','pnotify-module','block-ui']).factory('dashboard', function($compile,$http,$timeout,access,schoolYear,pnotify,blockUI) {
 
 	function dashboard() {
 
@@ -19,6 +19,12 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 				scope.filter.to = scope.school_years[scope.school_years.length-1];
 				
 			}, 500);
+			
+			$timeout(function() {							
+				
+				self.filter(scope);
+				
+			}, 1000);			
 
 		};
 		
@@ -45,12 +51,16 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 
 			};
 			
+			blockUI.show();			
+			
 			$http({
 				method: 'POST',
 				url: 'handlers/dashboard.php',
 				data: scope.filter
 			}).then(function success(response) {
-
+				
+				blockUI.hide();
+				
 				$('#dashboard').load('html/dashboard.html',function() {
 					
 					populationBarChart(response.data.students_population);					

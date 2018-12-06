@@ -95,7 +95,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			if (row != null) {							
 			
-				blockUI.show("Fetching student infos please wait...");							
+				blockUI.show("Fetching student infos please wait...");
 			
 				$http({
 				  method: 'POST',
