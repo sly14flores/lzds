@@ -13,4 +13,7 @@ app.controller('dashboardCtrl',function($scope,fullscreen,dashboard) {
 	
 	$scope.fullscreen = fullscreen;
 	
+	$scope.dashboard = dashboard;
+	$scope.dashboard.data($scope);
+	
 });
