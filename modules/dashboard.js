@@ -66,9 +66,13 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 					populationBarChart(response.data.students_population);					
 					populationBarChartGender(response.data.students_population_gender);	
 					
+					scope.students_population = response.data.students_population;
+					scope.students_population_gender = response.data.students_population_gender;
+					
 					scope.statistics = response.data.statistics;
 					
 					doughnut(response.data.statistics.gender);
+					doughnutByGrades(response.data.statistics.grades);
 					
 					$timeout(function() {
 						$compile($('#dashboard')[0])(scope);
@@ -143,7 +147,7 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 					if ($('#canvasDoughnut'+i).length) {
 
 					  var ctx = document.getElementById("canvasDoughnut"+i);
-					  console.log(ctx);
+
 					  var data = {
 						labels: [
 						  "Male",
@@ -156,8 +160,8 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 							"#dd34e8",
 						  ],
 						  hoverBackgroundColor: [
-							"#B370CF",
-							"#B370CF",
+							"#707070",
+							"#707070",
 						  ]
 
 						}]
@@ -177,6 +181,84 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 
 		};
 		
+		function doughnutByGrades(grades) {
+			
+			$timeout(function() {
+		
+				angular.forEach(grades, function(item,i) {
+					
+					if ($('#gradeDoughnut'+i).length) {
+
+					  var ctx = document.getElementById("gradeDoughnut"+i);
+
+					  var data = {
+						labels: [
+						  "Nursery",
+						  "Kindergarten",
+						  "Grade 1",
+						  "Grade 2",
+						  "Grade 3",
+						  "Grade 4",
+						  "Grade 5",
+						  "Grade 6",
+						  "Grade 7",
+						  "Grade 8",
+						  "Grade 9",
+						  "Grade 10",
+						  "Grade 11",
+						  "Grade 12",
+						],
+						datasets: [{
+						  data: item.data,
+						  backgroundColor: [
+							"#ffff00", // Nursery
+							"#ffc000", // Kindergarten
+							"#ff8000", // Grade 1
+							"#ff4000", // Grade 2
+							"#ff003f", // Grade 3
+							"#ff007f", // Grade 4
+							"#ff00bf", // Grade 5
+							"#c000ff", // Grade 6
+							"#8000ff", // Grade 7
+							"#4000ff", // Grade 8
+							"#007fff", // Grade 9
+							"#00bfff", // Grade 10
+							"#00ffff", // Grade 11
+							"#00ffc0", // Grade 12
+						  ],
+						  hoverBackgroundColor: [
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+							"#707070",
+						  ]
+
+						}]
+					  };
+
+					  var gradeDoughnut = new Chart(ctx, {
+						type: 'doughnut',
+						tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+						data: data
+					  });
+					 
+					};				
+					
+				});
+			
+			}, 1000);			
+			
+		};
 
 	};
 

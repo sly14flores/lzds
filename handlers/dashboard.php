@@ -31,6 +31,8 @@ while ($current >= $from) {
 
 };
 
+$dashboard['statistics']['gender'] = [];
+
 $current = $to;
 while ($current >= $from) {
 
@@ -41,9 +43,37 @@ while ($current >= $from) {
 	$females = $con->getData($sql);	
 	
 	$dashboard['statistics']['gender'][] = array(
-		"no"=>$enrollments[0]['population'],
 		"sy"=>schoolYearDescription($con,$current),
 		"data"=>[$males[0]['population'],$females[0]['population']],
+	);
+
+	--$current;
+
+};
+
+$dashboard['statistics']['grades'] = [];
+$grades = $con->getData("SELECT id FROM grade_levels ORDER BY id ASC");
+
+$current = $to;
+while ($current >= $from) {
+	
+	$data = [];
+	$total = 0;
+	
+	foreach ($grades as $grade) {
+		
+		$sql = "SELECT COUNT(*) population FROM enrollments WHERE enrollment_school_year = $current AND grade = ".$grade['id'];
+		$enrollments = $con->getData($sql);		
+		
+		$data[] = $enrollments[0]['population'];
+		$total += $enrollments[0]['population'];
+		
+	};
+	
+	$dashboard['statistics']['grades'][] = array(		
+		"sy"=>schoolYearDescription($con,$current),
+		"data"=>$data,
+		"total"=>$total,
 	);
 
 	--$current;
