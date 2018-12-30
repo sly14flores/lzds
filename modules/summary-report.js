@@ -253,7 +253,8 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					halign: 'left',
 					fillColor: [255, 255, 255],
 					textColor: 50,
-					fontSize: 10
+					fontSize: 10,
+					overflow: 'linebreak'					
 				},
 				alternateRowStyles: {
 					fillColor: [255, 255, 255]
@@ -285,20 +286,21 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				styles: {
 					lineColor: [75, 75, 75],
 					lineWidth: 0.50,
-					cellPadding: 5
+					cellPadding: 5,
 				},
 				headerStyles: {
 					halign: 'center',		
 					fillColor: [191, 191, 191],
 					textColor: 50,
 					fontSize: 10,
-					overflow: 'linebreak'					
+					overflow: 'linebreak'
 				},
 				bodyStyles: {
 					halign: 'left',
 					fillColor: [255, 255, 255],
 					textColor: 50,
-					fontSize: 10
+					fontSize: 10,
+					overflow: 'linebreak'					
 				},
 				alternateRowStyles: {
 					fillColor: [255, 255, 255]
