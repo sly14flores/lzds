@@ -133,18 +133,18 @@ foreach ($summary['levels'] as $i => $sl) {
 	unset($summary['levels'][$i]["id"]);
 	
 	$summary['levels'][$i]["total_students"] = number_format($total_students);
-	$summary['levels'][$i]["tuition_fees"] = "Php. ".number_format($tuition_fees);
-	$summary['levels'][$i]["discounts"] = "Php. ".number_format($discounts);
-	$summary['levels'][$i]["total_collections"] = "Php. ".number_format($total_collections);
-	$summary['levels'][$i]["total_balance"] = "Php. ".number_format($total_balance);
+	$summary['levels'][$i]["tuition_fees"] = "Php. ".number_format($tuition_fees,2);
+	$summary['levels'][$i]["discounts"] = "Php. ".number_format($discounts,2);
+	$summary['levels'][$i]["total_collections"] = "Php. ".number_format($total_collections,2);
+	$summary['levels'][$i]["total_balance"] = "Php. ".number_format($total_balance,2);
 	
 };
 
 $summary['overall'][0]["total_students"] = number_format($overall_total_students);
-$summary['overall'][0]["tuition_fees"] = "Php. ".number_format($overall_tuition_fees);
-$summary['overall'][0]["discounts"] = "Php. ".number_format($overall_discounts);
-$summary['overall'][0]["total_collections"] = "Php. ".number_format($overall_total_collections);
-$summary['overall'][0]["total_balance"] = "Php. ".number_format($overall_total_balance);
+$summary['overall'][0]["tuition_fees"] = "Php. ".number_format($overall_tuition_fees,2);
+$summary['overall'][0]["discounts"] = "Php. ".number_format($overall_discounts,2);
+$summary['overall'][0]["total_collections"] = "Php. ".number_format($overall_total_collections,2);
+$summary['overall'][0]["total_balance"] = "Php. ".number_format($overall_total_balance,2);
 
 echo json_encode($summary);
 
