@@ -1,0 +1,23 @@
+Grade 7
+
+Delete duplicate fee in students_fees
+
+18007020
+856
+2327
+
+SELECT enrollments.id, enrollments.student_id, enrollments.school_id, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) fees FROM `enrollments` WHERE enrollments.grade = 9 AND enrollments.enrollment_school_year = '6'  
+ORDER BY `enrollments`.`id` ASC
+
+Grade 4
+
+18004012
+588
+2415
+
+SELECT enrollments.id, enrollments.student_id, enrollments.school_id, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) fees FROM `enrollments` WHERE enrollments.grade = 6 AND enrollments.enrollment_school_year = '6'  
+ORDER BY `fees` ASC
+
+
+
+
