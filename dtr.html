@@ -250,7 +250,8 @@ require_once 'authentication.php';
                       <label>Month :</label>
                       <select class="form-control" ng-model="staffDtr.month" ng-options="m.description for m in months track by m.month"></select>
                       <label>Staff :</label>
-                      <input type="text" class="form-control" ng-model="staffDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_staffs | filter:{fullname:$viewValue}" typeahead-on-select="form.staffSelect(this, $item, $model, $label, $event)">
+                      <!-- <input type="text" class="form-control" ng-model="staffDtr.fullname" uib-typeahead="fullname as ss.fullname for ss in suggest_staffs | filter:{fullname:$viewValue}" typeahead-on-select="form.staffSelect(this, $item, $model, $label, $event)"> -->
+                      <select class="form-control" ng-model="staffDtr.staff" ng-options="ss.full_name for ss in suggest_staffs track by ss.id" ng-change="form.staffSelected(this)"></select>
                       <br/>
                       <span class="btn btn-primary pull-right" ng-click="form.dtr(this,false)">Go!</span>
                     </form>

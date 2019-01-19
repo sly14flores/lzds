@@ -219,6 +219,17 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 
 		};
 		
+		self.staffSelected = function(scope) {
+			
+			var staff = scope.staffDtr.staff;			
+			
+			scope.staffDtr.fullname = staff['fullname'];
+			scope.staffDtr.id = staff['id'];
+			scope.staffDtr.rfid = staff['rfid'];
+			scope.staffDtr.schedule_id = staff['schedule_id'];			
+			
+		};
+		
 		self.logs = function(scope,row) {			
 			
 			if (!access.has(scope,scope.module.id,scope.module.privileges.view_logs)) return;			
