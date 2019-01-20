@@ -59,17 +59,20 @@ foreach ($filters as $i => $filter) {
 	
 };
 
-$sql = "SELECT payments.payment_date, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT students.gender FROM students WHERE students.id = enrollments.student_id) gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) home_address, payments.official_receipt, payments.amount FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE $where ORDER BY payments.payment_date ASC";
+$sql = "SELECT payments.payment_date, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT students.gender FROM students WHERE students.id = enrollments.student_id) gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) home_address, payments.official_receipt, payments.amount FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE $where ORDER BY payments.payment_date ASC, payments.id ASC";
 
 $collections = $con->getData($sql);
 
+$total = 0;
 foreach ($collections as $i => $collection) {
 	
 	$collections[$i]['payment_date'] = date("M j, Y",strtotime($collection['payment_date']));
-	$collections[$i]['amount'] = number_format($collection['amount'],2);
+	$collections[$i]['amount'] = "Php. ".number_format($collection['amount'],2);
+	
+	$total += $collection['amount'];
 	
 };
 
-echo json_encode($collections);
+echo json_encode(array("data"=>$collections,"total"=>"Php. ".number_format($total,2)));
 
 ?>
