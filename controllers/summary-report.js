@@ -13,7 +13,7 @@ app.controller('summaryReportCtrl',function($scope,fullscreen,form) {
 	
 	form.data($scope); // initialize data	
 	
-	$scope.views.title = 'Summary Reports';
+	$scope.views.title = 'Reports';
 	
 	$scope.fullscreen = fullscreen;	
 
