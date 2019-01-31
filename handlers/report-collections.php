@@ -66,7 +66,7 @@ $collections = $con->getData($sql);
 $total = 0;
 foreach ($collections as $i => $collection) {
 	
-	$collections[$i]['payment_date'] = date("M j, Y",strtotime($collection['payment_date']));
+	$collections[$i]['payment_date'] = date("m/d/Y",strtotime($collection['payment_date']));
 	$collections[$i]['amount'] = "Php. ".number_format($collection['amount'],2);
 	
 	$total += $collection['amount'];
