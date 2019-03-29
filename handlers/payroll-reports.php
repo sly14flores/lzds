@@ -39,7 +39,8 @@ foreach ($payroll as $key => $p) {
 	$rows[$key]["tardiness"] = "00:00:00";
 	$rows[$key]["awol"] = "0";
 	
-	$deductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = ".$p['id']);		
+	$sql = "SELECT * FROM payroll_deductions WHERE payroll_id = ".$p['id'];
+	$deductions = $con->getData($sql);
 
 	foreach ($deductions as $deduction) {
 

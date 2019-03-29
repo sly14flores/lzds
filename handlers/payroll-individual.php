@@ -135,8 +135,10 @@ $payroll_deductions[] = array(
 # Loans
 $first_day = date("Y-").$_POST['month']['month']."-01";
 $middle_day = date("Y-").$_POST['month']['month']."-15";
+$first_day_second = date("Y-m-16",strtotime($first_day));
 $last_day = ($_POST['period']=="first")?date("Y-m-15",strtotime($first_day)):date("Y-m-t",strtotime($first_day));
-$period_date = ($_POST['period'])?$middle_day:$last_day;
+$period_date = ($_POST['period']=="first")?$middle_day:$last_day;
+if ($_POST['period']=="second") $first_day = $first_day_second;
 
 $loans = $con->getData("SELECT *, loan_amount-loan_offset-(SELECT IFNULL(SUM(loans_payments.amount),0) FROM loans_payments WHERE loans_payments.loan_id = loans.id) loan_balance FROM loans WHERE staff_id = ".$_POST['id']." AND '$period_date' >= loan_effectivity");
 
