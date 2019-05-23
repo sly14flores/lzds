@@ -5,6 +5,7 @@
 		<th class="column-title">Date </th>
 		<th class="column-title">Description </th>
 		<th class="column-title">Wholeday/Halfday </th>
+		<th class="column-title">With Pay </th>
 		<th class="column-title no-link last"><span class="nobr">Action</span>
 		</th>
 	  </tr>
@@ -14,6 +15,7 @@
 		<td class="">{{l.leave_date}}</td>
 		<td class="">{{l.leave_description}}</td>
 		<td class="">{{l.leave_wholeday}}</td>
+		<td class="">{{(l.with_pay=="true")?"Yes":"No"}}</td>
 		<td class="last list-action">
 			<a href="javascript:;" ng-click="leaves.leave(this,l)"><i class="fa fa-search" style="margin-right: 10px;"></i></a>
 			<a href="javascript:;" ng-click="leaves.delete(this,l)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_leave"><i class="fa fa-close"></i></a>
@@ -22,7 +24,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="4" style="text-align: center;">
+			<td colspan="5" style="text-align: center;">
 				<ul uib-pagination boundary-links="true" total-items="pagination.leaves.filterData.length" max-size="pagination.leaves.maxSize" items-per-page="pagination.leaves.pageSize" ng-model="pagination.leaves.currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 			</td>
 		</tr>

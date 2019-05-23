@@ -6,6 +6,8 @@ require_once '../db.php';
 
 $con = new pdo_db("leaves");
 
+$_POST['with_pay'] = ($_POST['with_pay']=="true")?1:0;
+
 if ($_POST['id']) {
 
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";	

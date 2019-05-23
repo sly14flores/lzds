@@ -1,1 +1,1 @@
-ALTER TABLE `grade_levels`  ADD `base_id` VARCHAR(10) NULL  AFTER `description`;
+ALTER TABLE `leaves`  ADD `with_pay` TINYINT NOT NULL DEFAULT '0'  AFTER `leave_wholeday`;

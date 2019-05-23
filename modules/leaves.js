@@ -68,21 +68,27 @@ angular.module('leaves-module',['ui.bootstrap','bootstrap-modal','x-panel-module
 		};
 		
 		self.leave = function(scope,leave) {
-
+		
+			var title = 'Add Leave';			
+		
 			if (leave == null) {
-				if (!access.has(scope,scope.module.id,scope.module.privileges.add_leave)) return;				
+				if (!access.has(scope,scope.module.id,scope.module.privileges.add_leave)) return;
 				scope.data.leave = {};
 				scope.data.leave.id = 0;
+				scope.data.leave.with_pay = "false";
 				scope.data.leave.staff_id = scope.staff_id;
+				
 			} else {
+				title = 'Edit Leave';
 				if (!access.has(scope,scope.module.id,scope.module.privileges.view_leave)) return;
 				scope.data.leave = angular.copy(leave);
 				scope.data.leave.leave_date = new Date(leave.leave_date);
+				
 			};
-			
-			var content = 'dialogs/leave.html';	
 
-			bootstrapModal.box(scope,'Add Leave',content,self.save);			
+			var content = 'dialogs/leave.html';
+
+			bootstrapModal.box(scope,title,content,self.save);			
 			
 		};
 

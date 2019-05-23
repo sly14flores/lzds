@@ -17,7 +17,15 @@
 		<option value="AM">AM</option>
 		<option value="PM">PM</option>		
 	</select>
-	<span class="help-block" ng-show="formHolder.leave.leave_wholeday.$touched && formHolder.leave.leave_wholeday.$invalid">Please specify if wholeday or halfday</span>		
+	<span class="help-block" ng-show="formHolder.leave.leave_wholeday.$touched && formHolder.leave.leave_wholeday.$invalid">Please specify if wholeday or halfday</span>
+  </div>
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.leave.with_pay.$touched && formHolder.leave.with_pay.$invalid}">
+	<label>With Pay</label>
+	<select class="form-control" name="with_pay" ng-model="data.leave.with_pay" required>
+		<option value="false">No</option>
+		<option value="true">Yes</option>
+	</select>
+	<span class="help-block" ng-show="formHolder.leave.with_pay.$touched && formHolder.leave.with_pay.$invalid">Please specify if leave is with or without pay</span>	
   </div> 
 </div>
 </form>
