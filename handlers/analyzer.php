@@ -153,12 +153,12 @@ function is_onleave_travel($con,$day) {
 	
 	$is_onleave_travel = false;
 	
-	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
+	$leaves = $con->getData("SELECT leave_description, leave_wholeday, with_pay FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));
 	
 	# on leave
 	foreach ($leaves as $leave) {
-		$is_onleave_travel = true;
+		if ($leave['with_pay']) $is_onleave_travel = true;
 	}
 
 	# on travel order
@@ -174,12 +174,12 @@ function is_onleave_travel_am($con,$day) {
 	
 	$is_onleave_travel_am = false;
 	
-	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
+	$leaves = $con->getData("SELECT leave_description, leave_wholeday, with_pay FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));
 	
 	# on leave
 	foreach ($leaves as $leave) {
-		if ($leave['leave_wholeday'] == "AM") $is_onleave_travel_am = true;
+		if ($leave['leave_wholeday'] == "AM") if ($leave['with_pay']) $is_onleave_travel_am = true;
 	}
 
 	# on travel order
@@ -195,12 +195,12 @@ function is_onleave_travel_pm($con,$day) {
 	
 	$is_onleave_travel_pm = false;
 	
-	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
+	$leaves = $con->getData("SELECT leave_description, leave_wholeday, with_pay FROM leaves WHERE leave_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));		
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '$day' AND staff_id = ".staff_id($con,$_POST['rfid']));
 	
 	# on leave
 	foreach ($leaves as $leave) {
-		if ($leave['leave_wholeday'] == "PM") $is_onleave_travel_pm = true;
+		if ($leave['leave_wholeday'] == "PM") if ($leave['with_pay']) $is_onleave_travel_pm = true;
 	}
 
 	# on travel order

@@ -38,9 +38,13 @@ foreach ($_Dtrs as $key => $dtr) {
 	$_Dtrs[$key]['tardiness'] = ($dtr['tardiness'] =="00:00:00")?"-":$dtr['tardiness'];
 	
 	$_Dtrs[$key]['remarks'] = "";
-	$leaves = $con->getData("SELECT leave_description, leave_wholeday FROM leaves WHERE leave_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
+	$leaves = $con->getData("SELECT leave_description, leave_wholeday, with_pay FROM leaves WHERE leave_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
+	$on_leave = false;
 	foreach ($leaves as $leave) {
+		$on_leave = true;
 		$_Dtrs[$key]['remarks'] .= "Leave: ".$leave['leave_description']. ", ".$leave['leave_wholeday'];
+		if ($leave['with_pay']) $_Dtrs[$key]['remarks'] .= " (with pay)";
+		else $_Dtrs[$key]['remarks'] .= " (without pay)";
 	}
 	if ($_Dtrs[$key]['remarks'] != "") $_Dtrs[$key]['remarks'] .= "; ";
 	$tos = $con->getData("SELECT to_description, to_wholeday FROM travel_orders WHERE to_date = '".$dtr['ddate']."' AND staff_id = ".staff_id($con,$dtr['rfid']));
@@ -51,7 +55,7 @@ foreach ($_Dtrs as $key => $dtr) {
 		$holiday = $con->getData("SELECT holiday_description FROM holidays WHERE holiday_date = '".$dtr['ddate']."'");	
 		$_Dtrs[$key]['remarks'] = (count($holiday))?$holiday[0]['holiday_description']:"Holiday";
 	};
-	if ($_Dtrs[$key]['absent']) $_Dtrs[$key]['remarks'] = "Absent";	
+	if (($_Dtrs[$key]['absent']) && (!$on_leave)) $_Dtrs[$key]['remarks'] = "Absent";	
 	if ($_Dtrs[$key]['is_halfday']) $_Dtrs[$key]['remarks'] = "Halfday";
 
 }

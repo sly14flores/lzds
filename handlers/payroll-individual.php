@@ -18,7 +18,7 @@ $payroll = array(
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
 
-$hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']);
+$hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']." AND payroll_sy = ".$_POST['payroll_sy']['id']);
 
 if ($_POST['option']) {
 	if (count($hasPayroll)) {
@@ -30,7 +30,7 @@ if ($_POST['option']) {
 if (count($hasPayroll) == 0) {
 	$con->insertData($payroll);
 	$payroll_id = $con->insertId;
-	$hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']);	
+	$hasPayroll = $con->getData("SELECT * FROM payroll WHERE staff_id = ".$_POST['id']." AND payroll_period = '".$_POST['period']."' AND payroll_month = ".$_POST['month']['month']." AND payroll_sy = ".$_POST['payroll_sy']['id']);	
 } else {
 	$payroll_id = $hasPayroll[0]['id'];
 }

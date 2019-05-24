@@ -2,7 +2,7 @@
 
 function current_sy($con) {
 	
-	$sy_cutoff = date("Y-04-01");
+	$sy_cutoff = date("Y-06-01");
 	$sy_now = date("Y-m-d");
 	
 	$school_years = $con->getData("SELECT id, school_year FROM school_years");
