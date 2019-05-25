@@ -1,0 +1,10 @@
+<form name="formHolder.sy" id="formHolder.sy" novalidate>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.sy.school_year.$touched && formHolder.sy.school_year.$invalid}">
+	<label>School Year</label>
+	<input type="text" class="form-control" name="school_year" ng-model="sy.school_year" placeholder="yyyy-yy" required>
+	<span class="help-block" ng-show="formHolder.sy.school_year.$touched && formHolder.sy.school_year.$invalid">School Year is required</span>
+	<span class="help-block" ng-show="views.invalid_school_year">Invalid school year format</span>
+  </div>
+</div>
+</form>

@@ -48,7 +48,7 @@ angular.module('levels-module', ['ui.bootstrap','bootstrap-modal','module-access
 
 			if (scope.$id > 2) scope = scope.$parent;		
 		
-			scope.views.list = false;			
+			scope.views.list = false;		
 			
 			scope.level = {};
 			scope.level.id = 0;

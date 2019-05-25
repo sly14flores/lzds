@@ -184,6 +184,17 @@ define('system_privileges', array(
 		),
 	),
 	array(
+		"id"=>"school_years",
+		"description"=>"Manage School Years",
+		"privileges"=>array( # id=1 must be always page access
+			array("id"=>1,"description"=>"Show School Years","value"=>false),
+			array("id"=>2,"description"=>"Add New School Year","value"=>false),
+			array("id"=>3,"description"=>"View School Year Info","value"=>false),
+			array("id"=>4,"description"=>"Edit School Year Info","value"=>false),
+			array("id"=>"delete_sy","description"=>"Delete School Year","value"=>false),
+		),
+	),	
+	array(
 		"id"=>"holidays",
 		"description"=>"Holidays",
 		"privileges"=>array( # id=1 must be always page access

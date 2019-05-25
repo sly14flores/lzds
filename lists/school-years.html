@@ -1,0 +1,24 @@
+<div class="table-responsive">
+	<table class="table table-striped jambo_table bulk_action">
+		<thead>
+			<tr class="headings"><th>Id</th><th>Description</th><th></th></tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="y in filterData = (school_years | filter: views.search) | pagination: currentPage:pageSize">
+				<td>{{y.id}}</td>
+				<td>{{y.school_year}}</td>
+				<td class="last list-action">
+					<a href="javascript:;" ng-click="schoolYears.form(this,y)" style="margin-right: 10px;"><i class="fa fa-search"></i></a>
+					<a href="javascript:;" ng-click="schoolYears.delete(this,y)"><i class="fa fa-close" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_sy"></i></a>
+				</td>
+			</tr>
+		</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3" style="text-align: center;">
+				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+			</td>
+		</tr>
+	</tfoot>		
+	</table>
+</div>

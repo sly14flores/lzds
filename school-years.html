@@ -1,7 +1,7 @@
 <?php
 
 require_once 'authentication.php';
-$page = "students";
+$page = "school-years";
 
 ?>
 <!DOCTYPE html>
@@ -29,16 +29,9 @@ $page = "students";
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-	<style type="text/css">
-		
-		.students-fees-download:hover {
-			cursor: pointer;
-		}
-		
-	</style>
   </head>
 
-  <body id="main-body" class="nav-md" ng-app="students" ng-controller="studentsCtrl" account-profile>
+  <body id="main-body" class="nav-md" ng-app="schoolYears" ng-controller="schoolYearsCtrl" account-profile>
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -181,7 +174,7 @@ $page = "students";
               </div>
 
               <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">			
                   <div class="input-group">
                     <input type="text" class="form-control" ng-model="views.search" placeholder="Search for..." ng-disabled="views.list">
                     <span class="input-group-btn">
@@ -205,8 +198,8 @@ $page = "students";
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="javascript:;" ng-click="form.student(this,null)">Add New Student</a></li>
-                          <li><a href="javascript:;" ng-click="form.list(this)">Students List</a></li>
+                          <li><a href="javascript:;" ng-click="schoolYears.form(this,null)">Add New School Year</a></li>
+                          <li><a href="javascript:;" ng-click="schoolYears.list(this)">School Years List</a></li>
                         </ul>
                       </li>
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a></li>-->
@@ -243,12 +236,12 @@ $page = "students";
     <!-- PNotify -->
     <script src="vendors/pnotify/dist/pnotify.js"></script>
     <script src="vendors/pnotify/dist/pnotify.buttons.js"></script>
-    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>    
+    <script src="vendors/pnotify/dist/pnotify.nonblock.js"></script>
+    
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.js"></script>
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
-    <script src="vendors/blockUI/jquery.blockUI.js"></script>	
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
@@ -257,17 +250,11 @@ $page = "students";
 	<script src="modules/module-access.js"></script>
 	<script src="modules/account.js"></script>
 	<script src="modules/fullscreen.js"></script>
-	<script src="modules/blockui.js"></script>	
 	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>	
-	<script src="modules/x-panel.js"></script>
-	<script src="modules/window-open-post.js"></script>
-	<script src="modules/students.js"></script>
-	<script src="modules/enrollments.js?ver=1.0.0.1"></script>
-	<script src="modules/student-records.js"></script>
-	<script src="modules/excuse-letters.js"></script>
+	<script src="modules/school-year.js"></script>
+	<script src="modules/school-years.js"></script>
 	
-	<script src="controllers/students.js"></script>
+	<script src="controllers/school-years.js"></script>
 
   </body>
 </html>
