@@ -2,7 +2,7 @@ angular.module('account-module', ['bootstrap-modal']).directive('dropDown', func
 
 	return {
 		restrict: 'A',
-		template: '<li><a href="javascript:;" logout-account><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>'
+		template: '<li><a href="profile-settings.html"><i class="fa fa-user pull-right"></i> Profile Settings</a></li><li><a href="javascript:;" logout-account><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>'
 	};
 
 }).directive('accountProfile',function($http) {
