@@ -2,9 +2,9 @@ var app = angular.module('profileSettings',['profile-settings-module','account-m
 
 app.controller('profileSettingsCtrl', function($scope,userProfileSettings,fullscreen) {
 	
-	$scope.userProfileSettings = userProfileSettings;
+	$scope.app = userProfileSettings;
 	
-	$scope.userProfileSettings.data($scope);
+	$scope.app.data($scope);
 	
 	$scope.fullscreen = fullscreen;	
 	

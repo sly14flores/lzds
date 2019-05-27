@@ -129,13 +129,13 @@ $page = "profile-settings";
 				<div class="col-lg-6 col-md-12 col-sm-12">
 					<form class="form" name="formHolder.info" novalidate autocomplete=off>
 						<div class="form-body">
-							<h4><i class="icon-user"></i> Account Info <button class="btn btn-secondary float-md-right float-xs-right" ng-click="app.info.edit(this)"><i ng-class="{'icon-edit2': settings.btns.info.edit, 'icon-ban': !settings.btns.info.edit}"></i></button></h4><hr>
+							<h4><i class="icon-user"></i> Account Info <button class="btn btn-secondary float-md-right float-xs-right" ng-click="app.info.edit(this)"><i ng-class="{'fa fa-edit': settings.btns.info.edit, 'fa fa-ban': !settings.btns.info.edit}"></i></button></h4><hr>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
 										<label>Username</label>
-										<input type="text" class="form-control" ng-class="{'border-danger': formHolder.info.uname.$invalid || settings.info.not_unique || settings.info.alert.show}" name="uname" ng-model="settings.info.uname" ng-disabled="settings.btns.info.edit" required>
-										<span class="help-block danger" ng-show="formHolder.info.uname.$invalid">Username is required</span>
+										<input type="text" class="form-control" ng-class="{'border-danger': formHolder.info.username.$invalid || settings.info.not_unique || settings.info.alert.show}" name="username" ng-model="settings.info.username" ng-disabled="settings.btns.info.edit" required>
+										<span class="help-block danger" ng-show="formHolder.info.username.$invalid">Username is required</span>
 										<span class="help-block danger" ng-show="settings.info.not_unique">Username already exists</span>
 										<span class="help-block danger" ng-show="settings.info.alert.show">{{settings.info.alert.message}}</span>
 									</div>
@@ -152,7 +152,7 @@ $page = "profile-settings";
 				<div class="col-lg-6 col-md-12 col-sm-12">
 					<form class="form" name="formHolder.security" novalidate>
 						<div class="form-body">
-							<h4><i class="icon-lock3"></i> Account Security <button class="btn btn-secondary float-md-right float-xs-right" ng-click="app.security.edit(this)"><i ng-class="{'icon-edit2': settings.btns.security.edit, 'icon-ban': !settings.btns.security.edit}"></i></button></h4><hr>
+							<h4><i class="icon-lock3"></i> Account Security <button class="btn btn-secondary float-md-right float-xs-right" ng-click="app.security.edit(this)"><i ng-class="{'fa fa-edit': settings.btns.security.edit, 'fa fa-ban': !settings.btns.security.edit}"></i></button></h4><hr>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="form-group">
