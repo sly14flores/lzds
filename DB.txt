@@ -1,1 +1,43 @@
 ALTER TABLE `leaves`  ADD `with_pay` TINYINT NOT NULL DEFAULT '0'  AFTER `leave_wholeday`;
+
+--
+-- Table structure for table `students_vouchers`
+--
+
+CREATE TABLE `students_vouchers` (
+  `id` int(10) NOT NULL,
+  `enrollment_id` int(10) DEFAULT NULL,
+  `amount` float(10,2) DEFAULT NULL,
+  `system_log` datetime DEFAULT NULL,
+  `update_log` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `students_vouchers`
+--
+ALTER TABLE `students_vouchers`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enrollment_id` (`enrollment_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `students_vouchers`
+--
+ALTER TABLE `students_vouchers`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `students_vouchers`
+--
+ALTER TABLE `students_vouchers`
+  ADD CONSTRAINT `students_vouchers_ibfk_1` FOREIGN KEY (`enrollment_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
