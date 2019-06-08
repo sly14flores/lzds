@@ -15,6 +15,10 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				sub_total: 0,
 				sub_total_str: 0,
 				discount: 0,
+				voucher: {
+					enable: false,
+					amount: 0,
+				},
 				total: 0,
 				total_str: 0
 			};
@@ -84,6 +88,10 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				sub_total: 0,
 				sub_total_str: 0,
 				discount: 0,
+				voucher: {
+					enable: false,
+					amount: 0,
+				},				
 				total: 0,
 				total_str: 0
 			};		
@@ -313,7 +321,15 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 
 			printPost.show('reports/enrollment.php',{filter:{id: scope.enrollment_row.id}});
 			
-		};				
+		};
+
+		self.voucher = function(scope) {
+			
+			scope.details.voucher.enable = !scope.details.voucher.enable;
+			
+			if (!scope.details.voucher.enable) scope.details.voucher.amount = 0;
+			
+		};
 		
 		function formatThousandsWithRounding(n, dp){
 		  var w = n.toFixed(dp), k = w|0, b = n < 0 ? 1 : 0,
