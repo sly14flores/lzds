@@ -25,13 +25,26 @@ if ($_POST['student_enrollment']['id']) { // > 0 - update
 			$student_fee = $con->insertData($data);			
 		}
 	}
+	// discount
 	$con->table = "students_discounts";
-	$check = $con->getData("SELECT * FROM students_discounts WHERE enrollment_id = $enrollment_id");
-	if (count($check)) {
+	$check_discount = $con->getData("SELECT * FROM students_discounts WHERE enrollment_id = $enrollment_id");
+	if (count($check_discount)) {
 		$student_discount = $con->updateData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['discount'],"update_log"=>"CURRENT_TIMESTAMP"),'enrollment_id');
 	} else {
 		$student_discount = $con->insertData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['discount'],"system_log"=>"CURRENT_TIMESTAMP"));			
 	}
+	// voucher
+	$con->table = "students_vouchers";	
+	if ($_POST['details']['voucher']['enable']) {
+		$check_voucher = $con->getData("SELECT * FROM students_vouchers WHERE enrollment_id = $enrollment_id");
+		if (count($check_voucher)) {
+			$student_voucher = $con->updateData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['voucher']['amount'],"update_log"=>"CURRENT_TIMESTAMP"),'enrollment_id');		
+		} else {
+			$student_voucher = $con->insertData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['voucher']['amount'],"system_log"=>"CURRENT_TIMESTAMP"));
+		};
+	} else {
+		$delete = $con->deleteData(array("enrollment_id"=>$enrollment_id));			
+	};
 } else { // 0 - insert
 	unset($_POST['student_enrollment']['id']);
 	$_POST['student_enrollment']['system_log'] = "CURRENT_TIMESTAMP";	
@@ -48,6 +61,11 @@ if ($_POST['student_enrollment']['id']) { // > 0 - update
 	}
 	$con->table = "students_discounts";		
 	$student_discount = $con->insertData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['discount'],"system_log"=>"CURRENT_TIMESTAMP"));	
+	// voucher
+	if ($_POST['details']['voucher']['enable']) {
+		$con->table = "students_vouchers";
+		$student_voucher = $con->insertData(array("enrollment_id"=>$enrollment_id,"amount"=>$_POST['details']['voucher']['amount'],"system_log"=>"CURRENT_TIMESTAMP"));
+	};
 }
 
 echo $enrollment_id;

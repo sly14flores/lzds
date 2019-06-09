@@ -169,7 +169,17 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 				details(scope);
 
-			});
+			});						
+			
+			scope.$watch(function(scope) {
+				
+				return scope.details.voucher.amount;
+
+			},function(newValue, oldValue) {
+
+				details(scope);
+
+			});			
 
 		};
 		
@@ -187,6 +197,9 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				sub_total: 0,
 				sub_total_str: 0,
 				discount: 0,
+				voucher: {
+					enable: false,
+				},
 				total: 0,
 				total_str: 0
 			};			
@@ -202,6 +215,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				angular.copy(response.data.enrollment_fees, scope.benrollment_fees);
 				scope.sections_d = scope.enrollment.grade.sections;
 				scope.details.discount = response.data.details.discount;
+				scope.details.voucher = response.data.details.voucher;
 				details(scope);			
 
 				watchDetails(scope);
@@ -254,6 +268,9 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 				sub_total: 0,
 				sub_total_str: 0,
 				discount: 0,
+				voucher: {
+					enable: false,
+				},				
 				total: 0,
 				total_str: 0
 			};
@@ -467,6 +484,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			});
 			
 			scope.details.total = scope.details.sub_total - scope.details.discount;
+			if (scope.details.voucher.enable) scope.details.total -= scope.details.voucher.amount;						
 			scope.details.sub_total_str = formatThousandsNoRounding(scope.details.sub_total,2);
 			scope.details.total_str = formatThousandsNoRounding(scope.details.total,2);
 		
@@ -486,9 +504,23 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		
 		};
 		
+		self.voucher = function(scope) {
+			
+			scope.details.voucher.enable = !scope.details.voucher.enable;
+			
+			if (!scope.details.voucher.enable) {
+				if (scope.details.voucher.amount != undefined) delete scope.details.voucher.amount;
+			};
+			
+		};		
+		
 		self.total = function(scope) {
 			if (isNaN(scope.details.discount)) return;
+			if (scope.details.voucher.enable) {
+				if (isNaN(scope.details.voucher.amount)) return;
+			};
 			scope.details.total = scope.details.sub_total - scope.details.discount;
+			if (scope.details.voucher.enable) scope.details.total -= scope.details.voucher.amount;			
 			scope.details.total_str = formatThousandsNoRounding(scope.details.total,2);
 		};		
 		

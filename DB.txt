@@ -41,3 +41,6 @@ ALTER TABLE `students_vouchers`
 --
 ALTER TABLE `students_vouchers`
   ADD CONSTRAINT `students_vouchers_ibfk_1` FOREIGN KEY (`enrollment_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+ALTER TABLE `students_vouchers` DROP FOREIGN KEY `students_vouchers_ibfk_1`;
+ALTER TABLE `students_vouchers` ADD  CONSTRAINT `students_vouchers_ibfk_1` FOREIGN KEY (`enrollment_id`) REFERENCES `enrollments`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
