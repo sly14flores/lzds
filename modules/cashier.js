@@ -70,7 +70,8 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			scope.descriptions = [
 				{name:undefined, description:"-"},
 				{name:"monthly_payment", description:"Monthly Payment"},
-				{name:"down_payment", description:"Down Payment"}
+				{name:"down_payment", description:"Down Payment"},
+				{name:"voucher", description:"Voucher"}
 			];
 			
 			scope.getDescription = function(scope,description) {
@@ -170,8 +171,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, scope.payments);
-				
-				
+
 			}, function myError(response) {
 				 
 			  // error

@@ -9,7 +9,8 @@ function getDescriptionObj($description) {
 	$descriptions = array(
 		array("name"=>"undefined","description"=>"-"),
 		array("name"=>"monthly_payment","description"=>"Monthly Payment"),
-		array("name"=>"down_payment","description"=>"Down Payment")
+		array("name"=>"down_payment","description"=>"Down Payment"),
+		array("name"=>"voucher","description"=>"Voucher")
 	);
 	
 	$obj = array("name"=>"undefined","description"=>"-");

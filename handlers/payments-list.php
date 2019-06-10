@@ -25,6 +25,7 @@ $payments = $con->getData($sql);
 
 foreach ($payments as $i => $payment) {
 	
+	$payments[$i]['payments'] = ($payment['payments']==null)?0:$payment['payments'];
 	$payments[$i]['total'] = $payment['sub_total'] - $payment['discount'];
 	$payments[$i]['balance'] = $payments[$i]['total'] - $payment['payments'];
 	
