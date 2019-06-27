@@ -662,7 +662,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				doc.setFontSize(12);
 				doc.setFontType('bold');
 				doc.myText('Frederick Q. Tria',{align: "center"},0,570,false,468);
-				doc.myText('Clar Reneith M. Balimbin',{align: "center"},0,570,true,468);
+				doc.myText('Aileen R. Hufana',{align: "center"},0,570,true,468);
 						
 				var blob = doc.output("blob");
 				window.open(URL.createObjectURL(blob));
