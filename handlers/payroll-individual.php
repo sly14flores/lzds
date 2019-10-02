@@ -140,13 +140,15 @@ $last_day = ($_POST['period']=="first")?date("Y-m-15",strtotime($first_day)):dat
 $period_date = ($_POST['period']=="first")?$middle_day:$last_day;
 if ($_POST['period']=="second") $first_day = $first_day_second;
 
-$loans = $con->getData("SELECT *, loan_amount-loan_offset-(SELECT IFNULL(SUM(loans_payments.amount),0) FROM loans_payments WHERE loans_payments.loan_id = loans.id) loan_balance FROM loans WHERE staff_id = ".$_POST['id']." AND '$period_date' >= loan_effectivity");
+$loans = $con->getData("SELECT * FROM loans WHERE staff_id = ".$_POST['id']." AND '$period_date' >= loan_effectivity");
 
 $loan_period = "loan_monthly_".$_POST['period'];
 foreach ($loans as $key => $loan) {
 	
-	if ($loan['loan_balance'] <= 0) continue;
-	
+	$loan_payments = $con->getData("SELECT IFNULL(SUM(loans_payments.amount),0) loan_payments FROM loans_payments WHERE loan_id = ".$loan['id']);
+	$loan_balance = $loan['loan_amount']-$loan['loan_offset']-$loan_payments[0]['loan_payments'];
+	if ($loan_balance <= 0) continue;
+
 	$payroll_deductions[] = array(
 		"payroll_id"=>$payroll_id,
 		"description"=>$loan['loan_description'],
