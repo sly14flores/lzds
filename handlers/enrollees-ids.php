@@ -37,7 +37,12 @@ foreach ($enrollees as $i => $enrollee) {
 	
 	$enrollees[$i]['birthdate'] = date("M j, Y",strtotime($enrollee['birthdate']));
 	
-	$remarks = (($enrollee['school_id']=="")||($enrollee['school_id']==null))?"":"Ok";	
+	$remarks = (($enrollee['school_id']=="")||($enrollee['school_id']==null))?"":"Ok";
+	
+	// parent / guardian
+	$sql = "SELECT id, student_id, relationship, CONCAT(first_name, ' ', SUBSTRING(middle_name,1,1), '. ', last_name, IF(ext_name=NULL,'', IF(ext_name='-','',CONCAT(' ',ext_name)))) fullname FROM parents_guardians WHERE relationship IN ('Father','Mother','Guardian') ORDER BY student_id";
+	$parents_guardians = $con->getData($sql);
+	
 	$enrollees[$i]['remarks'] = $remarks;
 	
 };
