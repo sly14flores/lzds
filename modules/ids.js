@@ -269,6 +269,7 @@ angular.module('ids-module', ['ui.bootstrap','bootstrap-modal','x-panel-module',
 				{title: "Level", dataKey: "grade"},
 				{title: "Section", dataKey: "section"},
 				{title: "Home Address", dataKey: "home_address"},
+				{title: "Parent/Guardian", dataKey: "parent_guardian"},
 				{title: "Contact No", dataKey: "contact_no"}
 			];			
 			
@@ -289,12 +290,13 @@ angular.module('ids-module', ['ui.bootstrap','bootstrap-modal','x-panel-module',
 				columnStyles: {
 					lrn: {columnWidth: 80},
 					school_id: {columnWidth: 60},					
-					fullname: {columnWidth: 150},
+					fullname: {columnWidth: 100},
 					gender: {columnWidth: 50},
 					birthdate: {columnWidth: 80},
 					grade: {columnWidth: 75},
 					section: {columnWidth: 100},
-					home_address: {columnWidth: 150},
+					home_address: {columnWidth: 100},
+					parent_guardian: {columnWidth: 100},
 					contact_no: {columnWidth: 75}
 				},
 				headerStyles: {
