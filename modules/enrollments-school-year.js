@@ -418,9 +418,12 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 
 		self.save = function() {
 
-			if ($rootScope.btns.edit.disabled) return false;
+			if ($rootScope.btns.edit.disabled) {
+				pnotify.show('info','Notification','You must click edit to save changes.');
+				return false;	
+			}
 		
-			if (validate($rootScope)) {
+			if (validate()) {
 				pnotify.show('danger','Notification','Some fields are required.');
 				return false;			
 			}	
@@ -541,7 +544,7 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 		  return s.substr(0, j + 3) + r + 
 			(dp ? '.' + d + ( d.length < dp ? 
 				('00000').substr(0, dp - d.length):e):e);
-		};		
+		};
 
 	};
 

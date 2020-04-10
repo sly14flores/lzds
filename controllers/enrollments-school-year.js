@@ -1,6 +1,8 @@
-var app = angular.module('enrollmentsSchoolYear',['account-module','toggle-fullscreen','enrollments-school-year']);
+var app = angular.module('enrollmentsSchoolYear',['account-module','toggle-fullscreen','enrollments-school-year','xeditable']);
 
-app.run(function($rootScope) {
+app.run(function($rootScope,editableOptions) {
+
+	editableOptions.theme = 'bs3';	
 
 	$rootScope.module = {
 		id: 'school_year',
