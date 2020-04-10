@@ -1,8 +1,8 @@
 var app = angular.module('enrollmentsSchoolYear',['account-module','toggle-fullscreen','enrollments-school-year']);
 
-app.controller('enrollmentsSchoolYearCtrl',function($scope,fullscreen,form) {
-	
-	$scope.module = {
+app.run(function($rootScope) {
+
+	$rootScope.module = {
 		id: 'school_year',
 		privileges: {
 			student_enrollment: 2,
@@ -11,11 +11,15 @@ app.controller('enrollmentsSchoolYearCtrl',function($scope,fullscreen,form) {
 			print_enrollment: 5,
 			delete_enrollment: "delete_enrollment",
 		}
-	};	
-	
-	$scope.form = form;
+	};
 
-	$scope.form.data($scope);
+});
+
+app.controller('enrollmentsSchoolYearCtrl',function($rootScope,$scope,fullscreen,form) {	
+	
+	$rootScope.form = form;
+
+	$rootScope.form.data();
 	
 });
 

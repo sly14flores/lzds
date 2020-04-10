@@ -4,7 +4,7 @@
 	<label>School Year:</label>
 	<select class="form-control" ng-model="filter_students.school_year" ng-options="esy.school_year for esy in enroll_school_years track by esy.id"></select>
   </div>			  
-  <button type="button" class="btn btn-default" style="margin-top: 5px;" ng-click="form.filterStudents(this)">Go!</button>
+  <button type="button" class="btn btn-default" style="margin-top: 5px;" ng-click="form.filterStudents()">Go!</button>
 </form>
 <div class="ln_solid"></div>
 <h4>{{views.search_student_ready}}</h4>
@@ -20,7 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="fs in filtered_students | filter:views.search_student" style="cursor:pointer;" ng-click="form.studentSelected(this,fs)"><td>{{fs.fullname}}</td><td>{{fs.recent_sy}}</td><td>{{fs.recent_level}}</td></tr>
+					<tr ng-repeat="fs in filtered_students | filter:views.search_student" style="cursor:pointer;" ng-click="form.studentSelected(fs)"><td>{{fs.fullname}}</td><td>{{fs.recent_sy}}</td><td>{{fs.recent_level}}</td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -56,7 +56,7 @@
 			<div class="row">
 			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.enrollment.grade.$touched && formHolder.enrollment.grade.$invalid}">
 				<label>Level</label>
-				<select class="form-control" name="grade" ng-model="enrollment.grade" ng-options="level.description for level in levels track by level.id" ng-change="form.levelSelectedD(this,enrollment.grade)" required></select>
+				<select class="form-control" name="grade" ng-model="enrollment.grade" ng-options="level.description for level in levels track by level.id" ng-change="form.levelSelectedD(enrollment.grade)" required></select>
 				<span class="help-block" ng-show="formHolder.enrollment.grade.$touched && formHolder.enrollment.grade.$invalid">Level year is required</span>
 			  </div>
 			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
@@ -83,7 +83,7 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="voucher" ng-model="details.voucher.amount" ng-disabled="!details.voucher.enable" ng-required="details.voucher.enable">
 									<span class="input-group-btn">
-									  <button type="button" class="btn btn-default" ng-click="form.voucher(this)"><i ng-class="{'fa': true, 'fa-plus': !details.voucher.enable, 'fa-close': details.voucher.enable}"></i></button>
+									  <button type="button" class="btn btn-default" ng-click="form.voucher()"><i ng-class="{'fa': true, 'fa-plus': !details.voucher.enable, 'fa-close': details.voucher.enable}"></i></button>
 									</span>
 								</div>						
 							</td>
@@ -99,7 +99,7 @@
 			<section class="content invoice">
 				<div class="row">
 					<div class="col-xs-12 invoice-header">
-						<h4>School Fees <i class="fa fa-download pull-right students-fees-download" ng-click="form.downloadFees(this,enrollment.grade,true)"></i></h4>
+						<h4>School Fees <i class="fa fa-download pull-right students-fees-download" ng-click="form.downloadFees(enrollment.grade,true)"></i></h4>
 						<table class="table table-striped">
 							<thead>
 								<tr><th>#</th><th>Description</th><th>Amount</th></tr>
