@@ -35,7 +35,7 @@ angular.module('login-module', []).service('loginService', function($http, $wind
 				};				
 				
 				
-				$window.location.href = 'index.html';
+				$window.location.href = 'index.php';
 			} else {
 				scope.views.incorrect = true;
 				scope.views.msg = 'Username or password incorrect';				
