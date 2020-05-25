@@ -199,7 +199,7 @@ $top_margin = 5;
 
 $header = array(
 	function($p) {
-		$p->Image("../img/lzds-logo-gray.png",173,25,25);	
+		$p->Image("../img/lzds-logo.png",165,22,35);	
 	},
 	function($p) {
 		echo null; # important in include

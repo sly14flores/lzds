@@ -360,7 +360,7 @@ $page = "dtr-students"
 	<script src="modules/pnotify.js"></script>	
 	<script src="modules/school-year.js"></script>
 	<script src="modules/jspdf.js"></script>	
-	<script src="modules/dtr-students.js"></script>
+	<script src="modules/dtr-students.js?ver=1.0.1"></script>
 	
 	<script src="controllers/dtr-students.js"></script>
 

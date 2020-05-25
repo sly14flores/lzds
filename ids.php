@@ -269,7 +269,7 @@ $page = "ids";
 	<script src="modules/window-open-post.js"></script>
 	<script src="modules/ids.js"></script>
 	
-	<script src="controllers/ids.js"></script>
+	<script src="controllers/ids.js?ver=1.0.1"></script>
 
   </body>
 </html>

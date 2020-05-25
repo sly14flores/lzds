@@ -368,7 +368,7 @@ $page = "payroll";
 	<script src="modules/jspdf.js"></script>	
 	<script src="modules/payroll.js"></script>
 	
-	<script src="controllers/payroll.js"></script>
+	<script src="controllers/payroll.js?ver=1.0.1"></script>
 
   </body>
 </html>

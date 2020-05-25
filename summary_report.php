@@ -347,7 +347,7 @@ $page = "summary_report";
 	<script src="modules/school-year.js"></script>
 	<script src="modules/pnotify.js"></script>
 	<script src="modules/jspdf.js"></script>	
-	<script src="modules/summary-report.js?ver=1.0.0.1"></script>
+	<script src="modules/summary-report.js?ver=1.0.2"></script>
 	
 	<script src="controllers/summary-report.js"></script>
 
