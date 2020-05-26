@@ -247,8 +247,8 @@ $page = "staffs";
 
     <script src="vendors/bootbox/bootbox.min.js"></script>
 	
-    <script src="vendors/jspdf/jspdf.min.js"></script>
-    <script src="vendors/jspdf/jspdf.plugin.autotable.js"></script>	
+    <script src="vendors/jspdf/jspdf.min-1.5.3.js"></script>
+    <script src="vendors/jspdf/jspdf.plugin.autotable-3.2.11.js"></script>	
 	
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
@@ -263,7 +263,7 @@ $page = "staffs";
 	<script src="modules/leaves.js?ver=1.0.0.1"></script>	
 	<script src="modules/travel-orders.js"></script>	
 	<script src="modules/loans.js"></script>
-	<script src="modules/records.js?ver=1.0.2"></script>	
+	<script src="modules/records.js?ver=1.0.3"></script>	
 	<script src="modules/staffs.js"></script>
 	
 	<script src="controllers/staffs.js"></script>

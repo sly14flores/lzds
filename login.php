@@ -39,7 +39,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
 		  <div class="lzds-logo">
-			<img src="img/lzds-logo.png">
+			<img src="img/lzds-logo.png?12345">
 			<h3>School System</h3>			
 		  </div>
           <section class="login_content">
