@@ -263,7 +263,7 @@ $page = "staffs";
 	<script src="modules/leaves.js?ver=1.0.0.1"></script>	
 	<script src="modules/travel-orders.js"></script>	
 	<script src="modules/loans.js"></script>
-	<script src="modules/records.js?ver=1.0.3"></script>	
+	<script src="modules/records.js?ver=1.0.4"></script>	
 	<script src="modules/staffs.js"></script>
 	
 	<script src="controllers/staffs.js"></script>
