@@ -22,6 +22,15 @@ angular.module('school-year',[]).factory('schoolYear',function($http) {
 			
 		};
 		
+		self.getSys = function() {
+			
+			return $http({
+			  method: 'POST',
+			  url: 'handlers/school-years.php'
+			});
+			
+		};		
+		
 		self.current = function(scope) {
 			
 			$http({
