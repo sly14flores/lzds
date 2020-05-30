@@ -3,6 +3,8 @@
 require_once 'authentication.php';
 $page = "payroll";
 
+require_once 'updater.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -357,18 +359,18 @@ $page = "payroll";
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 	
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/pnotify.js"></script>		
-	<script src="modules/blockui.js"></script>	
-	<script src="modules/school-year.js"></script>
-	<script src="modules/window-open-post.js"></script>	
-	<script src="modules/jspdf.js"></script>	
-	<script src="modules/payroll.js"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/pnotify.js<?=$update?>"></script>		
+	<script src="modules/blockui.js<?=$update?>"></script>	
+	<script src="modules/school-year.js<?=$update?>"></script>
+	<script src="modules/window-open-post.js<?=$update?>"></script>	
+	<script src="modules/jspdf.js<?=$update?>"></script>	
+	<script src="modules/payroll.js<?=$update?>"></script>
 	
-	<script src="controllers/payroll.js?ver=1.0.1"></script>
+	<script src="controllers/payroll.js<?=$update?>"></script>
 
   </body>
 </html>

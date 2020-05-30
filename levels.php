@@ -3,6 +3,8 @@
 require_once 'authentication.php';
 $page = "levels";
 
+require_once 'updater.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -246,15 +248,15 @@ $page = "levels";
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>
-	<script src="modules/levels.js"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/pnotify.js<?=$update?>"></script>	
+	<script src="modules/school-year.js<?=$update?>"></script>
+	<script src="modules/levels.js<?=$update?>"></script>
 	
-	<script src="controllers/levels.js"></script>
+	<script src="controllers/levels.js<?=$update?>"></script>
 
   </body>
 </html>

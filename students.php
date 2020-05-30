@@ -3,6 +3,8 @@
 require_once 'authentication.php';
 $page = "students";
 
+require_once 'updater.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,7 @@ $page = "students";
 
     <title>School System | Lord of Zion Divine School</title>
 	<link rel="icon" type="image/ico" href="favicon.ico">
+	
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -28,6 +31,7 @@ $page = "students";
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
+	
     <link href="css/style.css" rel="stylesheet">
 	<style type="text/css">
 		
@@ -253,21 +257,21 @@ $page = "students";
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/blockui.js"></script>	
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>	
-	<script src="modules/x-panel.js"></script>
-	<script src="modules/window-open-post.js"></script>
-	<script src="modules/students.js"></script>
-	<script src="modules/enrollments.js?ver=1.0.0.1"></script>
-	<script src="modules/student-records.js"></script>
-	<script src="modules/excuse-letters.js"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js?<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/blockui.js<?=$update?>"></script>	
+	<script src="modules/pnotify.js<?=$update?>"></script>	
+	<script src="modules/school-year.js<?=$update?>"></script>	
+	<script src="modules/x-panel.js<?=$update?>"></script>
+	<script src="modules/window-open-post.js<?=$update?>"></script>
+	<script src="modules/students.js<?=$update?>"></script>
+	<script src="modules/enrollments.js<?=$update?>"></script>
+	<script src="modules/student-records.js<?=$update?>"></script>
+	<script src="modules/excuse-letters.js<?=$update?>"></script>
 	
-	<script src="controllers/students.js"></script>
+	<script src="controllers/students.js<?=$update?>"></script>
 
   </body>
 </html>

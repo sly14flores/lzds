@@ -3,6 +3,8 @@
 require_once 'authentication.php';
 $page = "cashier";
 
+require_once 'updater.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +17,7 @@ $page = "cashier";
 
     <title>School System | Lord of Zion Divine School</title>
 	<link rel="icon" type="image/ico" href="favicon.ico">
+	
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -29,6 +32,7 @@ $page = "cashier";
     <!-- Custom Theme Style -->
     <link href="build/css/custom.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+	
   </head>
 
   <body id="main-body" class="nav-md" ng-app="cashier" ng-controller="cashierCtrl" account-profile>
@@ -264,16 +268,16 @@ $page = "cashier";
 	<script src="angular/angular-sanitize.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>
-	<script src="modules/window-open-post.js"></script>	
-	<script src="modules/cashier.js"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/pnotify.js<?=$update?>"></script>	
+	<script src="modules/school-year.js<?=$update?>"></script>
+	<script src="modules/window-open-post.js<?=$update?>"></script>	
+	<script src="modules/cashier.js<?=$update?>"></script>
 	
-	<script src="controllers/cashier.js"></script>
+	<script src="controllers/cashier.js<?=$update?>"></script>
 
   </body>
 </html>

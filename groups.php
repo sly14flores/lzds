@@ -1,7 +1,9 @@
 <?php
 
 require_once 'authentication.php';
-$page = "groups"
+$page = "groups";
+
+require_once 'updater.php';
 
 ?>
 <!DOCTYPE html>
@@ -254,16 +256,16 @@ $page = "groups"
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 	
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/x-panel.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/blockui.js"></script>
-	<script src="modules/pnotify.js"></script>
-	<script src="modules/groups.js"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/x-panel.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/blockui.js<?=$update?>"></script>
+	<script src="modules/pnotify.js<?=$update?>"></script>
+	<script src="modules/groups.js<?=$update?>"></script>
 	
-	<script src="controllers/groups.js"></script>
+	<script src="controllers/groups.js<?=$update?>"></script>
 
   </body>
 </html>

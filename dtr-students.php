@@ -1,7 +1,9 @@
 <?php
 
 require_once 'authentication.php';
-$page = "dtr-students"
+$page = "dtr-students";
+
+require_once 'updater.php';
 
 ?>
 <!DOCTYPE html>
@@ -15,6 +17,7 @@ $page = "dtr-students"
 
     <title>School System | Lord of Zion Divine School</title>
 	<link rel="icon" type="image/ico" href="favicon.ico">
+	
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -352,17 +355,17 @@ $page = "dtr-students"
 	<script src="angular/angular.min.js"></script>	
 	<script src="angular/ui-bootstrap-tpls-2.5.0.min.js"></script>	
 
-	<script src="modules/bootstrap-modal.js"></script>
-	<script src="modules/module-access.js"></script>
-	<script src="modules/account.js?ver=1.0.0.1"></script>
-	<script src="modules/fullscreen.js"></script>
-	<script src="modules/blockui.js"></script>		
-	<script src="modules/pnotify.js"></script>	
-	<script src="modules/school-year.js"></script>
-	<script src="modules/jspdf.js"></script>	
-	<script src="modules/dtr-students.js?ver=1.0.1"></script>
+	<script src="modules/bootstrap-modal.js<?=$update?>"></script>
+	<script src="modules/module-access.js<?=$update?>"></script>
+	<script src="modules/account.js<?=$update?>"></script>
+	<script src="modules/fullscreen.js<?=$update?>"></script>
+	<script src="modules/blockui.js<?=$update?>"></script>		
+	<script src="modules/pnotify.js<?=$update?>"></script>	
+	<script src="modules/school-year.js<?=$update?>"></script>
+	<script src="modules/jspdf.js<?=$update?>"></script>	
+	<script src="modules/dtr-students.js<?=$update?>"></script>
 	
-	<script src="controllers/dtr-students.js"></script>
+	<script src="controllers/dtr-students.js<?=$update?>"></script>
 
   </body>
 </html>
