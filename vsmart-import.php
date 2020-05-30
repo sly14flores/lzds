@@ -233,7 +233,7 @@ require_once 'updater.php';
 								<div class="col-lg-4">
 									<div class="input-group">
 										<span class="input-group-addon">Search</span>
-										<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+										<input type="text" class="form-control">
 									</div>
 								</div>
 								<div class="col-lg-8">
@@ -269,7 +269,7 @@ require_once 'updater.php';
 								<div class="col-lg-4">
 									<div class="input-group">
 										<span class="input-group-addon">Search</span>
-										<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+										<input type="text" class="form-control">
 									</div>
 								</div>
 								<div class="col-lg-8">
