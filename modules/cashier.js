@@ -213,7 +213,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			
 			var content = 'dialogs/payment.html';			
 
-			bootstrapModal.box(scope,'Add Payment',content,self.save);			
+			bootstrapModal.box(scope,'Payment',content,self.save);			
 			
 		};		
 		
@@ -455,6 +455,16 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			}, function error(response) {
 				
 			});			
+			
+		};
+		
+		self.descriptionSelected = function(scope,item) {
+			
+			if (item.name == 'voucher') {
+				
+				scope.payment.description = {name:"", description:"-"};
+				
+			}
 			
 		};
 

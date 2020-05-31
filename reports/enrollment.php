@@ -12,6 +12,11 @@ $con = new pdo_db();
 $enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date FROM enrollments WHERE id = ".$filter['id']);
 $enrollment[0]['fullname'] = iconv('UTF-8', 'ISO-8859-1', $enrollment[0]['fullname']);
 
+// voucher
+$voucher_amount = 0;
+$voucher = $con->getData("SELECT amount FROM students_vouchers WHERE enrollment_id = ".$filter['id']);
+if (count($voucher)) $voucher_amount = $voucher[0]['amount'];
+
 $_fees = $con->getData("SELECT (SELECT fees.description FROM fees WHERE fees.id = (SELECT fee_items.fee_id FROM fee_items WHERE fee_items.id = students_fees.fee_item_id)) description, students_fees.amount amount FROM students_fees WHERE students_fees.enrollment_id = ".$filter['id']);
 $fees = [];
 $sub_total = 0;
@@ -22,7 +27,7 @@ foreach ($_fees as $_fee) {
 }
 $fees[] = array("description"=>"Total","amount"=>$sub_total);
 
-$total = $sub_total-$enrollment[0]['discount'];
+$total = $sub_total-$voucher_amount-$enrollment[0]['discount'];
 
 class PDF extends FPDF {
 	function CheckPageBreak($h) {
@@ -306,7 +311,7 @@ $header = array(
 		$p->Cell(0,5,"School Fees",0,1,'L');	
 	},
 	function($p) { # Sub Total
-		global $enrollment, $sub_total;		
+		global $sub_total;		
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(135,105);
 		$p->SetTextColor(144,164,174);
@@ -316,25 +321,36 @@ $header = array(
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($sub_total,2),0,1,'R');
 	},
-	function($p) { # Discount
-		global $enrollment;	
+	function($p) { # Voucher
+		global $voucher_amount;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(135,115);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(20,5,"Discount",0,1,'R');
+		$p->Cell(20,5,"Voucher",0,1,'R');
 		$p->SetFont('Arial','',11);	
 		$p->SetXY(150,115);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(45,5,"Php. ".number_format($voucher_amount,2),0,1,'R');		
+	},
+	function($p) { # Discount
+		global $enrollment;	
+		$p->SetFont('Arial','',9);	
+		$p->SetXY(135,125);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Discount",0,1,'R');
+		$p->SetFont('Arial','',11);	
+		$p->SetXY(150,125);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($enrollment[0]['discount'],2),0,1,'R');	
 	},
 	function($p) { # Total
 		global $enrollment, $total;	
 		$p->SetFont('Arial','',9);
-		$p->SetXY(135,125);
+		$p->SetXY(135,135);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Total",0,1,'R');
 		$p->SetFont('Arial','',11);
-		$p->SetXY(150,125);
+		$p->SetXY(150,135);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($total,2),0,1,'R');
 	},

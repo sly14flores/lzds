@@ -8,6 +8,7 @@ require('../classes.php');
 $con = new pdo_db();
 
 $enrollment = $con->getData("SELECT student_id, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT IFNULL(students.email_address,'') FROM students WHERE students.id = enrollments.student_id) email_address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) sub_total FROM enrollments WHERE id = $id");
+
 $sub_total = $enrollment[0]['sub_total'];
 
 $total = $sub_total-$enrollment[0]['discount'];

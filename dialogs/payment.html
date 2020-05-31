@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.description.$touched && formHolder.payment.description.$invalid}">
 	<label>Description</label>
-	<select class="form-control" name="description" ng-model="payment.description" ng-options="description.description for description in descriptions track by description.name" required></select>
+	<select class="form-control" name="description" ng-model="payment.description" ng-options="description.description for description in descriptions track by description.name" ng-change="form.descriptionSelected(this,payment.description)" required></select>
 	<span class="help-block" ng-show="formHolder.payment.description.$touched && formHolder.payment.description.$invalid">Description is required</span>
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.payment_month.$touched && formHolder.payment.payment_month.$invalid}">

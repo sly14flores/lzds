@@ -16,11 +16,11 @@
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th>Full Name</th><th>Recent SY</th><th>Recent Level</th>
+						<th>Full Name</th><th>LRN</th><th>Recent SY</th><th>Recent Level</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="fs in filtered_students | filter:views.search_student" style="cursor:pointer;" ng-click="form.studentSelected(fs)"><td>{{fs.fullname}}</td><td>{{fs.recent_sy}}</td><td>{{fs.recent_level}}</td></tr>
+					<tr ng-repeat="fs in filtered_students | filter:views.search_student" style="cursor:pointer;" ng-click="form.studentSelected(fs)"><td>{{fs.fullname}}</td><td>{{fs.lrn}}</td><td>{{fs.recent_sy}}</td><td>{{fs.recent_level}}</td></tr>
 				</tbody>
 			</table>
 		</div>

@@ -19,7 +19,21 @@ if ((isset($_POST['level']))&&($_POST['level']['id']>0)) {
 	
 };
 
-$sql = "SELECT enrollments.id, (SELECT students.lrn FROM students WHERE students.id = enrollments.student_id) lrn, enrollments.school_id, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) enrollment_school_year, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) sub_total, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, (SELECT SUM(payments.amount) FROM payments WHERE payments.enrollment_id = enrollments.id) payments FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id WHERE enrollment_school_year = ".$school_year['id']."$and_level ORDER BY students.lastname, students.firstname, students.middlename";
+$sql = "SELECT enrollments.id,";
+$sql .= " (SELECT students.lrn FROM students WHERE students.id = enrollments.student_id) lrn,";
+$sql .= " enrollments.school_id,";
+$sql .= " (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname,";
+$sql .= " (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) enrollment_school_year,";
+$sql .= " (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade,";
+$sql .= " (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section,";
+$sql .= " DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date,";
+$sql .= " (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) sub_total,";
+$sql .= " (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount,";
+$sql .= " (SELECT SUM(payments.amount) FROM payments WHERE payments.enrollment_id = enrollments.id) payments,";
+$sql .= " IFNULL((SELECT SUM(students_vouchers.amount) FROM students_vouchers WHERE students_vouchers.enrollment_id = enrollments.id),0) voucher";
+$sql .= " FROM enrollments";
+$sql .= " LEFT JOIN students ON enrollments.student_id = students.id";
+$sql .= " WHERE enrollment_school_year = ".$school_year['id']."$and_level ORDER BY students.lastname, students.firstname, students.middlename";
 
 $payments = $con->getData($sql);
 

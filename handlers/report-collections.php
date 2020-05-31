@@ -59,7 +59,7 @@ foreach ($filters as $i => $filter) {
 	
 };
 
-$sql = "SELECT payments.payment_date, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT students.gender FROM students WHERE students.id = enrollments.student_id) gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) home_address, payments.official_receipt, payments.amount FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE $where ORDER BY payments.payment_date ASC, payments.id ASC";
+$sql = "SELECT payments.payment_date, (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, IFNULL((SELECT sections.description FROM sections WHERE sections.id = enrollments.section),'') section, (SELECT students.gender FROM students WHERE students.id = enrollments.student_id) gender, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) home_address, IFNULL(payments.official_receipt,''), payments.amount FROM payments LEFT JOIN enrollments ON payments.enrollment_id = enrollments.id WHERE $where ORDER BY payments.payment_date ASC, payments.id ASC";
 
 $collections = $con->getData($sql);
 

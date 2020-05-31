@@ -10,8 +10,14 @@ require('../db.php');
 $con = new pdo_db();
 
 $enrollment = $con->getData("SELECT (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname, (SELECT students.lrn from students WHERE students.id = enrollments.student_id) lrn, (SELECT students.home_address FROM students WHERE students.id = enrollments.student_id) address, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) school_year, (SELECT students_discounts.amount FROM students_discounts WHERE students_discounts.enrollment_id = enrollments.id) discount, enrollments.enrollment_date, (SELECT SUM(students_fees.amount) FROM students_fees WHERE students_fees.enrollment_id = enrollments.id) sub_total FROM enrollments WHERE id = ".$filter['id']);
+
+// voucher
+$voucher_amount = 0;
+$voucher = $con->getData("SELECT amount FROM students_vouchers WHERE enrollment_id = ".$filter['id']);
+if (count($voucher)) $voucher_amount = $voucher[0]['amount'];
+
 $sub_total = $enrollment[0]['sub_total'];
-$total = $sub_total-$enrollment[0]['discount'];
+$total = $sub_total - $voucher_amount - $enrollment[0]['discount'];
 
 $payments = [];
 
@@ -20,6 +26,8 @@ $_payments = $con->getData("SELECT description, payment_month, official_receipt,
 $total_payment = 0;
 $balance = 0;
 foreach ($_payments as $i => $_payment) {
+	
+	if ($_payments[$i]['description'] == 'voucher') continue;
 	
 	$_payments[$i]['description'] = getDescriptionObj($_payment['description'])['description'];
 	$_payments[$i]['payment_month'] = getMonthObj($_payment['payment_month'])['name'];
@@ -331,47 +339,58 @@ $header = array(
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($sub_total,2),0,1,'R');
 	},
-	function($p) { # Discount
-		global $enrollment;	
+	function($p) { # Voucher
+		global $voucher_amount;	
 		$p->SetFont('Arial','',9);	
 		$p->SetXY(140,115);
 		$p->SetTextColor(144,164,174);
-		$p->Cell(20,5,"Discount",0,1,'R');
+		$p->Cell(20,5,"Voucher",0,1,'R');
 		$p->SetFont('Arial','',11);	
 		$p->SetXY(150,115);
+		$p->SetTextColor(38,50,56);
+		$p->Cell(45,5,"Php. ".number_format($voucher_amount,2),0,1,'R');	
+	},	
+	function($p) { # Discount
+		global $enrollment;	
+		$p->SetFont('Arial','',9);	
+		$p->SetXY(140,125);
+		$p->SetTextColor(144,164,174);
+		$p->Cell(20,5,"Discount",0,1,'R');
+		$p->SetFont('Arial','',11);	
+		$p->SetXY(150,125);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($enrollment[0]['discount'],2),0,1,'R');	
 	},
 	function($p) { # Total
-		global $enrollment, $total;	
+		global $total;	
 		$p->SetFont('Arial','',9);
-		$p->SetXY(140,125);
+		$p->SetXY(140,135);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Total",0,1,'R');
 		$p->SetFont('Arial','',11);
-		$p->SetXY(150,125);
+		$p->SetXY(150,135);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($total,2),0,1,'R');
 	},
 	function($p) { # Total Payment
-		global $enrollment, $total_payment;	
+		global $total_payment;	
 		$p->SetFont('Arial','',9);
-		$p->SetXY(140,135);
+		$p->SetXY(140,145);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Total Payment",0,1,'R');
 		$p->SetFont('Arial','',11);
-		$p->SetXY(150,135);
+		$p->SetXY(150,145);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($total_payment,2),0,1,'R');
 	},
 	function($p) { # Balance
-		global $enrollment, $balance;	
+		global $balance;	
 		$p->SetFont('Arial','',9);
-		$p->SetXY(140,145);
+		$p->SetXY(140,155);
 		$p->SetTextColor(144,164,174);
 		$p->Cell(20,5,"Balance",0,1,'R');
 		$p->SetFont('Arial','',11);
-		$p->SetXY(150,145);
+		$p->SetXY(150,155);
 		$p->SetTextColor(38,50,56);
 		$p->Cell(45,5,"Php. ".number_format($balance,2),0,1,'R');
 	},	
@@ -431,7 +450,8 @@ function getDescriptionObj($description) {
 	$descriptions = array(
 		array("name"=>"undefined","description"=>"-"),
 		array("name"=>"monthly_payment","description"=>"Monthly Payment"),
-		array("name"=>"down_payment","description"=>"Down Payment")
+		array("name"=>"down_payment","description"=>"Down Payment"),
+		array("name"=>"voucher","description"=>"Voucher")
 	);
 	
 	$obj = array("name"=>"undefined","description"=>"-");
