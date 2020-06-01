@@ -1,19 +1,19 @@
 var app = angular.module('dashboard',['account-module','dashboard-module','toggle-fullscreen']);
 
-app.controller('dashboardCtrl',function($scope,fullscreen,dashboard) {
+app.controller('dashboardCtrl',function($rootScope,fullscreen,dashboard) {
 	
-	$scope.module = {
+	$rootScope.module = {
 		id: 'dashboard',
 		privileges: {
 
 		}
 	};
 
-	$scope.views = {};
+	$rootScope.views = {};
 	
-	$scope.fullscreen = fullscreen;
+	$rootScope.fullscreen = fullscreen;
 	
-	$scope.dashboard = dashboard;
-	$scope.dashboard.data($scope);
+	$rootScope.dashboard = dashboard;
+	$rootScope.dashboard.data();
 	
 });

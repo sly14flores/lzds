@@ -132,7 +132,7 @@ require_once 'updater.php';
 					<label>To</label>
 					<select class="form-control" name="to" ng-model="filter.to" ng-options="sy.school_year for sy in school_years track by sy.id" required></select>
 				  </div>
-					<button type="submit" class="btn btn-default" style="margin-top: 5px;" ng-click="dashboard.filter(this)">Go!</button>
+					<button type="submit" class="btn btn-default" style="margin-top: 5px;" ng-click="dashboard.filter(true)">Go!</button>
 				</form>
               </div>
             </div>

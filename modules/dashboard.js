@@ -1,36 +1,33 @@
-angular.module('dashboard-module', ['module-access','school-year','pnotify-module','block-ui']).factory('dashboard', function($compile,$http,$timeout,access,schoolYear,pnotify,blockUI) {
+angular.module('dashboard-module', ['module-access','school-year','pnotify-module','block-ui']).factory('dashboard', function($rootScope,$compile,$http,$timeout,access,schoolYear,pnotify,blockUI) {
 
 	function dashboard() {
 
 		var self = this;
 
-		self.data = function(scope) {
+		self.data = function() {
 
-			scope.formHolder = {};
-			scope.views.title = 'Dashboard';
+			$rootScope.formHolder = {};
+			$rootScope.views.title = 'Dashboard';
 			
-			schoolYear.get(scope);			
+			$rootScope.filter = {};			
 			
-			scope.filter = {};
-			
-			$timeout(function() {
+			schoolYear.getSys().then(response => {
 				
-				scope.filter.from = scope.school_years[0];
-				scope.filter.to = scope.school_years[scope.school_years.length-1];
+				$rootScope.school_years = response.data.school_years;
+				$rootScope.filter.from = response.data.school_years[0];
+				$rootScope.filter.to = response.data.school_years[response.data.school_years.length-1];				
 				
-			}, 500);
-			
-			$timeout(function() {							
+				self.filter(false);
 				
-				self.filter(scope);
+			}, response => {
 				
-			}, 1000);			
+			});		
 
 		};
 		
-		function validate(scope) {
+		function validate() {
 
-			var controls = scope.formHolder.school_year.$$controls;
+			var controls = $rootScope.formHolder.school_year.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
 
@@ -38,25 +35,29 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 									
 			});
 
-			return scope.formHolder.school_year.$invalid;			
+			return $rootScope.formHolder.school_year.$invalid;			
 			
 		};		
 		
-		self.filter = function(scope) {
+		self.filter = function(user) {
 
-			if (validate(scope)) {
+			if (user) {
 
-				pnotify.show('danger','Notification','Please fill up from and to school years.');
-				return false;				
+				if (validate()) {
 
-			};
+					pnotify.show('danger','Notification','Please fill up from and to school years.');
+					return false;				
+
+				};
+				
+			}
 			
 			blockUI.show();			
 			
 			$http({
 				method: 'POST',
 				url: 'handlers/dashboard.php',
-				data: scope.filter
+				data: $rootScope.filter
 			}).then(function success(response) {
 				
 				blockUI.hide();
@@ -66,16 +67,16 @@ angular.module('dashboard-module', ['module-access','school-year','pnotify-modul
 					populationBarChart(response.data.students_population);					
 					populationBarChartGender(response.data.students_population_gender);	
 					
-					scope.students_population = response.data.students_population;
-					scope.students_population_gender = response.data.students_population_gender;
+					$rootScope.students_population = response.data.students_population;
+					$rootScope.students_population_gender = response.data.students_population_gender;
 					
-					scope.statistics = response.data.statistics;
+					$rootScope.statistics = response.data.statistics;
 					
 					doughnut(response.data.statistics.gender);
 					doughnutByGrades(response.data.statistics.grades);
 					
 					$timeout(function() {
-						$compile($('#dashboard')[0])(scope);
+						$compile($('#dashboard')[0])($rootScope);
 					}, 500);
 					
 				});
