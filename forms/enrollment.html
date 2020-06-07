@@ -1,7 +1,7 @@
 <form name="formHolder.student_enrollment" id="formHolder.student_enrollment" novalidate>
 
-	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': enrollmentBtns.ok.disabled, 'fa-ban': !enrollmentBtns.ok.disabled}" ng-click="enrollment.edit(this)"></i></p>
-	<p class="tools-editor pull-right" style="margin-right: 10px;" ng-click="enrollment.print(this)"><i class="fa fa-print"></i></p>	
+	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': enrollmentBtns.ok.disabled, 'fa-ban': !enrollmentBtns.ok.disabled}" ng-click="enrollment.edit()"></i></p>
+	<p class="tools-editor pull-right" style="margin-right: 10px;" ng-click="enrollment.print()"><i class="fa fa-print"></i></p>	
 	<div class="clearfix"></div>
 	
 	<div class="ln_solid"></div>
@@ -21,7 +21,7 @@
 			<div class="row">
 			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid}">
 				<label>Level</label>
-				<select class="form-control" name="grade" ng-model="student_enrollment.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="enrollment.levelSelected(this,student_enrollment.grade)" ng-disabled="enrollmentBtns.ok.disabled" required></select>
+				<select class="form-control" name="grade" ng-model="student_enrollment.grade" ng-options="level as level.description for level in levels track by level.id" ng-change="enrollment.levelSelected(student_enrollment.grade)" ng-disabled="enrollmentBtns.ok.disabled" required></select>
 				<span class="help-block" ng-show="formHolder.student_enrollment.grade.$touched && formHolder.student_enrollment.grade.$invalid">Level year is required</span>
 			  </div>
 			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
@@ -46,14 +46,14 @@
 							<td>Voucher</td>
 							<td class="form-group" ng-class="{'has-error': formHolder.student_enrollment.voucher.$touched && formHolder.student_enrollment.voucher.$invalid}">
 								<div class="input-group">
-									<input type="text" class="form-control" name="voucher" ng-model="details.voucher.amount" ng-keyup="enrollment.total(this)" ng-disabled="!details.voucher.enable || enrollmentBtns.ok.disabled" ng-required="details.voucher.enable">
+									<input type="text" class="form-control" name="voucher" ng-model="details.voucher.amount" ng-keyup="enrollment.total()" ng-disabled="!details.voucher.enable || enrollmentBtns.ok.disabled" ng-required="details.voucher.enable">
 									<span class="input-group-btn">
-									  <button type="button" class="btn btn-default" ng-disabled="enrollmentBtns.ok.disabled" ng-click="enrollment.voucher(this)"><i ng-class="{'fa': true, 'fa-plus': !details.voucher.enable, 'fa-close': details.voucher.enable}"></i></button>
+									  <button type="button" class="btn btn-default" ng-disabled="enrollmentBtns.ok.disabled" ng-click="enrollment.voucher()"><i ng-class="{'fa': true, 'fa-plus': !details.voucher.enable, 'fa-close': details.voucher.enable}"></i></button>
 									</span>
 								</div>
 							</td>
 						</tr>
-						<tr><td>Discount</td><td><input type="text" class="form-control" ng-model="details.discount" ng-keyup="enrollment.total(this)" ng-disabled="enrollmentBtns.ok.disabled"></td></tr>						
+						<tr><td>Discount</td><td><input type="text" class="form-control" ng-model="details.discount" ng-keyup="enrollment.total()" ng-disabled="enrollmentBtns.ok.disabled"></td></tr>						
 						<tr><td>Total</td><td>Php. {{details.total_str}}</td></tr>
 					</tbody>
 				</table>
@@ -64,7 +64,7 @@
 			<section class="content invoice">
 				<div class="row">
 					<div class="col-xs-12 invoice-header">
-						<h4>School Fees <i class="fa fa-download pull-right students-fees-download" ng-click="enrollment.levelSelected(this,student_enrollment.grade)"></i></h4>
+						<h4>School Fees <i class="fa fa-download pull-right students-fees-download" ng-click="enrollment.levelSelected(student_enrollment.grade)"></i></h4>
 						<table class="table table-striped">
 							<thead>
 								<tr><th>#</th><th>Description</th><th>Amount</th></tr>
@@ -81,8 +81,8 @@
 	<div class="ln_solid"></div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
-		  <button type="button" class="btn btn-primary" type="button" ng-click="enrollment.list(this,null)">{{enrollmentBtns.cancel.label}}</button>
-		  <button type="button" class="btn btn-success" ng-disabled="enrollmentBtns.ok.disabled" ng-click="enrollment.save(this)">{{enrollmentBtns.ok.label}}</button>
+		  <button type="button" class="btn btn-primary" type="button" ng-click="enrollment.list(null)">{{enrollmentBtns.cancel.label}}</button>
+		  <button type="button" class="btn btn-success" ng-disabled="enrollmentBtns.ok.disabled" ng-click="enrollment.save()">{{enrollmentBtns.ok.label}}</button>
 		</div>
 	</div>	
 </form>

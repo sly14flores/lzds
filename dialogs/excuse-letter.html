@@ -17,7 +17,7 @@
   </div>
 </div>
 <h3>Dates</h3>
-<button type="button" class="btn btn-primary" ng-click="letters.dates.add(this)">Add</button>
+<button type="button" class="btn btn-primary" ng-click="letters.dates.add()">Add</button>
 <table class="table table-striped">
 <thead>
 	<tr>
@@ -41,8 +41,8 @@
 			<span class="help-block" ng-show="formHolder.letter.wholeday{{$index}}['$touched'] && formHolder.letter.wholeday{{$index}}['$invalid']">This field is required</span>			
 		</td>
 		<td class="last list-action">
-			<a href="javascript:;" ng-click="letters.dates.edit(this,d)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': d.disabled, 'fa-check': !d.disabled}"></i></a>
-			<a href="javascript:;" ng-click="letters.dates.del(this,d)"><i class="fa fa-close"></i></a>
+			<a href="javascript:;" ng-click="letters.dates.edit(d)" style="margin-right: 10px;"><i class="fa" ng-class="{'fa-edit': d.disabled, 'fa-check': !d.disabled}"></i></a>
+			<a href="javascript:;" ng-click="letters.dates.del(d)"><i class="fa fa-close"></i></a>
 		</td>
 	</tr>
 </tbody>

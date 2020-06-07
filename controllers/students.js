@@ -1,8 +1,8 @@
 var app = angular.module('students',['account-module','toggle-fullscreen','enrollments-module','records-module','students-module','excuse-letters-module']);
 
-app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records,letters) {
+app.controller('studentsCtrl',function($rootScope,$scope,fullscreen,form,enrollment,records,letters) {
 	
-	$scope.module = {
+	$rootScope.module = {
 		id: 'students',
 		privileges: {
 			add_student: 2,
@@ -24,27 +24,32 @@ app.controller('studentsCtrl',function($scope,fullscreen,form,enrollment,records
 		}
 	};	
 	
-	$scope.views = {};
-
-	$scope.views.currentPage = 1;
+	$rootScope.views = {};
+	$rootScope.views.currentPage = 1;
+	
+	$rootScope.wrapper = {};
+	
+	$rootScope.school_years = [];
+	$rootScope.categories = [];
+	$rootScope.current_sy = {};
 	
 	// initialize data	
-	form.data($scope);
-	enrollment.data($scope);
+	form.data();
+	enrollment.data();
 	records.data($scope);
 	letters.data($scope);
 	
-	$scope.views.title = 'Students';
-	$scope.views.panel_title = 'Students List';
+	$rootScope.views.title = 'Students';
+	$rootScope.views.panel_title = 'Students List';
 	
-	$scope.fullscreen = fullscreen;
+	$rootScope.fullscreen = fullscreen;
 	
-	form.list($scope);
+	form.list();
 
-	$scope.form = form;
-	$scope.enrollment = enrollment;	
-	$scope.records = records;
-	$scope.letters = letters;
+	$rootScope.form = form;
+	$rootScope.enrollment = enrollment;	
+	$rootScope.records = records;
+	$rootScope.letters = letters;
 
 });
 

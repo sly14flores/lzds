@@ -10,7 +10,7 @@
 	
 	<form name="formHolder.student" id="formHolder.student" novalidate>
 	
-	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit(this)"></i></p>
+	<p class="tools-editor pull-right"><i class="fa" ng-class="{'fa-pencil': btns.ok.disabled, 'fa-ban': !btns.ok.disabled}" ng-click="form.edit()"></i></p>
 	<div class="clearfix"></div>
 	
 	<div class="row">
@@ -136,13 +136,13 @@
 	  </div>   
 	</div>
 	<div class="ln_solid"></div>
-	<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent(this)">Add</button></h4>
+	<h4><strong>Parent's / Guardian Information</strong>&nbsp;<button type="button" class="btn btn-sm btn-info" ng-click="form.addParent()">Add</button></h4>
 	<div class="ln_solid"></div>
 	<div ng-repeat="pg in parents_guardians">
 	<div class="ln_solid" ng-show="$index > 0"></div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<a href="javascript:;" class="pull-right" ng-click="form.delParent(this,pg)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_student"><i class="fa fa-close"></i></a>	
+			<a href="javascript:;" class="pull-right" ng-click="form.delParent(pg)" ng-show="accountProfile.profile.pages_access[module.id].delete.delete_student"><i class="fa fa-close"></i></a>	
 		</div>
 	</div>
 	<div class="row">
@@ -192,8 +192,8 @@
 	<div class="ln_solid"></div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
-		  <button type="button" class="btn btn-primary" type="button" ng-click="form.list(this)" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
-		  <button type="button" class="btn btn-success" ng-click="form.save(this)" ng-disabled="btns.ok.disabled">{{btns.ok.label}}</button>
+		  <button type="button" class="btn btn-primary" type="button" ng-click="form.list()" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
+		  <button type="button" class="btn btn-success" ng-click="form.save()" ng-disabled="btns.ok.disabled">{{btns.ok.label}}</button>
 		</div>
 	</div>
 
@@ -210,8 +210,8 @@
 			  <li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
 				<ul class="dropdown-menu" role="menu">
-				  <li><a href="javascript:;" ng-click="enrollment.form(this,null)">Enroll Student</a></li>
-				  <li><a href="javascript:;" ng-click="enrollment.list(this,null)">Enrollments</a></li>
+				  <li><a href="javascript:;" ng-click="enrollment.form(null)">Enroll Student</a></li>
+				  <li><a href="javascript:;" ng-click="enrollment.list(null)">Enrollments</a></li>
 				</ul>
 			  </li>
 			  <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
@@ -231,8 +231,8 @@
 			  <li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
 				<ul class="dropdown-menu" role="menu">
-				  <li><a href="javascript:;" ng-click="records.record(this,null)">Add Record</a></li>
-				  <li><a href="javascript:;" ng-click="records.list(this,true)">Records List</a></li>
+				  <li><a href="javascript:;" ng-click="records.record(null)">Add Record</a></li>
+				  <li><a href="javascript:;" ng-click="records.list(true)">Records List</a></li>
 				</ul>
 			  </li>
 			  <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->
@@ -252,8 +252,8 @@
 			  <li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-tasks"></i></a>
 				<ul class="dropdown-menu" role="menu">
-				  <li><a href="javascript:;" ng-click="letters.letter(this,null)">Add Excuse Letter</a></li>
-				  <li><a href="javascript:;" ng-click="letters.list(this,true)">Excuse Letters List</a></li>
+				  <li><a href="javascript:;" ng-click="letters.letter(null)">Add Excuse Letter</a></li>
+				  <li><a href="javascript:;" ng-click="letters.list(true)">Excuse Letters List</a></li>
 				</ul>
 			  </li>
 			  <!-- <li><a class="close-link"><i class="fa fa-close"></i></a></li> -->

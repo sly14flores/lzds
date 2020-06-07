@@ -1,25 +1,25 @@
-angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','module-access']).factory('form', function($http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,access) {
+angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','module-access','school-year']).factory('form', function($rootScope,$http,$timeout,$compile,bootstrapModal,xPanel,pnotify,blockUI,access,schoolYear) {
 	
 	function form() {
 		
 		var self = this;			
 		
-		self.data = function(scope) { // initialize data			
+		self.data = function() { // initialize data			
 			
-			scope.formHolder = {};
+			$rootScope.formHolder = {};
 			
-			scope.views.list = false;
+			$rootScope.views.list = false;
 			
-			scope.student = {};
-			scope.student.id = 0;
+			$rootScope.student = {};
+			$rootScope.student.id = 0;
 
-			scope.students = [];
-			scope.suggest_students = [];
+			$rootScope.students = [];
+			$rootScope.suggest_students = [];
 			
-			scope.parents_guardians = [];
-			scope.parents_guardians_dels = [];
+			$rootScope.parents_guardians = [];
+			$rootScope.parents_guardians_dels = [];
 			
-			scope.btns = {
+			$rootScope.btns = {
 				ok: {
 					disabled: false,
 					label: 'Save'
@@ -30,14 +30,34 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				}
 			};
 			
-			scope.data = {};
-			scope.pagination = {};			
+			$rootScope.data = {};
+			$rootScope.pagination = {};
+
+			schoolYear.getSys().then((response) => {
+
+				$rootScope.school_years = angular.copy(response.data.school_years);
+				$rootScope.categories = angular.copy(response.data.categories);
+				
+			},(response) => {
+				
+			});
+			schoolYear.currentSy().then((response) => {
+				
+				$rootScope.current_sy = response.data;				
+				
+			}, (response) => {
+				
+			});			
 			
 		};
 		
-		function validate(scope) {
+		self.filter = function() {
+			
+		};
+		
+		function validate() {
 
-			var controls = scope.formHolder.student.$$controls;
+			var controls = $rootScope.formHolder.student.$$controls;
 			
 			angular.forEach(controls,function(elem,i) {
 				
@@ -45,50 +65,50 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 									
 			});
 
-			return scope.formHolder.student.$invalid;			
+			return $rootScope.formHolder.student.$invalid;			
 			
 		};
 		
-		function mode(scope,row) {
+		function mode(row) {
 
 			if (row != null) {
-				scope.views.panel_title = 'Edit Student Info'+' ('+row.fullname+')';
-				scope.btns.ok.disabled = true;
-				scope.btns.ok.label = 'Update';
-				scope.btns.cancel.label = 'Close';			
+				$rootScope.views.panel_title = 'Edit Student Info'+' ('+row.fullname+')';
+				$rootScope.btns.ok.disabled = true;
+				$rootScope.btns.ok.label = 'Update';
+				$rootScope.btns.cancel.label = 'Close';			
 			} else {
-				scope.views.panel_title = 'Add Student';
-				scope.btns.ok.disabled = false;	
-				scope.btns.ok.label = 'Save';
-				scope.btns.cancel.label = 'Cancel';
+				$rootScope.views.panel_title = 'Add Student';
+				$rootScope.btns.ok.disabled = false;	
+				$rootScope.btns.ok.label = 'Save';
+				$rootScope.btns.cancel.label = 'Cancel';
 			}
 			
 		};
 		
-		self.student = function(scope,row) { // form			
+		self.student = function(row) { // form			
 			
 			if (row != null) {
-				if (!access.has(scope,scope.module.id,scope.module.privileges.view_student)) return;
+				if (!access.has($rootScope,$rootScope.module.id,$rootScope.module.privileges.view_student)) return;
 			} else {
-				if (!access.has(scope,scope.module.id,scope.module.privileges.add_student)) return;
+				if (!access.has($rootScope,$rootScope.module.id,$rootScope.module.privileges.add_student)) return;
 			};
 			
-			scope.views.currentPage = scope.currentPage;			
+			$rootScope.views.currentPage = $rootScope.currentPage;			
 			
-			scope.views.list = true;				
+			$rootScope.views.list = true;				
 			
-			scope.student = {};
-			scope.student.id = 0;
+			$rootScope.student = {};
+			$rootScope.student.id = 0;
 			
-			scope.parents_guardians = [];
-			scope.parents_guardians_dels = [];			
+			$rootScope.parents_guardians = [];
+			$rootScope.parents_guardians_dels = [];			
 			
-			mode(scope,row);
+			mode(row);
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('forms/student.html',function() {
 				$timeout(function() {
-					$compile($('#x_content')[0])(scope);
+					$compile($('#x_content')[0])($rootScope);
 				},100);
 			});
 							
@@ -103,20 +123,20 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
 
-					angular.copy(response.data['student'], scope.student);
-					angular.copy(response.data['parents_guardians'], scope.parents_guardians);
-					if (scope.student.date_of_birth != null) scope.student.date_of_birth = new Date(scope.student.date_of_birth);
+					angular.copy(response.data['student'], $rootScope.student);
+					angular.copy(response.data['parents_guardians'], $rootScope.parents_guardians);
+					if ($rootScope.student.date_of_birth != null) $rootScope.student.date_of_birth = new Date($rootScope.student.date_of_birth);
 
-					scope.student_id = row.id;
+					$rootScope.student_id = row.id;
 
 					xPanel.start('collapse-enrollments');
 					xPanel.start('collapse-records');
 					xPanel.start('collapse-excuse-letters');
 
 					$timeout(function() {
-						scope.enrollment.list(scope,row);
-						scope.records.list(scope,true);
-						scope.letters.list(scope,true);
+						$rootScope.enrollment.list(row);
+						$rootScope.records.list(true);
+						$rootScope.letters.list(true);
 					},500);
 
 					blockUI.hide();
@@ -131,36 +151,34 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 		};
 		
-		self.edit = function(scope) {
+		self.edit = function() {
 			
-			if (!access.has(scope,scope.module.id,scope.module.privileges.edit_student)) return;
+			if (!access.has($rootScope,$rootScope.module.id,$rootScope.module.privileges.edit_student)) return;
 			
-			scope.btns.ok.disabled = !scope.btns.ok.disabled;
+			$rootScope.btns.ok.disabled = !$rootScope.btns.ok.disabled;
 			
 		};
 		
-		self.list = function(scope) {
-
-			if (scope.$id > 2) scope = scope.$parent;			
+		self.list = function() {	
 			
-			scope.views.list = false;
+			$rootScope.views.list = false;
 			
 			blockUI.show("Fetching students list please wait...");			
 			
-			scope.currentPage = scope.views.currentPage;
-			scope.pageSize = 15;
-			scope.maxSize = 5;			
+			$rootScope.currentPage = $rootScope.views.currentPage;
+			$rootScope.pageSize = 15;
+			$rootScope.maxSize = 5;			
 		
-			scope.views.panel_title = 'Students List';		
+			$rootScope.views.panel_title = 'Students List';		
 
 			$http({
 			  method: 'POST',
 			  url: 'handlers/students-list.php'
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.students);
-				scope.filterData = scope.students;
-				scope.currentPage = scope.views.currentPage;				
+				angular.copy(response.data, $rootScope.students);
+				$rootScope.filterData = $rootScope.students;
+				$rootScope.currentPage = $rootScope.views.currentPage;				
 				blockUI.hide();
 				
 			}, function myError(response) {
@@ -174,7 +192,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			  url: 'handlers/students-suggest.php'
 			}).then(function mySucces(response) {
 				
-				angular.copy(response.data, scope.suggest_students);
+				angular.copy(response.data, $rootScope.suggest_students);
 				
 			}, function myError(response) {
 				 
@@ -184,14 +202,14 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			$('#x_content').html('Loading...');
 			$('#x_content').load('lists/students.html',function() {
-				$timeout(function() { $compile($('#x_content')[0])(scope); },100);
+				$timeout(function() { $compile($('#x_content')[0])($rootScope); },100);
 			});
 
 		};
 
-		self.save = function(scope) {			
+		self.save = function() {			
 			
-			if (validate(scope)) {
+			if (validate()) {
 				pnotify.show('error','Notification','Some fields are required.');
 				return;
 			}						
@@ -199,17 +217,17 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			$http({
 			  method: 'POST',
 			  url: 'handlers/student-save.php',
-			  data: {student: scope.student, parents_guardians: scope.parents_guardians, parents_guardians_dels: scope.parents_guardians_dels}
+			  data: {student: $rootScope.student, parents_guardians: $rootScope.parents_guardians, parents_guardians_dels: $rootScope.parents_guardians_dels}
 			}).then(function mySucces(response) {
 				
-				scope.btns.ok.disabled = true;
-				if (scope.student.id == 0) {
+				$rootScope.btns.ok.disabled = true;
+				if ($rootScope.student.id == 0) {
 					pnotify.show('success','Notification','Student info successfully added.');					
-					scope.student.id = response.data;
+					$rootScope.student.id = response.data;
 				} else {
 					pnotify.show('success','Notification','Student info successfully updated.');
 				}
-				mode(scope,{});
+				mode({});
 				
 			}, function myError(response) {
 				 
@@ -219,15 +237,13 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 		
 		};
 		
-		self.delete = function(scope,row) {
+		self.delete = function(row) {
 			
-			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;
+			if (!access.has($rootScope,$rootScope.module.id,$rootScope.module.privileges.delete_student)) return;
 			
-			scope.views.currentPage = scope.currentPage;			
+			$rootScope.views.currentPage = $rootScope.currentPage;			
 			
-			var onOk = function() {
-				
-				if (scope.$id > 2) scope = scope.$parent;			
+			var onOk = function() {					
 				
 				$http({
 				  method: 'POST',
@@ -235,7 +251,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				  data: {id: [row.id]}
 				}).then(function mySucces(response) {
 
-					self.list(scope);
+					self.list();
 					
 				}, function myError(response) {
 					 
@@ -245,15 +261,15 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 			};
 
-			bootstrapModal.confirm(scope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
+			bootstrapModal.confirm($rootScope,'Confirmation','Are you sure you want to delete this record?',onOk,function() {});
 
 		};
 
-		self.addParent = function(scope) {
+		self.addParent = function() {
 			
-			if (scope.btns.ok.disabled) return;			
+			if ($rootScope.btns.ok.disabled) return;			
 			
-			scope.parents_guardians.push({
+			$rootScope.parents_guardians.push({
 				id: 0,
 				student_id: 0,
 				relationship: '',
@@ -267,28 +283,26 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 		};
 		
-		self.delParent = function(scope,row) {
+		self.delParent = function(row) {
 
-			if (!access.has(scope,scope.module.id,scope.module.privileges.delete_student)) return;		
-		
-			if (scope.$id > 2) scope = scope.$parent;			
+			if (!access.has($rootScope,$rootScope.module.id,$rootScope.module.privileges.delete_student)) return;		
 			
-			if (scope.btns.ok.disabled) return;
+			if ($rootScope.btns.ok.disabled) return;
 			
 			if (row.id > 0) {
-				scope.parents_guardians_dels.push(row.id);
+				$rootScope.parents_guardians_dels.push(row.id);
 			}			
 
-			var parents_guardians = scope.parents_guardians;
-			var index = scope.parents_guardians.indexOf(row);
-			scope.parents_guardians = [];				
+			var parents_guardians = $rootScope.parents_guardians;
+			var index = $rootScope.parents_guardians.indexOf(row);
+			$rootScope.parents_guardians = [];				
 			
 			angular.forEach(parents_guardians, function(d,i) {
 				
 				if (index != i) {
 					
 					delete d['$$hashKey'];
-					scope.parents_guardians.push(d);
+					$rootScope.parents_guardians.push(d);
 					
 				};
 				

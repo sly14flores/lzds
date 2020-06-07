@@ -48,6 +48,15 @@ angular.module('school-year',[]).factory('schoolYear',function($http) {
 			
 		};
 		
+		self.currentSy = function() {
+			
+			return $http({
+			  method: 'POST',
+			  url: 'handlers/current-sy.php'
+			});		
+			
+		};
+		
 	};
 	
 	return new schoolYear();

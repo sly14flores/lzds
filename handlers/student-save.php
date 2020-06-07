@@ -18,15 +18,21 @@ if (isset($_POST['student']['date_of_birth'])) $_POST['student']['date_of_birth'
 **
 */
 
+$_POST['student']['gp4ps'] = ($_POST['student']['gp4ps'])?1:0;
+$_POST['student']['gpips'] = ($_POST['student']['gpips'])?1:0;
+$_POST['student']['ecd'] = ($_POST['student']['ecd'])?1:0;
+$_POST['student']['pwd'] = ($_POST['student']['pwd'])?1:0;
+
 if ($_POST['student']['id']) { // > 0 - update
-	$_POST['update_log'] = "CURRENT_TIMESTAMP";
+	$_POST['student']['update_log'] = "CURRENT_TIMESTAMP";
 	$student = $con->updateData($_POST['student'],'id');
 	$student_id = $_POST['student']['id'];
 } else { // 0 - insert
 	unset($_POST['id']);
-	$_POST['system_log'] = "CURRENT_TIMESTAMP";	
+	$_POST['student']['origin'] = "walk-in";
+	$_POST['student']['system_log'] = "CURRENT_TIMESTAMP";
 	$student = $con->insertData($_POST['student']);
-	$student_id = $con->insertId;	
+	$student_id = $con->insertId;
 }
 
 if (count($_POST['parents_guardians'])) {
