@@ -5,7 +5,7 @@ angular.module('account-module', ['bootstrap-modal']).directive('dropDown', func
 		template: '<li><a href="profile-settings.php"><i class="fa fa-user pull-right"></i> Profile Settings</a></li><li><a href="javascript:;" logout-account><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>'
 	};
 
-}).directive('accountProfile',function($http) {
+}).directive('accountProfile',function($http,$rootScope) {
 	
 	return {
 		restrict: 'A',
@@ -17,7 +17,7 @@ angular.module('account-module', ['bootstrap-modal']).directive('dropDown', func
 			  headers : {'Content-Type': 'application/x-www-form-urlencoded'}
 			}).then(function mySucces(response) {
 
-				scope.accountProfile = response.data;
+				$rootScope.accountProfile = response.data;
 
 			},
 			function myError(response) {
