@@ -146,8 +146,8 @@ $loan_period = "loan_monthly_".$_POST['period'];
 foreach ($loans as $key => $loan) {
 
 	$loan_payments = $con->getData("SELECT IFNULL(SUM(loans_payments.amount),0) loan_payments FROM loans_payments WHERE loan_id = ".$loan['id']);
-	$loan_balance = $loan['loan_amount']-$loan['loan_offset']-$loan_payments[0]['loan_payments'];	
-	
+	$loan_balance = $loan['loan_amount']-$loan['loan_offset']-$loan_payments[0]['loan_payments']-$loan[$loan_period]; # add current loan payment
+
 	if ($loan_balance <= 0) continue;
 
 	$payroll_deductions[] = array(
