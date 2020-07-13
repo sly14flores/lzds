@@ -11,6 +11,11 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal','module-access']
 			scope.data.loan = {};
 			scope.data.loan.id = 0;
 			scope.data.loans = [];
+			
+			scope.data.loans_types = [
+				{id: 1, type: "Salary"},
+				{id: 2, type: "Others"}
+			];
 	
 			scope.pagination.loans = {};
 			
@@ -74,9 +79,11 @@ angular.module('loans-module',['ui.bootstrap','bootstrap-modal','module-access']
 				scope.data.loan.staff_id = scope.staff_id;
 			} else {
 				if (!access.has(scope,scope.module.id,scope.module.privileges.view_loan)) return;				
+				scope.data.loan = {};
 				scope.data.loan = angular.copy(loan);
 				scope.data.loan.loan_date = new Date(loan.loan_date);
 				scope.data.loan.loan_effectivity = new Date(loan.loan_effectivity);
+				console.log(scope.data.loan.loan_type);
 			};
 			
 			var content = 'dialogs/loan.html';	

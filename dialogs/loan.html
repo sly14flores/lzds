@@ -7,10 +7,7 @@
   </div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_type.$touched && formHolder.loan.loan_type.$invalid}">
 	<label>Type</label>
-	<select class="form-control" name="loan_type" ng-model="data.loan.loan_type" required>
-		<option value="Salary">Salary</option>		
-		<option value="Others">Others</option>		
-	</select>
+	<select class="form-control" name="loan_type" ng-value="data.loan.loan_type" ng-model="data.loan.loan_type" ng-options="lt.type as lt.type for lt in data.loans_types track by lt.type" required></select>
 	<span class="help-block" ng-show="formHolder.loan.loan_type.$touched && formHolder.loan.loan_type.$invalid">Type is required</span>
   </div>  
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_description.$touched && formHolder.loan.loan_description.$invalid}">
