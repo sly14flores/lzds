@@ -10,6 +10,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			$rootScope.views.list = false;
 			
+			$rootScope.filter = {};
+			
 			$rootScope.student = {};
 			$rootScope.student.id = 0;
 
@@ -48,10 +50,6 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			}, (response) => {
 				
 			});			
-			
-		};
-		
-		self.filter = function() {
 			
 		};
 		
@@ -173,7 +171,8 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 
 			$http({
 			  method: 'POST',
-			  url: 'handlers/students-list.php'
+			  url: 'handlers/list-students.php',
+			  data: $rootScope.filter
 			}).then(function mySucces(response) {
 				
 				angular.copy(response.data, $rootScope.students);

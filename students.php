@@ -189,13 +189,13 @@ require_once 'updater.php';
 					<form class="form-inline">
 					  <div class="form-group">
 						<label>Origin</label>
-						<select class="form-control" ng-disabled="views.list">
+						<select class="form-control" ng-model="filter.origin" ng-disabled="views.list">
 							<option value="">All</option>
 							<option value="walk-in">Walk-In</option>
 							<option value="online">Online</option>
 						</select>
 					  </div>
-					  <button style="margin-top: 3px;" type="button" class="btn btn-primary" ng-click="form.filter()" ng-disabled="views.list">Filter</button>
+					  <button style="margin-top: 3px;" type="button" class="btn btn-primary" ng-click="form.list()" ng-disabled="views.list">Filter</button>
 					</form>					
 				</div>
                 <div class="col-md-4 col-sm-6 col-xs-12 form-group top_search">
