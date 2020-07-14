@@ -9,6 +9,7 @@ $con = new pdo_db("loans");
 if ($_POST['id']) {
 
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";	
+	$_POST['loan_paid'] = ($_POST['loan_paid'])?1:0;	
 	$_POST['loan_date'] = date("Y-m-d",strtotime($_POST['loan_date']));
 	$_POST['loan_effectivity'] = date("Y-m-d",strtotime($_POST['loan_effectivity']));
 	unset($_POST['loan_balance']);

@@ -1,5 +1,12 @@
 <form name="formHolder.loan" id="formHolder.loan" novalidate>
 <div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 form-group" style="text-align: right">
+	  <div class="checkbox">
+		<label>
+		  <input type="checkbox" ng-model="data.loan.loan_paid" ng-checked="data.loan.loan_paid"> Mark Paid
+		</label>
+	  </div>		
+	</div>
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.loan.loan_date.$touched && formHolder.loan.loan_date.$invalid}">
 	<label>Date</label>
 	<input type="date" class="form-control" name="loan_date" ng-model="data.loan.loan_date" required>

@@ -25,12 +25,7 @@
 		  </div>  
 		  <div class="col-md-4 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.staff.employment_status.$touched && formHolder.staff.employment_status.$invalid}">
 			<label>Employment Status</label>
-			<select class="form-control" name="employment_status" ng-model="staff.employment_status" ng-disabled="btns.ok.disabled" required>
-				<option value="">-</option>
-				<option value="Regular">Regular</option>
-				<option value="Contractual">Contractual</option>
-				<option value="EOC">EOC</option>
-				<option value="Resigned">Resigned</option>
+			<select class="form-control" name="employment_status" ng-value="staff.employment_status" ng-model="staff.employment_status" ng-options="es.type as es.type for es in employment_status track by es.type" ng-disabled="btns.ok.disabled" required>
 			</select>
 			<span class="help-block" ng-show="formHolder.staff.employment_status.$touched && formHolder.staff.employment_status.$invalid">Employment Status is required</span>	
 		  </div>  

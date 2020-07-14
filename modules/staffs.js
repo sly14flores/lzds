@@ -10,6 +10,13 @@ angular.module('staffs-module', ['ui.bootstrap','bootstrap-modal','pnotify-modul
 			
 			scope.views.list = false;			
 			
+			scope.employment_status = [
+				{ id: 1, type: "Regular" },
+				{ id: 2, type: "Contractual" },
+				{ id: 3, type: "EOC" },
+				{ id: 4, type: "Resigned" }
+			];
+			
 			scope.staff = {};
 			scope.staff.id = 0;
 
