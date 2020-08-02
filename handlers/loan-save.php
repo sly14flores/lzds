@@ -13,6 +13,7 @@ if ($_POST['id']) {
 	$_POST['loan_date'] = date("Y-m-d",strtotime($_POST['loan_date']));
 	$_POST['loan_effectivity'] = date("Y-m-d",strtotime($_POST['loan_effectivity']));
 	unset($_POST['loan_balance']);
+	unset($_POST['remarks']);	
 	$payment = $con->updateData($_POST,'id');
 	
 } else {
