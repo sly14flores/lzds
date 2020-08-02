@@ -1,4 +1,4 @@
-angular.module('vsmart-import',['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','school-year','window-open-post','module-access']).factory('vsmartSimport',function($rootScope,$http,$timeout,schoolYear,blockUI,pnotify) {
+angular.module('vsmart-import',['ui.bootstrap','bootstrap-modal','x-panel-module','pnotify-module','block-ui','school-year','window-open-post','module-access']).factory('vsmartSimport',function($rootScope,$http,$timeout,schoolYear,blockUI,pnotify,bootstrapModal) {
 	
 	function vsmartSimport() {
 		
@@ -88,28 +88,128 @@ angular.module('vsmart-import',['ui.bootstrap','bootstrap-modal','x-panel-module
 			let file = $('#upload-csv')[0].files[0];
 			
 			if (file === undefined) {
-				pnotify.show('danger','Notification','No data to analyze, please upload csv file');								
+				
+				// pnotify.show('danger','Notification','No data to analyze, please upload csv file');
+				
+				let onOk = function() {
+					
+					checkCsv().then(response => {
+						
+						if (!response.data.exists) pnotify.show('danger','Notification','No enrollment data found on the server to analyze, please upload a csv file');
+						else analyze();
+						
+					}).catch(e => {
+						
+					});					
+					
+				};
+				
+				bootstrapModal.confirm($rootScope,'Analyze vsmart enrollment data','No new csv file uploaded, analyze previously uploaded file instead?',onOk,function() {});
+				
+			} else {
+				
+				analyze();
+				
+			};
+			
+		};
+		
+		function checkCsv() {
+			
+			return $http({
+				method: 'POST',
+				url: 'handlers/vsmart/check-csv.php'
+			});
+			
+		};
+		
+		function showAnalyzeModal() {
+
+			bootstrapModal.box3($rootScope,'Analyzing vsmart enrollment data','forms/vsmart-analyze.html');
+			
+			return new Promise(function(resolve, reject) {
+				
+				setTimeout(function() {
+					
+					resolve(true);
+					
+				},1000);
+				
+			});
+			
+		}
+		
+		function analyze() {
+			
+			showAnalyzeModal().then(() => {
+				
+				countRecords().then(response => {
+					
+					$('#vsmart-analyze-messages').append(response.data);
+					
+					return getRecords();
+					
+				}).then(response => { // get records
+
+					analyzeRecord(response.data,1);
+					
+				});
+				
+			});
+			
+			function countRecords() {
+				
+				return $http({
+					method: 'POST',
+					url: 'handlers/vsmart/records.php',
+					data: {action: 'count'}
+				});
+
+			};
+			
+			function getRecords() {
+				
+				return $http({
+					method: 'POST',
+					url: 'handlers/vsmart/records.php',
+					data: {action: 'records'}
+				});				
+				
+			};			
+			
+			function analyzeRecord(records,i) {
+				
+				$http({
+					method: 'POST',
+					url: 'handlers/vsmart/records.php',
+					data: {action: 'analyze', record: records[i], i: i}
+				}).then(response => {
+					
+					$('#vsmart-analyze-messages').append(response.data);
+					
+					record();
+					
+				});
+				
+				function record() {
+					
+					if (i<records.length-1) analyzeRecord(records,++i);			
+					
+				};				
+				
 			};
 			
 		};
 		
 		self.importNew = function() {
 			
-			let file = $('#upload-csv')[0].files[0];
 			
-			if (file === undefined) {
-				pnotify.show('danger','Notification','No data to import, please upload csv file');								
-			};			
 			
 		};
 		
 		self.importOld = function() {
 			
-			let file = $('#upload-csv')[0].files[0];
 			
-			if (file === undefined) {
-				pnotify.show('danger','Notification','No data to import, please upload csv file');								
-			};			
 			
 		};		
 		
@@ -179,6 +279,14 @@ angular.module('vsmart-import',['ui.bootstrap','bootstrap-modal','x-panel-module
 	return {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
+			
+			element.bind('click', function() {
+				
+				$rootScope.upload.message = "Upload the downloaded CSV from vsmart then click Analyze";
+				scope.$apply();
+				$('#upload-csv').val(null);
+				
+			});
 			
 			element.bind('change', function() {
 				

@@ -41,6 +41,11 @@ require_once 'updater.php';
 			cursor: pointer;
 		}
 		
+		#vsmart-analyze-messages p {
+			margin: 0;
+			padding: 0;
+		}
+		
 	</style>
   </head>
 
