@@ -218,11 +218,11 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			
 			doc.setFontSize(10);
 			doc.setFontType('normal');
-			doc.text(50, 213, 'Coverage: '+coverage);
+			doc.text(30, 213, 'Coverage: '+coverage);
 			doc.text(160, 213, coverage_details);
-			doc.text(495, 213, "SY: "+scope.report.summary.school_year.school_year);
+			doc.text(520, 213, "SY: "+scope.report.summary.school_year.school_year);
 			
-			doc.setFontSize(12);
+			doc.setFontSize(10);
 			doc.setFontType('bold');			
 
 			var levels = [
@@ -230,6 +230,7 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				{title: "Total Students", dataKey: "total_students"},			
 				{title: "Tuition Fees", dataKey: "tuition_fees"},
 				{title: "Discounts", dataKey: "discounts"},
+				{title: "ESC/Vouchers", dataKey: "esc_vouchers"},
 				{title: "Total Collections", dataKey: "total_collections"},
 				{title: "Total Balances", dataKey: "total_balance"}
 			];
@@ -237,15 +238,16 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 			doc.autoTable(levels, data.levels, {
 				// tableLineColor: [189, 195, 199],
 				// tableLineWidth: 0.75,
-				margin: {top: 220, left: 50},
-				tableWidth: 500,
+				margin: {top: 220, left: 30},
+				tableWidth: 552,
 				columnStyles: {
-					level: {columnWidth: 75},
-					total_students: {columnWidth: 55},					
-					tuition_fees: {columnWidth: 100},
-					discounts: {columnWidth: 85},
-					total_collections: {columnWidth: 100},
-					total_balance: {columnWidth: 100}
+					level: {columnWidth: 65},
+					total_students: {columnWidth: 50},					
+					tuition_fees: {columnWidth: 85},
+					discounts: {columnWidth: 70},
+					esc_vouchers: {columnWidth: 96},
+					total_collections: {columnWidth: 96},
+					total_balance: {columnWidth: 85}
 				},
 				styles: {
 					lineColor: [75, 75, 75],
@@ -256,14 +258,14 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					halign: 'center',		
 					fillColor: [191, 191, 191],
 					textColor: 50,
-					fontSize: 10,
+					fontSize: 8,
 					overflow: 'linebreak'
 				},			
 				bodyStyles: {
 					halign: 'left',
 					fillColor: [255, 255, 255],
 					textColor: 50,
-					fontSize: 10,
+					fontSize: 8,
 					overflow: 'linebreak'					
 				},
 				alternateRowStyles: {
@@ -275,7 +277,8 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 				{title: "", dataKey: "level"},
 				{title: "Total Students", dataKey: "total_students"},			
 				{title: "Tuition Fees", dataKey: "tuition_fees"},
-				{title: "Discounts", dataKey: "discounts"},			
+				{title: "Discounts", dataKey: "discounts"},
+				{title: "ESC/Vouchers", dataKey: "esc_vouchers"},
 				{title: "Total Collections", dataKey: "total_collections"},
 				{title: "Total Balances", dataKey: "total_balance"}
 			];			
@@ -283,15 +286,16 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
  			doc.autoTable(overall, data.overall, {
 				// tableLineColor: [189, 195, 199],
 				// tableLineWidth: 0.75,
-				margin: {top: 570, left: 50},
-				tableWidth: 500,
+				margin: {top: 570, left: 30},
+				tableWidth: 552,
 				columnStyles: {
-					level: {columnWidth: 75},
-					total_students: {columnWidth: 55},					
-					tuition_fees: {columnWidth: 100},
-					discounts: {columnWidth: 85},					
-					total_collections: {columnWidth: 100},
-					total_balance: {columnWidth: 100}
+					level: {columnWidth: 65},
+					total_students: {columnWidth: 50},					
+					tuition_fees: {columnWidth: 85},
+					discounts: {columnWidth: 70},
+					esc_vouchers: {columnWidth: 96},
+					total_collections: {columnWidth: 96},
+					total_balance: {columnWidth: 85}
 				},
 				styles: {
 					lineColor: [75, 75, 75],
@@ -302,14 +306,14 @@ angular.module('summary-report-module', ['ui.bootstrap','bootstrap-modal','pnoti
 					halign: 'center',		
 					fillColor: [191, 191, 191],
 					textColor: 50,
-					fontSize: 10,
+					fontSize: 8,
 					overflow: 'linebreak'
 				},
 				bodyStyles: {
 					halign: 'left',
 					fillColor: [255, 255, 255],
 					textColor: 50,
-					fontSize: 10,
+					fontSize: 8,
 					overflow: 'linebreak'					
 				},
 				alternateRowStyles: {

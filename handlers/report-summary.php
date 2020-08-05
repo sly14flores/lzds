@@ -84,6 +84,7 @@ foreach ($levels as $level) {
 $overall_total_students = 0;
 $overall_tuition_fees = 0;
 $overall_discounts = 0;
+$overall_esc_vouchers = 0;
 $overall_total_collections = 0;
 $overall_total_balance = 0;
 
@@ -92,6 +93,7 @@ foreach ($summary['levels'] as $i => $sl) {
 	$total_students = 0;
 	$tuition_fees = 0;
 	$discounts = 0;
+	$esc_vouchers = 0;
 	$total_collections = 0;
 	$total_balance = 0;
 
@@ -117,6 +119,9 @@ foreach ($summary['levels'] as $i => $sl) {
 		$q_discounts = $con->getData("SELECT SUM(amount) discounts FROM students_discounts WHERE enrollment_id IN ($ids)");
 		$discounts = (count($q_discounts))?$q_discounts[0]['discounts']:0;
 
+		$q_esc_vouchers = $con->getData("SELECT SUM(payments.amount) esc_vouchers FROM payments WHERE description = 'voucher' AND enrollment_id IN ($ids)");
+		$esc_vouchers = (count($q_esc_vouchers))?$q_esc_vouchers[0]['esc_vouchers']:0;
+
 		$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments WHERE enrollment_id IN ($ids) ".$and['total_collections']);
 		$total_collections = (count($q_total_collections))?($q_total_collections[0]['total_collections']):0;
 		
@@ -127,6 +132,7 @@ foreach ($summary['levels'] as $i => $sl) {
 	$overall_total_students += $total_students;
 	$overall_tuition_fees += $tuition_fees;
 	$overall_discounts += $discounts;
+	$overall_esc_vouchers += $esc_vouchers;
 	$overall_total_collections += $total_collections;
 	$overall_total_balance += $total_balance;
 	
@@ -135,6 +141,7 @@ foreach ($summary['levels'] as $i => $sl) {
 	$summary['levels'][$i]["total_students"] = number_format($total_students);
 	$summary['levels'][$i]["tuition_fees"] = "Php. ".number_format($tuition_fees,2);
 	$summary['levels'][$i]["discounts"] = "Php. ".number_format($discounts,2);
+	$summary['levels'][$i]["esc_vouchers"] = "Php. ".number_format($esc_vouchers,2);
 	$summary['levels'][$i]["total_collections"] = "Php. ".number_format($total_collections,2);
 	$summary['levels'][$i]["total_balance"] = "Php. ".number_format($total_balance,2);
 	
@@ -143,6 +150,7 @@ foreach ($summary['levels'] as $i => $sl) {
 $summary['overall'][0]["total_students"] = number_format($overall_total_students);
 $summary['overall'][0]["tuition_fees"] = "Php. ".number_format($overall_tuition_fees,2);
 $summary['overall'][0]["discounts"] = "Php. ".number_format($overall_discounts,2);
+$summary['overall'][0]["esc_vouchers"] = "Php. ".number_format($overall_esc_vouchers,2);
 $summary['overall'][0]["total_collections"] = "Php. ".number_format($overall_total_collections,2);
 $summary['overall'][0]["total_balance"] = "Php. ".number_format($overall_total_balance,2);
 
