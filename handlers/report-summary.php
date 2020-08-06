@@ -119,11 +119,13 @@ foreach ($summary['levels'] as $i => $sl) {
 		$q_discounts = $con->getData("SELECT SUM(amount) discounts FROM students_discounts WHERE enrollment_id IN ($ids)");
 		$discounts = (count($q_discounts))?$q_discounts[0]['discounts']:0;
 
-		$q_esc_vouchers = $con->getData("SELECT SUM(payments.amount) esc_vouchers FROM payments WHERE description = 'voucher' AND enrollment_id IN ($ids)");
+		$q_esc_vouchers = $con->getData("SELECT SUM(payments.amount) esc_vouchers FROM payments WHERE description = 'voucher' AND enrollment_id IN ($ids)".$and['total_collections']);
 		$esc_vouchers = (count($q_esc_vouchers))?$q_esc_vouchers[0]['esc_vouchers']:0;
 
 		$q_total_collections = $con->getData("SELECT SUM(payments.amount) total_collections FROM payments WHERE enrollment_id IN ($ids) ".$and['total_collections']);
 		$total_collections = (count($q_total_collections))?($q_total_collections[0]['total_collections']):0;
+		
+		$total_collections = $total_collections - $esc_vouchers;
 		
 	};
 
