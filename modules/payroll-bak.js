@@ -571,7 +571,6 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					{title: "HDMF Premium", dataKey: "hdmf_premium"},
 					{title: "PHIC Premium", dataKey: "phic_premium"},
 					{title: "Tax Withheld", dataKey: "tax"},
-					{title: "Tardiness / AWOL", dataKey: "tardiness_awol"},
 					{title: "Salary Loan", dataKey: "salary_loan"},
 					{title: "Other Loans", dataKey: "other_loans"},
 					{title: "Total Deduction", dataKey: "deduction"},
@@ -584,12 +583,12 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					// tableLineColor: [189, 195, 199],
 					// tableLineWidth: 0.75,
 					addPageContent: pageContent,				
-					margin: {top: 118, left: 20, bottom: 140},
+					margin: {top: 118, left: 30, right: 30, bottom: 140},
 					tableWidth: 875,
 					showHeader: 'everyPage',		
 					columnStyles: {
 						id: {columnWidth: 50},
-						lastname: {columnWidth: 80},
+						lastname: {columnWidth: 90},
 						firstname: {columnWidth: 90},
 						mi: {columnWidth: 30},
 						basic_pay: {columnWidth: 45},
@@ -599,13 +598,12 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 						hdmf_premium: {columnWidth: 45},
 						phic_premium: {columnWidth: 45},
 						tax: {columnWidth: 45},
-						tardiness_awol: {columnWidth: 45},
 						salary_loan: {columnWidth: 45},
 						other_loans: {columnWidth: 45},
 						deduction: {columnWidth: 50},
 						incentive: {columnWidth: 45},
 						net_pay: {columnWidth: 45},
-						signature: {columnWidth: 55},
+						signature: {columnWidth: 70},
 					},
 					styles: {
 						lineColor: [75, 75, 75],
@@ -616,7 +614,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 						halign: 'center',		
 						fillColor: [191, 191, 191],
 						textColor: 50,
-						fontSize: 8,
+						fontSize: 8.5,
 						overflow: 'linebreak',
 					},
 					bodyStyles: {
@@ -641,20 +639,19 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 				doc.text(190, 480, 'TOTALS:');
 
 				doc.setLineWidth(1);
-				doc.line(270, 485, 870, 485);
-				doc.text(272, 480, all.total.basic_pay); // Basic Pay		
-				doc.text(320, 480, all.total.cola); // COLA
-				doc.text(360, 480, all.total.gross_pay); // Gross Pay
-				doc.text(408, 480, all.total.sss); // SSS
-				doc.text(452, 480, all.total.hdmf); // HDMF
-				doc.text(495, 480, all.total.phic); // PHIC
-				doc.text(540, 480, all.total.tax); // Tax
-				doc.text(585, 480, all.total.tardiness_awol); // Tax
-				doc.text(630, 480, all.total.salary_loan); // Salary Loan
-				doc.text(675, 480, all.total.other_loans); // Other Loans
-				doc.text(720, 480, all.total.total_deductions); // Total Deductions
-				doc.text(770, 480, all.total.incentive); // Incentive
-				doc.text(815, 480, all.total.net_pay); // Net Pay
+				doc.line(282, 485, 830, 485);
+				doc.text(287, 480, all.total.basic_pay); // Basic Pay		
+				doc.text(335, 480, all.total.cola); // COLA
+				doc.text(380, 480, all.total.gross_pay); // Gross Pay
+				doc.text(428, 480, all.total.sss); // SSS
+				doc.text(472, 480, all.total.hdmf); // HDMF
+				doc.text(516, 480, all.total.phic); // PHIC
+				doc.text(565, 480, all.total.tax); // Tax
+				doc.text(610, 480, all.total.salary_loan); // Salary Loan
+				doc.text(652, 480, all.total.other_loans); // Other Loans
+				doc.text(695, 480, all.total.total_deductions); // Total Deductions
+				doc.text(747, 480, all.total.incentive); // Incentive
+				doc.text(787, 480, all.total.net_pay); // Net Pay
 				
 				// Signatories
 				doc.setFontSize(10);

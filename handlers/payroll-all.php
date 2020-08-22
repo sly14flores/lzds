@@ -58,8 +58,10 @@ foreach ($payroll as $key => $p) {
 	
 	$deductions = $con->getData("SELECT * FROM payroll_deductions WHERE payroll_id = ".$p['id']);		
 	
+	$rows[$key]["tardiness_awol"] = 0;
+	
 	$rows[$key]["salary_loan"] = 0;
-	$rows[$key]["other_loans"] = 0;	
+	$rows[$key]["other_loans"] = 0;
 	$deduction_total = 0;
 	foreach ($deductions as $deduction) {
 		if ($deduction['description_field'] == "sss_amount_".$period) $rows[$key]["sss_premium"] = $deduction['amount'];
@@ -68,8 +70,8 @@ foreach ($payroll as $key => $p) {
 		if ($deduction['description_field'] == "tax_amount_".$period) $rows[$key]["tax"] = $deduction['amount'];
 		if ($deduction['description_field'] == "Salary") $rows[$key]["salary_loan"] += $deduction['amount']; # loan
 		if ($deduction['description_field'] == "Others") $rows[$key]["other_loans"] += $deduction['amount']; # other loan
-		if ($deduction['description_field'] == "tardiness") continue;
-		if ($deduction['description_field'] == "absences") continue;
+		if ($deduction['description_field'] == "tardiness") $rows[$key]["tardiness_awol"] += $deduction['amount'];;
+		if ($deduction['description_field'] == "absences") $rows[$key]["tardiness_awol"] += $deduction['amount'];;
 		$deduction_total += $deduction['amount'];	
 	}
 	
@@ -88,6 +90,7 @@ $totals["sss"] = 0;
 $totals["hdmf"] = 0;
 $totals["phic"] = 0;
 $totals["tax"] = 0;
+$totals["tardiness_awol"] = 0;
 $totals["salary_loan"] = 0;
 $totals["other_loans"] = 0;
 $totals["total_deductions"] = 0;
@@ -103,6 +106,7 @@ foreach ($rows as $key => $r) {
 	$totals["hdmf"] += $r['hdmf_premium'];
 	$totals["phic"] += $r['phic_premium'];
 	$totals["tax"] += $r['tax'];
+	$totals["tardiness_awol"] += $r['tardiness_awol'];
 	$totals["salary_loan"] += $r['salary_loan'];
 	$totals["other_loans"] += $r['other_loans'];
 	$totals["total_deductions"] += $r['deduction'];
@@ -116,6 +120,7 @@ foreach ($rows as $key => $r) {
 	$rows[$key]['hdmf'] = number_format($r['hdmf_premium'],2);
 	$rows[$key]['phic'] = number_format($r['phic_premium'],2);
 	$rows[$key]['tax'] = number_format($r['tax'],2);
+	$rows[$key]['tardiness_awol'] = number_format($r['tardiness_awol'],2);
 	$rows[$key]['salary_loan'] = number_format($r['salary_loan'],2);
 	$rows[$key]['other_loans'] = number_format($r['other_loans'],2);
 	$rows[$key]['total_deductions'] = number_format($r['deduction'],2);

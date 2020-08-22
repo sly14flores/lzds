@@ -60,7 +60,7 @@ foreach ($_Dtrs as $key => $dtr) {
 
 }
 
-header("Content-type: application/json");
+// header("Content-type: application/json");
 echo json_encode($_Dtrs);
 
 function generateDtr($con,$analyze) {
