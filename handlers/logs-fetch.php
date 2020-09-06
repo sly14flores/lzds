@@ -2,11 +2,15 @@
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 
+header("access-control-allow-origin: *");
+
 $by = $_POST['by'];
 
-require_once '../db2.php';
+// require_once '../db2.php';
+// $con = new pdo_db("monitoring","attendances");
 
-$con = new pdo_db("monitoring","attendances");
+require_once 'db.php';
+$con = new pdo_db();
 
 if ($by == "Month") {
 	$filter = " AND time_log LIKE '".$_POST['year']."-".$_POST['month']['month']."%'";
@@ -17,7 +21,7 @@ if ($by == "Month") {
 $sql = "SELECT attendances.id, attendances.rfid, attendances.time_log FROM attendances LEFT JOIN profiles ON attendances.rfid = profiles.rfid WHERE profile_type = 'Staff'$filter";
 $logs = $con->getData($sql);
 
-header("Content-type: application/json");
+// header("Content-type: application/json");
 echo json_encode($logs);
 
 ?>

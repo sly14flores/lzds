@@ -2,11 +2,15 @@
 
 $_POST = json_decode(file_get_contents('php://input'), true);
 
+header("access-control-allow-origin: *");
+
 $by = $_POST['by'];
 
-require_once '../db2.php';
+// require_once '../db2.php';
+// $con = new pdo_db("monitoring","attendances");
 
-$con = new pdo_db("monitoring","attendances");
+require_once 'db.php';
+$con = new pdo_db();
 
 if ($by == "Month") {
 	$filter = " AND time_log LIKE '".$_POST['year']."-".$_POST['month']['month']."%'";
