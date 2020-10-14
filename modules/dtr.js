@@ -163,7 +163,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			$http({
 			  method: 'POST',
 			  // url: 'handlers/logs-fetch.php',
-			  url: 'http://192.168.0.30/logs-fetch.php',
+			  url: 'http://192.168.1.30/logs-fetch.php',
 			  data: scope.downloadDtr
 			}).then(function mySucces(response) {
 				
