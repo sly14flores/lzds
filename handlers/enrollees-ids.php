@@ -57,7 +57,7 @@ function student_parent_guardian($parents_guardians) {
 		if ($pg['relationship'] == "Father") {
 			if ($student_parent_guardian == "") {
 				$student_parent_guardian = $pg['first_name'];
-				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],1,1)).".":"";
+				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],0,1)).".":"";
 				$student_parent_guardian .= " ".$pg['last_name'];
 			};			
 		};
@@ -65,7 +65,7 @@ function student_parent_guardian($parents_guardians) {
 		if ($pg['relationship'] == "Mother") {
 			if ($student_parent_guardian == "") {
 				$student_parent_guardian = $pg['first_name'];
-				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],1,1)).".":"";
+				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],0,1)).".":"";
 				$student_parent_guardian .= " ".$pg['last_name'];
 			};
 		};
@@ -73,7 +73,7 @@ function student_parent_guardian($parents_guardians) {
 		if ($pg['relationship'] == "Guardian") {
 			if ($student_parent_guardian == "") {
 				$student_parent_guardian = $pg['first_name'];
-				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],1,1)).".":"";
+				$student_parent_guardian .= (($pg['middle_name']!="")||($pg['middle_name']!=null))?" ".ucfirst(substr($pg['middle_name'],0,1)).".":"";
 				$student_parent_guardian .= " ".$pg['last_name'];
 			};			
 		};		
