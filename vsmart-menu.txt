@@ -1,0 +1,6 @@
+                  <li><a><i class="fa fa-book"></i> VSmart <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li class="<?php ($page=="vsmart-import")?"active":""; ?>"><a href="vsmart-import.php">Import</a></li>
+                      <li class="<?php ($page=="vsmart-enrolled")?"active":""; ?>"><a href="vsmart-enrolled.php">Enrolled</a></li>
+                    </ul>
+                  </li>	

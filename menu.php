@@ -19,13 +19,7 @@
                       <li class="<?php ($page=="school-year")?"active":""; ?>" ng-show="accountProfile.profile.pages_access.school_year.value"><a href="school-year.php">School Year</a></li>					
                       <li class="<?php ($page=="ids")?"active":""; ?>" ng-show="accountProfile.profile.pages_access.ids.value"><a href="ids.php">Manage IDs</a></li>
                     </ul>
-                  </li>
-                  <li><a><i class="fa fa-book"></i> VSmart <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li class="<?php ($page=="vsmart-import")?"active":""; ?>"><a href="vsmart-import.php">Import</a></li>
-                      <li class="<?php ($page=="vsmart-enrolled")?"active":""; ?>"><a href="vsmart-enrolled.php">Enrolled</a></li>
-                    </ul>
-                  </li>					  
+                  </li>				  
                   <li ng-show="accountProfile.profile.pages_access.cashier.value || accountProfile.profile.pages_access.dtr_staffs.value || accountProfile.profile.pages_access.dtr_students.value || accountProfile.profile.pages_access.payroll.value"><a><i class="fa fa-suitcase"></i> Accounting <span class="fa fa-chevron-down"></span></a>				  
                     <ul class="nav child_menu">
                       <li class="<?php ($page=="cashier")?"active":""; ?>" ng-show="accountProfile.profile.pages_access.cashier.value"><a href="cashier.php">Cashier</a></li>
