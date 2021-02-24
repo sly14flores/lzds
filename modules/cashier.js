@@ -15,6 +15,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			scope.payment.enrollment_id = 0;
 			scope.payment.description = {name:"", description:"-"};
 			scope.payment.payment_month = {no:"", name:"-"};
+			scope.payment.payment_date = new Date();
 			
 			scope.enrollment_info = {};
 			
@@ -203,12 +204,15 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			if (payment == null) {
 				if (!access.has(scope,scope.module.id,scope.module.privileges.add_payment)) return;
 				scope.payment.id = 0;
+				delete scope.payment.payment_date;
 				delete scope.payment.description;
 				delete scope.payment.payment_month;
 				delete scope.payment.amount;
 				delete scope.payment.official_receipt;
+				scope.payment.payment_date = new Date();
 			} else {
 				scope.payment = angular.copy(payment);
+				scope.payment.payment_date = new Date(payment.payment_date);
 			};
 			
 			var content = 'dialogs/payment.html';			

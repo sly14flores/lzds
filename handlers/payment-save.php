@@ -9,9 +9,9 @@ $con = new pdo_db("payments");
 if ($_POST['id']) {
 	
 	unset($_POST['payment_date_str']);	
-	unset($_POST['amount_str']);	
+	unset($_POST['amount_str']);
 	$_POST['update_log'] = "CURRENT_TIMESTAMP";
-	$_POST['payment_date'] = "CURRENT_TIMESTAMP";
+	$_POST['payment_date'] = date("Y-m-d",strtotime($_POST['payment_date']));
 	$_POST['description'] = $_POST['description']['name'];
 	$_POST['payment_month'] = $_POST['payment_month']['no'];	
 	$payment = $con->updateData($_POST,'id');

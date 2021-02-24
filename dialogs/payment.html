@@ -1,5 +1,9 @@
 <form name="formHolder.payment" id="formHolder.payment" novalidate>
 <div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.payment_date.$touched && formHolder.payment.payment_date.$invalid}">
+		<label>Date</label>
+		<input type="date" name="payment_date" class="form-control" ng-model="payment.payment_date" required>
+	</div>	
   <div class="col-md-12 col-sm-12 col-xs-12 form-group" ng-class="{'has-error': formHolder.payment.description.$touched && formHolder.payment.description.$invalid}">
 	<label>Description</label>
 	<select class="form-control" name="description" ng-model="payment.description" ng-options="description.description for description in descriptions track by description.name" ng-change="form.descriptionSelected(this,payment.description)" required></select>
