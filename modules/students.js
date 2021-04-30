@@ -20,6 +20,14 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			
 			$rootScope.parents_guardians = [];
 			$rootScope.parents_guardians_dels = [];
+
+			$rootScope.qualifiedDiscounts = [
+				{id: 1, name: 'w/Highest Honors'},
+				{id: 2, name: 'w/High Honors'},
+				{id: 3, name: 'w/Honors'},
+				{id: 4, name: '3 Siblings: Youngest'},
+				{id: 5, name: '4 - 5 Siblings: Youngest'},
+			];
 			
 			$rootScope.btns = {
 				ok: {
@@ -49,7 +57,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				
 			}, (response) => {
 				
-			});			
+			});
 			
 		};
 		
@@ -120,7 +128,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 				  url: 'handlers/student-edit.php',
 				  data: {id: row.id}
 				}).then(function mySucces(response) {
-
+					
 					angular.copy(response.data['student'], $rootScope.student);
 					angular.copy(response.data['parents_guardians'], $rootScope.parents_guardians);
 					if ($rootScope.student.date_of_birth != null) $rootScope.student.date_of_birth = new Date($rootScope.student.date_of_birth);
@@ -218,7 +226,7 @@ angular.module('students-module', ['ui.bootstrap','bootstrap-modal','x-panel-mod
 			  url: 'handlers/student-save.php',
 			  data: {student: $rootScope.student, parents_guardians: $rootScope.parents_guardians, parents_guardians_dels: $rootScope.parents_guardians_dels}
 			}).then(function mySucces(response) {
-				
+
 				$rootScope.btns.ok.disabled = true;
 				if ($rootScope.student.id == 0) {
 					pnotify.show('success','Notification','Student info successfully added.');					

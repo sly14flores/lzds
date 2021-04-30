@@ -36,9 +36,16 @@ foreach ($_POST as $i => $filter) {
 	
 };
 
-$sql = "SELECT enrollments.id, students.lrn, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, enrollments.rfid, DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename, students.gender";
+$sql = "SELECT enrollments.id, students.lrn, students.origin, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, enrollments.rfid, DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename, students.gender";
 
 $enrollees = $con->getData($sql);
+
+foreach ($enrollees as $i => $e) {
+	
+	if($e['origin']=='walk-in') $enrollees[$i]['origin']='Walk-in';
+	if($e['origin']=='online') $enrollees[$i]['origin']='Online';
+	
+};
 
 echo json_encode($enrollees);
 
