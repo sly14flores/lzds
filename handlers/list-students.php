@@ -13,8 +13,8 @@ $where = "";
 
 if (isset($_POST['origin'])) {
 
-	$where .= " WHERE students.origin = '".$_POST['origin']."'";
-	
+	if ($_POST['origin'] != "") $where .= " WHERE students.origin = '".$_POST['origin']."'";
+
 }
 
 $sql.=$where;
