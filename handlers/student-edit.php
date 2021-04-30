@@ -27,6 +27,7 @@ $student[0]['ecd'] = ($student[0]['ecd'])?true:false;
 $student[0]['pwd'] = ($student[0]['pwd'])?true:false;
 
 $student[0]['enrollment_discount'] = array("id"=>$student[0]['enrollment_discount']);
+$student[0]['additional_enrollment_discount'] = array("id"=>$student[0]['additional_enrollment_discount']);
 
 echo json_encode(array("student"=>$student[0],"parents_guardians"=>$parents_guardians));
 
