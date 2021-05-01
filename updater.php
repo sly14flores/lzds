@@ -1,6 +1,6 @@
 <?php
 
-$version = "1.1.0.16";
+$version = "1.1.0.17";
 
 $update = "?ver=$version";
 
