@@ -17,6 +17,13 @@ foreach ($_POST as $i => $filter) {
 		if ($c == 1) $where .= " WHERE enrollment_school_year = ".$filter['id'];
 		else $where .= " AND enrollment_school_year = ".$filter['id'];
 	};
+
+	if ($i == "origin") {
+		if (isset($_POST['origin'])) {
+			if ($c == 1) $where .= " WHERE enrollments.origin = '".$_POST['origin']."'";
+			else $where .= " AND enrollments.origin = '".$_POST['origin']."'";
+		}
+	};
 	
 	if ($i == "level") {
 		if ($filter['id'] > 0) {
@@ -36,7 +43,7 @@ foreach ($_POST as $i => $filter) {
 	
 };
 
-$sql = "SELECT enrollments.id, students.lrn, students.origin, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, enrollments.rfid, DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename, students.gender";
+$sql = "SELECT enrollments.id, students.lrn, enrollments.origin, CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) fullname, students.gender, enrollments.school_id, (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade, (SELECT sections.description FROM sections WHERE sections.id = enrollments.section) section, enrollments.rfid, DATE_FORMAT(enrollments.enrollment_date,'%M %e, %Y') enrollment_date FROM enrollments LEFT JOIN students ON enrollments.student_id = students.id".$where." ORDER BY students.lastname, students.firstname, students.middlename, students.gender";
 
 $enrollees = $con->getData($sql);
 

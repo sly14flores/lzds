@@ -194,6 +194,14 @@ require_once 'updater.php';
 				<label>School Year:</label>
 				<select class="form-control" ng-model="filter.school_year" ng-options="sy.school_year for sy in school_years track by sy.id"></select>
 			  </div>
+        <div class="form-group">
+				<label>Origin:</label>
+				<select class="form-control" ng-model="filter.origin">
+							<option value="">All</option>
+							<option value="walk-in">Walk-In</option>
+							<option value="online">Online</option>
+						</select>
+			  </div>
 			  <div class="form-group">
 				<label>Level:</label>
 				<select class="form-control" ng-model="filter.level" ng-options="level.description for level in levels track by level.id" ng-change="form.levelSelected(filter.level)"></select>
