@@ -20,8 +20,14 @@ foreach ($_POST as $i => $filter) {
 
 	if ($i == "origin") {
 		if (isset($_POST['origin'])) {
-			if ($c == 1) $where .= " WHERE enrollments.origin = '".$_POST['origin']."'";
-			else $where .= " AND enrollments.origin = '".$_POST['origin']."'";
+			if ($_POST['origin']=="walk-in") {
+				if ($c == 1) $where .= " WHERE enrollments.origin IS NULL";
+				else $where .= " AND enrollments.origin IS NULL";				
+			}
+			if ($_POST['origin']=="online") {
+				if ($c == 1) $where .= " WHERE enrollments.origin = '".$_POST['origin']."'";
+				else $where .= " AND enrollments.origin = '".$_POST['origin']."'";
+			}
 		}
 	};
 	
