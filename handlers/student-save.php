@@ -18,6 +18,7 @@ if (isset($_POST['student']['date_of_birth'])) $_POST['student']['date_of_birth'
 **
 */
 $_POST['student']['enrollment_discount'] = $_POST['student']['enrollment_discount']['id'];
+$_POST['student']['additional_enrollment_discount'] = $_POST['student']['additional_enrollment_discount']['id'];
 $_POST['student']['gp4ps'] = ($_POST['student']['gp4ps'])?1:0;
 $_POST['student']['gpips'] = ($_POST['student']['gpips'])?1:0;
 $_POST['student']['ecd'] = ($_POST['student']['ecd'])?1:0;
