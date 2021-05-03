@@ -183,6 +183,18 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 			});			
 
 		};
+
+		self.additionalEnrollment = function() {			
+				
+			var onOk = function() {
+				
+				// if ok
+				
+			};
+			
+			bootstrapModal.box2('','Title Here','dialogs/additional-enrollment.html',onOk);
+			
+		};
 		
 		self.view = function(enrollee) {			
 			
