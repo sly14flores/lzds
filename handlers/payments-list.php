@@ -24,6 +24,7 @@ $sql .= " (SELECT students.lrn FROM students WHERE students.id = enrollments.stu
 $sql .= " enrollments.school_id,";
 $sql .= " enrollments.origin,";
 $sql .= " enrollments.enrollee_rn,";
+$sql .= " students.student_status,";
 $sql .= " (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname,";
 $sql .= " (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) enrollment_school_year,";
 $sql .= " (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade,";

@@ -7,7 +7,7 @@
 </div>
 <table class="table table-striped jambo_table bulk_action" style="margin-top: 5px;">
 	<thead>
-		<tr class="headings"><th>#</th><th>LRN</th><th>Fullname</th><th>Gender</th><th>School ID</th><th>Level</th><th>Section</th><th>RFID</th><th>Origin | Online Ref No.</th><th>Date Enrolled</th><th></th></tr>
+		<tr class="headings"><th>#</th><th>LRN</th><th>Fullname</th><th>Gender</th><th>School ID</th><th>Level</th><th>Section</th><th>RFID</th><th>Origin</th><th>Online Reference Number</th><th>Status</th></th><th>Date Enrolled</th><th></th></tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="enrollee in filterData = (enrollees | filter: views.search) | pagination: currentPage:pageSize">
@@ -19,7 +19,9 @@
 			<td>{{enrollee.grade}}</td>
 			<td>{{enrollee.section}}</td>
 			<td>{{enrollee.rfid}}</td>
-			<td>{{enrollee.origin}} | {{enrollee.enrollee_rn}}</td>
+			<td>{{enrollee.origin}}</td>
+			<td>{{enrollee.enrollee_rn}}</td>
+			<td>{{enrollee.student_status}}</td>
 			<td>{{enrollee.enrollment_date}}</td>
 			<td class="last list-action">
 				<a href="javascript:;" ng-click="form.view(enrollee)" style="margin-right: 10px;"><i class="fa fa-search"></i></a>
