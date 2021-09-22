@@ -191,6 +191,17 @@
 	</div>
 	<div class="ln_solid"></div>
 	<div class="row">
+		<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+		  <label>Discount</label>
+		  <select class="form-control" name="enrollment_discount" ng-model="student.enrollment_discount" ng-options="qd.name for qd in qualifiedDiscounts track by qd.id" ng-disabled="btns.ok.disabled"></select>
+		</div>
+		<div class="col-md-4 col-sm-12 col-xs-12 form-group">
+			<label>Additional Discount</label>
+			<select class="form-control" name="additional_enrollment_discount" ng-model="student.additional_enrollment_discount" ng-options="q.name for q in qualifiedDiscounts track by q.id" ng-disabled="btns.ok.disabled"></select>
+		</div>
+	</div>
+	<div class="ln_solid"></div>
+	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-5 form-group">
 		  <button type="button" class="btn btn-primary" type="button" ng-click="form.list()" ng-disabled="btns.cancel.disabled">{{btns.cancel.label}}</button>
 		  <button type="button" class="btn btn-success" ng-click="form.save()" ng-disabled="btns.ok.disabled">{{btns.ok.label}}</button>

@@ -1,7 +1,7 @@
 <div class="table-responsive">
 	<table class="table table-striped jambo_table bulk_action">
 		<thead>
-			<tr class="headings"><th>School ID</th><th>Fullname</th><th>School Year</th><th>Level</th><th>Section</th><th>Date Enrolled</th><th></th></tr>
+			<tr class="headings"><th>School ID</th><th>Fullname</th><th>School Year</th><th>Level</th><th>Section</th><th>Origin</th><th>Online Reference Number</th><th>Status</th><th>Date Enrolled</th><th></th></tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="enrollment in filterData = (enrollments | filter: views.search) | pagination: currentPage:pageSize">
@@ -9,7 +9,10 @@
 				<td>{{enrollment.fullname}}</td>
 				<td>{{enrollment.enrollment_school_year}}</td>				
 				<td>{{enrollment.grade}}</td>
-				<td>{{enrollment.section}}</td>
+				<td>{{enrollment.section}}</td>			
+				<td>{{enrollment.origin}}</td>
+				<td>{{enrollment.enrollee_rn}}</td>
+				<td>{{enrollment.student_status}}</td>
 				<td>{{enrollment.enrollment_date}}</td>
 				<td class="last list-action">
 					<a href="javascript:;" ng-click="form.payment(this,enrollment)"><i class="fa fa-search"></i></a>
@@ -18,7 +21,7 @@
 		</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="7" style="text-align: center;">
+			<td colspan="8" style="text-align: center;">
 				<ul uib-pagination boundary-links="true" total-items="filterData.length" max-size="maxSize" items-per-page="pageSize" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
 			</td>
 		</tr>

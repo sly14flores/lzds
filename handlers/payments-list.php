@@ -22,6 +22,9 @@ if ((isset($_POST['level']))&&($_POST['level']['id']>0)) {
 $sql = "SELECT enrollments.id,";
 $sql .= " (SELECT students.lrn FROM students WHERE students.id = enrollments.student_id) lrn,";
 $sql .= " enrollments.school_id,";
+$sql .= " enrollments.origin,";
+$sql .= " enrollments.enrollee_rn,";
+$sql .= " students.student_status,";
 $sql .= " (SELECT CONCAT(students.lastname, ', ', students.firstname, ' ', students.middlename) FROM students WHERE students.id = enrollments.student_id) fullname,";
 $sql .= " (SELECT school_years.school_year FROM school_years WHERE school_years.id = enrollments.enrollment_school_year) enrollment_school_year,";
 $sql .= " (SELECT grade_levels.description FROM grade_levels WHERE grade_levels.id = enrollments.grade) grade,";
@@ -42,6 +45,9 @@ foreach ($payments as $i => $payment) {
 	$payments[$i]['payments'] = ($payment['payments']==null)?0:$payment['payments'];
 	$payments[$i]['total'] = $payment['sub_total'] - $payment['discount'];
 	$payments[$i]['balance'] = $payments[$i]['total'] - $payment['payments'];
+
+	if($payment['origin']=='walk-in') $payments[$i]['origin']='Walk-in';
+	if($payment['origin']=='online') $payments[$i]['origin']='Online';
 	
 }
 
