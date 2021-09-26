@@ -360,7 +360,8 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			
 			$http({
 				method: 'POST',
-				url: 'handlers/send-email.php',
+				// url: 'handlers/send-email.php',
+				url: 'https://api.lzds.edu.ph/send/email',
 				data: {message: scope.email.enrollment.email, email_address: scope.email.enrollment.email_address}
 			}).then(function success(response) {
 				
@@ -419,7 +420,7 @@ angular.module('cashier-module', ['ui.bootstrap','bootstrap-modal','window-open-
 			
 			$http({
 				method: 'POST',
-				url: 'handlers/send-email.php',
+				url: 'https://api.lzds.edu.ph/send/email',
 				data: {message: scope.email.bulk.emails[i].content, email_address: scope.email.bulk.emails[i].email_address}
 			}).then(function success(response) {
 			
