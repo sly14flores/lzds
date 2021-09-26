@@ -56,7 +56,7 @@ foreach ($enrollments as $enrollment) {
 	$content .= "$address<br><br>";
 
 	$content .= "Dear $parent_guardian,<br><br>";
-	$content .= "This is a friendly reminder of your account with us.  Our records indicate that you have an outstanding balance of <span style=\"font-weight: bold; text-decoration: underline;\"><strong>Php. ".number_format($balance,2)."</strong></span>  as of this date: " . date("F j, Y") . " for school year " . $current_sy;
+	$content .= "This is a friendly reminder of your account with us.  Our records indicate that you have an outstanding balance of <u><strong>Php. ".number_format($balance,2)."</strong></u>  as of this date: " . date("F j, Y") . " for school year " . $current_sy;
 
 	$content .= "In order to keep your account in good standing, may we ask you to kindly make your payments up-to-date before your child's/children scheduled quarterly examinations.<br><br>";
 
