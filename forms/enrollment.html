@@ -29,6 +29,12 @@
 				<select class="form-control" name="section" ng-model="student_enrollment.section" ng-options="section as section.description for section in sections track by section.id" ng-disabled="enrollmentBtns.ok.disabled"></select>
 			  </div>		
 			</div>
+			<div class="row" ng-if="student_enrollment.grade.id == 13 || student_enrollment.grade.id == 14">
+			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
+					<label>Strand</label>
+					<select class="form-control" name="strand" ng-model="student_enrollment.strand" ng-options="strand as strand.name for strand in strands track by strand.name" ng-disabled="enrollmentBtns.ok.disabled"></select>
+				</div>
+			</div>
 			<div class="row">
 			  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 form-group">
 				<label>RFID</label>
