@@ -13,6 +13,7 @@ if ($_POST['student_enrollment']['id']) { // > 0 - update
 	$_POST['student_enrollment']['update_log'] = "CURRENT_TIMESTAMP";
 	$_POST['student_enrollment']['grade'] = $_POST['student_enrollment']['grade']['id'];
 	$_POST['student_enrollment']['section'] = (isset($_POST['student_enrollment']['section']))?$_POST['student_enrollment']['section']['id']:NULL;
+	$_POST['student_enrollment']['strand'] = (isset($_POST['student_enrollment']['strand']))?$_POST['student_enrollment']['strand']['name']:NULL;
 	$_POST['student_enrollment']['enrollment_school_year'] = $_POST['student_enrollment']['enrollment_school_year']['id'];
 	$enrollment = $con->updateData($_POST['student_enrollment'],'id');
 	$enrollment_id = $_POST['student_enrollment']['id'];

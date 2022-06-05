@@ -61,6 +61,25 @@ angular.module('enrollments-school-year', ['ui.bootstrap','bootstrap-modal','x-p
 					disabled: true,
 				}
 			};
+
+			$rootScope.strands = [
+				{
+					id: 1,
+					name: 'STEM',
+				},
+				{
+					id: 2,
+					name: 'GAS',
+				},
+				{
+					id: 3,
+					name: 'ABM',
+				},
+				{
+					id: 4,
+					name: 'HUMSS',
+				},
+			]
 			
 		};
 		

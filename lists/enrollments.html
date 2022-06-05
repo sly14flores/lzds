@@ -1,6 +1,6 @@
 <table class="table table-striped jambo_table bulk_action">
 	<thead>
-		<tr class="headings"><th>#</th><th>School Year</th><th>School ID</th><th>Level</th><th>Section</th><th>Date Enrolled</th><th></th></tr>
+		<tr class="headings"><th>#</th><th>School Year</th><th>School ID</th><th>Level</th><th>Section</th><th>Strand</th><th>Date Enrolled</th><th></th></tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="enrollment_row in enrollments">
@@ -9,6 +9,7 @@
 			<td>{{enrollment_row.school_id}}</td>
 			<td>{{enrollment_row.grade}}</td>
 			<td>{{enrollment_row.section}}</td>
+			<td>{{enrollment_row.strand}}</td>
 			<td>{{enrollment_row.enrollment_date}}</td>
 			<td class="last list-action">
 				<a href="javascript:;" ng-click="enrollment.form(enrollment_row)" style="margin-right: 10px;"><i class="fa fa-search"></i></a>

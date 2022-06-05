@@ -36,6 +36,25 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			};			
 			
 			$rootScope.views.enrollment_panel_title = '';
+
+			$rootScope.strands = [
+				{
+					id: 1,
+					name: 'STEM',
+				},
+				{
+					id: 2,
+					name: 'GAS',
+				},
+				{
+					id: 3,
+					name: 'ABM',
+				},
+				{
+					id: 4,
+					name: 'HUMSS',
+				},
+			]
 			
 		};
 		
@@ -87,6 +106,7 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			// $rootScope.student_enrollment.enrollment_school_year = {id:0,school_year:""};
 			// $rootScope.student_enrollment.grade = {id:0,description:"",sections:[]};
 			$rootScope.student_enrollment.section = {id:0,description:""};		
+			$rootScope.student_enrollment.strand = {id:0,name:""};
 			$rootScope.details = {
 				sub_total: 0,
 				sub_total_str: 0,
@@ -122,7 +142,7 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 				 
 			  // error
 				
-			});			
+			});
 			
 			/*
 			schoolYear.getSys().then((response) => {
@@ -220,7 +240,28 @@ angular.module('enrollments-module', ['bootstrap-modal','school-year','pnotify-m
 			
 			if (level == undefined) return;
 			
-			$rootScope.sections = level.sections;						
+			$rootScope.sections = level.sections;
+
+			if ((level.id === 13) || (level.id === 14)) {
+				$rootScope.strands = [
+					{
+						id: 1,
+						name: 'STEM',
+					},
+					{
+						id: 2,
+						name: 'GAS',
+					},
+					{
+						id: 3,
+						name: 'ABM',
+					},
+					{
+						id: 4,
+						name: 'HUMSS',
+					},
+				]
+			}
 			
 			fees();
 			
