@@ -5,7 +5,7 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 require_once '../db.php';
 
 $con = new pdo_db();
-$sql = "SELECT id, IFNULL(CONCAT(nickname, ' ', lastname),'') staff, staff_account_group, is_active FROM staffs WHERE username = '$_POST[username]' AND password = '$_POST[password]'";
+$sql = "SELECT id, IFNULL(CONCAT(nickname, ' ', lastname),'') staff, staff_account_group, is_active FROM staffs WHERE username = '$_POST[username]' AND password = '$_POST[password]' AND is_active = 1";
 $account = $con->getData($sql);
 
 $login = array(
