@@ -77,7 +77,7 @@ foreach ($payments as $i => $payment) {
 	$_payment = $con->getData($sql);
 
 	$payments[$i]['previous_balance'] = 0;
-	if (count($_payment)) {
+	if (($con->rows) > 0) {
 		$payments[$i]['previous_balance'] = $_payment[0]['total'] - $_payment[0]['payments'];
 	}
 
