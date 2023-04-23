@@ -25,6 +25,7 @@ if ((isset($_POST['level']))&&($_POST['level']['id']>0)) {
 };
 
 $sql = "SELECT enrollments.id,";
+$sql .= " enrollments.student_id,";
 $sql .= " (SELECT students.lrn FROM students WHERE students.id = enrollments.student_id) lrn,";
 $sql .= " enrollments.school_id,";
 $sql .= " enrollments.origin,";
@@ -71,13 +72,13 @@ foreach ($payments as $i => $payment) {
 	$sql .= " IFNULL((SELECT SUM(students_vouchers.amount) FROM students_vouchers WHERE students_vouchers.enrollment_id = enrollments.id),0) voucher";
 	$sql .= " FROM enrollments";
 	$sql .= " LEFT JOIN students ON enrollments.student_id = students.id";
-	$sql .= " WHERE enrollments.id = ".$payment['id']." AND enrollment_school_year = ".$previous_sy;
+	$sql .= " WHERE enrollments.id = ".$payment['student_id']." AND enrollment_school_year = ".$previous_sy;
 
 	$_payment = $con->getData($sql);
 
 	$payments[$i]['previous_balance'] = 0;
-	if (count($_payment)) {
-		$payments[$i]['previous_balance'] = $_payment[0]['balance'] = $_payment[0]['total'] - $_payment[0]['payments'];
+	if (($con->rows) > 0) {
+		$payments[$i]['previous_balance'] = $_payment[0]['total'] - $_payment[0]['payments'];
 	}
 
 }
