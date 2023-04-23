@@ -199,7 +199,7 @@ require_once 'updater.php';
 					  <div class="form-group">
 						<label>Report :</label>
 						<select class="form-control" ng-model="payroll.reports.report">
-							<option value="tardiness_awol">Tardiness/AWOL</option>
+							<option value="tardiness_awol">Tardiness/Leave</option>
 						</select>						
 					  </div>					
 					  <div class="form-group">
