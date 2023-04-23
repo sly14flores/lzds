@@ -571,7 +571,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					{title: "HDMF Premium", dataKey: "hdmf_premium"},
 					{title: "PHIC Premium", dataKey: "phic_premium"},
 					{title: "Tax Withheld", dataKey: "tax"},
-					{title: "Tardiness / AWOL", dataKey: "tardiness_awol"},
+					{title: "Tardiness / Leave", dataKey: "tardiness_awol"},
 					{title: "Salary Loan", dataKey: "salary_loan"},
 					{title: "Other Loans", dataKey: "other_loans"},
 					{title: "Total Deduction", dataKey: "deduction"},
@@ -732,7 +732,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 	
 					doc.setFontSize(12);
 					doc.setFontType('bold');
-					doc.myText("Tardiness/AWOL",{align: "center"},0,75);
+					doc.myText("Tardiness/Leave",{align: "center"},0,75);
 					
 					// FOOTER
 					var str = "Page " + data.pageCount;
@@ -751,7 +751,7 @@ angular.module('payroll-module', ['ui.bootstrap','bootstrap-modal','school-year'
 					{title: "First Name", dataKey: "firstname"},
 					{title: "MI", dataKey: "mi"},
 					{title: "Tardiness", dataKey: "tardiness"},
-					{title: "AWOL", dataKey: "awol"},
+					{title: "Leave", dataKey: "awol"},
 				];
 				var rows = reports.row;
 				doc.autoTable(columns, rows, {			
