@@ -24,7 +24,8 @@ $all['date'] = date("F j, Y");
 $rows = [];
 
 // $payroll = $con->getData("SELECT * FROM payroll WHERE payroll_month = '$month' AND payroll_period = '$period' AND payroll_sy = ".$_POST['payroll_sy']['id']);
-$sql = "SELECT payroll.id, payroll.staff_id, payroll.payroll_month, payroll.payroll_period, payroll.payroll_date, payroll.payroll_sy FROM payroll LEFT JOIN staffs ON payroll.staff_id = staffs.id WHERE payroll_month = '$month' AND payroll_period = '$period' AND payroll_sy = ".$_POST['payroll_sy']['id']." ORDER BY lastname, firstname, middlename ASC";
+// $sql = "SELECT payroll.id, payroll.staff_id, payroll.payroll_month, payroll.payroll_period, payroll.payroll_date, payroll.payroll_sy FROM payroll LEFT JOIN staffs ON payroll.staff_id = staffs.id WHERE payroll_month = '$month' AND payroll_period = '$period' AND payroll_sy = ".$_POST['payroll_sy']['id']." ORDER BY lastname, firstname, middlename ASC";
+$sql = "SELECT payroll.id, payroll.staff_id, payroll.payroll_month, payroll.payroll_period, payroll.payroll_date, payroll.payroll_sy FROM payroll LEFT JOIN staffs ON payroll.staff_id = staffs.id WHERE payroll.payroll_month = '$month' AND payroll.payroll_period = '$period' AND payroll.payroll_sy = ".$_POST['payroll_sy']['id']." AND (staffs.employment_status = 'Regular' OR staffs.employment_status = 'Contractual') ORDER BY lastname, firstname, middlename ASC";
 $payroll = $con->getData($sql);
 
 foreach ($payroll as $key => $p) {
