@@ -49,6 +49,15 @@ $payroll_pays[] = array(
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
 
+# Cola
+$payroll_pays[] = array(
+	"payroll_id"=>$payroll_id,
+	"description"=>"COLA",
+	"description_field"=>"cola",
+	"amount"=>$staff[0]['cola'],
+	"system_log"=>"CURRENT_TIMESTAMP"
+);
+
 # Sub Allowances
 $payroll_pays[] = array(
 	"payroll_id"=>$payroll_id,

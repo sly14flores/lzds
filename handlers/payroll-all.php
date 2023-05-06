@@ -40,12 +40,17 @@ foreach ($payroll as $key => $p) {
 	$pays = $con->getData("SELECT * FROM payroll_pays WHERE payroll_id = ".$p['id']);
 	
 	$gross_pay = 0;
+	$rows[$key]["cola"] = 0;
+	$rows[$key]["incentive"] = 0;
 	foreach ($pays as $pay) {
 		if ($pay['description_field'] == "basic_pay") {
 			$rows[$key]["basic_pay"] = $pay['amount']; 
 		}
-		if ($pay['description_field'] == "sub_allowances") $rows[$key]["cola"] = $pay['amount'];
-		if ($pay['description_field'] == "incentives") $rows[$key]["incentive"] = $pay['amount'];	
+		// if ($pay['description_field'] == "sub_allowances") $rows[$key]["cola"] = $pay['amount'];
+		// if ($pay['description_field'] == "incentives") $rows[$key]["incentive"] = $pay['amount'];	
+		if ($pay['description_field'] == "cola") {
+			$rows[$key]["cola"] = $pay['amount'];
+		}
 		$gross_pay += $pay['amount'];
 	}
 	
