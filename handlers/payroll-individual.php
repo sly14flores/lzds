@@ -149,7 +149,7 @@ $last_day = ($_POST['period']=="first")?date("Y-m-15",strtotime($first_day)):dat
 $period_date = ($_POST['period']=="first")?$middle_day:$last_day;
 if ($_POST['period']=="second") $first_day = $first_day_second;
 
-$loans = $con->getData("SELECT id, staff_id, loan_type, loan_description, loan_date, loan_amount, IFNULL(loan_offset,0) loan_offset, loan_months, loan_monthly, loan_monthly_first, loan_monthly_second, loan_effectivity FROM loans WHERE staff_id = ".$_POST['id']." AND loan_paid = 0 AND '$period_date' >= loan_effectivity");
+$loans = $con->getData("SELECT id, staff_id, loan_type, loan_description, loan_date, loan_amount, IFNULL(loan_offset,0) loan_offset, loan_months, loan_monthly, loan_monthly_first, loan_monthly_second, loan_effectivity FROM loans WHERE staff_id = ".$_POST['id']." AND loan_paid = 0 AND loan_effectivity <= '$period_date'");
 
 $loan_period = "loan_monthly_".$_POST['period'];
 foreach ($loans as $key => $loan) {
