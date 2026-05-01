@@ -18,7 +18,7 @@ if ($staff[0]['schedule_id'] < 0) {
 }
 
 if ($staff[0]['staff_account_group']!=null) {
-	$group = $con->getData("SELECT id, group_name FROM groups WHERE id = ".$staff[0]['staff_account_group']);
+	$group = $con->getData("SELECT id, group_name FROM `groups` WHERE id = ".$staff[0]['staff_account_group']);
 	$staff[0]['staff_account_group'] = $group[0];
 } else {
 	unset($staff[0]['staff_account_group']);

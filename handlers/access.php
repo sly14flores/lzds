@@ -6,7 +6,7 @@ require_once '../db.php';
 require_once '../system_privileges.php';
 require_once '../privileges.php';
 
-$con = new pdo_db("groups");
+$con = new pdo_db("`groups`");
 
 session_start();
 
