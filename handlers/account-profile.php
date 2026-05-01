@@ -24,7 +24,7 @@ if (!file_exists("../".$picture)) $picture = $avatar;
 
 $profile['profile']['picture'] = $picture;
 
-$con->table = "groups";
+$con->table = "`groups`";
 $group_privileges = $con->get(array("id"=>$_SESSION['group']),["privileges"]);
 
 $pages_access = [];
