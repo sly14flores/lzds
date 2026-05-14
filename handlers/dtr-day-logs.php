@@ -15,8 +15,6 @@ $dtr = array(
 	"system_log"=>"CURRENT_TIMESTAMP"
 );
 
-var_dump($dtr);
-
 $log = $con->updateData($dtr,'id');
 
 $con->table = $_POST['manual'];
