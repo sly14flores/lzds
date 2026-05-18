@@ -279,14 +279,20 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};		
 		
 		self.allot = function(scope,bl) {
+
+			const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			console.log(userTimezone);		
 			
 			if (scope.dtr_allotment == "") return;
 			
 			const options = {
 				timeZone: "Asia/Manila"
 			}
-			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log, options);
-			scope.dtr_day.manual[scope.dtr_allotment].save = false;			
+			const dblLog = "2000-01-01 "+bl.log
+			console.log(dblLog)
+			scope.dtr_day[scope.dtr_allotment] = new Date(dblLog);
+			console.log(new Date(dblLog))
+			scope.dtr_day.manual[scope.dtr_allotment].save = false;	
 			
 		};
 		
