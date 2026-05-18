@@ -285,7 +285,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			const options = {
 				timeZone: "Asia/Manila"
 			}
-			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log, options);
+			scope.dtr_day[scope.dtr_allotment] = new Date("2000-01-01 "+bl.log);
 			scope.dtr_day.manual[scope.dtr_allotment].save = false;			
 			
 		};
