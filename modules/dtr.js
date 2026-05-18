@@ -279,6 +279,9 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 		};		
 		
 		self.allot = function(scope,bl) {
+
+			const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			console.log(userTimezone);		
 			
 			if (scope.dtr_allotment == "") return;
 			
@@ -289,7 +292,7 @@ angular.module('dtr-module', ['ui.bootstrap','bootstrap-modal','pnotify-module',
 			console.log(dblLog)
 			scope.dtr_day[scope.dtr_allotment] = new Date(dblLog);
 			console.log(new Date(dblLog))
-			scope.dtr_day.manual[scope.dtr_allotment].save = false;			
+			scope.dtr_day.manual[scope.dtr_allotment].save = false;	
 			
 		};
 		
