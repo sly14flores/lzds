@@ -5,6 +5,7 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 require_once '../db.php';
 
 // date_default_timezone_set('Etc/UTC');
+var_dump(date_default_timezone_get()); 
 
 $con = new pdo_db($_POST['dtr']);
 
