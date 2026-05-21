@@ -4,6 +4,8 @@ $_POST = json_decode(file_get_contents('php://input'), true);
 
 require_once '../db.php';
 
+date_default_timezone_set('Asia/Taipei');
+
 $con = new pdo_db("leaves");
 
 $_POST['with_pay'] = ($_POST['with_pay']=="true")?1:0;
