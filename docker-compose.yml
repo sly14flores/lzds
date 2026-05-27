@@ -1,11 +1,11 @@
 services:
   # PHP Application
-  lzds-system-legacy:
+  lzds-system-legacy-test:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
-    image: lzds-system-legacy
-    container_name: lzds-system-legacy
+    image: lzds-system-legacy-test
+    container_name: lzds-system-legacy-test
     restart: unless-stopped
     working_dir: /var/www
     volumes:
@@ -18,17 +18,17 @@ services:
                 memory: 1G      
 
   # Nginx Web Server
-  nginx-lzds-system-legacy:
+  nginx-lzds-system-legacy-test:
     image: nginx:alpine
-    container_name: nginx-lzds-system-legacy
+    container_name: nginx-lzds-system-legacy-test
     restart: unless-stopped
     ports:
-      - "8083:80"
+      - "8084:80"
     volumes:
       - .:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
     depends_on:
-      - lzds-system-legacy
+      - lzds-system-legacy-test
     deploy:
         resources:
             limits:
