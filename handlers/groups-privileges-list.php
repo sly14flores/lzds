@@ -6,7 +6,7 @@ require_once '../db.php';
 
 session_start();
 
-$con = new pdo_db("groups");
+$con = new pdo_db("`groups`");
 
 $groups = $con->all(array("id","group_name","group_description"));
 
