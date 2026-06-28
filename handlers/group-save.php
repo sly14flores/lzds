@@ -7,7 +7,7 @@ require_once '../privileges.php';
 
 session_start();
 
-$con = new pdo_db("groups");
+$con = new pdo_db("`groups`");
 
 $privileges = [];
 if (isset($_POST['privileges'])) {
